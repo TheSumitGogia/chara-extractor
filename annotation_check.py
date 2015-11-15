@@ -5,6 +5,7 @@
 # python annotation_check.py returnking
 
 import os, sys, unicodedata
+from django.utils.encoding import smart_str
 
 book = sys.argv[1]
 annotations_path = 'annotations/%s.tag' % book
@@ -12,7 +13,7 @@ book_path = 'books/%s' % book
 
 # normalize unicode
 def normalize(c):
-  return unicodedata.normalize('NFD', c.decode('utf-8'))
+  return unicodedata.normalize('NFD', c.decode('utf-8')).replace(u"\u201c", "\"").replace(u"\u201d", "\"").replace(u"\u2019","\'")
 
 characters = set(map(normalize, os.listdir(book_path)))
 
