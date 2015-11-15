@@ -1,0 +1,11 @@
+Johnny;John Gunther;
+Johnny;Frances;
+Dr. Traeger;John Gunther;
+Dr. Traeger;Johnny;
+Dr. Tracy Putnam;Johnny;
+Dr. Lester Mount;Johnny;
+Dr. Lester Mount;Dr. Tracy Putnam;
+Dr. Wilder Penfield;Johnny;
+Dr. Hahn;Johnny;
+Dr. Johnson;Johnny;
+Mr. Weaver;Johnny;
