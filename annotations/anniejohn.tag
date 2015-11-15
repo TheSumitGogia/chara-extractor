@@ -1,0 +1,17 @@
+Annie John;Annie's mother;
+Annie John;Annie's father;
+Annie's father;Annie's mother;
+Gwen;Annie John;
+The Red Girl;Annie John;
+Ma Chess;Annie John;
+Ma Chess;Pa Chess;
+Pa Chess;Annie John;
+Pa Chess;Annie's mother;
+Nalda;Annie's mother;
+Sonia;Annie John;
+Mineu;Annie John;
+Hilarene;Annie John;
+Miss Nelson;Annie John;
+Miss Edward;Annie John;
+Miss Charlotte;Annie John;
+Ma Jolie;Annie John;
