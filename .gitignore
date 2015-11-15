@@ -1,0 +1,5 @@
+books/**/*.xml
+report/**/*.log
+report/**/*.aux
+report/**/*.pdf
+report/**/*.png
