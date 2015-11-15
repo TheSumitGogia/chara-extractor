@@ -1,0 +1,13 @@
+Ahab;Moby Dick;
+Ahab;Pip;
+Starbuck;Ahab;
+Queequeg;Starbuck;
+Queequeg;Ishmael;
+Stubb;Ahab;
+Stubb;Tashtego;
+Flask;Ahab;
+Daggoo;Flask;
+Fedallah;Ahab;
+Peleg;Bildad;
+Boomer;Moby Dick;
+Boomer;Ahab;
