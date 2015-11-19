@@ -3,3 +3,6 @@ report/**/*.log
 report/**/*.aux
 report/**/*.pdf
 report/**/*.png
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
