@@ -1,0 +1,101 @@
+1984|1984|george orwell|1984
+3musk|the three musketeers|alexandre dumas|1257
+adambede|adam bede|george eliot|507
+aeneid|the aeneid|virgil|228
+agamemnon|agamemnon|aeschylus|14417
+ageofinnocence|the age of innocence|edith wharton|541
+ambassadors|the ambassadors|henry james|432
+american|the american|henry james|177
+anna|anna karenina|leo tolstoy|1399
+anneofgreengables|anne of green gables|l. m. montgomery|45
+anthem|anthem|ayn rand|1250
+babbitt|babbitt|sinclair lewis|1156
+bleakhouse|bleak house|charles dickens|1023
+bovary|madame bovary|gustave flaubert|27575
+call|the call of the wild|jack london|215
+candide|candide|voltaire|35280
+canterbury|the canterbury tales|geoffrey chaucer|22120
+casterbridge|the mayor of casterbridge|thomas hardy|143
+christmascarol|a christmas carol|charles dickens|41739
+copperfield|david copperfield|charles dickens|43111
+crime|crime and punishment|fyodor dostoevsky|2554
+crusoe|robinson crusoe|daniel defoe|24915
+daisy|daisy miller|henry james|208
+demian|demian|hermann hesse|41907
+doctorfaustus|doctor faustus|christopher marlowe|811
+donquixote|don quixote|miguel de cervantes|24754
+doriangray|the picture of dorian gray|oscar wilde|26740
+dracula|dracula|bram stoker|45839
+dubliners|dubliners|james joyce|2814
+emma|emma|jane austen|158
+enemyofthepeople|an enemy of the people|henrik ibsen|2446
+fang|white fang|jack london|910
+frankenstein|frankenstein|mary shelley|42324
+frome|ethan frome|edith wharton|4517
+ghosts|ghosts|henrik ibsen|8121
+goodsoldier|the good soldier|ford madox ford|2775
+greatex|great expectations|charles dickens|1400
+hardtimes|hard times|charles dickens|786
+heart|heart of darkness|joseph conrad|526
+heddagabler|hedda gabler|henrik ibsen|19183
+herland|herland|charlotte perkins gilman|32
+hound|hound of the baskervilles|sir arthur conan doyle|3070
+howardsend|howards end|e.m. forster|2946
+huckfinn|the adventures of huckleberry finn|mark twain|32325
+iliad|the iliad|homer|6150
+iolaleroy|iola leroy|frances harper|12352
+ivanhoe|ivanhoe|sir walter scott|26564
+jekyll|dr. jekyll and mr. hyde|robert louis stevenson|43
+jude|jude the obscure|thomas hardy|153
+jungle|the jungle|upton sinclair|140
+kidnapped|kidnapped|robert louis stevenson|421
+littlewomen|little women|louisa may alcott|37106
+lookingbackward|looking backward|edward bellamy|25439
+lordjim|lord jim|joseph conrad|5658
+maddingcrowd|far from the madding crowd|thomas hardy|107
+maggie|maggie: a girl of the streets|stephen crane|447
+mainstreet|main street|sinclair lewis|543
+mansfieldpark|mansfield park|jane austen|141
+middlemarch|middlemarch|george eliot|145
+millonthefloss|the mill on the floss|george eliot|6688
+mohicans|the last of the mohicans|james fenimore cooper|27681
+mollflanders|moll flanders|daniel defoe|18112
+montecristo|the count of monte cristo|alexandre dumas|1184
+moonstone|the moonstone|wilkie collins|155
+narrative|narrative of the life of frederick douglass|frederick douglass|23
+northangerabbey|northanger abbey|jane austen|121
+odyssey|the odyssey|homer|1728
+oliver|oliver twist|charles dickens|37093
+opioneers|o pioneers!|willa cather|24
+paradise|this side of paradise|f. scott fitzgerald|805
+persuasion|persuasion|jane austen|105
+portraitartist|a portrait of the artist as a young man|james joyce|4217
+pride|pride and prejudice|jane austen|42671
+puddnhead|pudd'nhead wilson|mark twain|102
+pygmalion|pygmalion|george bernard shaw|3825
+redbadge|the red badge of courage|stephen crane|463
+redblack|the red and the black|stendhal|44747
+returnofnative|the return of the native|thomas hardy|17500
+room|a room with a view|e.m. forster|2641
+scarlet|the scarlet letter|nathaniel hawthorne|25344
+screw|the turn of the screw|henry james|209
+secretgarden|the secret garden|frances hodgson burnett|17396
+sensibility|sense and sensibility|jane austen|21839
+sevengables|the house of the seven gables|nathaniel hawthorne|77
+siddhartha|siddhartha|hermann hesse|2500
+silas|silas marner|george eliot|550
+sistercarrie|sister carrie|theodore dreiser|5267
+songofroland|song of roland|anonymous|391
+sonsandlovers|sons and lovers|d.h. lawrence|47634
+swannsway|swann's way|marcel proust|7178
+through-the-looking-glass|through the looking-glass|lewis carroll|12
+timemachine|the time machine|h.g. wells|6620c
+treasure|treasure island|robert louis stevenson|27780
+trial|the trial|franz kafka|7849c
+twocities|a tale of two cities|charles dickens|98
+typee|typee|herman melville|28656
+ulysses|ulysses|james joyce|4300
+warandpeace|war and peace|leo tolstoy|2600
+winesburgohio|winesburg, ohio|sherwood anderson|416
+wuthering|wuthering heights|emily brontë|768
+yellowwallpaper|the yellow wallpaper|charlotte perkins gilman|1952
