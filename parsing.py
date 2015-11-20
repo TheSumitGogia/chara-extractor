@@ -16,13 +16,16 @@ def run_spark_nlp(nlp_dir, book_dir, out_dir):
 def run_book_nlp(nlp_dir, book_dir, out_dir):
     # get all books in book full text dir
     all_books = os.listdir(book_dir)
+    all_books = [book_dir + '/' + book for book in all_books]
 
     # create book name index for batch CoreNLP processing
     book_list = open(book_dir + '/book_list.txt', 'w')
     book_list.write('\n'.join(all_books))
     book_list.close()
 
-    call(["bash", nlp_dir + "/corenlp.sh", "--annotators", "tokenize,ssplit,pos,lemma,ner", "-filelist", book_dir + "/book_list.txt", "-outputDirector", out_dir])
+    call(["bash", nlp_dir + "/corenlp.sh", "--annotators", "tokenize,ssplit,pos,lemma,ner", "-filelist", book_dir + "/book_list.txt", "-outputDirectory", out_dir])
+
+    os.remove(book_dir + '/book_list.txt')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Stanford NLP tools on Sparknotes data")
