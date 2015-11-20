@@ -35,7 +35,6 @@ class Book:
                 first_sentence = name + ' is ' + first_sentence
                 s[0] = first_sentence
                 text = '.'.join(s)
-                
             text = smart_str(text)
             self.characters[name] = text
 
@@ -49,8 +48,7 @@ class Book:
             f = open('%s/%s' % (directory, name), 'w')
             f.write(self.characters[name])
 
-'''
-book = Book('elegantuniverse')
+book = Book('1984')
 book.getCharactersFromWeb()
 book.writeToFile()
 '''
@@ -83,3 +81,4 @@ for l in string.ascii_lowercase:
                     exclude.add(book.name)
 
 print exclude
+'''

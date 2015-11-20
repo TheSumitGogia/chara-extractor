@@ -1,0 +1,14 @@
+books/tess/Alec d’Urberville
+books/tess/Angel Clare
+books/tess/Eliza Louisa Durbeyfield
+books/tess/Marian, Izz Huett, and Retty Priddle
+books/tess/Mercy Chant
+books/tess/Mr. John Durbeyfield
+books/tess/Mrs. Clare
+books/tess/Mrs. d’Urberville
+books/tess/Mrs. Joan Durbeyfield
+books/tess/Reverend Clare
+books/tess/Reverend Cuthbert
+books/tess/Reverend Felix Clare
+books/tess/Sorrow
+books/tess/Tess Durbeyfield
