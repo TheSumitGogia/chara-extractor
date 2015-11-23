@@ -33,37 +33,118 @@ def section(raw_fname):
 
 # TODO: this method can be shortened easily, and should be
 def get_candidates(tree, markers):
+    '''
     cutoff_u = 20
     cutoff_b = 20
     cutoff_t = 5
+    '''
 
+    '''
     ugrams = []
     bgrams = []
     tgrams = []
+    '''
+    cutoffs = [20, 20, 5]
+    cp_cutoff = 10
+    ngrams = []
 
     cp_markers = markers['chapter']
     cp_index = -1
 
-    bad_token_set = set(['said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
+    bad_token_set = set(['Chapter', 'CHAPTER', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
+    bad_np_tags = set(['CC', 'IN', 'TO', 'WDT', 'WP', 'WP$', 'WRB', 'UH', 'VB', 'VBD', 'VBP', 'VBZ', 'MD'])
 
     root = tree.getroot()
     for document in root:
         for sentences in document:
             for sentence in sentences:
                 for tokens in sentence:
+                    '''
                     pword = ""
                     ppword = ""
-                    for token in tokens:
+                    '''
+                    for token_idx in range(len(tokens)):
+                        token = tokens[token_idx]
                         if cp_index < len(cp_markers) - 1 and int(token[2].text) == cp_markers[cp_index + 1]:
+                            '''
                             ugrams.append({})
                             bgrams.append({})
                             tgrams.append({})
+                            '''
+                            ngrams.append({})
                             cp_index += 1
 
                         word = token[0].text
                         noun = (token[4].text.startswith('NN'))
 
-                        if noun:
+                        if noun and word[0].isupper():
+                            curr_idx = token_idx
+                            word_list = [word]
+                            first_tag = token[4].text
+                            np_condition = True
+                            exhausted = False
+                            while np_condition and not exhausted:
+                                word_tuple = tuple(word_list)
+                                if word_tuple[0] in bad_token_set:
+                                    exhausted = True
+                                    break
+                                if first_tag.startswith('NN'):
+                                    if word_tuple in ngrams[-1]:
+                                        ngrams[-1][word_tuple] += 1
+                                    else:
+                                        ngrams[-1][word_tuple] = 1
+
+                                if curr_idx >= 1:
+                                    prev_token = tokens[curr_idx - 1]
+                                    prev_word = prev_token[0].text
+                                    prev_tag = prev_token[4].text
+                                    if prev_tag not in bad_np_tags:
+                                        word_list.insert(0, prev_word)
+                                        first_tag = prev_tag
+                                        curr_idx -= 1
+                                    else:
+                                        if curr_idx >= 2:
+                                            pp_token = tokens[curr_idx - 2]
+                                            pp_word = pp_token[0].text
+                                            pp_tag = pp_token[4].text
+                                            if pp_tag in bad_np_tags:
+                                                exhausted = True
+                                                break
+                                            word_list.insert(0, prev_word)
+                                            word_list.insert(0, pp_word)
+                                            first_tag = pp_tag
+                                            curr_idx -= 2
+                                            np_condition = False
+                                        else:
+                                            exhausted = True
+                                else:
+                                    exhausted = True
+
+                            np_condition = True
+                            while np_condition and not exhausted:
+                                word_tuple = tuple(word_list)
+                                if word_tuple[0] in bad_token_set:
+                                    exhausted = True
+                                    break
+                                if first_tag.startswith('NN'):
+                                    if word_tuple in ngrams[-1]:
+                                        ngrams[-1][word_tuple] += 1
+                                    else:
+                                        ngrams[-1][word_tuple] = 1
+                                if curr_idx >= 1:
+                                    prev_token = tokens[curr_idx - 1]
+                                    prev_word = prev_token[0].text
+                                    prev_tag = prev_token[4].text
+                                    if prev_tag not in bad_np_tags:
+                                        word_list.insert(0, prev_word)
+                                        first_tag = prev_tag
+                                        curr_idx -= 1
+                                    else:
+                                        np_condition = False
+                                else:
+                                    exhausted = True
+
+                            '''
                             if word in ugrams[-1] and not word in bad_token_set:
                                 ugrams[-1][word] += 1
                             else:
@@ -78,9 +159,13 @@ def get_candidates(tree, markers):
                                     tgrams[-1][(ppword, pword, word)] += 1
                                 else:
                                     tgrams[-1][(ppword, pword, word)] = 1
+                            '''
+                        '''
                         ppword = pword
                         pword = word
+                        '''
 
+    '''
     norm_ugrams = {}
     for i in range(len(ugrams)):
         cp_ugrams = ugrams[i]
@@ -105,7 +190,23 @@ def get_candidates(tree, markers):
                 norm_tgrams[key] += cp_tgrams[key]
             else:
                 norm_tgrams[key] = cp_tgrams[key]
+    '''
+    print 'normalizing!'
+    norm_ngrams = {}
+    for i in range(len(ngrams)):
+        cp_ngrams = ngrams[i]
+        for key in cp_ngrams:
+            if key in norm_ngrams:
+                norm_ngrams[key] += cp_ngrams[key]
+            else:
+                norm_ngrams[key] = cp_ngrams[key]
+    print 'Normalized NGrams: {0}'.format(len(norm_ngrams.keys()))
+    check_keys = norm_ngrams.keys()
+    for k in range(5):
+        print 'Test Key: {0}, {1}'.format(check_keys[k], norm_ngrams[check_keys[k]])
 
+
+    '''
     filt_ugrams = { ugram: norm_ugrams[ugram] for ugram in norm_ugrams.keys() if ugram[0].isupper() }
     filt_bgrams = { bgram: norm_bgrams[bgram] for bgram in norm_bgrams.keys() if bgram[1][0].isupper() }
     filt_tgrams = { tgram: norm_tgrams[tgram] for tgram in norm_tgrams.keys() if tgram[2][0].isupper() }
@@ -115,7 +216,27 @@ def get_candidates(tree, markers):
     filtered_ugrams = sorted_ugrams[-cutoff_u:]
     filtered_bgrams = sorted_bgrams[-cutoff_b:]
     filtered_tgrams = sorted_tgrams[-cutoff_t:]
+    '''
+    print 'adding absolute candidates'
+    gram_size = 1
+    more_grams = True
+    filtered_grams = []
+    while more_grams:
+        grams = { gram: norm_ngrams[gram] for gram in norm_ngrams.keys() if len(gram) == gram_size }
+        sorted_grams = sorted(grams.items(), key=operator.itemgetter(1))
+        if gram_size <= 3:
+            pass_grams = sorted_grams[-1 * cutoffs[gram_size - 1]:]
+            pass_grams = [gram for gram in pass_grams if gram[1] > 2]
+            filtered_grams.extend(pass_grams)
+            gram_size += 1
+        else:
+            pass_grams = [sorted_grams[idx] for idx in range(len(sorted_grams)) if sorted_grams[idx][1] > 5]
+            filtered_grams.extend(pass_grams)
+            gram_size += 1
+            if len(pass_grams) == 0:
+                more_grams = False
 
+    '''
     for cp_idx in range(len(ugrams)):
         cp_ugrams = ugrams[cp_idx]
         cp_bgrams = bgrams[cp_idx]
@@ -144,8 +265,27 @@ def get_candidates(tree, markers):
             count = norm_tgrams[key]
             if top_cp_tgrams[i][1] > 5:
                 filtered_tgrams.append((key, count))
+    '''
 
+    print 'adding chapter candidates'
+    for cp_idx in range(len(ngrams)):
+        cp_ngrams = ngrams[cp_idx]
+        cp_gram_size = 1
+        more_cp_grams = True
+        while more_cp_grams:
+            cp_grams = { gram: cp_ngrams[gram] for gram in cp_ngrams.keys() if len(gram) == cp_gram_size }
+            sorted_cp_grams = sorted(cp_grams.items(), key=operator.itemgetter(1))
+            top_cp_grams = sorted_cp_grams[-1 * cp_cutoff:]
+            print 'top chapter {0} grams: {1}'.format(cp_idx, top_cp_grams)
+            pass_cp_grams = [(gram[0], norm_ngrams[gram[0]]) for gram in top_cp_grams if gram[1] > 5]
+            filtered_grams.extend(pass_cp_grams)
+            cp_gram_size += 1
+            if len(pass_cp_grams) == 0:
+                more_cp_grams = False
+
+    print "filtered grams: {0}".format(filtered_grams)
     candidates = {}
+    '''
     for i in range(len(filtered_ugrams)):
         key = filtered_ugrams[i][0]
         count = filtered_ugrams[i][1]
@@ -161,6 +301,13 @@ def get_candidates(tree, markers):
         count = filtered_tgrams[i][1]
         candidates[key] = {'count': count}
         candidates[key]['length'] = 3
+    '''
+    print 'changing representation'
+    for i in range(len(filtered_grams)):
+        key = filtered_grams[i][0]
+        count = filtered_grams[i][1]
+        candidates[key] = {'count': count}
+        candidates[key]['length'] = len(key)
 
     return candidates
 
@@ -389,7 +536,20 @@ if __name__ == '__main__':
     tree = ET.parse(args['file'][0])
     candidates = get_candidates(tree, markers)
 
-    ugram_candidates = {cand: v for cand,v in candidates.items() if not isinstance(cand, tuple)}
+    gram_size = 1
+    while True:
+        gram_candidates = { k: v for k, v in candidates.items() if len(k) == gram_size }
+        sorted_grams = sorted(gram_candidates.items(), key=operator.itemgetter(1))
+        if len(sorted_grams) == 0:
+            break
+        for i in range(len(sorted_grams)):
+            key, count = sorted_grams[i][0], sorted_grams[i][1]
+            print "{0}: {1}".format(key, count)
+        gram_size += 1
+
+
+    '''
+    ugram_candidates = {cand: v for cand,v in candidates.items() if len(cand) == 1 and isinstance(cand, tuple)}
     bgram_candidates = {cand: v for cand,v in candidates.items() if len(cand) == 2 and isinstance(cand, tuple)}
     tgram_candidates = {cand: v for cand,v in candidates.items() if len(cand) == 3 and isinstance(cand, tuple)}
     sorted_ugrams = sorted(ugram_candidates.items(), key=operator.itemgetter(1))
@@ -404,7 +564,9 @@ if __name__ == '__main__':
     for i in range(len(sorted_tgrams)):
         key, count = sorted_tgrams[i][0], sorted_tgrams[i][1]
         print "{0}: {1}".format(key, count)
+    '''
 
+    '''
     print "\n"
     print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
     get_tag_features(tree, candidates)
@@ -452,4 +614,5 @@ if __name__ == '__main__':
         key = sorted_tgrams[i][0]
         features = candidates[key]
         print "{0}: {1}".format(key, features)
+    '''
 
