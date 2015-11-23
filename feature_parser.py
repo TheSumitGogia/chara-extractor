@@ -44,6 +44,8 @@ def get_candidates(tree, markers):
     cp_markers = markers['chapter']
     cp_index = -1
 
+    bad_token_set = set(['said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
+
     root = tree.getroot()
     for document in root:
         for sentences in document:
@@ -62,16 +64,16 @@ def get_candidates(tree, markers):
                         noun = (token[4].text.startswith('NN'))
 
                         if noun:
-                            if word in ugrams[-1]:
+                            if word in ugrams[-1] and not word in bad_token_set:
                                 ugrams[-1][word] += 1
                             else:
                                 ugrams[-1][word] = 1
-                            if not pword == '':
+                            if not pword == '' and not word in bad_token_set and not pword in bad_token_set:
                                 if (pword, word) in bgrams[-1]:
                                     bgrams[-1][(pword, word)] += 1
                                 else:
                                     bgrams[-1][(pword, word)] = 1
-                            if not ppword == '':
+                            if not ppword == '' and not word in bad_token_set and not pword in bad_token_set and not ppword in bad_token_set:
                                 if (ppword, pword, word) in tgrams[-1]:
                                     tgrams[-1][(ppword, pword, word)] += 1
                                 else:
