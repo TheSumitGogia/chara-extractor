@@ -128,7 +128,7 @@ def get_candidates(tree, markers):
                                 if word_tuple[0] in bad_token_set:
                                     exhausted = True
                                     break
-                                if first_tag.startswith('NN'):
+                                if first_tag.startswith('NN') or first_tag == 'DT':
                                     if word_tuple in ngrams[-1]:
                                         ngrams[-1][word_tuple] += 1
                                     else:
