@@ -41,9 +41,9 @@ def section(tree, raw_filename):
         st_markers = []
         for document in root:
             for sentences in document:
-                for sentence in sentence:
+                for sentence in sentences:
                     first_token = sentence[0][0]
-                    offset = first_token[2]
+                    offset = int(first_token[2].text)
                     st_markers.append(offset)
         markers['sentence'] = st_markers
 
@@ -228,7 +228,6 @@ def get_candidates(tree, markers):
             cp_grams = { gram: cp_ngrams[gram] for gram in cp_ngrams.keys() if len(gram) == cp_gram_size }
             sorted_cp_grams = sorted(cp_grams.items(), key=operator.itemgetter(1))
             top_cp_grams = sorted_cp_grams[-1 * cp_cutoff:]
-            print 'top chapter {0} grams: {1}'.format(cp_idx, top_cp_grams)
             pass_cp_grams = [(gram[0], norm_ngrams[gram[0]]) for gram in top_cp_grams if gram[1] > 5]
             filtered_grams.extend(pass_cp_grams)
             cp_gram_size += 1
@@ -274,7 +273,7 @@ def get_tag_features(tree, ngrams):
     """
 
     # get max gram length for tracking, initialize tag features
-    max_gram = max(map(lambda x: len(x) if isinstance(x, tuple) else 1, ngrams.keys()))
+    max_gram = max(map(lambda x: len(x), ngrams.keys()))
     for ngram in ngrams:
         features = ngrams[ngram]
         features['avg_ner'] = 0
@@ -306,7 +305,7 @@ def get_tag_features(tree, ngrams):
                         pcaps.append(caps)
 
                         # go through candidates ending with current token
-                        for i in range(len(pwords)+1):
+                        for i in range(1, len(pwords)+1):
                             word_list.insert(0, pwords[-i])
                             ner_list.insert(0, pner[-i])
                             caps_list.insert(0, pcaps[-i])
@@ -362,7 +361,6 @@ def get_coref_features(ngrams):
                 subs = it.combinations(ngram, r)
                 for sub in subs:
                     sub = sub if len(sub) > 1 else sub[0]
-                    print sub
                     if sub in ngrams:
                         features = ngrams[sub]
                         features["coref_longer"] = 1
@@ -407,7 +405,7 @@ def get_count_features(tree, ngrams, markers):
 
     # track sentences, paragraphs, and chapters
     section_idx = {'sentence': -1, 'paragraph': -1, 'chapter': -1}
-    section_counts = {'sentence': {}, 'paragraph': {}, 'chapter': {}}
+    section_counts = {'sentence': [], 'paragraph': [], 'chapter': []}
     section_markers = markers
 
     # current dictionaries counting candidate occurrences
@@ -432,16 +430,15 @@ def get_count_features(tree, ngrams, markers):
                         for section_type in section_types:
                             idx = section_idx[section_type]
                             counts = section_counts[section_type]
-                            dic = section_dicts[section_type]
                             marks = section_markers[section_type]
-                            if idx < len(marks) - 1 and int(token[2].text) == marks[mark + 1]:
+                            if idx < len(marks) - 1 and int(token[2].text) == marks[idx + 1]:
                                 section_idx[section_type] += 1
                                 counts.append({})
-                                dic = counts[section_idx[section_type]]
+                                section_dicts[section_type] = counts[-1]
 
                         # get candidates from pwords and add to appropriate dicts
                         word_list = []
-                        for i in range(len(pwords)+1):
+                        for i in range(1, len(pwords)+1):
                             word_list.insert(0, pwords[-i])
                             word_tuple = tuple(word_list)
                             if word_tuple in ngrams:
@@ -482,6 +479,8 @@ def get_count_features(tree, ngrams, markers):
         marg_cooc = section_marg_cooc[section_type]
 
         index = {v: k for k, v in section_v[section_type].vocabulary_.items()}
+        print "Index"
+        print index
         for idx in index:
             ngram, count, cooc = index[idx], marg_mat[0, idx], marg_cooc[idx, 0]
             features = ngrams[ngram]
@@ -491,14 +490,15 @@ def get_count_features(tree, ngrams, markers):
 def output(candidates):
     gram_size = 1
     while True:
-        gram_candidates = { k: v for k, v in candidates.items() if len(k) == gram_size }
+        gram_candidates = { k: v['count'] for k, v in candidates.items() if len(k) == gram_size }
         sorted_grams = sorted(gram_candidates.items(), key=operator.itemgetter(1))
-        if len(sorted_grams == 0):
+        if len(sorted_grams) == 0:
             break
         for i in range(len(sorted_grams)):
-            key = sorted_grams[i][0],
+            key = sorted_grams[i][0]
             features = candidates[key]
             print "{0}: {1}".format(key, features)
+        gram_size += 1
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Extract candidate characters and feature values")
@@ -507,24 +507,28 @@ if __name__ == '__main__':
 
     args = vars(parser.parse_args())
     raw_text = args['rawfile'][0]
-    markers = section(raw_text)
     tree = ET.parse(args['file'][0])
+    markers = section(tree, raw_text)
 
+    # test candidate selection
     print "".join(["-"] * 10 + ["CANDIDATES"] + ["-"] * 10)
     candidates = get_candidates(tree, markers)
     output(candidates)
 
+    # test tag feature extraction
     print "\n"
     print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
     get_tag_features(tree, candidates)
     output(candidates)
 
+    # test coref feature extraction
     print "\n"
     print "".join(["-"] * 10 + ["CONTAINMENT"] + ["-"] * 10)
     get_coref_features(candidates)
     output(candidates)
 
+    # test count and co-occurence feature extraction
     print "\n"
     print "".join(["-"] * 10 + ["COUNTING"] + ["-"] * 10)
-    get_count_features(candidates)
+    get_count_features(tree, candidates, markers)
     output(candidates)
