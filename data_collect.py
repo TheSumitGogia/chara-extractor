@@ -2,12 +2,15 @@ import urllib2
 from django.utils.encoding import smart_str, smart_unicode
 from BeautifulSoup import BeautifulSoup
 import re, string, os
+from subprocess import call
 
 class Book:
     def __init__(self, name):
         self.name = name
         self.url = "http://www.sparknotes.com/lit/%s/characters.html" % name
         self.characters = {}
+        self.character_list = []
+        self.combined = ''
 
     def getCharactersFromWeb(self):
         try:
@@ -34,9 +37,15 @@ class Book:
                     first_sentence = first_sentence[0].lower() + first_sentence[1:]
                 first_sentence = name + ' is ' + first_sentence
                 s[0] = first_sentence
-                text = '.'.join(s)
+            if s[len(s)-2].startswith("Read anin-depth analysis of"):
+                del s[len(s)-2]
+            text = '.'.join(s)
             text = smart_str(text)
+
+            self.combined += text + '\n'
             self.characters[name] = text
+            self.character_list.append(smart_str(name))
+        self.combined = self.combined.strip()
 
     def writeToFile(self):
         if len(self.characters) == 0:
@@ -45,9 +54,14 @@ class Book:
         if not os.path.exists(directory):
             os.makedirs(directory)
         for name in self.characters:
-            f = open('%s/%s' % (directory, name), 'w')
-            f.write(self.characters[name])
+            with open('%s/%s' % (directory, name), 'w') as f:
+                f.write(self.characters[name])
+        with open('%s/combined' % (directory), 'w') as f:
+            f.write(self.combined)
+        with open('%s/characters' % (directory), 'w') as f:
+            f.write('\n'.join(self.character_list))
 
+'''
 book = Book('1984')
 book.getCharactersFromWeb()
 book.writeToFile()
@@ -81,4 +95,7 @@ for l in string.ascii_lowercase:
                     exclude.add(book.name)
 
 print exclude
-'''
+for book in exclude:
+    print "Remove book %s" % book
+    call(["rm", "-rf", "books/"+book])
+

@@ -2,12 +2,12 @@ William Goldman;S. Morgenstern;
 Buttercup;Westley;
 Prince Humperdinck;Buttercup;
 Vizzini;Fezzik;
-Vizzini;Inigo;
+Vizzini;Inigo Montoya;
 Vizzini;Prince Humperdinck;
 Vizzini;Buttercup;
 Vizzini;Westley;
 Fezzik;Vizzini;
-Fezzik;Inigo
+Fezzik;Inigo Montoya;
 Fezzik;Westley;
 Inigo Montoya;Vizzini;
 Inigo Montoya;Fezzik;

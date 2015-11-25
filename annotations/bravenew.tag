@@ -7,4 +7,4 @@ Fanny Crowne;Lenina Crowne;
 Henry Foster;Lenina Crowne;
 Henry Foster;Bernard Marx;
 The Director;Bernard Marx;
-Popé;Linda;
+Pope;Linda;

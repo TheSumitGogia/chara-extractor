@@ -1,7 +1,5 @@
-Spiros Antonapoulous;John Singer;
-Mick Kelly;
+Spiros Antonapoulos;John Singer;
 Dr. Benedict Mady Copeland;Portia;
-Biff Brannon;
 Jake Blount;Biff Brannon;
 Portia;Willie;
 Highboy;Portia;
@@ -34,7 +32,7 @@ Lancy Davis;Dr. Benedict Mady Copeland;
 Love Jones;Willie;
 Junebug;Willie;
 Junebug;Love Jones;
-Charles Parker;Spiros Antonapoulous;
+Charles Parker;Spiros Antonapoulos;
 Miss Brown;Mick Kelly;
 Spareribs;Bubber Kelly;
 Patterson;Jake Blount;

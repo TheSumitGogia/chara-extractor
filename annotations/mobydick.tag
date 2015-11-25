@@ -9,5 +9,5 @@ Flask;Ahab;
 Daggoo;Flask;
 Fedallah;Ahab;
 Peleg;Bildad;
-Boomer;Moby Dick;
-Boomer;Ahab;
+Captain Boomer;Moby Dick;
+Captain Boomer;Ahab;
