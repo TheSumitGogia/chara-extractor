@@ -48,7 +48,7 @@ def preprocess(book):
 
 def run_nlp(book):
     chara_file = open("chara_file.txt", "w")
-    all_charas = filter(lambda fname: not (fname.endswith("xml") or fname.startswith('.') or fname=='characters'), os.listdir(books_dir + "/" + book))
+    all_charas = filter(lambda fname: not (fname.endswith("xml") or fname.startswith('.') or fname=='characters' or fname=='relations'), os.listdir(books_dir + "/" + book))
     all_charas = [(books_dir + "/" + book + "/" + chara) for chara in all_charas]
     chara_file.write('\n'.join(all_charas))
     chara_file.close()
@@ -202,42 +202,51 @@ def process(book):
         print chara_dict
     rel_pred = get_relations(book, file_dict, names_dict)
     rel_true = set()
-    with open('annotations/%s.tag'%book) as f:
-        while True:
-            line=f.readline()
-            if line== "":
-                break
-            rel = [normalize(x) for x in line.split(";")]
-            assert rel[0] in names_dict, "%s not a character" % rel[0]
-            assert rel[1] in names_dict, "%s not a character" % rel[1] 
-            assert names_dict[rel[0]] == rel[0], "character %s should be %s" % (rel[0], names_dict[rel[0]])
-            assert names_dict[rel[1]] == rel[1], "character %s should be %s" % (rel[1], names_dict[rel[1]])
-            cmin = min(rel[0], rel[1]) 
-            cmax = max(rel[0], rel[1]) 
-            rel_true.add((cmin, cmax))
+    with open(books_dir+'/'+book+'/relations', 'w') as f:
+        for rel in rel_pred:
+            f.write("%s;%s;\n"%(rel[0], rel[1]))
+    
+    if compare:
+        with open('annotations/%s.tag'%book) as f:
+            while True:
+                line=f.readline()
+                if line== "":
+                    break
+                rel = [normalize(x) for x in line.split(";")]
+                assert rel[0] in names_dict, "%s not a character" % rel[0]
+                assert rel[1] in names_dict, "%s not a character" % rel[1] 
+                assert names_dict[rel[0]] == rel[0], "character %s should be %s" % (rel[0], names_dict[rel[0]])
+                assert names_dict[rel[1]] == rel[1], "character %s should be %s" % (rel[1], names_dict[rel[1]])
+                cmin = min(rel[0], rel[1]) 
+                cmax = max(rel[0], rel[1]) 
+                rel_true.add((cmin, cmax))
 
-    false_pos = [c for c in rel_pred if c not in rel_true]
-    false_neg = [c for c in rel_true if c not in rel_pred]
-    if verbose:
-        print "false positives"
-        print false_pos
-        print "false negatives"
-        print false_neg
-    precision = 1-len(false_pos)/float(len(rel_pred))
-    recall = 1-len(false_neg)/float(len(rel_true))
-    print "Recall %f Precision %f" % (recall, precision)
-    return (recall, precision)
+        false_pos = [c for c in rel_pred if c not in rel_true]
+        false_neg = [c for c in rel_true if c not in rel_pred]
+        if verbose:
+            print "false positives"
+            print false_pos
+            print "false negatives"
+            print false_neg
+        precision = 1-len(false_pos)/float(len(rel_pred))
+        recall = 1-len(false_neg)/float(len(rel_true))
+        print "Recall %f Precision %f" % (recall, precision)
+        return (recall, precision)
+    else:
+        return (1,1)
 
 if __name__ == "__main__":
     parser = OptionParser()
     parser.add_option("-b", "--book", dest="book", help="which book to process", default="all")
     parser.add_option("-v", "--verbose", dest="verbose", action="store_true", default=False)
     parser.add_option("-n", "--run_nlp", dest="run_nlp", action="store_true", default=False)
+    parser.add_option("-c", "--compare", dest="compare", help='compare with annotations', action="store_true", default=False)
 
     (options, args) = parser.parse_args()
     books_dir = "books"
     nlp_dir = "../coreNLP"
     verbose = options.verbose
+    compare = options.compare
     if options.book == 'all':
         recall = 0
         precision = 0
