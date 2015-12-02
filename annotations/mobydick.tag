@@ -11,3 +11,4 @@ Fedallah;Ahab;
 Peleg;Bildad;
 Captain Boomer;Moby Dick;
 Captain Boomer;Ahab;
+Gabriel;Moby Dick;

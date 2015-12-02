@@ -1,15 +1,37 @@
-books/lion/Aslan
-books/lion/combined
-books/lion/Dwarf
-books/lion/Edmund Pevensie
-books/lion/Emperor-over-the-Sea
-books/lion/Father Christmas
-books/lion/Lucy Pevensie
-books/lion/Maugrim
-books/lion/Mr. Beaver
-books/lion/Mrs. Beaver
-books/lion/Peter Pevensie
-books/lion/Professor Kirke
-books/lion/Susan Pevensie
-books/lion/The White Witch
-books/lion/Tumnus
+books/returnking/Frodo Baggins
+books/returnking/Samwise (Sam) Gamgee
+books/returnking/Gandalf the White
+books/returnking/Legolas
+books/returnking/Gimli
+books/returnking/Aragorn
+books/returnking/Peregrin (Pippin) Took
+books/returnking/Meriadoc (Merry) Brandybuck
+books/returnking/Sauron
+books/returnking/The Lord of the Nazgûl
+books/returnking/Gollum (Sméagol)
+books/returnking/The Lieutenant of the Dark Tower
+books/returnking/Saruman the White
+books/returnking/Gríma Wormtongue
+books/returnking/Shagrat and Snaga
+books/returnking/Denethor
+books/returnking/Faramir
+books/returnking/Théoden
+books/returnking/Éowyn
+books/returnking/Éomer
+books/returnking/Beregond
+books/returnking/Bergil
+books/returnking/Imrahil
+books/returnking/Barliman Butterbur
+books/returnking/Elrond Halfelven
+books/returnking/Arwen Evenstar
+books/returnking/Elladan and Elrohir
+books/returnking/Celeborn and Galadriel
+books/returnking/Bilbo Baggins
+books/returnking/The Shirrifs
+books/returnking/Lotho
+books/returnking/Farmer Tom Cotton
+books/returnking/Rosie Cotton
+books/returnking/Gwaihir, the Windlord
+books/returnking/Shadowfax
+books/returnking/Treebeard
+books/returnking/combined

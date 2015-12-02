@@ -30,9 +30,12 @@ def disambiguate(candidates):
   return all_maps
 
 def contains_tuple(t_outer, t_inner):
-  for i in range(len(t_outer) - len(t_inner) + 1):
-    if t_outer[i:i + len(t_inner)] == t_inner:
-      return True
+  inner_idx=0
+  for t in t_outer:
+      if t.lower() == t_inner[inner_idx].lower():
+          inner_idx+=1
+      if inner_idx == len(t_inner):
+          return True
   return False
 
 def fuzzy_contains_tuple(t_outer, t_inner):
