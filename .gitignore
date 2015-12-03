@@ -3,6 +3,8 @@ report/**/*.log
 report/**/*.aux
 report/**/*.pdf
 report/**/*.png
+**/*.pyc
+*.pyc
 .DS_Store
 */.DS_Store
 */*/.DS_Store
