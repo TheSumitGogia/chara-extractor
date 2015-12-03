@@ -479,13 +479,20 @@ def get_count_features(tree, ngrams, markers):
         marg_cooc = section_marg_cooc[section_type]
 
         index = {v: k for k, v in section_v[section_type].vocabulary_.items()}
-        print "Index"
-        print index
         for idx in index:
             ngram, count, cooc = index[idx], marg_mat[0, idx], marg_cooc[idx, 0]
             features = ngrams[ngram]
             features["count_" + abbrv(section_type)] = count
             features["cooc_" + abbrv(section_type)] = cooc
+
+def get_all_features(rawfile, nlpfile):
+    tree = ET.parse(nlpfile)
+    markers = section(tree, raw_text)
+    candidates = get_candidates(tree, markers)
+    get_tag_features(tree, candidates)
+    get_coref_features(candidates)
+    get_count_features(tree, candidates, markers)
+    return candidates
 
 def output(candidates):
     gram_size = 1
@@ -504,31 +511,47 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Extract candidate characters and feature values")
     parser.add_argument('-f', '--file', nargs=1, required=True, help='Book coreNLP file to extract candidates from')
     parser.add_argument('-rf', '--rawfile', nargs=1, required=True, help='Book raw text file to extract candidates from')
+    parser.add_argument('-o', '--outdir', nargs=1, required=True, help='Output directory for feature dict')
+    parser.add_argument('-d', '--debug', required=False, default=False, action='store_true', help='Whether to print output at all feature extraction steps')
 
     args = vars(parser.parse_args())
+    debug = args['debug']
     raw_text = args['rawfile'][0]
+    outdir = args['outdir'][0]
     tree = ET.parse(args['file'][0])
     markers = section(tree, raw_text)
 
     # test candidate selection
-    print "".join(["-"] * 10 + ["CANDIDATES"] + ["-"] * 10)
     candidates = get_candidates(tree, markers)
-    output(candidates)
+    if debug:
+        print "".join(["-"] * 10 + ["CANDIDATES"] + ["-"] * 10)
+        output(candidates)
 
     # test tag feature extraction
-    print "\n"
-    print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
     get_tag_features(tree, candidates)
-    output(candidates)
+    if debug:
+        print "\n"
+        print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
+        output(candidates)
 
     # test coref feature extraction
-    print "\n"
-    print "".join(["-"] * 10 + ["CONTAINMENT"] + ["-"] * 10)
     get_coref_features(candidates)
-    output(candidates)
+    if debug:
+        print "\n"
+        print "".join(["-"] * 10 + ["CONTAINMENT"] + ["-"] * 10)
+        output(candidates)
 
     # test count and co-occurence feature extraction
-    print "\n"
-    print "".join(["-"] * 10 + ["COUNTING"] + ["-"] * 10)
     get_count_features(tree, candidates, markers)
-    output(candidates)
+    if debug:
+        print "\n"
+        print "".join(["-"] * 10 + ["COUNTING"] + ["-"] * 10)
+        output(candidates)
+    else:
+        raw_text_name = raw_text.split('/')[-1]
+        name_split = raw_text_name.split('.')
+        name_split[0] += '_features'
+        outfname = '.'.join(name_split)
+        wfile = open(outdir + '/' + outfname, 'w')
+        wfile.write(str(candidates))
+        wfile.close()
