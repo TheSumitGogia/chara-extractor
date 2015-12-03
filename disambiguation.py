@@ -1,3 +1,6 @@
+from collections import deque
+from fuzzywuzzy import fuzz, process
+
 def populate_gender_dict():
   d = {}
   with open('stanford/namegender.combine.txt') as f:
@@ -25,7 +28,13 @@ def disambiguate(candidates):
     refs = partial_reference(candidates, cand) + \
            nickname_resolution(candidates, cand) + \
            title_resolution(candidates, cand)
+           #fuzzy_wuzzy_resolution(candidates, cand)
     all_maps[cand] = set(refs)
+
+  # DFS for complete paths
+  connected_cands = {cand: dfs(all_maps, cand) for cand in candidates}
+  for cand in candidates:
+    all_maps[cand].update(connected_cands[cand])
 
   return all_maps
 
@@ -38,11 +47,29 @@ def contains_tuple(t_outer, t_inner):
           return True
   return False
 
+def fuzzy_match(s1, s2):
+  # ignore titles
+  return (s1 not in ALL_TITLES and s2 not in ALL_TITLES) and \
+         (s1 in s2 or max(fuzz.ratio(s1, s2[:i]) for i in range(len(s2))) >= 70)
+
 def fuzzy_contains_tuple(t_outer, t_inner):
   for i in range(len(t_outer) - len(t_inner) + 1):
-    if all(a in b for a, b in zip(t_inner, t_outer[i:i + len(t_inner)])):
+    if all(fuzzy_match(a, b) for a, b in zip(t_inner, t_outer[i:i + len(t_inner)])):
       return True
   return False
+
+def score(t):
+  title_score = (t[0] in MALE_TITLES) - (t[0] in FEMALE_TITLES)
+  first_name = t[0].lower()
+  name_score = (first_name in gender_dict and gender_dict[first_name] == 'MALE') - \
+                (first_name in gender_dict and gender_dict[first_name] == 'FEMALE')
+  return title_score + name_score
+
+def gender_match(t1, t2):
+  return abs(score(t1) - score(t2)) < 2
+
+def str_gender_match(s1, s2):
+  return gender_match(tuple(s1.split()), tuple(s2.split()))
 
 # (A,) -> (A, B)
 def partial_reference(candidates, cand):
@@ -60,6 +87,7 @@ def nickname_resolution(candidates, cand):
       ret.append(ocand)
   return ret
 
+# Mr. -> name or Mrs. -> name
 def title_resolution(candidates, cand):
   ret = []
   for ocand in candidates:
@@ -72,10 +100,29 @@ def title_resolution(candidates, cand):
           ret.append(ocand)
   return ret
 
+def fuzzy_wuzzy_resolution(candidates, cand):
+  ret = []
+  str_candidates = set(' '.join(t) for t in candidates)
+  str_cand = ' '.join(cand)
+  ocands = filter(lambda t: t[1] >= 70 and str_gender_match(t[0], str_cand), process.extract(str_cand, str_candidates.difference([str_cand]), limit=10))
+  ret.extend(tuple(t[0].split()) for t in ocands)
+  return ret
+
+def dfs(candidate_map, cand):
+  visited = set([])
+  s = deque([cand])
+  while len(s) > 0:
+    c = s.pop()
+    visited.add(c)
+    s.extend(filter(lambda c: c not in visited, candidate_map[c]))
+  return visited.difference([cand])
+
 if __name__ == '__main__':
   candidates = {
     ('Tom',): 1,
     ('Tom', 'Sawyer'): 1,
+    ('Sid', 'Sawyer'): 1,
+    ('Sally', 'Sawyer'): 1,
     ('Mr.', 'Tom'): 1,
     ('Mr.', 'Sawyer'): 1,
     ('Mrs.', 'Sawyer'): 1,
@@ -83,7 +130,12 @@ if __name__ == '__main__':
     ('Huckleberry',): 1,
     ('Huck', 'Finn'): 1,
     ('Huckleberry', 'Finn'): 1,
-    ('Mr.', 'Finn'): 1
+    ('Mr.', 'Finn'): 1,
+    ('Sawyer',): 1,
+    ('Sawyers',): 1,
+    ('Fred', 'Weasley'): 1,
+    ('Freddy', 'Weasley'): 1,
+    ('Frederick', 'Weasley'): 1
   }
 
   import pprint
