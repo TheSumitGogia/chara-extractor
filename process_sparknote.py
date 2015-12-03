@@ -3,9 +3,81 @@ import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str, smart_unicode
 from subprocess import call
 from optparse import OptionParser
+from disambiguation import *
 
-def normalize(c):
-  return unicodedata.normalize('NFD', c.decode('utf-8')).replace(u"\u201c", "\"").replace(u"\u201d", "\"").replace(u"\u2019","\'").encode('ASCII', 'ignore') #ignore accents
+class Paragraph:
+    def __init__(self, characters, index):
+        self.index = index
+        self.start = -1 #start sentence
+        self.end = -1 #end sentence
+        self.characters = characters
+        self.mentions = {}
+
+class Character:
+    def __init__(self, sname, pi):
+        self.sname = sname
+        self.paragraph = pi
+        self.references = []
+        self.sex = ''
+
+        lparen = sname.find("(")
+        if not lparen == -1:
+            rparen = sname.find(")")
+            nickname = sname[lparen+1:rparen]
+            lname = sname[0:lparen].split()
+            rname = sname[rparen+1:].split()
+
+            name1 = " ".join(lname+rname)
+            # nickname + lastname
+            lname[-1] = nickname
+            name2 = " ".join(lname+rname)
+
+            self.references.append(nickname)
+            self.references.append(name1)
+            self.references.append(name2)
+
+    def set_sex(self, sex):
+        if self.sex != '':
+            assert self.sex == sex, 'Condtradiction in %s\'s sex' % self.sname
+        self.sex = sex
+
+class Book:
+    def __init__(self, name):
+        self.name = name
+        self.paragraphs = []
+        self.characters = {}
+        self.references = {}
+        self.max_character_num_tokens = 0
+
+    def __init__(self, name, paragraphs, characters, references):
+        self.name = name
+        self.paragraphs = paragraphs
+        self.characters = characters
+        self.references = references
+        self.max_character_num_tokens = 0
+        for character in characters:
+            l = len(re.split('(\W+)', character))
+            if l > self.max_character_num_tokens:
+                self.max_character_num_tokens = l
+
+    def add_reference(self, character, reference):
+        self.references[reference] = character
+        self.characters[character].references.append(reference)
+
+    def add_mention(self, character, sentence):
+        for p in self.paragraphs:
+            s = int(sentence.get('id'))-1
+            if p.start <= s and p.end > s:
+                if character not in p.characters:
+                    if s not in p.mentions:
+                        p.mentions[s] = [character]
+                    else:
+                        p.mentions[s].append(character)
+                return
+
+
+def normalize(c): 
+    return unicodedata.normalize('NFD', c.decode('utf-8')).replace(u"\u201c", "\"").replace(u"\u201d", "\"").replace(u"\u2019","\'").replace(u"\u2014", "-").encode('ASCII', 'ignore') #ignore accents
 
 def split_characters(charas):
     charas = charas.split(' and ')
@@ -16,158 +88,237 @@ def split_characters(charas):
         output += c.split(',')
     return [c.strip() for c in output if c!='']
 
-# get nickname from filenames
-def preprocess(book):
+def get_character_files(book):
     with open(books_dir + '/' + book + '/characters') as f:
         chara_files = [s.strip() for s in f.readlines()]
+    return chara_files
+
+# deal with 'A, B and C' and 'A(B)'
+def preprocess(bookname):
+    chara_files = get_character_files(bookname)
     names_dict = {}
-    file_dict = {}
+    paragraphs = []
     chara_dict = {}
-    for file in chara_files:
+    pi=0
+    for file in chara_files: 
         # might have form A, B and C
         charas = split_characters(normalize(file))
-        file_dict[file] = charas
+        paragraphs.append(Paragraph(charas, pi))
         for chara in charas:
+            chara_dict[chara] = Character(chara, pi)
+            for name in chara_dict[chara].references:
+                names_dict[name] = chara
             names_dict[chara] = chara
-            chara_dict[chara] = (file, [])
+        pi+=1
+    return Book(bookname, paragraphs, chara_dict, names_dict) 
 
-    for chara in names_dict:
-        lparen = chara.find("(")
-        if not lparen == -1:
-            rparen = chara.find(")")
-            nickname = chara[lparen+1:rparen]
-            newname = chara[0:lparen] + chara[rparen+1:]
-            newname = " ".join(newname.split())
-            chara_dict[chara][1].append(newname)
-            chara_dict[chara][1].append(nickname)
+def run_nlp(bookname): 
+    with open("chara_file.txt", "w") as f:
+        all_files = get_character_files(bookname)
+        all_files.append('combined')
+        all_files = [(books_dir + "/" + bookname + "/" + file) for file in all_files]
+        f.write('\n'.join(all_files))
+    call(["bash", nlp_dir + "/corenlp.sh", "--annotators", "tokenize,ssplit,pos,lemma,ner,depparse,parse,dcoref", "-filelist", "chara_file.txt", "-outputDirectory", books_dir + "/" + bookname])
+
+# get coresponding paragraphs for each separate files in the combined file
+def get_paragraphs_split(book): 
+    nlp = ET.parse(books_dir + "/" + book.name + "/combined.xml")
+    sentences = nlp.getroot()[0].find('sentences').findall('sentence')
     
-    for chara in chara_dict:
-        for name in chara_dict[chara][1]:
-            names_dict[name] = names_dict[chara]
-    return (file_dict, chara_dict, names_dict)
+    with open(books_dir+'/'+book.name+"/combined") as f:
+        lines = f.readlines()
+    lines = map(normalize, lines)
 
-def run_nlp(book):
-    chara_file = open("chara_file.txt", "w")
-    all_charas = filter(lambda fname: not (fname.endswith("xml") or fname.startswith('.') or fname=='characters' or fname=='relations'), os.listdir(books_dir + "/" + book))
-    all_charas = [(books_dir + "/" + book + "/" + chara) for chara in all_charas]
-    chara_file.write('\n'.join(all_charas))
-    chara_file.close()
-    call(["bash", nlp_dir + "/corenlp.sh", "--annotators", "tokenize,ssplit,pos,lemma,ner,depparse,parse,dcoref", "-filelist", "chara_file.txt", "-outputDirectory", books_dir + "/" + book])
+    #normalize may cause slight misalignment because of encoding and decoding
+    text = "".join(lines)
+    newline_loc = [i.start() for i in re.finditer('\n', text)]
+    newline_loc.append(len(text))
+    assert len(newline_loc) == len(book.paragraphs), "%d vs %s" % (len(newline_loc), len(book.paragraphs)) 
+  
+    pi = 0
+    si = 0
+    offset=0
+    for s in sentences:
+        tokens = s.find('tokens').findall('token')
+        token_text = [text[int(t.find('CharacterOffsetBegin').text)+offset:int(t.find('CharacterOffsetEnd').text)+offset] for t in tokens]
+        #print [s.get('id'), token_text]
+        end = int(tokens[-1].find('CharacterOffsetEnd').text)
+        #print [end+offset, newline_loc[pi]]
+        if end+offset - newline_loc[pi] > -4:
+            if abs(end+offset-newline_loc[pi]) < 4:
+                offset = newline_loc[pi]-end
+            book.paragraphs[pi].start = si
+            si = int(s.get('id'))
+            book.paragraphs[pi].end = si
+            pi+=1
 
-def get_paragraphs(book, files):
-    start = 0
-    end = 0
-    with open(books_dir + "/" + book + "/characters") as f:
-        while True:
-            character = f.readline().strip()
-            if character=='':
-                break
-            nlp = ET.parse(books_dir + "/" + book + "/" + character + ".xml")
-            sentences = nlp.getroot()[0].find('sentences').findall('sentence')
-            start = end
-            end = start + len(sentences)
-            files[character] = (files[character], [start, end])
-        nlp = ET.parse(books_dir + "/" + book + "/combined.xml")
-        sentences = nlp.getroot()[0].find('sentences').findall('sentence')
-        #assert len(sentences)==end, "combined vs separate: %d vs %d" % (len(sentences), end)
-    return files
+    assert pi == len(book.paragraphs), "%d vs %s" % (pi, len(book.paragraphs))
+    if verbose:
+        print 'Paragraph Split'
+        for p in book.paragraphs:
+            print [p.start, p.end]
 
-def resolve_reference(name, files, charas):
-    candidates = []
-    for chara in charas:
-        if is_reference(name, chara):
-            candidates.append(chara)
-    if len(candidates) == 1:
-        return candidates[0]
-    elif len(candidates) == 0:
-        print "unresolved references %s no potential references" % (name)
-        return ''
-    else:
-        # choose the one appears the first
-        minloc = 100000
-        c = ''
-        for chara in candidates:
-            file = charas[chara][0]
-            loc = files[file][1][0]
-            if loc < minloc:
-                c = chara
-                minloc = loc
-        print "unresolved references %s resolved to %s among candidates %s" % (name, c, str(candidates))
-        return c
+def find_coref_sex(coref):
+    for mention in coref.find('mention'):
+        if mention.find('text') in ['he', 'him', 'his', 'himself', 'He', 'Him', 'His', 'Himself']:
+            return  'MALE'
+        elif mention.find('text') in ['she', 'her', 'herself', 'She', 'Her', 'Herself']:
+            return 'FEMALE'
+    return ''
 
-def is_subset(shortened, full):
-    tokens1 = shortened.split()
-    tokens2 = full.split()
-    return all(t in tokens2 for t in tokens1)
+def get_mention_text(nlp_tree, mention):
+    sentences = nlp_tree.getroot()[0].find('sentences').findall('sentence')
+    sentence = sentences[int(mention.find('sentence').text)-1]
+    start = int(mention.find('start').text)-1
+    end = int(mention.find('end').text)-1
+    return get_sentence_text(sentence, start, end)
 
-def is_reference(shortened, full):
-    tokens = shortened.split()
-    if shortened.startswith('Mr.') or shortened.startswith('Mrs.'):
-        return is_subset(' '.join(tokens[1:]), full)
-    else:
-        return is_subset(shortened, full)
+def get_sentence_text(sentence, start, end):
+    tokens = sentence.find('tokens').findall('token') 
+    text = ''
+    last_end = 0
+    for i in range(start, end):
+        token = tokens[i]
+        c_start = int(token.find('CharacterOffsetBegin').text)
+        if c_start > last_end and i != start:
+            text += ' '
+        text += normalize(token.find('word').text.encode('utf-8'))
+        last_end = int(token.find('CharacterOffsetEnd').text)
+    return text
 
-def get_nicknames(book, files, charas, names):
-    nlp = ET.parse(books_dir + "/" + book + "/combined.xml")
-    corefs = nlp.getroot()[0].find('coreference')
-    if corefs==None:
-        print "No corefs in %s" % file
-        return names
-    for coref in corefs.findall('coreference'):
-        refs = set()
-        unresolved = set()
+def is_valid_mention(nlp_tree, mention, max_num_tokens):
+    ts = get_mention_text(nlp_tree, mention).split()
+    if len(ts) > max_num_tokens:
+        return False
+    if len(ts) == 1 and ts[0][0] in string.ascii_lowercase:
+        return False
+    start = int(mention.find('start').text)-1
+    sentences = nlp_tree.getroot()[0].find('sentences').findall('sentence')
+    sentence = sentences[int(mention.find('sentence').text)-1]
+    tokens = sentence.find('tokens').findall('token') 
+    # check the token before is not determiner
+    if start > 0:
+        token_before = tokens[start-1]
+        if token_before.find('POS').text == 'DT':
+            return False
+    # check the first token is not PRP
+    return tokens[start].find('POS').text not in ['PRP', 'PRP$']
+
+def resolve_references(book): 
+    nlp = ET.parse(books_dir + "/" + book.name + "/combined.xml")
+    corefs = nlp.getroot()[0].find('coreference').findall('coreference')
+    
+    candidates = [ref.split() for ref in book.references]
+    for coref in corefs: 
         for mention in coref.findall('mention'):
-            if is_name(mention[4].text):
-                name = get_name(mention[4].text)
-                if name in names:
-                    refs.add(names[name])
-                elif is_shortened_name(name):
-                    unresolved.add(name)
-        if len(refs) == 1:
-            chara = refs.pop()
-            for mention in coref.findall('mention'):
-                if is_name(mention[4].text):
-                    name = get_name(mention[4].text)
-                    if name not in names:
-                        names[name] = names[chara]
-                        charas[chara][1].append(name)
-                    elif names[name] != names[chara]:
+            if is_valid_mention(nlp, mention, book.max_character_num_tokens):
+                name = get_mention_text(nlp, mention)
+                character = None
+                sex = find_coref_sex(coref)
+                if name.endswith('\'s'):
+                    name = name[:-2].strip()
+                if name.endswith('s\''):
+                    name = name[:-1].strip()
+                if name in book.references:
+                    #book.add_mention(book.references[name])
+                    character = book.references[name]
+                    if sex != '':
+                        book.characters[character].set_sex(sex)
+
+                else: # try to resolve 
+                    cand = name.split()
+                    if cand[0] in ALL_TITLES:
+                        potential_charas = title_resolution(candidates, cand)
+                        sex = 'MALE' if cand[0] in MALE_TITLES else 'FEMALE'
+                    else:
+                        potential_charas = partial_reference(candidates, cand) + nickname_resolution(candidates, cand)
+                    potential_charas = set(map(lambda x: book.references[" ".join(x)], potential_charas))
+
+                    # filter out opposite sex
+                    if sex != '':
+                        if cand[0] in MALE_TITLES:
+                            potential_charas = filter(lambda x: book.characters[x].sex != 'FEMALE', potential_charas)
+                        if cand[0] in FEMALE_TITLES:
+                            potential_charas = filter(lambda x: book.characters[x].sex != 'MALE', potential_charas)
+
+                    if len(potential_charas) == 1:
+                        book.add_reference(potential_charas.pop(), name)
+                        #book.add_mention(mention, book.references[name])
+                        character = book.references[name]
+                        if sex != '':
+                            book.characters[character].set_sex(sex)
+                    elif len(potential_charas) > 1:
+                        # resolve to the first one
+                        chara = ''
+                        for p in book.paragraphs:
+                            for c in p.characters:
+                                if c in potential_charas:
+                                    chara = c
+                                    break
+                            if chara != '':
+                                break
+                        book.add_reference(chara, name)
+                        #book.add_mention(mention, book.references[name])
+                        character = book.references[name]
+                        if sex != '':
+                            book.characters[character].set_sex(sex)
+
                         if verbose:
-                            print "%s could refer to both %s or %s" % (name, names[name], names[chara])
-        elif len(unresolved) > 0:
-            for name in unresolved:
-                chara = resolve_reference(name, files, charas)
-                if chara != '':
-                    names[name] = names[chara]
-                    charas[chara][1].append(name)
+                            print "resolve %s to %s among %s" %(name, character, potential_charas)
+                    else:
+                        if verbose:
+                            print "can't resolve %s" %(name)
+
+# resolve stuff like the Pevensies, the Pevensie children/house/family
+def family_resolution(families, text):
+    cand = text.split()
+    if cand[0] in ['the', 'The']:
+        if len(cand) == 3 and cand[1] in families and cand[2] in ['children', 'house', 'family', 'people']:
+            return families[cand[1]]
+        if len(cand) == 2 and cand[1].endswith('s') and cand[1][:-1] in families:
+            return families[cand[1][:-1]]
+    return []
+
+
+# find mentions in a sentence
+# handles cases where a sentence Midred Montag will add mention Midred Montag instead of Montag
+def find_mention(book, sentence, families):
+    tokens = sentence.find('tokens').findall('token')
+    min_end = 1
+    for start in range(len(tokens)):
+        if min_end <= start:
+            min_end = start+1
+        if min_end > len(tokens):
+            break
+        mentions = []
+        for end in range(min_end, min(len(tokens), start + book.max_character_num_tokens)):
+            text = get_sentence_text(sentence, start, end)
+            if text in book.references:
+                min_end = max(end+1, min_end)
+                mentions = [book.references[text]]
+            else:
+                family = family_resolution(families, text)
+                if len(family) > 0:
+                    print "resolve family mention %s %s" % (text, family)
+                    min_end = max(end+1, min_end)
+                    mentions = family
+        # only add the last found one, ie, the longest one
+        if len(mentions) > 0:
+            for mention in mentions:
+                book.add_mention(book.references[mention], sentence)
+
+def find_mentions(book):
+    nlp = ET.parse(books_dir + "/" + book.name + "/combined.xml")
+    sentences = nlp.getroot()[0].find('sentences').findall('sentence')
+    last_names = [c.split()[-1] for c in book.characters]
+    families = dict([(last_name,[]) for last_name in last_names if last_name[0] in string.ascii_uppercase])
+    for c in book.characters:
+        if c.split()[-1] in families:
+            families[c.split()[-1]].append(c)
         
-        if len(refs) > 1 and verbose:
-            print "%s refer to the same person" % ", ".join(refs)
-
-    return charas, names
-            
-def is_pronoun(token):
-    pronouns = ['he', 'she', 'him', 'her', 'his', 'her', 'herself', 'himself', 'it', 'its', 'itself', 'they', 'their', 'them', 'themselves',\
-                'He', 'She', 'Him', 'Her', 'His', 'Her', 'Herself', 'Himself', 'It', 'Its', 'Itself', 'They', 'Their', 'Them', 'Themselves']
-    return token in pronouns
-
-def is_capitalized(token):
-    return token[0] in string.ascii_uppercase
-
-def is_determiner(token):
-    return token in ['An', 'A', 'The', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']
-
-def is_name(s):
-    tokens = s.split()
-    return all([not is_pronoun(t) for t in tokens]) and any(is_capitalized(t) and not is_determiner(t) for t in tokens) and len(tokens) <= 5
-
-def is_shortened_name(s):
-    return is_name(s) and len(s.split()) <= 2
-
-def get_name(s):
-    if s.endswith(" \'s"):
-        s = s[:len(s)-3]
-    return s
+    for sentence in sentences:
+        #print get_sentence_text(sentence, 0, len(sentence.find('tokens').findall('token')))
+        find_mention(book, sentence, families)
 
 def add_relation(relations, c1, c2):
     if c1 != c2:
@@ -175,48 +326,48 @@ def add_relation(relations, c1, c2):
         cmax = max(c1, c2)
         relations.add((cmin, cmax))
 
-def get_relations(book, files, names):
+def get_relations(book):
+    if verbose:
+        print 'Mentions'
+        for p in book.paragraphs:
+            print "%s, %s" % (p.characters, p.mentions)
     relations = set()
-    for file in files:
-        with open(books_dir + "/" + book + '/' + file, 'r') as f:
-            description = normalize(f.readline())
-        # if a filename contains several characters, add relations for each two
-        if len(files[file][0]) > 1:
-            for c1 in files[file][0]:
-                for c2 in files[file][0]:
+    for p in book.paragraphs:
+        if len(p.characters) > 1:
+            for c1 in p.characters:
+                for c2 in p.characters:
                     add_relation(relations, c1, c2)
-        # find mentions in description
-        for c2 in names:
-            if description.find(c2) != -1:
-                for c1 in files[file][0]:
-                    add_relation(relations, c1, names[c2])
+        for s in p.mentions:
+            mentions = p.mentions[s]
+            for mention in mentions:
+                for c in p.characters:
+                    add_relation(relations, mention, c)
     return relations
-                
 
 def process(book):
     print "Process book %s" % book
-    (file_dict, chara_dict, names_dict) = preprocess(book)
-    file_dict = get_paragraphs(book, file_dict)
-    (chara_dict, names_dict) = get_nicknames(book, file_dict, chara_dict, names_dict)
+    book = preprocess(book)
+    get_paragraphs_split(book)
+    resolve_references(book)
+    find_mentions(book)
     if verbose:
-        print chara_dict
-    rel_pred = get_relations(book, file_dict, names_dict)
+        print book.references
+        print "\n".join(["%s: %s" % (c, ", ".join(book.characters[c].references)) for c in book.characters])
+    rel_pred = get_relations(book)
     rel_true = set()
-    with open(books_dir+'/'+book+'/relations', 'w') as f:
+    with open(books_dir+'/'+book.name+'/relations', 'w') as f:
         for rel in rel_pred:
             f.write("%s;%s;\n"%(rel[0], rel[1]))
     
     if compare:
-        with open('annotations/%s.tag'%book) as f:
+        with open('annotations/%s.tag'%book.name) as f:
             while True:
                 line=f.readline()
                 if line== "":
                     break
                 rel = [normalize(x) for x in line.split(";")]
-                assert rel[0] in names_dict, "%s not a character" % rel[0]
-                assert rel[1] in names_dict, "%s not a character" % rel[1] 
-                assert names_dict[rel[0]] == rel[0], "character %s should be %s" % (rel[0], names_dict[rel[0]])
-                assert names_dict[rel[1]] == rel[1], "character %s should be %s" % (rel[1], names_dict[rel[1]])
+                assert rel[0] in book.characters, "%s not a character" % rel[0]
+                assert rel[1] in book.characters, "%s not a character" % rel[1] 
                 cmin = min(rel[0], rel[1]) 
                 cmax = max(rel[0], rel[1]) 
                 rel_true.add((cmin, cmax))
@@ -252,15 +403,18 @@ if __name__ == "__main__":
         precision = 0
         annotated = filter(lambda fname: fname.endswith("tag"), os.listdir("annotations"))
         annotated = [name[:len(name)-4] for name in annotated]
+        unsatisfied = []
         for book in annotated:
             if options.run_nlp:
                 run_nlp(book)
             (r, p) = process(book)
+            if r < 0.7 or p < 0.7:
+                unsatisfied.append(book)
             recall += r
             precision += p
         print "Average Recall %f Precision %f" % (recall/len(annotated), precision/len(annotated))
+        print unsatisfied
     else:
         if options.run_nlp:
             run_nlp(options.book)
         process(options.book)
-

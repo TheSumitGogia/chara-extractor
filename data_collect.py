@@ -31,12 +31,16 @@ class Book:
             text = text.strip()
 
             s = text.split('.')
+            '''
             first_sentence = text.split('.')[0]
             if re.search(name, first_sentence, re.IGNORECASE) == None: 
                 if first_sentence.startswith('A ') or first_sentence.startswith('An ') or first_sentence.startswith('The '):
                     first_sentence = first_sentence[0].lower() + first_sentence[1:]
                 first_sentence = name + ' is ' + first_sentence
                 s[0] = first_sentence
+            elif first_sentence.startswith('He ') or first_sentence.startswith('She'):
+                first_sentence[0] = name
+                '''
             if s[len(s)-2].startswith("Read anin-depth analysis of"):
                 del s[len(s)-2]
             text = '.'.join(s)
@@ -54,7 +58,7 @@ class Book:
         if not os.path.exists(directory):
             os.makedirs(directory)
         for name in self.characters:
-            with open('%s/%s' % (directory, name), 'w') as f:
+            with open('%s/%s.raw' % (directory, name), 'w') as f:
                 f.write(self.characters[name])
         with open('%s/combined' % (directory), 'w') as f:
             f.write(self.combined)
@@ -62,7 +66,7 @@ class Book:
             f.write('\n'.join(self.character_list))
 
 '''
-book = Book('1984')
+book = Book('lion')
 book.getCharactersFromWeb()
 book.writeToFile()
 '''
@@ -98,4 +102,3 @@ print exclude
 for book in exclude:
     print "Remove book %s" % book
     call(["rm", "-rf", "books/"+book])
-
