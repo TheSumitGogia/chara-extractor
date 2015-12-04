@@ -1,0 +1,1 @@
+set([('Morten Kiil', 'Mrs. Katherine Stockmann'), ('Doctor Thomas Stockmann', 'Peter Stockmann'), ('Billing', 'Hovstad'), ('Captain Horster', 'Doctor Thomas Stockmann'), ('Doctor Thomas Stockmann', 'Mrs. Katherine Stockmann'), ('Billing', 'Petra Stockmann'), ('Peter Stockmann', 'Petra Stockmann'), ('Doctor Thomas Stockmann', 'Morten Kiil'), ('Morten Kiil', 'Petra Stockmann')])

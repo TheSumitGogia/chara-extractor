@@ -1,0 +1,1 @@
+{'The Narrator': ['The narrator', 'the narrator'], 'Zenobia Frome': ['Zeena'], 'Jotham Powell': ['Powell'], 'Andrew Hale': ['Andrew'], 'Denis Eady': [], 'Mrs. Andrew Hale': [], 'Mrs. Ned Hale': ['Ned', 'Hale'], 'Mattie Silver': ['Mattie'], 'Ned Hale': [], 'Harmon Gow': [], 'Ethan Frome': ['Ethan', 'Frome']}

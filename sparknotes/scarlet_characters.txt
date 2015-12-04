@@ -1,0 +1,1 @@
+{'Narrator': [], 'Governor Bellingham': ['Bellingham'], 'Hester Prynne': ['Hester'], 'Roger Chillingworth': ['Chillingworth'], 'Reverend Mr. John Wilson': ['Reverend Wilson', 'Wilson'], 'Pearl': [], 'Reverend Arthur Dimmesdale': ['Dimmesdale'], 'Mistress Hibbins': ['Hibbins']}

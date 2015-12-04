@@ -24,13 +24,12 @@ class Character:
         if not lparen == -1:
             rparen = sname.find(")")
             nickname = sname[lparen+1:rparen]
-            lname = sname[0:lparen].split()
-            rname = sname[rparen+1:].split()
+            name = sname[0:lparen].split() + sname[rparen+1:].split()
 
-            name1 = " ".join(lname+rname)
+            name1 = " ".join(name)
             # nickname + lastname
-            lname[-1] = nickname
-            name2 = " ".join(lname+rname)
+            name[0] = nickname
+            name2 = " ".join(name)
 
             self.references.append(nickname)
             self.references.append(name1)
@@ -80,13 +79,16 @@ def normalize(c):
     return unicodedata.normalize('NFD', c.decode('utf-8')).replace(u"\u201c", "\"").replace(u"\u201d", "\"").replace(u"\u2019","\'").replace(u"\u2014", "-").encode('ASCII', 'ignore') #ignore accents
 
 def split_characters(charas):
-    charas = charas.split(' and ')
-    if len(charas) == 1:
-        return charas
-    output = []
-    for c in charas:
-        output += c.split(',')
-    return [c.strip() for c in output if c!='']
+    if charas.find(' and ') != -1:
+        characters = charas.replace(' and ', ',').split(',')
+        characters = [c.strip() for c in characters if c!='']
+        for i in range(len(characters)):
+            if characters[i] in ALL_TITLES:
+                lastname = characters[i+1].split()[-1]
+                characters[i] += " " + lastname
+        return characters
+    else:
+        return [charas]
 
 def get_character_files(book):
     with open(books_dir + '/' + book + '/characters') as f:
@@ -112,25 +114,26 @@ def preprocess(bookname):
         pi+=1
     return Book(bookname, paragraphs, chara_dict, names_dict) 
 
-def run_nlp(bookname): 
+def run_nlp(books): 
     with open("chara_file.txt", "w") as f:
-        all_files = get_character_files(bookname)
-        all_files.append('combined')
-        all_files = [(books_dir + "/" + bookname + "/" + file) for file in all_files]
+        all_files = []
+        for book in books:
+            #all_files = get_character_files(bookname)
+            all_files.append(books_dir + "/combined/" + book)
         f.write('\n'.join(all_files))
-    call(["bash", nlp_dir + "/corenlp.sh", "--annotators", "tokenize,ssplit,pos,lemma,ner,depparse,parse,dcoref", "-filelist", "chara_file.txt", "-outputDirectory", books_dir + "/" + bookname])
+    call(["bash", nlp_dir + "/corenlp.sh", "--annotators", "tokenize,ssplit,pos,lemma,ner,depparse,parse,dcoref", "-filelist", "chara_file.txt", "-outputDirectory", books_dir + "/combined"])
 
 # get coresponding paragraphs for each separate files in the combined file
 def get_paragraphs_split(book): 
-    nlp = ET.parse(books_dir + "/" + book.name + "/combined.xml")
+    nlp = ET.parse(books_dir + "/combined/" + book.name + ".xml")
     sentences = nlp.getroot()[0].find('sentences').findall('sentence')
     
-    with open(books_dir+'/'+book.name+"/combined") as f:
+    with open(books_dir+'/combined/' + book.name) as f:
         lines = f.readlines()
     lines = map(normalize, lines)
 
     #normalize may cause slight misalignment because of encoding and decoding
-    text = "".join(lines)
+    text = "".join(lines).strip()
     newline_loc = [i.start() for i in re.finditer('\n', text)]
     newline_loc.append(len(text))
     assert len(newline_loc) == len(book.paragraphs), "%d vs %s" % (len(newline_loc), len(book.paragraphs)) 
@@ -150,6 +153,7 @@ def get_paragraphs_split(book):
             book.paragraphs[pi].start = si
             si = int(s.get('id'))
             book.paragraphs[pi].end = si
+            #print [pi, [book.paragraphs[pi].start, book.paragraphs[pi].end]]  
             pi+=1
 
     assert pi == len(book.paragraphs), "%d vs %s" % (pi, len(book.paragraphs))
@@ -190,7 +194,7 @@ def is_valid_mention(nlp_tree, mention, max_num_tokens):
     ts = get_mention_text(nlp_tree, mention).split()
     if len(ts) > max_num_tokens:
         return False
-    if len(ts) == 1 and ts[0][0] in string.ascii_lowercase:
+    if len(ts) == 1 and all([c in string.ascii_lowercase for c in ts[0]]):
         return False
     start = int(mention.find('start').text)-1
     sentences = nlp_tree.getroot()[0].find('sentences').findall('sentence')
@@ -205,10 +209,10 @@ def is_valid_mention(nlp_tree, mention, max_num_tokens):
     return tokens[start].find('POS').text not in ['PRP', 'PRP$']
 
 def resolve_references(book): 
-    nlp = ET.parse(books_dir + "/" + book.name + "/combined.xml")
+    nlp = ET.parse(books_dir + "/combined/" + book.name + ".xml")
     corefs = nlp.getroot()[0].find('coreference').findall('coreference')
     
-    candidates = [ref.split() for ref in book.references]
+    candidates = [tuple(ref.split()) for ref in book.references]
     for coref in corefs: 
         for mention in coref.findall('mention'):
             if is_valid_mention(nlp, mention, book.max_character_num_tokens):
@@ -226,12 +230,10 @@ def resolve_references(book):
                         book.characters[character].set_sex(sex)
 
                 else: # try to resolve 
-                    cand = name.split()
+                    cand = tuple(name.split())
                     if cand[0] in ALL_TITLES:
-                        potential_charas = title_resolution(candidates, cand)
                         sex = 'MALE' if cand[0] in MALE_TITLES else 'FEMALE'
-                    else:
-                        potential_charas = partial_reference(candidates, cand) + nickname_resolution(candidates, cand)
+                    potential_charas = find_potential_references(candidates, cand)
                     potential_charas = set(map(lambda x: book.references[" ".join(x)], potential_charas))
 
                     # filter out opposite sex
@@ -308,7 +310,7 @@ def find_mention(book, sentence, families):
                 book.add_mention(book.references[mention], sentence)
 
 def find_mentions(book):
-    nlp = ET.parse(books_dir + "/" + book.name + "/combined.xml")
+    nlp = ET.parse(books_dir + "/combined/" + book.name + ".xml")
     sentences = nlp.getroot()[0].find('sentences').findall('sentence')
     last_names = [c.split()[-1] for c in book.characters]
     families = dict([(last_name,[]) for last_name in last_names if last_name[0] in string.ascii_uppercase])
@@ -355,9 +357,13 @@ def process(book):
         print "\n".join(["%s: %s" % (c, ", ".join(book.characters[c].references)) for c in book.characters])
     rel_pred = get_relations(book)
     rel_true = set()
-    with open(books_dir+'/'+book.name+'/relations', 'w') as f:
-        for rel in rel_pred:
-            f.write("%s;%s;\n"%(rel[0], rel[1]))
+
+    if writeToFile:
+        with open('sparknotes/%s_characters.txt' % book.name, 'w') as f:
+            characters = dict([(c, book.characters[c].references) for c in book.characters])
+            f.write(str(characters))
+        with open('sparknotes/%s_relations.txt' % book.name, 'w') as f:
+            f.write(str(rel_pred))
     
     if compare:
         with open('annotations/%s.tag'%book.name) as f:
@@ -388,7 +394,7 @@ def process(book):
 
 if __name__ == "__main__":
     parser = OptionParser()
-    parser.add_option("-b", "--book", dest="book", help="which book to process", default="all")
+    parser.add_option("-b", "--book", dest="book", help="which book to process", default="annotated")
     parser.add_option("-v", "--verbose", dest="verbose", action="store_true", default=False)
     parser.add_option("-n", "--run_nlp", dest="run_nlp", action="store_true", default=False)
     parser.add_option("-c", "--compare", dest="compare", help='compare with annotations', action="store_true", default=False)
@@ -398,15 +404,16 @@ if __name__ == "__main__":
     nlp_dir = "../coreNLP"
     verbose = options.verbose
     compare = options.compare
-    if options.book == 'all':
+    writeToFile = False
+    if options.book == 'annotated':
         recall = 0
         precision = 0
         annotated = filter(lambda fname: fname.endswith("tag"), os.listdir("annotations"))
         annotated = [name[:len(name)-4] for name in annotated]
         unsatisfied = []
+        if options.run_nlp:
+            run_nlp(annotated)
         for book in annotated:
-            if options.run_nlp:
-                run_nlp(book)
             (r, p) = process(book)
             if r < 0.7 or p < 0.7:
                 unsatisfied.append(book)
@@ -414,7 +421,15 @@ if __name__ == "__main__":
             precision += p
         print "Average Recall %f Precision %f" % (recall/len(annotated), precision/len(annotated))
         print unsatisfied
+    elif options.book == 'raw':
+        writeToFile = True
+        raw = filter(lambda fname: fname.endswith("txt"), os.listdir("raw_texts"))
+        raw = [name[:len(name)-4] for name in raw]
+        if options.run_nlp:
+            run_nlp(raw)
+        for book in raw:
+            process(book)
     else:
         if options.run_nlp:
-            run_nlp(options.book)
+            run_nlp([options.book])
         process(options.book)

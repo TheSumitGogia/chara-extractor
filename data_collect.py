@@ -46,6 +46,9 @@ class Book:
             text = '.'.join(s)
             text = smart_str(text)
 
+            if not text.endswith('.'):
+                text = text + "."
+
             self.combined += text + '\n'
             self.characters[name] = text
             self.character_list.append(smart_str(name))
@@ -58,9 +61,9 @@ class Book:
         if not os.path.exists(directory):
             os.makedirs(directory)
         for name in self.characters:
-            with open('%s/%s.raw' % (directory, name), 'w') as f:
+            with open('%s/%s' % (directory, name), 'w') as f:
                 f.write(self.characters[name])
-        with open('%s/combined' % (directory), 'w') as f:
+        with open('books/combined/%s' % (self.name), 'w') as f:
             f.write(self.combined)
         with open('%s/characters' % (directory), 'w') as f:
             f.write('\n'.join(self.character_list))

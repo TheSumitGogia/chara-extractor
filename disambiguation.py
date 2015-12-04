@@ -25,11 +25,7 @@ def disambiguate(candidates):
   best_maps = {}
 
   for cand in candidates:
-    refs = partial_reference(candidates, cand) + \
-           nickname_resolution(candidates, cand) + \
-           title_resolution(candidates, cand)
-           #fuzzy_wuzzy_resolution(candidates, cand)
-    all_maps[cand] = set(refs)
+    all_maps[cand] = find_potential_references(candidates, cand)
 
   # DFS for complete paths
   connected_cands = {cand: dfs(all_maps, cand) for cand in candidates}
@@ -38,6 +34,12 @@ def disambiguate(candidates):
 
   return all_maps
 
+def find_potential_references(candidates, cand):
+  refs = partial_reference(candidates, cand) + \
+           nickname_resolution(candidates, cand) + \
+           title_resolution(candidates, cand)
+  return set(refs)
+
 def contains_tuple(t_outer, t_inner):
   inner_idx=0
   for t in t_outer:
@@ -45,6 +47,16 @@ def contains_tuple(t_outer, t_inner):
           inner_idx+=1
       if inner_idx == len(t_inner):
           return True
+  return False
+
+def resolve_title(ocand, cand):
+  if cand != ocand and cand[0] in ALL_TITLES and cand[-1] == ocand[-1]:
+    first_name = ocand[0].lower()
+    if first_name in gender_dict:
+      if gender_dict[first_name] == 'MALE' and cand[0] in MALE_TITLES:
+        return True
+      elif gender_dict[first_name] == 'FEMALE' and cand[0] in FEMALE_TITLES:
+        return True
   return False
 
 def fuzzy_match(s1, s2):
@@ -91,15 +103,11 @@ def nickname_resolution(candidates, cand):
 def title_resolution(candidates, cand):
   ret = []
   for ocand in candidates:
-    if cand != ocand and cand[0] in ALL_TITLES and cand[-1] == ocand[-1]:
-      first_name = ocand[0].lower()
-      if first_name in gender_dict:
-        if gender_dict[first_name] == 'MALE' and cand[0] in MALE_TITLES:
-          ret.append(ocand)
-        elif gender_dict[first_name] == 'FEMALE' and cand[0] in FEMALE_TITLES:
+      if cand != ocand and resolve_title(ocand, cand):
           ret.append(ocand)
   return ret
 
+'''
 def fuzzy_wuzzy_resolution(candidates, cand):
   ret = []
   str_candidates = set(' '.join(t) for t in candidates)
@@ -107,6 +115,7 @@ def fuzzy_wuzzy_resolution(candidates, cand):
   ocands = filter(lambda t: t[1] >= 70 and str_gender_match(t[0], str_cand), process.extract(str_cand, str_candidates.difference([str_cand]), limit=10))
   ret.extend(tuple(t[0].split()) for t in ocands)
   return ret
+'''
 
 def dfs(candidate_map, cand):
   visited = set([])

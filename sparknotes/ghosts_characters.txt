@@ -1,0 +1,1 @@
+{'Mrs. Helene Alving': ['Alving'], 'Pastor Manders': ['Manders'], 'Captain Alving': [], 'Regina Engstrand': ['Regina'], 'Jakob Engstrand': ['Jakob'], 'Oswald Alving': ['Oswald'], 'Johanna': []}

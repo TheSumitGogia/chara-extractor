@@ -1,0 +1,1 @@
+{'Miss Jessel': [], 'Griffin': [], 'Flora': [], 'The Governess': ['The governess', 'the governess'], 'Peter Quint': ['Quint'], 'Luke': [], "The Children's Uncle": ['The uncle'], 'Douglas': [], 'Anonymous Narrator': [], 'Miles': [], 'Mrs. Grose': ['Grose'], 'Women at the Gathering': ['the gathering']}

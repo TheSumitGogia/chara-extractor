@@ -1,0 +1,1 @@
+{'Uncas': [], 'Colonel Munro': [], 'General Montcalm': [], 'Cora Munro': ['Cora', 'Munro'], 'General Webb': [], 'Hawkeye': [], 'Alice Munro': ['Alice'], 'Major Duncan Heyward': ['Heyward'], 'David Gamut': ['Gamut'], 'Chingachgook': [], 'Magua': [], 'Tamenund': []}

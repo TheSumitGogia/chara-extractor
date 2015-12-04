@@ -1,0 +1,1 @@
+{'Carrie Meeber': ['Carrie'], 'Moy': [], 'Mr. Hale': ['Hale'], 'Mr. Ames': [], 'Charlie Drouet': ['Drouet'], 'Fitzgerald': [], 'Lola': [], 'Minnie': [], 'Mrs. Vance': [], 'George Hurstwood': ['Hurstwood'], 'The captain': [], 'Mrs. Hale': [], 'Hanson': [], 'George Hurstwood, Jr.': [], 'Jessica Hurstwood': ['Jessica'], 'Julia Hurstwood': []}

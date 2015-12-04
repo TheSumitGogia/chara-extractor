@@ -1,0 +1,1 @@
+{'Aunt Rina': [], 'Mrs. Elvsted': [], 'Berte': [], 'Hedda Gabler': ['Hedda'], 'Juliane Tesman': [], 'Ejlert Lovborg': ['Ejlert', 'Ejlert Lovoborg'], 'Jurgen Tesman': ['Tesman', 'Tesman*'], 'Judge Brack': ['Brack']}

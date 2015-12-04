@@ -1,0 +1,1 @@
+{'The Miss Alans': [], 'Miss Lavish': [], 'Lucy Honeychurch': ['Lucy'], 'Charlotte Bartlett': [], 'Sir Harry Otway': [], 'Minnie': [], 'Freddy': [], 'Cecil Vyse': ['Cecil'], 'Mrs. Honeychurch': [], 'Mr. Beebe': [], 'George Emerson': ['George'], 'Mr. Eager': [], 'Mr. Emerson': []}

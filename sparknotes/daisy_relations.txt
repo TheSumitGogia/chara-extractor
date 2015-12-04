@@ -1,0 +1,1 @@
+set([('Eugenio', 'Randolph Miller'), ('Mrs. Walker', 'Winterbourne'), ('Daisy Miller', 'Mrs. Miller'), ('Daisy Miller', 'Mr. Giovanelli'), ('Mrs. Costello', 'Winterbourne'), ('Mrs. Miller', 'Randolph Miller'), ('Daisy Miller', 'Winterbourne'), ('Daisy Miller', 'Eugenio'), ('Daisy Miller', 'Randolph Miller'), ('Eugenio', 'Mrs. Miller'), ('Daisy Miller', 'Mrs. Walker')])

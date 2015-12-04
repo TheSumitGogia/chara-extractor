@@ -1,0 +1,1 @@
+{'Maggie': [], 'Jimmie': [], 'Miss Smith': [], 'Father': [], 'Tommie': [], 'Nellie': [], 'Pete': [], 'Billie': [], 'The old woman': [], 'Mary': []}

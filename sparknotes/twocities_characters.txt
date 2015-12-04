@@ -1,0 +1,1 @@
+{'Sydney Carton': [], 'Charles Darnay': ['Darnay'], 'Mr. Stryver': ['Stryver'], 'John Barsad': ['Barsad'], 'Jarvis Lorry': [], 'Doctor Manette': ['Manette'], 'Monsieur Defarge': ['Defarge'], 'Jerry Cruncher': [], 'Roger Cly': ['Cly'], 'Miss Pross': [], 'Marquis Evremonde': [], 'Madame Defarge': [], 'Lucie Manette': ['Lucie'], 'Gabelle': []}

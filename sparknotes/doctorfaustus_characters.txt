@@ -1,0 +1,1 @@
+{'Mephastophilis': [], 'Rafe': [], 'Old Man': [], 'Lucifer': [], 'Bruno': [], 'Valdes': [], 'Horse-courser': [], 'Faustus': [], 'Evil Angel': [], 'Good Angel': ['God'], 'Emperor Charles V': [], 'Knight': [], 'Frederick': [], 'Clown': [], 'Chorus': [], 'Duke of Vanholt': [], 'The Scholars': [], 'Martino': [], 'Robin': [], 'The pope': ['the pope'], 'Wagner': [], 'Cornelius': []}

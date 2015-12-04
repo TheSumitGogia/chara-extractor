@@ -1,0 +1,1 @@
+{'Buck': [], 'Hal': [], 'Curly': [], 'Charles': [], 'Manuel': [], 'Dave': [], 'Mercedes': [], 'Sol-leks': [], 'Spitz': [], 'Francois': [], 'Judge Miller': [], 'John Thornton': ['Thornton'], 'Perrault': []}

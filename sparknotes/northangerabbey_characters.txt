@@ -1,0 +1,1 @@
+{'Isabella Thorpe': ['Thorpe', 'Isabella'], 'Eleanor Tilney': ['Eleanor'], 'James Morland': ['James'], 'family': [], 'Mrs. Morland': [], 'Henry Tilney': ['Henry'], 'John Thorpe': ['John'], 'Mr.': [], 'Frederick Tilney': ['Frederick'], 'Mrs. Allen': ['Allen'], 'Mrs. Thorpe': [], 'Catherine Morland': ['Catherine', 'the Morlands'], 'General Tilney': []}
