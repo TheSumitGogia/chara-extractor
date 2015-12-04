@@ -141,7 +141,6 @@ lucy|lucy: a novel|jamaica kincaid
 malcolmx|the autobiography of malcolm x|malcolm x & alex haley
 mangostreet|the house on mango street|sandra cisneros
 manzanar|farewell to manzanar|jeanne wakatsuki houston
-martianchronicles|the martian chronicles|ray bradbury
 medievallife|a medieval life|judith bennett
 memberwedding|the member of the wedding|carson mccullers
 micemen|of mice and men|john steinbeck

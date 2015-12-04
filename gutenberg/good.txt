@@ -14,17 +14,17 @@ call|the call of the wild|jack london|215
 canterbury|the canterbury tales|geoffrey chaucer|22120
 casterbridge|the mayor of casterbridge|thomas hardy|143
 christmascarol|a christmas carol|charles dickens|19337
-copperfield|david copperfield|charles dickens|43111
+copperfield|david copperfield|charles dickens|766
 crime|crime and punishment|fyodor dostoevsky|2554
-crusoe|robinson crusoe|daniel defoe|11866
+crusoe|robinson crusoe|daniel defoe|521
 daisy|daisy miller|henry james|208
-donquixote|don quixote|miguel de cervantes|24754
+donquixote|don quixote|miguel de cervantes|996
 doriangray|the picture of dorian gray|oscar wilde|174
 dracula|dracula|bram stoker|345
 dubliners|dubliners|james joyce|2814
 emma|emma|jane austen|158
 fang|white fang|jack london|910
-frankenstein|frankenstein|mary shelley|41445
+frankenstein|frankenstein|mary shelley|84
 frome|ethan frome|edith wharton|4517
 goodsoldier|the good soldier|ford madox ford|2775
 greatex|great expectations|charles dickens|1400
@@ -40,7 +40,7 @@ jekyll|dr. jekyll and mr. hyde|robert louis stevenson|42
 jude|jude the obscure|thomas hardy|153
 jungle|the jungle|upton sinclair|140
 kidnapped|kidnapped|robert louis stevenson|421
-littlewomen|little women|louisa may alcott|37106
+littlewomen|little women|louisa may alcott|514
 lookingbackward|looking backward|edward bellamy|25439
 lordjim|lord jim|joseph conrad|5658
 maddingcrowd|far from the madding crowd|thomas hardy|107
@@ -49,7 +49,7 @@ mainstreet|main street|sinclair lewis|543
 mansfieldpark|mansfield park|jane austen|141
 middlemarch|middlemarch|george eliot|145
 millonthefloss|the mill on the floss|george eliot|6688
-mohicans|the last of the mohicans|james fenimore cooper|27681
+mohicans|the last of the mohicans|james fenimore cooper|940
 mollflanders|moll flanders|daniel defoe|370
 montecristo|the count of monte cristo|alexandre dumas|1184
 moonstone|the moonstone|wilkie collins|155
@@ -66,7 +66,7 @@ redbadge|the red badge of courage|stephen crane|463
 redblack|the red and the black|stendhal|44747
 returnofnative|the return of the native|thomas hardy|17500
 room|a room with a view|e.m. forster|2641
-scarlet|the scarlet letter|nathaniel hawthorne|25344
+scarlet|the scarlet letter|nathaniel hawthorne|33
 screw|the turn of the screw|henry james|209
 secretgarden|the secret garden|frances hodgson burnett|113
 sensibility|sense and sensibility|jane austen|161
@@ -79,7 +79,7 @@ swannsway|swann's way|marcel proust|7178
 through-the-looking-glass|through the looking-glass|lewis carroll|12
 timemachine|the time machine|h.g. wells|35
 treasure|treasure island|robert louis stevenson|120
-trial|the trial|franz kafka|7849c
+trial|the trial|franz kafka|7849
 twocities|a tale of two cities|charles dickens|98
 typee|typee|herman melville|1900
 ulysses|ulysses|james joyce|4300
