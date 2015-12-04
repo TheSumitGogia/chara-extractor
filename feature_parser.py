@@ -2,6 +2,8 @@ import xml.etree.ElementTree as ET
 import operator
 import argparse
 import itertools as it
+import disambiguation as dbg
+import numpy as np
 from collections import deque
 from sklearn.feature_extraction import DictVectorizer
 
@@ -342,6 +344,7 @@ def get_coref_features(ngrams):
 
         The method only changes the passed candidate feature dictionaries.
     """
+    section_types = ["st", "pg", "cp"]
 
     # initialize relevant coreference features
     for ngram in ngrams:
@@ -350,24 +353,24 @@ def get_coref_features(ngrams):
         features["coref_longer"] = 0
         features["coref_shorter_count"] = 0
         features["coref_longer_count"] = 0
+        for section_type in section_types:
+            features["coref_shorter_count_" + section_type] = 0
+            features["coref_longer_count_" + section_type] = 0
 
-    # go through each of the ngrams, check for token subset ngrams
-    # TODO: make this way smarter - not only token subset
-    # TODO: deal with subset counts including superset counts?
-    for ngram in ngrams:
-        if isinstance(ngram, tuple) and len(ngram) > 1:
-            cont_features = ngrams[ngram]
-            for r in range(1, len(ngram)):
-                subs = it.combinations(ngram, r)
-                for sub in subs:
-                    sub = sub if len(sub) > 1 else sub[0]
-                    if sub in ngrams:
-                        features = ngrams[sub]
-                        features["coref_longer"] = 1
-                        features["coref_longer_count"] += cont_features["count"]
-                        if cont_features["coref_shorter"] == 0:
-                            cont_features["coref_shorter"] = 1
-                        cont_features["coref_shorter_count"] += features["count"]
+    coref_graph = dbg.disambiguate(ngrams)
+    for candidate in coref_graph:
+        features = ngrams[candidate]
+        long_matches = coref_graph[candidate]
+        if len(long_matches) > 0:
+            features["coref_longer"] = 1
+        for match in long_matches:
+            match_feats = ngrams[match]
+            match_feats["coref_shorter"] = 1
+            features["coref_longer_count"] += match_feats["count"]
+            match_feats["coref_shorter_count"] += features["count"]
+            for section_type in section_types:
+                features["coref_longer_count_" + section_type] += match_feats["count_" + section_type]
+                match_feats["coref_shorter_count_" + section_type] += features["count_" + section_type]
 
 def get_count_features(tree, ngrams, markers):
     """Extract candidate frequency and co-occurrence features.
@@ -469,6 +472,12 @@ def get_count_features(tree, ngrams, markers):
         section_marg[section_type] = uform_mat.sum(axis=0)
         marg_mat = section_marg[section_type]
 
+        # number of sections co-occurred in (as opposed to num co-occurrences in section)
+        uform_or = uform_mat.sum(axis=1)
+        uform_or = (uform_or >= 2)
+        full_and = uform_mat.multiply(uform_or)
+        cooc_sec = full_and.sum(axis=0)
+
         # matrix multiplication to get co-occurrence sentence, paragraph, chapter matrices
         # TODO: might want to store these on disk since computation is expensive
         section_cooc[section_type] = (uform_mat.T).dot(uform_mat)
@@ -483,7 +492,8 @@ def get_count_features(tree, ngrams, markers):
             ngram, count, cooc = index[idx], marg_mat[0, idx], marg_cooc[idx, 0]
             features = ngrams[ngram]
             features["count_" + abbrv(section_type)] = count
-            features["cooc_" + abbrv(section_type)] = cooc
+            features["cooc_cand_" + abbrv(section_type)] = cooc
+            features["cooc_sec_" + abbrv(section_type)] = cooc_sec[0, idx]
 
 def get_all_features(rawfile, nlpfile):
     tree = ET.parse(nlpfile)
@@ -507,51 +517,71 @@ def output(candidates):
             print "{0}: {1}".format(key, features)
         gram_size += 1
 
+def write_feature_file(raw_fname, outdir):
+    raw_text_name = raw_fname.split('/')[-1]
+    name_split = raw_text_name.split('.')
+    name_split[0] += '_features'
+    outfname = '.'.join(name_split)
+    wfile = open(outdir + '/' + outfname, 'w')
+    wfile.write(str(candidates))
+    wfile.close()
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Extract candidate characters and feature values")
     parser.add_argument('-f', '--file', nargs=1, required=True, help='Book coreNLP file to extract candidates from')
     parser.add_argument('-rf', '--rawfile', nargs=1, required=True, help='Book raw text file to extract candidates from')
     parser.add_argument('-o', '--outdir', nargs=1, required=True, help='Output directory for feature dict')
+    parser.add_argument('-dr', '--fulldir', required=False, default=False, action='store_true', help='Run extraction for full directory')
     parser.add_argument('-d', '--debug', required=False, default=False, action='store_true', help='Whether to print output at all feature extraction steps')
 
     args = vars(parser.parse_args())
     debug = args['debug']
     raw_text = args['rawfile'][0]
     outdir = args['outdir'][0]
-    tree = ET.parse(args['file'][0])
-    markers = section(tree, raw_text)
+    full = args['fulldir']
+    nlp_file = args['file'][0]
 
-    # test candidate selection
-    candidates = get_candidates(tree, markers)
-    if debug:
-        print "".join(["-"] * 10 + ["CANDIDATES"] + ["-"] * 10)
-        output(candidates)
+    if not full:
+        tree = ET.parse(nlp_file)
+        markers = section(tree, raw_text)
+        # test candidate selection
+        candidates = get_candidates(tree, markers)
+        if debug:
+            print "".join(["-"] * 10 + ["CANDIDATES"] + ["-"] * 10)
+            output(candidates)
 
-    # test tag feature extraction
-    get_tag_features(tree, candidates)
-    if debug:
-        print "\n"
-        print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
-        output(candidates)
+        # test tag feature extraction
+        get_tag_features(tree, candidates)
+        if debug:
+            print "\n"
+            print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
+            output(candidates)
 
-    # test coref feature extraction
-    get_coref_features(candidates)
-    if debug:
-        print "\n"
-        print "".join(["-"] * 10 + ["CONTAINMENT"] + ["-"] * 10)
-        output(candidates)
+        # test count and co-occurence feature extraction
+        get_count_features(tree, candidates, markers)
+        if debug:
+            print "\n"
+            print "".join(["-"] * 10 + ["COUNTING"] + ["-"] * 10)
+            output(candidates)
 
-    # test count and co-occurence feature extraction
-    get_count_features(tree, candidates, markers)
-    if debug:
-        print "\n"
-        print "".join(["-"] * 10 + ["COUNTING"] + ["-"] * 10)
-        output(candidates)
+        # test coref feature extraction
+        get_coref_features(candidates)
+        if debug:
+            print "\n"
+            print "".join(["-"] * 10 + ["CONTAINMENT"] + ["-"] * 10)
+            output(candidates)
+        else:
+            write_feature_file(raw_text, outdir)
     else:
-        raw_text_name = raw_text.split('/')[-1]
-        name_split = raw_text_name.split('.')
-        name_split[0] += '_features'
-        outfname = '.'.join(name_split)
-        wfile = open(outdir + '/' + outfname, 'w')
-        wfile.write(str(candidates))
-        wfile.close()
+        all_raw = os.listdir(raw_text)
+        all_nlp = [nlp_file + '/' + f + '.xml' for f in all_raw]
+        all_raw = [raw_text + '/' + f for f in all_raw]
+        for i in range(len(all_raw)):
+            raw, nlp = all_raw[i], all_nlp[i]
+            tree = ET.parse(nlp)
+            markers = section(tree, raw)
+            candidates = get_candidates(tree, markers)
+            get_tag_features(tree, candidates)
+            get_count_features(tree, candidates, markers)
+            get_coref_features(candidates)
+            write_feature_file(raw, outdir)

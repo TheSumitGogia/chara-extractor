@@ -1,0 +1,19 @@
+crusoe.txt
+mollflanders.txt
+aeneid.txt
+demian.txt
+agamemnon.txt
+iliad.txt
+candide.txt
+christmascarol.txt
+doctorfaustus.txt
+enemyofthepeople.txt
+heddagabler.txt
+ivanhoe.txt
+oliver.txt
+pygmalion.txt
+songofroland.txt
+
+*SHORT STORIES*
+winesburgohio.txt
+canterbury.txt
