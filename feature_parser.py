@@ -55,7 +55,7 @@ def section(tree, raw_filename):
     return markers
 
 # TODO: this method can be shortened easily, and should be
-def get_candidates(tree, markers):
+def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
     """Extract candidate character names for a book.
 
     Character names are defined as simple noun phrases consisting of at most
@@ -96,7 +96,7 @@ def get_candidates(tree, markers):
     cp_index = -1
 
     # stuff to indicate nesting of invalidity of candidate noun phrases
-    bad_token_set = set(['Chapter', 'CHAPTER', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
+    bad_token_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms', 'Chapter', 'CHAPTER', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
     bad_np_tags = set(['CC', 'IN', 'TO', 'WDT', 'WP', 'WP$', 'WRB', 'UH', 'VB', 'VBD', 'VBP', 'VBZ', 'MD'])
 
     # loop through Stanford NLP tree, extracting initial candidate set
@@ -220,6 +220,7 @@ def get_candidates(tree, markers):
             # stop if no n-grams are being passed
             if len(pass_grams) == 0:
                 more_grams = False
+    print filtered_grams
 
     # get frequenct candidates per chapter
     for cp_idx in range(len(ngrams)):
@@ -244,9 +245,23 @@ def get_candidates(tree, markers):
         candidates[key] = {'count': count}
         candidates[key]['length'] = len(key)
 
-    return candidates
+    # create list of pair tuples with concatenated candidate features
+    pairs = {}
+    for cand in candidates:
+        cand1_feats = candidates[cand]
+        for cand2 in candidates:
+            if cand == cand2:
+                continue
+            cand2_feats = candidates[cand2]
+            pair = (cand, cand2)
+            pairs[pair] = {}
+            pair_features = pairs[pair]
+            for feature in cand1_feats:
+                pair_features["1_" + feature] = cand1_feats[feature]
+                pair_features["2_" + feature] = cand2_feats[feature]
+    return candidates, pairs
 
-def get_tag_features(tree, ngrams):
+def get_tag_features(tree, ngrams, pairs):
     """Extract NER, POS, and capitalization-based features for candidates
 
     Go through mapping of candidate n-grams to features and extract tag-based
@@ -274,14 +289,13 @@ def get_tag_features(tree, ngrams):
         The method only changes the passed candidate feature dictionaries.
     """
 
+    ner_feats = set(['avg_ner', 'avg_last_ner', 'avg_cap', 'avg_last_cap'])
     # get max gram length for tracking, initialize tag features
     max_gram = max(map(lambda x: len(x), ngrams.keys()))
     for ngram in ngrams:
         features = ngrams[ngram]
-        features['avg_ner'] = 0
-        features['avg_last_ner'] = 0
-        features['avg_cap'] = 0
-        features['avg_last_cap'] = 0
+        for feat in ner_feats:
+            features[feat] = 0
 
     # loop through Stanford NLP tree, checking tags when candidates appear
     root = tree.getroot()
@@ -319,7 +333,15 @@ def get_tag_features(tree, ngrams):
                                 features['avg_cap'] += ((sum(caps_list) * 1.0 / len(caps_list)) / features['count'])
                                 features['avg_last_cap'] += (caps * 1.0 / features['count'])
 
-def get_coref_features(ngrams):
+    for pair in pairs:
+        pair_feats = pairs[pair]
+        cand1_feats = ngrams[pair[0]]
+        cand2_feats = ngrams[pair[1]]
+        for feat in ner_feats:
+            pair_feats["1_" + feat] = cand1_feats[feat]
+            pair_feats["2_" + feat] = cand2_feats[feat]
+
+def get_coref_features(ngrams, pairs):
     """Extract coreference features for candidates
 
     There may be multiple candidates which refer to the same character. This
@@ -345,6 +367,11 @@ def get_coref_features(ngrams):
         The method only changes the passed candidate feature dictionaries.
     """
     section_types = ["st", "pg", "cp"]
+    coref_feats = ["coref_shorter_count", "coref_longer_count"]
+    ex_coref_feats = [feat + "_" + sec_type for sec_type in section_types for feat in coref_feats]
+    coref_feats.extend(ex_coref_feats)
+    coref_feats.extend(["coref_shorter", "coref_longer"])
+    coref_feats = set(coref_feats)
 
     # initialize relevant coreference features
     for ngram in ngrams:
@@ -372,7 +399,15 @@ def get_coref_features(ngrams):
                 features["coref_longer_count_" + section_type] += match_feats["count_" + section_type]
                 match_feats["coref_shorter_count_" + section_type] += features["count_" + section_type]
 
-def get_count_features(tree, ngrams, markers):
+    for pair in pairs:
+        pair_feats = pairs[pair]
+        cand1_feats = ngrams[pair[0]]
+        cand2_feats = ngrams[pair[1]]
+        for feat in coref_feats:
+            pair_feats["1_" + feat] = cand1_feats[feat]
+            pair_feats["2_" + feat] = cand2_feats[feat]
+
+def get_count_features(tree, markers, ngrams, pairs):
     """Extract candidate frequency and co-occurrence features.
 
     Using the parsed Stanford NLP tree, get sentence, paragraph, and chapter
@@ -415,6 +450,7 @@ def get_count_features(tree, ngrams, markers):
     section_dicts = {'sentence': {}, 'paragraph': {}, 'chapter': {}}
     section_types = section_dicts.keys()
 
+    count_feats = set(['count', 'cooc_cand', 'cooc_sec'])
     max_gram = max(map(lambda x: len(x), ngrams.keys()))
 
     # loop through tree and count candidates in sections
@@ -494,6 +530,21 @@ def get_count_features(tree, ngrams, markers):
             features["count_" + abbrv(section_type)] = count
             features["cooc_cand_" + abbrv(section_type)] = cooc
             features["cooc_sec_" + abbrv(section_type)] = cooc_sec[0, idx]
+            for idx2 in index:
+                if idx == idx2:
+                    continue
+                pair = (ngram, index[idx2])
+                pair_feats = pairs[pair]
+                pair_feats["cooc_" + abbrv(section_type)] = cooc_mat[idx, idx2]
+
+        for pair in pairs:
+            pair_feats = pairs[pair]
+            cand1_feats = ngrams[pair[0]]
+            cand2_feats = ngrams[pair[1]]
+            for feat in count_feats:
+                sec_feat = feat + "_" + abbrv(section_type)
+                pair_feats["1_" + sec_feat] = cand1_feats[sec_feat]
+                pair_feats["2_" + sec_feat] = cand2_feats[sec_feat]
 
 def get_all_features(rawfile, nlpfile):
     tree = ET.parse(nlpfile)
@@ -517,13 +568,19 @@ def output(candidates):
             print "{0}: {1}".format(key, features)
         gram_size += 1
 
-def write_feature_file(raw_fname, outdir):
+def write_feature_file(raw_fname, outdir, ngrams, pairs):
     raw_text_name = raw_fname.split('/')[-1]
-    name_split = raw_text_name.split('.')
-    name_split[0] += '_features'
-    outfname = '.'.join(name_split)
+    char_name_split = raw_text_name.split('.')
+    char_name_split[0] += '_char_features'
+    outfname = '.'.join(char_name_split)
+    pair_name_split = raw_text_name.split('.')
+    pair_name_split[0] += '_pair_features'
+    pairfname = '.'.join(pair_name_split)
     wfile = open(outdir + '/' + outfname, 'w')
-    wfile.write(str(candidates))
+    wfile.write(str(ngrams))
+    wfile.close()
+    wfile = open(outdir + '/' + pairfname, 'w')
+    wfile.write(str(pairs))
     wfile.close()
 
 if __name__ == '__main__':
@@ -533,6 +590,8 @@ if __name__ == '__main__':
     parser.add_argument('-o', '--outdir', nargs=1, required=True, help='Output directory for feature dict')
     parser.add_argument('-dr', '--fulldir', required=False, default=False, action='store_true', help='Run extraction for full directory')
     parser.add_argument('-d', '--debug', required=False, default=False, action='store_true', help='Whether to print output at all feature extraction steps')
+    parser.add_argument('-n', '--numcands', nargs=1, required=False, default=None, help='number of 1gram, 2gram, 3gram candidates')
+    parser.add_argument('-cn', '--numcpcands', nargs=1, required=False, default=None, help='number of tested chapter candidates')
 
     args = vars(parser.parse_args())
     debug = args['debug']
@@ -540,38 +599,49 @@ if __name__ == '__main__':
     outdir = args['outdir'][0]
     full = args['fulldir']
     nlp_file = args['file'][0]
+    num_cands = eval(args['numcands'][0])
+    num_cp_cands = eval(args['numcpcands'][0])
 
     if not full:
         tree = ET.parse(nlp_file)
         markers = section(tree, raw_text)
         # test candidate selection
-        candidates = get_candidates(tree, markers)
+
+        candidates, pairs = None, None
+        if num_cands is None and num_cp_cands is None:
+            candidates, pairs = get_candidates(tree, markers)
+        elif num_cands is None:
+            candidates, pairs = get_candidates(tree, markers, cp_cutoff=num_cp_cands)
+        elif num_cp_cands is None:
+            candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands)
+        else:
+            candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands, cp_cutoff=num_cp_cands)
         if debug:
             print "".join(["-"] * 10 + ["CANDIDATES"] + ["-"] * 10)
             output(candidates)
 
         # test tag feature extraction
-        get_tag_features(tree, candidates)
+        get_tag_features(tree, candidates, pairs)
         if debug:
             print "\n"
             print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
             output(candidates)
 
         # test count and co-occurence feature extraction
-        get_count_features(tree, candidates, markers)
+        get_count_features(tree, markers, candidates, pairs)
         if debug:
             print "\n"
             print "".join(["-"] * 10 + ["COUNTING"] + ["-"] * 10)
             output(candidates)
 
         # test coref feature extraction
-        get_coref_features(candidates)
+        get_coref_features(candidates, pairs)
         if debug:
             print "\n"
             print "".join(["-"] * 10 + ["CONTAINMENT"] + ["-"] * 10)
             output(candidates)
         else:
-            write_feature_file(raw_text, outdir)
+            write_feature_file(raw_text, outdir, candidates, pairs)
     else:
         all_raw = os.listdir(raw_text)
         all_nlp = [nlp_file + '/' + f + '.xml' for f in all_raw]
@@ -580,8 +650,16 @@ if __name__ == '__main__':
             raw, nlp = all_raw[i], all_nlp[i]
             tree = ET.parse(nlp)
             markers = section(tree, raw)
-            candidates = get_candidates(tree, markers)
-            get_tag_features(tree, candidates)
-            get_count_features(tree, candidates, markers)
-            get_coref_features(candidates)
-            write_feature_file(raw, outdir)
+            candidates, pairs = None, None
+            if num_cands is None and num_cp_cands is None:
+                candidates, pairs = get_candidates(tree, markers)
+            elif num_cands is None:
+                candidates, pairs = get_candidates(tree, markers, cp_cutoff=num_cp_cands)
+            elif num_cp_cands is None:
+                candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands)
+            else:
+                candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands, cp_cutoff=num_cp_cands)
+            get_tag_features(tree, candidates, pairs)
+            get_count_features(tree, markers, candidates, pairs)
+            get_coref_features(candidates, pairs)
+            write_feature_file(raw, outdir, candidates, pairs)
