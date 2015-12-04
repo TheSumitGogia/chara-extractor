@@ -84,10 +84,6 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
         respectively.
     """
 
-    # largest number of candidates to consider for different ngram sizes
-    cutoffs = [20, 20, 5]
-    cp_cutoff = 10
-
     # store candidates with counts per chapter
     ngrams = []
 
@@ -117,7 +113,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                             cp_index += 1
 
                         # filter for candidates with last word capital noun
-                        if noun and word[0].isupper():
+                        if noun and any(l.isupper() for l in word):
                             # loop through previous words, adding to noun phrase
                             curr_idx = token_idx
                             word_list = [word]
@@ -220,7 +216,6 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
             # stop if no n-grams are being passed
             if len(pass_grams) == 0:
                 more_grams = False
-    print filtered_grams
 
     # get frequenct candidates per chapter
     for cp_idx in range(len(ngrams)):
@@ -239,11 +234,16 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
 
     # changing list of candidate tuples with counts to feature map
     candidates = {}
+    total = 0
     for i in range(len(filtered_grams)):
         key = filtered_grams[i][0]
         count = filtered_grams[i][1]
+        total += count
         candidates[key] = {'count': count}
         candidates[key]['length'] = len(key)
+    for cand in candidates:
+        features = candidates[cand]
+        features['count_norm'] = features['count'] * 1.0 / total
 
     # create list of pair tuples with concatenated candidate features
     pairs = {}
@@ -310,7 +310,7 @@ def get_tag_features(tree, ngrams, pairs):
                     for token in tokens:
                         word = token[0].text
                         ner = 1 if token[5].text == "MISC" or token[5].text == "PERSON" else 0
-                        caps = 1 if token[0].text[0].isupper() else 0
+                        caps = 1 if any(l.isupper() for l in token[0].text) else 0
                         word_list, ner_list, caps_list = [], [], []
 
                         pwords.popleft()
