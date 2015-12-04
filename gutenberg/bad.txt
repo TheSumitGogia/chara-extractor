@@ -3,7 +3,6 @@
 a-game-of-thrones|a game of thrones|george r. r. martin
 absalom|absalom, absalom!|william faulkner
 adaynopigs|a day no pigs would die|robert newton peck
-afraidofwoolf|who's afraid of virginia woolf?|edward albee
 africa|out of africa|isak dinesen
 alas|alas, babylon|pat frank
 algernon|flowers for algernon|daniel keyes
@@ -11,7 +10,6 @@ alice|alice’s adventures in wonderland|lewis carroll
 allbutmylife|all but my life|gerda weissmann klein
 allquiet|all quiet on the western front|erich maria remarque
 allthepretty|all the pretty horses|cormac mccarthy
-amanforallseasons|a man for all seasons|robert bolt
 andthenthere|and then there were none|agatha christie
 angelasashes|angela’s ashes|frank mccourt
 animaldreams|animal dreams|barbara kingsolver
@@ -43,6 +41,7 @@ brooklyn|a tree grows in brooklyn|betty smith
 brothersam|my brother sam is dead|christopher collier & james lincoln collier
 cagedbird|i know why the caged bird sings|maya angelou
 cainemutiny|the caine mutiny|herman wouk
+candide|candide|voltaire
 canneryrow|cannery row|john steinbeck
 catch22|catch-22|joseph heller
 catcher|the catcher in the rye|j. d. salinger
@@ -54,30 +53,26 @@ charlie|charlie and the chocolate factory|roald dahl
 cheese|i am the cheese|robert cormier
 chekhov|chekhov stories|anton chekhov
 childhoodsend|childhood's end|arthur c. clarke
-childofthedark|child of the dark|carolina maria de jesus
 chocolatewar|the chocolate war|robert cormier
 cholera|love in the time of cholera|gabriel garcía márquez
 chrondeath|chronicle of a death foretold|gabriel garcía márquez
-cityladies|the book of the city of ladies|christine de pizan
 clockworkorange|a clockwork orange|anthony burgess
 coldmountain|cold mountain|charles frazier
 coldsassy|cold sassy tree|olive anne burns
 colorofwater|the color of water|james mcbride
 comingofage|coming of age in mississippi|anne moody
 contender|the contender|robert lipsyte
-crucible|the crucible|arthur miller
 cry|cry, the beloved country|alan paton
 cuckoo|one flew over the cuckoo’s nest|ken kesey
 dalloway|mrs. dalloway|virginia woolf
 dandelion|dandelion wine|ray bradbury
-dangerous|dangerous liaisons|pierre ambroise laclos
 davincicode|the da vinci code|dan brown
 deadmanwalking|dead man walking|sister helen prejean
 deathinthefamily|a death in the family|james agee
+demian|demian|hermann hesse
 denisovich|one day in the life of ivan denisovich|alexander solzhenitsyn
 diceyssong|dicey's song|cynthia voigt
 distantview|distant view of a minaret|alifa rifaat
-dollhouse|a doll’s house|henrik ibsen
 dolphins|island of the blue dolphins|scott o'dell
 eastofeden|east of eden|john steinbeck
 ellenfoster|ellen foster|kaye gibbons
@@ -99,7 +94,6 @@ giants|giants in the earth|o.e. rölvaag
 girlinterrupted|girl, interrupted|susanna kaysen
 giver|the giver|lois lowry
 goaskalice|go ask alice|anonymous
-godot|waiting for godot|samuel beckett
 gonewith|gone with the wind|margaret mitchell
 goodearth|the good earth|pearl s. buck
 gotellit|go tell it on the mountain|james baldwin
@@ -110,7 +104,6 @@ handmaid|the handmaid’s tale|margaret atwood
 harrypotter|harry potter and the sorcerer’s stone|j. k. rowling
 harrypotter5|harry potter and the order of the phoenix|j.k. rowling
 hatchet|hatchet|gary paulsen
-havingoursay|having our say: the delany sisters’ first 100 years|sarah louise delany and annie elizabeth delany, with amy hill hearth
 hisdarkmaterials|his dark materials|philip pullman
 hobbit|the hobbit|j. r. r. tolkien
 housedawn|house made of dawn|n. scott momaday
@@ -142,18 +135,15 @@ locust|the day of the locust|nathanael west
 lolita|lolita|vladimir nabokov
 lonelyhearts|miss lonelyhearts|nathanael west
 lonelyhunter|the heart is a lonely hunter|carson mccullers
-longdays|long day's journey into night|eugene o'neill
 lot49|the crying of lot 49|thomas pynchon
 luckyjim|lucky jim|kingsley amis
 lucy|lucy: a novel|jamaica kincaid
 malcolmx|the autobiography of malcolm x|malcolm x & alex haley
 mangostreet|the house on mango street|sandra cisneros
 manzanar|farewell to manzanar|jeanne wakatsuki houston
-margerykempe|the book of margery kempe|margery kempe
+martianchronicles|the martian chronicles|ray bradbury
 medievallife|a medieval life|judith bennett
-melvillestories|melville stories|herman melville
 memberwedding|the member of the wedding|carson mccullers
-menagerie|the glass menagerie|tennessee williams
 micemen|of mice and men|john steinbeck
 midnightschildren|midnight’s children|salman rushdie
 midwifestale|a midwife’s tale|laurel thatcher ulrich
@@ -169,10 +159,8 @@ nausea|nausea|jean-paul sartre
 nectar|nectar in a sieve|kamala markandaya
 nervouscondition|nervous conditions|tsitsi dangarembga
 nisa|nisa: the life and words of a !kung woman|marjorie shostak
-noexit|no exit|jean-paul sartre
 nolonger|no longer at ease|chinua achebe
 numberthestars|number the stars|lois lowry
-obasan|obasan|joy kogawa
 oldman|the old man and the sea|ernest hemingway
 oranges|oranges are not the only fruit|jeanette winterson
 ordinarypeople|ordinary people|judith guest
@@ -192,7 +180,6 @@ potter7|harry potter and the deathly hallows|j. k. rowling
 power|the power of one|bryce courtenay
 princessbride|the princess bride|william goldman
 purple|the color purple|alice walker
-raisin|a raisin in the sun|lorraine hansberry
 redfern|where the red fern grows|wilson rawls
 redpony|the red pony|john steinbeck
 remains|the remains of the day|kazuo ishiguro
@@ -201,7 +188,6 @@ rollofthunder|roll of thunder, hear my cry|mildred d. taylor
 roomofonesown|a room of one’s own|virginia woolf
 rosegarden|i never promised you a rose garden|joanne greenberg
 rubyfruit|rubyfruit jungle|rita mae brown
-salesman|death of a salesman|arthur miller
 sargasso|wide sargasso sea|jean rhys
 secondsex|the second sex|simone de beauvoir
 secretbees|the secret life of bees|sue monk kidd
@@ -218,7 +204,6 @@ soundfury|the sound and the fury|william faulkner
 sovereignty|the sovereignty and goodness of god|mary rowlandson
 steppenwolf|steppenwolf|hermann hesse
 strangeland|stranger in a strange land|robert a. heinlein
-streetcar|a streetcar named desire|tennessee williams
 sun|the sun also rises|ernest hemingway
 surfacing|surfacing|margaret atwood
 tender|tender is the night|f. scott fitzgerald
@@ -250,7 +235,6 @@ walden2|walden two|b.f. skinner
 warriorsdontcry|warriors don’t cry|melba patillo beals
 watership|watership down|richard adams
 whenheaven|when heaven and earth changed places|le ly hayslip
-whenlegends|when the legends die|hal borland
 whirlwind|journey into the whirlwind|eugenia ginzburg
 whitenoise|white noise|don delillo
 wicked|something wicked this way comes|ray bradbury
