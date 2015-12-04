@@ -1,5 +1,6 @@
 from gutenberg.acquire import load_etext
 from gutenberg.cleanup import strip_headers
+from unidecode import unidecode
 import os
 import string
 
@@ -14,7 +15,11 @@ def process_file(filename):
       try:
         with open(OUT_PATH % book, 'w') as out:
           for uid in uids:
-            text = strip_headers(load_etext(uid))
+            raw_text = load_etext(uid)
+            try:
+              text = strip_headers(unidecode(raw_text.encode('latin-1').decode('utf-8')))
+            except UnicodeDecodeError:
+              text = strip_headers(raw_text)
             out.write(text.encode('utf-8'))
       except ValueError as e:
         print '%s|%s' % (book, uid), e
