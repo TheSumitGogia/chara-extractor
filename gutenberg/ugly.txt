@@ -24,8 +24,6 @@ kindred|kindred|octavia butler
 land|the land|mildred d. taylor
 legs|legs|william kennedy
 lesmis|les misérables|victor hugo
-littleprince|the little prince|antoine de saint-exupéry
-medea|medea|euripides
 meridian|meridian|alice walker
 metamorph|the metamorphosis|franz kafka
 mythology|mythology|edith hamilton
