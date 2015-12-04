@@ -135,7 +135,9 @@ if __name__ == '__main__':
     ('Sawyers',): 1,
     ('Fred', 'Weasley'): 1,
     ('Freddy', 'Weasley'): 1,
-    ('Frederick', 'Weasley'): 1
+    ('Frederick', 'Weasley'): 1,
+    ('Tweedledee',): 1,
+    ('Tweedledum',): 1
   }
 
   import pprint
