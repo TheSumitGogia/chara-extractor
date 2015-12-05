@@ -1,103 +1,103 @@
 ----------CANDIDATES----------
-('St.',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Skookum',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Lake',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Colt',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Lost',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Gar',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Salt',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Scotch',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Koona',): {'count': 3, 'length': 1, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Dolly',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('North',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('White',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Ysabel',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Skeet',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('East',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Santa',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Narwhal',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Teek',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Arctic',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Toots',): {'count': 4, 'length': 1, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Dat',): {'count': 5, 'length': 1, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('Dyea',): {'count': 5, 'length': 1, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('Skaguay',): {'count': 6, 'length': 1, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('Yukon',): {'count': 6, 'length': 1, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('Dub',): {'count': 6, 'length': 1, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('Northland',): {'count': 6, 'length': 1, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('Nig',): {'count': 6, 'length': 1, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('Pike',): {'count': 6, 'length': 1, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('Curly',): {'count': 6, 'length': 1, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('Billee',): {'count': 7, 'length': 1, 'count_norm_book': 3.991424140133199e-05, 'count_norm_char': 0.0018018018018018018}
-('Manuel',): {'count': 7, 'length': 1, 'count_norm_book': 3.991424140133199e-05, 'count_norm_char': 0.0018018018018018018}
-('Matthewson',): {'count': 7, 'length': 1, 'count_norm_book': 3.991424140133199e-05, 'count_norm_char': 0.0018018018018018018}
-('Mercedes',): {'count': 8, 'length': 1, 'count_norm_book': 4.5616275887236564e-05, 'count_norm_char': 0.002059202059202059}
-('Southland',): {'count': 8, 'length': 1, 'count_norm_book': 4.5616275887236564e-05, 'count_norm_char': 0.002059202059202059}
-('Joe',): {'count': 9, 'length': 1, 'count_norm_book': 5.1318310373141134e-05, 'count_norm_char': 0.0023166023166023165}
-('Charles',): {'count': 9, 'length': 1, 'count_norm_book': 5.1318310373141134e-05, 'count_norm_char': 0.0023166023166023165}
-('Yeehats',): {'count': 10, 'length': 1, 'count_norm_book': 5.7020344859045705e-05, 'count_norm_char': 0.002574002574002574}
-('Hans',): {'count': 14, 'length': 1, 'count_norm_book': 7.982848280266399e-05, 'count_norm_char': 0.0036036036036036037}
-('Dave',): {'count': 16, 'length': 1, 'count_norm_book': 9.123255177447313e-05, 'count_norm_char': 0.004118404118404118}
-('Judge',): {'count': 16, 'length': 1, 'count_norm_book': 9.123255177447313e-05, 'count_norm_char': 0.004118404118404118}
-('Pete',): {'count': 16, 'length': 1, 'count_norm_book': 9.123255177447313e-05, 'count_norm_char': 0.004118404118404118}
-('Dawson',): {'count': 20, 'length': 1, 'count_norm_book': 0.00011404068971809141, 'count_norm_char': 0.005148005148005148}
-('Hal',): {'count': 24, 'length': 1, 'count_norm_book': 0.0001368488276617097, 'count_norm_char': 0.006177606177606178}
-('Sol-leks',): {'count': 25, 'length': 1, 'count_norm_book': 0.00014255086214761428, 'count_norm_char': 0.006435006435006435}
-('Perrault',): {'count': 26, 'length': 1, 'count_norm_book': 0.00014825289663351885, 'count_norm_char': 0.0066924066924066924}
-('John',): {'count': 31, 'length': 1, 'count_norm_book': 0.0001767630690630417, 'count_norm_char': 0.00797940797940798}
-('Thornton',): {'count': 35, 'length': 1, 'count_norm_book': 0.00019957120700665997, 'count_norm_char': 0.009009009009009009}
-('Francois',): {'count': 36, 'length': 1, 'count_norm_book': 0.00020527324149256454, 'count_norm_char': 0.009266409266409266}
-('Spitz',): {'count': 54, 'length': 1, 'count_norm_book': 0.0003079098622388468, 'count_norm_char': 0.013899613899613899}
-('Buck',): {'count': 261, 'length': 1, 'count_norm_book': 0.001488231000821093, 'count_norm_char': 0.06718146718146718}
-('The', 'wolf'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('St.', 'Bernard'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'Southland'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Lost', 'Cabin'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'malingerer'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'Skookum'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'Lost'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'hand'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'East'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'woman'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Dat', 'Buck'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'stranger'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Salt', 'Water'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('dat', 'Spitz'): {'count': 3, 'length': 2, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Santa', 'Clara'): {'count': 4, 'length': 2, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('The', 'driver'): {'count': 4, 'length': 2, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('the', 'driver'): {'count': 4, 'length': 2, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('the', 'face'): {'count': 4, 'length': 2, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('the', 'Narwhal'): {'count': 4, 'length': 2, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Judge', 'Miller'): {'count': 5, 'length': 2, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('the', 'bull'): {'count': 5, 'length': 2, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('the', 'Yukon'): {'count': 5, 'length': 2, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('the', 'whip'): {'count': 5, 'length': 2, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('the', 'Northland'): {'count': 5, 'length': 2, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('the', 'wolf'): {'count': 5, 'length': 2, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('the', 'pain'): {'count': 5, 'length': 2, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('dat', 'Buck'): {'count': 6, 'length': 2, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('the', 'life'): {'count': 6, 'length': 2, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('the', 'sun'): {'count': 6, 'length': 2, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('the', 'creek'): {'count': 6, 'length': 2, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('The', 'man'): {'count': 6, 'length': 2, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('the', 'Judge'): {'count': 10, 'length': 2, 'count_norm_book': 5.7020344859045705e-05, 'count_norm_char': 0.002574002574002574}
-('the', 'Yeehats'): {'count': 10, 'length': 2, 'count_norm_book': 5.7020344859045705e-05, 'count_norm_char': 0.002574002574002574}
-('the', 'head'): {'count': 11, 'length': 2, 'count_norm_book': 6.272237934495028e-05, 'count_norm_char': 0.0028314028314028314}
-('the', 'end'): {'count': 18, 'length': 2, 'count_norm_book': 0.00010263662074628227, 'count_norm_char': 0.004633204633204633}
-('John', 'Thornton'): {'count': 30, 'length': 2, 'count_norm_book': 0.00017106103457713713, 'count_norm_char': 0.007722007722007722}
-('the', 'man'): {'count': 38, 'length': 2, 'count_norm_book': 0.0002166773104643737, 'count_norm_char': 0.009781209781209782}
-('the', 'wounded', 'bull'): {'count': 3, 'length': 3, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'sun-kissed', 'Santa'): {'count': 3, 'length': 3, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'Lost', 'Cabin'): {'count': 3, 'length': 3, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Thornton', "'s", 'hand'): {'count': 3, 'length': 3, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Skeet', 'and', 'Nig'): {'count': 3, 'length': 3, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('Francois', "'s", 'whip'): {'count': 4, 'length': 3, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('Santa', 'Clara', 'Valley'): {'count': 4, 'length': 3, 'count_norm_book': 2.2808137943618282e-05, 'count_norm_char': 0.0010296010296010295}
-('the', 'hairy', 'man'): {'count': 5, 'length': 3, 'count_norm_book': 2.8510172429522852e-05, 'count_norm_char': 0.001287001287001287}
-('Charles', 'and', 'Hal'): {'count': 6, 'length': 3, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('the', 'wild', 'brother'): {'count': 6, 'length': 3, 'count_norm_book': 3.421220691542742e-05, 'count_norm_char': 0.0015444015444015444}
-('Dave', 'and', 'Sol-leks'): {'count': 7, 'length': 3, 'count_norm_book': 3.991424140133199e-05, 'count_norm_char': 0.0018018018018018018}
-('Perrault', 'and', 'Francois'): {'count': 7, 'length': 3, 'count_norm_book': 3.991424140133199e-05, 'count_norm_char': 0.0018018018018018018}
-('Hans', 'and', 'Pete'): {'count': 7, 'length': 3, 'count_norm_book': 3.991424140133199e-05, 'count_norm_char': 0.0018018018018018018}
-('the', 'sun-kissed', 'Santa', 'Clara'): {'count': 3, 'length': 4, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
-('the', 'sun-kissed', 'Santa', 'Clara', 'Valley'): {'count': 3, 'length': 5, 'count_norm_book': 1.710610345771371e-05, 'count_norm_char': 0.0007722007722007722}
+('St.',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Skookum',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Lake',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Colt',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Lost',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Gar',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Salt',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Scotch',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Koona',): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 1, 'count_norm_char': 0.0007722007722007722}
+('Dolly',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('North',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('White',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('Ysabel',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('Skeet',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('East',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('Santa',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('Narwhal',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('Teek',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('Arctic',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('Toots',): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 1, 'count_norm_char': 0.0010296010296010295}
+('Dat',): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 1, 'count_norm_char': 0.001287001287001287}
+('Dyea',): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 1, 'count_norm_char': 0.001287001287001287}
+('Skaguay',): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 1, 'count_norm_char': 0.0015444015444015444}
+('Yukon',): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 1, 'count_norm_char': 0.0015444015444015444}
+('Dub',): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 1, 'count_norm_char': 0.0015444015444015444}
+('Northland',): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 1, 'count_norm_char': 0.0015444015444015444}
+('Nig',): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 1, 'count_norm_char': 0.0015444015444015444}
+('Pike',): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 1, 'count_norm_char': 0.0015444015444015444}
+('Curly',): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 1, 'count_norm_char': 0.0015444015444015444}
+('Billee',): {'count': 7, 'count_norm_length': 3.991424140133199e-05, 'length': 1, 'count_norm_char': 0.0018018018018018018}
+('Manuel',): {'count': 7, 'count_norm_length': 3.991424140133199e-05, 'length': 1, 'count_norm_char': 0.0018018018018018018}
+('Matthewson',): {'count': 7, 'count_norm_length': 3.991424140133199e-05, 'length': 1, 'count_norm_char': 0.0018018018018018018}
+('Mercedes',): {'count': 8, 'count_norm_length': 4.5616275887236564e-05, 'length': 1, 'count_norm_char': 0.002059202059202059}
+('Southland',): {'count': 8, 'count_norm_length': 4.5616275887236564e-05, 'length': 1, 'count_norm_char': 0.002059202059202059}
+('Joe',): {'count': 9, 'count_norm_length': 5.1318310373141134e-05, 'length': 1, 'count_norm_char': 0.0023166023166023165}
+('Charles',): {'count': 9, 'count_norm_length': 5.1318310373141134e-05, 'length': 1, 'count_norm_char': 0.0023166023166023165}
+('Yeehats',): {'count': 10, 'count_norm_length': 5.7020344859045705e-05, 'length': 1, 'count_norm_char': 0.002574002574002574}
+('Hans',): {'count': 14, 'count_norm_length': 7.982848280266399e-05, 'length': 1, 'count_norm_char': 0.0036036036036036037}
+('Dave',): {'count': 16, 'count_norm_length': 9.123255177447313e-05, 'length': 1, 'count_norm_char': 0.004118404118404118}
+('Judge',): {'count': 16, 'count_norm_length': 9.123255177447313e-05, 'length': 1, 'count_norm_char': 0.004118404118404118}
+('Pete',): {'count': 16, 'count_norm_length': 9.123255177447313e-05, 'length': 1, 'count_norm_char': 0.004118404118404118}
+('Dawson',): {'count': 20, 'count_norm_length': 0.00011404068971809141, 'length': 1, 'count_norm_char': 0.005148005148005148}
+('Hal',): {'count': 24, 'count_norm_length': 0.0001368488276617097, 'length': 1, 'count_norm_char': 0.006177606177606178}
+('Sol-leks',): {'count': 25, 'count_norm_length': 0.00014255086214761428, 'length': 1, 'count_norm_char': 0.006435006435006435}
+('Perrault',): {'count': 26, 'count_norm_length': 0.00014825289663351885, 'length': 1, 'count_norm_char': 0.0066924066924066924}
+('John',): {'count': 31, 'count_norm_length': 0.0001767630690630417, 'length': 1, 'count_norm_char': 0.00797940797940798}
+('Thornton',): {'count': 35, 'count_norm_length': 0.00019957120700665997, 'length': 1, 'count_norm_char': 0.009009009009009009}
+('Francois',): {'count': 36, 'count_norm_length': 0.00020527324149256454, 'length': 1, 'count_norm_char': 0.009266409266409266}
+('Spitz',): {'count': 54, 'count_norm_length': 0.0003079098622388468, 'length': 1, 'count_norm_char': 0.013899613899613899}
+('Buck',): {'count': 261, 'count_norm_length': 0.001488231000821093, 'length': 1, 'count_norm_char': 0.06718146718146718}
+('The', 'wolf'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('St.', 'Bernard'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('the', 'Southland'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('Lost', 'Cabin'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('the', 'malingerer'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('the', 'Skookum'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('the', 'Lost'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('the', 'hand'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('the', 'East'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('the', 'woman'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('Dat', 'Buck'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('the', 'stranger'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('Salt', 'Water'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('dat', 'Spitz'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 2, 'count_norm_char': 0.0007722007722007722}
+('Santa', 'Clara'): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 2, 'count_norm_char': 0.0010296010296010295}
+('The', 'driver'): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 2, 'count_norm_char': 0.0010296010296010295}
+('the', 'driver'): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 2, 'count_norm_char': 0.0010296010296010295}
+('the', 'face'): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 2, 'count_norm_char': 0.0010296010296010295}
+('the', 'Narwhal'): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 2, 'count_norm_char': 0.0010296010296010295}
+('Judge', 'Miller'): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 2, 'count_norm_char': 0.001287001287001287}
+('the', 'bull'): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 2, 'count_norm_char': 0.001287001287001287}
+('the', 'Yukon'): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 2, 'count_norm_char': 0.001287001287001287}
+('the', 'whip'): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 2, 'count_norm_char': 0.001287001287001287}
+('the', 'Northland'): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 2, 'count_norm_char': 0.001287001287001287}
+('the', 'wolf'): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 2, 'count_norm_char': 0.001287001287001287}
+('the', 'pain'): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 2, 'count_norm_char': 0.001287001287001287}
+('dat', 'Buck'): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 2, 'count_norm_char': 0.0015444015444015444}
+('the', 'life'): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 2, 'count_norm_char': 0.0015444015444015444}
+('the', 'sun'): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 2, 'count_norm_char': 0.0015444015444015444}
+('the', 'creek'): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 2, 'count_norm_char': 0.0015444015444015444}
+('The', 'man'): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 2, 'count_norm_char': 0.0015444015444015444}
+('the', 'Judge'): {'count': 10, 'count_norm_length': 5.7020344859045705e-05, 'length': 2, 'count_norm_char': 0.002574002574002574}
+('the', 'Yeehats'): {'count': 10, 'count_norm_length': 5.7020344859045705e-05, 'length': 2, 'count_norm_char': 0.002574002574002574}
+('the', 'head'): {'count': 11, 'count_norm_length': 6.272237934495028e-05, 'length': 2, 'count_norm_char': 0.0028314028314028314}
+('the', 'end'): {'count': 18, 'count_norm_length': 0.00010263662074628227, 'length': 2, 'count_norm_char': 0.004633204633204633}
+('John', 'Thornton'): {'count': 30, 'count_norm_length': 0.00017106103457713713, 'length': 2, 'count_norm_char': 0.007722007722007722}
+('the', 'man'): {'count': 38, 'count_norm_length': 0.0002166773104643737, 'length': 2, 'count_norm_char': 0.009781209781209782}
+('the', 'wounded', 'bull'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 3, 'count_norm_char': 0.0007722007722007722}
+('the', 'sun-kissed', 'Santa'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 3, 'count_norm_char': 0.0007722007722007722}
+('the', 'Lost', 'Cabin'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 3, 'count_norm_char': 0.0007722007722007722}
+('Thornton', "'s", 'hand'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 3, 'count_norm_char': 0.0007722007722007722}
+('Skeet', 'and', 'Nig'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 3, 'count_norm_char': 0.0007722007722007722}
+('Francois', "'s", 'whip'): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 3, 'count_norm_char': 0.0010296010296010295}
+('Santa', 'Clara', 'Valley'): {'count': 4, 'count_norm_length': 2.2808137943618282e-05, 'length': 3, 'count_norm_char': 0.0010296010296010295}
+('the', 'hairy', 'man'): {'count': 5, 'count_norm_length': 2.8510172429522852e-05, 'length': 3, 'count_norm_char': 0.001287001287001287}
+('Charles', 'and', 'Hal'): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 3, 'count_norm_char': 0.0015444015444015444}
+('the', 'wild', 'brother'): {'count': 6, 'count_norm_length': 3.421220691542742e-05, 'length': 3, 'count_norm_char': 0.0015444015444015444}
+('Dave', 'and', 'Sol-leks'): {'count': 7, 'count_norm_length': 3.991424140133199e-05, 'length': 3, 'count_norm_char': 0.0018018018018018018}
+('Perrault', 'and', 'Francois'): {'count': 7, 'count_norm_length': 3.991424140133199e-05, 'length': 3, 'count_norm_char': 0.0018018018018018018}
+('Hans', 'and', 'Pete'): {'count': 7, 'count_norm_length': 3.991424140133199e-05, 'length': 3, 'count_norm_char': 0.0018018018018018018}
+('the', 'sun-kissed', 'Santa', 'Clara'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 4, 'count_norm_char': 0.0007722007722007722}
+('the', 'sun-kissed', 'Santa', 'Clara', 'Valley'): {'count': 3, 'count_norm_length': 1.710610345771371e-05, 'length': 5, 'count_norm_char': 0.0007722007722007722}

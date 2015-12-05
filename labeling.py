@@ -1,5 +1,5 @@
 from subprocess import check_call, check_output
-import os, re, unicodedata, string, subprocess
+import os, re, unicodedata, string, subprocess, operator
 from disambiguation import *
 from optparse import OptionParser
 import networkx as nx
@@ -22,13 +22,17 @@ def strict_fuzzy_match(s1, s2):
     # ignore plural macthing
     if s2 == s1 + 's' or s1 == s2 + 's':
         return 0
-    if (s1 not in ALL_TITLES and s2 not in ALL_TITLES) and fuzz.ratio(s1, s2) >= 80:
-        return fuzz.ratio(s1, s2)/100.0
-    else:
-        return 0
+    if (s1 not in ALL_TITLES and s2 not in ALL_TITLES):
+        if s2.endswith('.') and s1.startswith(s2[:-1]):
+            return 0.5
+        if fuzz.ratio(s1, s2) >= 80:
+            return fuzz.ratio(s1, s2)/100.0
+    return 0
 
 def strict_fuzzy_contains_tuple(t_outer, t_inner):
     if len(t_inner) == 0:
+        return 0
+    if len(t_inner) == 1 and t_inner[0] in ALL_TITLES:
         return 0
     inner_idx=0
     score_sum = 0.0
@@ -40,6 +44,9 @@ def strict_fuzzy_contains_tuple(t_outer, t_inner):
                 # perfer firstname matching
                 score_sum += score + (0.5 if outer_idx==0 else 0)
                 inner_idx+=1
+            else:
+                # penealize for the tokens that is not in t_inner
+                score_sum -= 0.1
             if inner_idx == len(t_inner):
                 return score_sum
     return 0
@@ -58,7 +65,7 @@ def strict_fuzzy_match_reference(ocand, cand):
     # then try title
     if cand[0] in ALL_TITLES: 
         if ocand[0] in ALL_TITLES:
-            if cand[0] != ocand[0]:
+            if ALL_TITLES[cand[0]] != ALL_TITLES[ocand[0]]:
                 return 0
             else:
                 return strict_fuzzy_contains_tuple(ocand[1:], cand[1:])
@@ -66,62 +73,47 @@ def strict_fuzzy_match_reference(ocand, cand):
         score = strict_fuzzy_contains_tuple(ocand, cand[1:])
         if score > 0:
             first_name = ocand[0].lower()
-            if first_name in gender_dict:
+            if cand[0] in OTHER_TITLES:
+                return score + 0.2
+            elif first_name in gender_dict:
                 if gender_dict[first_name] == 'MALE' and cand[0] in MALE_TITLES:
                     return score + 0.2
                 elif gender_dict[first_name] == 'FEMALE' and cand[0] in FEMALE_TITLES:
                     return score + 0.2
-            else:
-                return 0
-                #print (ocand, cand)
-                #print '%s not in firstname dict' % first_name
     return 0
 
-def find_matched_character_names(character_names, cand):
-    match = {}
-    for character_name in character_names:
-        score = strict_fuzzy_match_reference(character_name, cand)
-        if score > 0:
-            match[character_name] = score
-    # find no match in character that contains cand
-    # try the other direction, find characters that 
-    # is contained by cand
-    '''
-    if len(character) == 0:
-        for character in characters:
-            score = strict_fuzzy_match_reference(cand, character)
-            if score > 0:
-                match[character] = score
-    '''
-    return match
+def match_to_any_names(character_names, cand):
+    return max([strict_fuzzy_match_reference(character_name, cand) for character_name in character_names])
 
-def match_candidates_and_characters(characters, all_candidates):
-    labels = dict([(cand, "") for cand in all_candidates])
-    references = {}
-    # references is a map that maps difference names we got from sparknotes 
-    # to characters
-    for character in characters:
-        for name in characters[character] + [character]:
-            tokens = tuple(name.replace(',', ' ').replace('\'s ', ' \'s ').replace('s\'', 's \' ').split())
-            references[tokens] = character
-    names = references.keys()
-
+def match_candidates_and_characters(characters, candidates):
+    labels = dict([(cand, "") for cand in candidates])
+    matches = dict([(character, {}) for character in characters])
+    
     # matches is a map that maps characters to a list of candidates that can 
     # represent this character
-    matches = dict([(character, {}) for character in characters])
-    for cand in all_candidates:
-        possible_matches = find_matched_character_names(names, cand)
-        for match in possible_matches:
-            character = references[match]
-            if cand in matches[character]:
-                matches[character][cand] = max(possible_matches[match], matches[character][cand])
-            else:
-                matches[character][cand] = possible_matches[match]
+    for character in characters:
+        names = []
+        for name in [character] + characters[character]:
+            names.append(tuple(name.replace(',', ' ').replace('\'s ', ' \'s ').replace('s\'', 's \' ').split()))
+        for cand in candidates:
+            score = match_to_any_names(names, cand)
+            if score > 0:
+                matches[character][cand] = score
+        # if don't find any match, try the other direction
+        # sparknote character name might be contained by some candidate names
+        if len(matches[character]) == 0:
+            scores = [strict_fuzzy_match_reference(cand, names[0]) for cand in candidates]
+            index, value = max(enumerate(scores), key=operator.itemgetter(1))
+            if value > 0:
+                matches[character][candidates[index]] = value
+        
+        if verbose:
+            print "%s: %s" % (character, str(matches[character]))
     
     # generate a graph from matches and run max matching
     G = nx.Graph()
     G.add_nodes_from(characters, bipartite=0)
-    G.add_nodes_from(all_candidates, bipartite=1)
+    G.add_nodes_from(candidates, bipartite=1)
     for character in matches:
         for cand in matches[character]:
             G.add_edge(character, cand, weight=matches[character][cand])
@@ -182,14 +174,14 @@ def label_book(book, temp):
     else:
         features = eval(features[0])
 
-    all_candidates = features.keys()
+    candidates = features.keys()
     try:
         with open('sparknotes/%s_characters.txt' % book) as f:
             characters = eval(f.readline())
     except:
         print 'sparknotes/%s_characters.txt does not exist!' % book
         return -1
-    return match_candidates_and_characters(characters, all_candidates)
+    return match_candidates_and_characters(characters, candidates)
 
 if __name__ == '__main__':
     parser = OptionParser()

@@ -1,0 +1,51 @@
+----------CANDIDATES----------
+('Jetavana',): {'count': 5, 'count_norm_length': 2.3022589765077494e-05, 'length': 1, 'count_norm_char': 0.0007108330963889679}
+('Nirvana',): {'count': 9, 'count_norm_length': 4.144066157713949e-05, 'length': 1, 'count_norm_char': 0.0012794995735001423}
+('Sansara',): {'count': 11, 'count_norm_length': 5.0649697483170486e-05, 'length': 1, 'count_norm_char': 0.0015638328120557293}
+('Atman',): {'count': 15, 'count_norm_length': 6.906776929523248e-05, 'length': 1, 'count_norm_char': 0.0021324992891669035}
+('Kamaswami',): {'count': 19, 'count_norm_length': 8.748584110729448e-05, 'length': 1, 'count_norm_char': 0.002701165766278078}
+('Brahmans',): {'count': 24, 'count_norm_length': 0.00011050843087237197, 'length': 1, 'count_norm_char': 0.0034119988626670457}
+('Om',): {'count': 26, 'count_norm_length': 0.00011971746677840296, 'length': 1, 'count_norm_char': 0.003696332101222633}
+('Samanas',): {'count': 41, 'count_norm_length': 0.00018878523607363546, 'length': 1, 'count_norm_char': 0.005828831390389536}
+('Brahman',): {'count': 43, 'count_norm_length': 0.00019799427197966644, 'length': 1, 'count_norm_char': 0.006113164628945123}
+('Gotama',): {'count': 43, 'count_norm_length': 0.00019799427197966644, 'length': 1, 'count_norm_char': 0.006113164628945123}
+('Buddha',): {'count': 51, 'count_norm_length': 0.00023483041560379045, 'length': 1, 'count_norm_char': 0.0072504975831674725}
+('Vasudeva',): {'count': 52, 'count_norm_length': 0.00023943493355680593, 'length': 1, 'count_norm_char': 0.007392664202445266}
+('Samana',): {'count': 63, 'count_norm_length': 0.0002900846310399764, 'length': 1, 'count_norm_char': 0.008956497014500995}
+('Kamala',): {'count': 67, 'count_norm_length': 0.00030850270285203845, 'length': 1, 'count_norm_char': 0.009525163491612169}
+('Govinda',): {'count': 114, 'count_norm_length': 0.0005249150466437669, 'length': 1, 'count_norm_char': 0.01620699459766847}
+('Siddhartha',): {'count': 284, 'count_norm_length': 0.0013076830986564016, 'length': 1, 'count_norm_char': 0.04037531987489337}
+('the', 'man'): {'count': 3, 'count_norm_length': 1.3813553859046496e-05, 'length': 2, 'count_norm_char': 0.0004264998578333807}
+('innermost', 'self'): {'count': 3, 'count_norm_length': 1.3813553859046496e-05, 'length': 2, 'count_norm_char': 0.0004264998578333807}
+('the', 'mouth'): {'count': 3, 'count_norm_length': 1.3813553859046496e-05, 'length': 2, 'count_norm_char': 0.0004264998578333807}
+('the', 'friend'): {'count': 3, 'count_norm_length': 1.3813553859046496e-05, 'length': 2, 'count_norm_char': 0.0004264998578333807}
+('word', 'Om'): {'count': 3, 'count_norm_length': 1.3813553859046496e-05, 'length': 2, 'count_norm_char': 0.0004264998578333807}
+('the', 'light'): {'count': 4, 'count_norm_length': 1.8418071812061996e-05, 'length': 2, 'count_norm_char': 0.0005686664771111743}
+('the', 'name'): {'count': 4, 'count_norm_length': 1.8418071812061996e-05, 'length': 2, 'count_norm_char': 0.0005686664771111743}
+('the', 'son'): {'count': 5, 'count_norm_length': 2.3022589765077494e-05, 'length': 2, 'count_norm_char': 0.0007108330963889679}
+('the', 'Samana'): {'count': 5, 'count_norm_length': 2.3022589765077494e-05, 'length': 2, 'count_norm_char': 0.0007108330963889679}
+('the', 'pain'): {'count': 5, 'count_norm_length': 2.3022589765077494e-05, 'length': 2, 'count_norm_char': 0.0007108330963889679}
+('the', 'town'): {'count': 6, 'count_norm_length': 2.7627107718092992e-05, 'length': 2, 'count_norm_char': 0.0008529997156667614}
+('the', 'end'): {'count': 6, 'count_norm_length': 2.7627107718092992e-05, 'length': 2, 'count_norm_char': 0.0008529997156667614}
+('the', 'life'): {'count': 7, 'count_norm_length': 3.2231625671108493e-05, 'length': 2, 'count_norm_char': 0.000995166334944555}
+('the', 'Atman'): {'count': 7, 'count_norm_length': 3.2231625671108493e-05, 'length': 2, 'count_norm_char': 0.000995166334944555}
+('the', 'Om'): {'count': 7, 'count_norm_length': 3.2231625671108493e-05, 'length': 2, 'count_norm_char': 0.000995166334944555}
+('the', 'woman'): {'count': 7, 'count_norm_length': 3.2231625671108493e-05, 'length': 2, 'count_norm_char': 0.000995166334944555}
+('the', 'father'): {'count': 8, 'count_norm_length': 3.683614362412399e-05, 'length': 2, 'count_norm_char': 0.0011373329542223485}
+('the', 'sun'): {'count': 8, 'count_norm_length': 3.683614362412399e-05, 'length': 2, 'count_norm_char': 0.0011373329542223485}
+('the', 'face'): {'count': 8, 'count_norm_length': 3.683614362412399e-05, 'length': 2, 'count_norm_char': 0.0011373329542223485}
+('the', 'merchant'): {'count': 9, 'count_norm_length': 4.144066157713949e-05, 'length': 2, 'count_norm_char': 0.0012794995735001423}
+('the', 'Brahman'): {'count': 10, 'count_norm_length': 4.604517953015499e-05, 'length': 2, 'count_norm_char': 0.0014216661927779358}
+('the', 'voice'): {'count': 10, 'count_norm_length': 4.604517953015499e-05, 'length': 2, 'count_norm_char': 0.0014216661927779358}
+('the', 'self'): {'count': 11, 'count_norm_length': 5.0649697483170486e-05, 'length': 2, 'count_norm_char': 0.0015638328120557293}
+('the', 'Brahmans'): {'count': 12, 'count_norm_length': 5.5254215436185984e-05, 'length': 2, 'count_norm_char': 0.0017059994313335229}
+('the', 'ferryman'): {'count': 22, 'count_norm_length': 0.00010129939496634097, 'length': 2, 'count_norm_char': 0.0031276656241114587}
+('the', 'Buddha'): {'count': 25, 'count_norm_length': 0.00011511294882538747, 'length': 2, 'count_norm_char': 0.0035541654819448393}
+('the', 'Samanas'): {'count': 27, 'count_norm_length': 0.00012432198473141847, 'length': 2, 'count_norm_char': 0.0038384987205004263}
+('the', 'boy'): {'count': 31, 'count_norm_length': 0.00014274005654348046, 'length': 2, 'count_norm_char': 0.004407165197611601}
+('the', 'holy', 'Om'): {'count': 3, 'count_norm_length': 1.3813553859046496e-05, 'length': 3, 'count_norm_char': 0.0004264998578333807}
+('the', 'exalted', 'Buddha'): {'count': 4, 'count_norm_length': 1.8418071812061996e-05, 'length': 3, 'count_norm_char': 0.0005686664771111743}
+('the', 'young', 'man'): {'count': 4, 'count_norm_length': 1.8418071812061996e-05, 'length': 3, 'count_norm_char': 0.0005686664771111743}
+('the', 'old', 'man'): {'count': 7, 'count_norm_length': 3.2231625671108493e-05, 'length': 3, 'count_norm_char': 0.000995166334944555}
+('son', 'of', 'a', 'Brahman'): {'count': 6, 'count_norm_length': 2.7627107718092992e-05, 'length': 4, 'count_norm_char': 0.0008529997156667614}
+('the', 'son', 'of', 'a', 'Brahman'): {'count': 3, 'count_norm_length': 1.3813553859046496e-05, 'length': 5, 'count_norm_char': 0.0004264998578333807}

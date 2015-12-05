@@ -1,242 +1,257 @@
 ----------CANDIDATES----------
-('Limekilns',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('I',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Government',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Hielands',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('London',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Kinlochaline',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Morven',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('August',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Ardgour',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Duke',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('July',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Maccolls',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Preston',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Island',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Jennet',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Hope',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Old',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Athole',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Glen',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Whigs',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Queen',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Mamore',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Bible',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Dod',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Argyle',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Glasgow',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('June',): {'count': 3, 'length': 1, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Eh',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Lowland',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('A.',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Troth',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Dear',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Corrynakiegh',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Cramond',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Jacobite',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Mungo',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Hoot-toot',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Factor',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Dysart',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Wheesht',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Act',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Hawes',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Ou',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Hielandman',): {'count': 4, 'length': 1, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Man',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Maclarens',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Latin',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Balachulish',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Stewarts',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Alexander',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Highlander',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Macgregor',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Lord',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Stirling',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Shuan',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Henderland',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Linnhe',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Christianity',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Lowlands',): {'count': 5, 'length': 1, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Ben',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Essendean',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Hieland',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Sir',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Riach',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Scotch',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Ross',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Balquhidder',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Duror',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Hoot',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Uncle',): {'count': 6, 'length': 1, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Loch',): {'count': 7, 'length': 1, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('Queensferry',): {'count': 7, 'length': 1, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('Highlanders',): {'count': 7, 'length': 1, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('Iona',): {'count': 7, 'length': 1, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('Isle',): {'count': 7, 'length': 1, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('Sound',): {'count': 7, 'length': 1, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('Neil',): {'count': 7, 'length': 1, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('Aucharn',): {'count': 8, 'length': 1, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('Captain',): {'count': 8, 'length': 1, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('Ferry',): {'count': 8, 'length': 1, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('Stewart',): {'count': 8, 'length': 1, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('Highlands',): {'count': 8, 'length': 1, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('Glenure',): {'count': 9, 'length': 1, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('Earraid',): {'count': 9, 'length': 1, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('Torosay',): {'count': 9, 'length': 1, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('Glens',): {'count': 9, 'length': 1, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('John',): {'count': 10, 'length': 1, 'count_norm_book': 2.366875109467974e-05, 'count_norm_char': 0.0008204791598293403}
-('Edinburgh',): {'count': 10, 'length': 1, 'count_norm_book': 2.366875109467974e-05, 'count_norm_char': 0.0008204791598293403}
-('Forth',): {'count': 10, 'length': 1, 'count_norm_book': 2.366875109467974e-05, 'count_norm_char': 0.0008204791598293403}
-('Whig',): {'count': 10, 'length': 1, 'count_norm_book': 2.366875109467974e-05, 'count_norm_char': 0.0008204791598293403}
-('Colin',): {'count': 11, 'length': 1, 'count_norm_book': 2.6035626204147713e-05, 'count_norm_char': 0.0009025270758122744}
-('Rankeillor',): {'count': 11, 'length': 1, 'count_norm_book': 2.6035626204147713e-05, 'count_norm_char': 0.0009025270758122744}
-('Red',): {'count': 11, 'length': 1, 'count_norm_book': 2.6035626204147713e-05, 'count_norm_char': 0.0009025270758122744}
-('Na',): {'count': 12, 'length': 1, 'count_norm_book': 2.8402501313615684e-05, 'count_norm_char': 0.0009845749917952085}
-('France',): {'count': 12, 'length': 1, 'count_norm_book': 2.8402501313615684e-05, 'count_norm_char': 0.0009845749917952085}
-('Torrance',): {'count': 13, 'length': 1, 'count_norm_book': 3.076937642308366e-05, 'count_norm_char': 0.0010666229077781425}
-('Cage',): {'count': 13, 'length': 1, 'count_norm_book': 3.076937642308366e-05, 'count_norm_char': 0.0010666229077781425}
-('Duncan',): {'count': 13, 'length': 1, 'count_norm_book': 3.076937642308366e-05, 'count_norm_char': 0.0010666229077781425}
-('Covenant',): {'count': 14, 'length': 1, 'count_norm_book': 3.313625153255163e-05, 'count_norm_char': 0.0011486708237610766}
-('Ebenezer',): {'count': 15, 'length': 1, 'count_norm_book': 3.550312664201961e-05, 'count_norm_char': 0.0012307187397440104}
-('Mull',): {'count': 16, 'length': 1, 'count_norm_book': 3.787000175148758e-05, 'count_norm_char': 0.0013127666557269445}
-('Ardshiel',): {'count': 16, 'length': 1, 'count_norm_book': 3.787000175148758e-05, 'count_norm_char': 0.0013127666557269445}
-('Scotland',): {'count': 18, 'length': 1, 'count_norm_book': 4.260375197042353e-05, 'count_norm_char': 0.0014768624876928126}
-('Ransome',): {'count': 18, 'length': 1, 'count_norm_book': 4.260375197042353e-05, 'count_norm_char': 0.0014768624876928126}
-('Highland',): {'count': 18, 'length': 1, 'count_norm_book': 4.260375197042353e-05, 'count_norm_char': 0.0014768624876928126}
-('Campbells',): {'count': 19, 'length': 1, 'count_norm_book': 4.4970627079891504e-05, 'count_norm_char': 0.0015589104036757466}
-('Robin',): {'count': 19, 'length': 1, 'count_norm_book': 4.4970627079891504e-05, 'count_norm_char': 0.0015589104036757466}
-('English',): {'count': 19, 'length': 1, 'count_norm_book': 4.4970627079891504e-05, 'count_norm_char': 0.0015589104036757466}
-('God',): {'count': 20, 'length': 1, 'count_norm_book': 4.733750218935948e-05, 'count_norm_char': 0.0016409583196586807}
-('Campbell',): {'count': 21, 'length': 1, 'count_norm_book': 4.970437729882745e-05, 'count_norm_char': 0.0017230062356416147}
-('O',): {'count': 22, 'length': 1, 'count_norm_book': 5.2071252408295426e-05, 'count_norm_char': 0.0018050541516245488}
-('Davie',): {'count': 24, 'length': 1, 'count_norm_book': 5.680500262723137e-05, 'count_norm_char': 0.001969149983590417}
-('King',): {'count': 28, 'length': 1, 'count_norm_book': 6.627250306510327e-05, 'count_norm_char': 0.002297341647522153}
-('Cluny',): {'count': 28, 'length': 1, 'count_norm_book': 6.627250306510327e-05, 'count_norm_char': 0.002297341647522153}
-('Shaws',): {'count': 29, 'length': 1, 'count_norm_book': 6.863937817457124e-05, 'count_norm_char': 0.0023793895635050868}
-('Hoseason',): {'count': 31, 'length': 1, 'count_norm_book': 7.337312839350719e-05, 'count_norm_char': 0.002543485395470955}
-('James',): {'count': 41, 'length': 1, 'count_norm_book': 9.704187948818693e-05, 'count_norm_char': 0.0033639645553002954}
-('Appin',): {'count': 42, 'length': 1, 'count_norm_book': 9.94087545976549e-05, 'count_norm_char': 0.0034460124712832295}
-('Ay',): {'count': 46, 'length': 1, 'count_norm_book': 0.0001088762550355268, 'count_norm_char': 0.0037742041352149657}
-('I.',): {'count': 66, 'length': 1, 'count_norm_book': 0.00015621375722488627, 'count_norm_char': 0.005415162454873646}
-('David',): {'count': 82, 'length': 1, 'count_norm_book': 0.00019408375897637386, 'count_norm_char': 0.006727929110600591}
-('Alan',): {'count': 395, 'length': 1, 'count_norm_book': 0.0009349156682398497, 'count_norm_char': 0.032408926813258944}
-('the', 'Highland'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'Maclarens'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'king'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'Hope'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Loch', 'Rannoch'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'Shaws'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'shadow'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('David', 'man'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'stranger'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'skipper'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'Duke'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'wife'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'mate'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'Act'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('The', 'lawyer'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Preston', 'Pans'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'sort'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('man', 'Alan'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Old', 'Bailey'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Neil', 'Roy'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'Hielands'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Jennet', 'Clouston'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'barber'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('O', 'man'): {'count': 3, 'length': 2, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Colin', 'Roy'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Duncan', 'Stewart'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'English'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'creek'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('The', 'man'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'Lord'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'Isle'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Ben', 'Alder'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('The', 'sun'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'Hawes'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'murderer'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'back'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'voice'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('The', 'name'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'tail'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'moor'): {'count': 4, 'length': 2, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Colin', 'Campbell'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('the', 'Lowlands'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('the', 'Forth'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('the', 'mouth'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Captain', 'Hoseason'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('Linnhe', 'Loch'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('the', 'Linnhe'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('the', 'shot'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('the', 'foot'): {'count': 5, 'length': 2, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('the', 'hand'): {'count': 6, 'length': 2, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('the', 'landlord'): {'count': 6, 'length': 2, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('John', 'Breck'): {'count': 6, 'length': 2, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('Uncle', 'Ebenezer'): {'count': 6, 'length': 2, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('James', 'Stewart'): {'count': 6, 'length': 2, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('the', 'boy'): {'count': 6, 'length': 2, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('the', 'laird'): {'count': 6, 'length': 2, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('the', 'Ross'): {'count': 6, 'length': 2, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('the', 'Ferry'): {'count': 7, 'length': 2, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('the', 'Highlands'): {'count': 7, 'length': 2, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('the', 'Sound'): {'count': 7, 'length': 2, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('the', 'town'): {'count': 7, 'length': 2, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('the', 'Appin'): {'count': 7, 'length': 2, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('the', 'minister'): {'count': 7, 'length': 2, 'count_norm_book': 1.6568125766275816e-05, 'count_norm_char': 0.0005743354118805383}
-('the', 'King'): {'count': 8, 'length': 2, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('the', 'gentleman'): {'count': 8, 'length': 2, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('The', 'captain'): {'count': 8, 'length': 2, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('the', 'head'): {'count': 8, 'length': 2, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('the', 'Red'): {'count': 8, 'length': 2, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('the', 'lass'): {'count': 9, 'length': 2, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('the', 'Glens'): {'count': 9, 'length': 2, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('Red', 'Fox'): {'count': 9, 'length': 2, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('the', 'letter'): {'count': 10, 'length': 2, 'count_norm_book': 2.366875109467974e-05, 'count_norm_char': 0.0008204791598293403}
-('the', 'Campbells'): {'count': 10, 'length': 2, 'count_norm_book': 2.366875109467974e-05, 'count_norm_char': 0.0008204791598293403}
-('the', 'Cage'): {'count': 11, 'length': 2, 'count_norm_book': 2.6035626204147713e-05, 'count_norm_char': 0.0009025270758122744}
-('the', 'Covenant'): {'count': 12, 'length': 2, 'count_norm_book': 2.8402501313615684e-05, 'count_norm_char': 0.0009845749917952085}
-('King', 'George'): {'count': 13, 'length': 2, 'count_norm_book': 3.076937642308366e-05, 'count_norm_char': 0.0010666229077781425}
-('the', 'face'): {'count': 13, 'length': 2, 'count_norm_book': 3.076937642308366e-05, 'count_norm_char': 0.0010666229077781425}
-('David', 'Balfour'): {'count': 13, 'length': 2, 'count_norm_book': 3.076937642308366e-05, 'count_norm_char': 0.0010666229077781425}
-('the', 'rock'): {'count': 14, 'length': 2, 'count_norm_book': 3.313625153255163e-05, 'count_norm_char': 0.0011486708237610766}
-('the', 'end'): {'count': 15, 'length': 2, 'count_norm_book': 3.550312664201961e-05, 'count_norm_char': 0.0012307187397440104}
-('Alan', 'Breck'): {'count': 22, 'length': 2, 'count_norm_book': 5.2071252408295426e-05, 'count_norm_char': 0.0018050541516245488}
-('the', 'lawyer'): {'count': 27, 'length': 2, 'count_norm_book': 6.390562795563529e-05, 'count_norm_char': 0.002215293731539219}
-('the', 'sun'): {'count': 27, 'length': 2, 'count_norm_book': 6.390562795563529e-05, 'count_norm_char': 0.002215293731539219}
-('the', 'name'): {'count': 30, 'length': 2, 'count_norm_book': 7.100625328403921e-05, 'count_norm_char': 0.002461437479488021}
-('the', 'man'): {'count': 31, 'length': 2, 'count_norm_book': 7.337312839350719e-05, 'count_norm_char': 0.002543485395470955}
-('the', 'captain'): {'count': 70, 'length': 2, 'count_norm_book': 0.00016568125766275817, 'count_norm_char': 0.005743354118805382}
-('way', 'to', 'Aucharn'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'upper', 'hand'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'Good', 'People'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Thomson', "'s", 'kinsman'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('D.', 'of', 'A.'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Balfour', 'of', 'Shaws'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('brother', "'s", 'son'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('Alan', 'Breck', 'Stewart'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('end', 'of', 'Mull'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('sheriff', "'s", 'officer'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'old', 'gentleman'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'other', 'hand'): {'count': 3, 'length': 3, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'far', 'end'): {'count': 4, 'length': 3, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'little', 'man'): {'count': 4, 'length': 3, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('HOUSE', 'OF', 'SHAWS'): {'count': 4, 'length': 3, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('Isle', 'of', 'Mull'): {'count': 4, 'length': 3, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('country', 'of', 'Appin'): {'count': 4, 'length': 3, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('the', 'Linnhe', 'Loch'): {'count': 5, 'length': 3, 'count_norm_book': 1.183437554733987e-05, 'count_norm_char': 0.00041023957991467017}
-('king', "'s", 'name'): {'count': 6, 'length': 3, 'count_norm_book': 1.4201250656807842e-05, 'count_norm_char': 0.0004922874958976042}
-('the', 'Red', 'Fox'): {'count': 8, 'length': 3, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('house', 'of', 'Shaws'): {'count': 12, 'length': 3, 'count_norm_book': 2.8402501313615684e-05, 'count_norm_char': 0.0009845749917952085}
-('the', 'way', 'to', 'Aucharn'): {'count': 3, 'length': 4, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('the', 'Isle', 'of', 'Mull'): {'count': 3, 'length': 4, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('friend', 'from', 'the', 'Lowlands'): {'count': 3, 'length': 4, 'count_norm_book': 7.100625328403921e-06, 'count_norm_char': 0.0002461437479488021}
-('LAD', 'WITH', 'THE', 'SILVER'): {'count': 4, 'length': 4, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('THE', 'HOUSE', 'OF', 'SHAWS'): {'count': 4, 'length': 4, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('FLIGHT', 'IN', 'THE', 'HEATHER'): {'count': 8, 'length': 4, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('James', 'of', 'the', 'Glens'): {'count': 9, 'length': 4, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('the', 'house', 'of', 'Shaws'): {'count': 9, 'length': 4, 'count_norm_book': 2.1301875985211765e-05, 'count_norm_char': 0.0007384312438464063}
-('THE', 'LAD', 'WITH', 'THE', 'SILVER'): {'count': 4, 'length': 5, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('LAD', 'WITH', 'THE', 'SILVER', 'BUTTON'): {'count': 4, 'length': 5, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
-('THE', 'FLIGHT', 'IN', 'THE', 'HEATHER'): {'count': 8, 'length': 5, 'count_norm_book': 1.893500087574379e-05, 'count_norm_char': 0.0006563833278634722}
-('THE', 'LAD', 'WITH', 'THE', 'SILVER', 'BUTTON'): {'count': 4, 'length': 6, 'count_norm_book': 9.467500437871895e-06, 'count_norm_char': 0.0003281916639317361}
+('Limekilns',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('I',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Government',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Hielands',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('London',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Kinlochaline',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Morven',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('August',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Ardgour',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Duke',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('July',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Maccolls',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Preston',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Island',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Jennet',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Hope',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Old',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Athole',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Glen',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Whigs',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Queen',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Mamore',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Bible',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Dod',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Argyle',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Glasgow',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('June',): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 1, 'count_norm_char': 0.00023677979479084452}
+('Eh',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Lowland',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('A.',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Troth',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Dear',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Corrynakiegh',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Wheesht',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Cramond',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Jacobite',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Mungo',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Hoot-toot',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Factor',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Dysart',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Act',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Hawes',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Ou',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Hielandman',): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 1, 'count_norm_char': 0.00031570639305445933}
+('Man',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Maclarens',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Latin',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Balachulish',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Stewarts',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Alexander',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Highlander',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Macgregor',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Lord',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Stirling',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Shuan',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Henderland',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Linnhe',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Christianity',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Lowlands',): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 1, 'count_norm_char': 0.0003946329913180742}
+('Ben',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Essendean',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Hieland',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Sir',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Riach',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Scotch',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Ross',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Balquhidder',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Duror',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Hoot',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Uncle',): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 1, 'count_norm_char': 0.00047355958958168905}
+('Loch',): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 1, 'count_norm_char': 0.0005524861878453039}
+('Queensferry',): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 1, 'count_norm_char': 0.0005524861878453039}
+('Highlanders',): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 1, 'count_norm_char': 0.0005524861878453039}
+('Iona',): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 1, 'count_norm_char': 0.0005524861878453039}
+('Isle',): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 1, 'count_norm_char': 0.0005524861878453039}
+('Sound',): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 1, 'count_norm_char': 0.0005524861878453039}
+('Neil',): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 1, 'count_norm_char': 0.0005524861878453039}
+('Aucharn',): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 1, 'count_norm_char': 0.0006314127861089187}
+('Captain',): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 1, 'count_norm_char': 0.0006314127861089187}
+('Ferry',): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 1, 'count_norm_char': 0.0006314127861089187}
+('Stewart',): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 1, 'count_norm_char': 0.0006314127861089187}
+('Highlands',): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 1, 'count_norm_char': 0.0006314127861089187}
+('Glenure',): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 1, 'count_norm_char': 0.0007103393843725335}
+('Earraid',): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 1, 'count_norm_char': 0.0007103393843725335}
+('Torosay',): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 1, 'count_norm_char': 0.0007103393843725335}
+('Glens',): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 1, 'count_norm_char': 0.0007103393843725335}
+('John',): {'count': 10, 'count_norm_length': 2.366875109467974e-05, 'length': 1, 'count_norm_char': 0.0007892659826361484}
+('Forth',): {'count': 10, 'count_norm_length': 2.366875109467974e-05, 'length': 1, 'count_norm_char': 0.0007892659826361484}
+('Whig',): {'count': 10, 'count_norm_length': 2.366875109467974e-05, 'length': 1, 'count_norm_char': 0.0007892659826361484}
+('Edinburgh',): {'count': 10, 'count_norm_length': 2.366875109467974e-05, 'length': 1, 'count_norm_char': 0.0007892659826361484}
+('Colin',): {'count': 11, 'count_norm_length': 2.6035626204147713e-05, 'length': 1, 'count_norm_char': 0.0008681925808997632}
+('Rankeillor',): {'count': 11, 'count_norm_length': 2.6035626204147713e-05, 'length': 1, 'count_norm_char': 0.0008681925808997632}
+('Red',): {'count': 11, 'count_norm_length': 2.6035626204147713e-05, 'length': 1, 'count_norm_char': 0.0008681925808997632}
+('Na',): {'count': 12, 'count_norm_length': 2.8402501313615684e-05, 'length': 1, 'count_norm_char': 0.0009471191791633781}
+('France',): {'count': 12, 'count_norm_length': 2.8402501313615684e-05, 'length': 1, 'count_norm_char': 0.0009471191791633781}
+('Torrance',): {'count': 13, 'count_norm_length': 3.076937642308366e-05, 'length': 1, 'count_norm_char': 0.001026045777426993}
+('Cage',): {'count': 13, 'count_norm_length': 3.076937642308366e-05, 'length': 1, 'count_norm_char': 0.001026045777426993}
+('Duncan',): {'count': 13, 'count_norm_length': 3.076937642308366e-05, 'length': 1, 'count_norm_char': 0.001026045777426993}
+('Covenant',): {'count': 14, 'count_norm_length': 3.313625153255163e-05, 'length': 1, 'count_norm_char': 0.0011049723756906078}
+('Ebenezer',): {'count': 15, 'count_norm_length': 3.550312664201961e-05, 'length': 1, 'count_norm_char': 0.0011838989739542227}
+('Mull',): {'count': 16, 'count_norm_length': 3.787000175148758e-05, 'length': 1, 'count_norm_char': 0.0012628255722178373}
+('Ardshiel',): {'count': 16, 'count_norm_length': 3.787000175148758e-05, 'length': 1, 'count_norm_char': 0.0012628255722178373}
+('Scotland',): {'count': 18, 'count_norm_length': 4.260375197042353e-05, 'length': 1, 'count_norm_char': 0.001420678768745067}
+('Ransome',): {'count': 18, 'count_norm_length': 4.260375197042353e-05, 'length': 1, 'count_norm_char': 0.001420678768745067}
+('Highland',): {'count': 18, 'count_norm_length': 4.260375197042353e-05, 'length': 1, 'count_norm_char': 0.001420678768745067}
+('Campbells',): {'count': 19, 'count_norm_length': 4.4970627079891504e-05, 'length': 1, 'count_norm_char': 0.001499605367008682}
+('Robin',): {'count': 19, 'count_norm_length': 4.4970627079891504e-05, 'length': 1, 'count_norm_char': 0.001499605367008682}
+('English',): {'count': 19, 'count_norm_length': 4.4970627079891504e-05, 'length': 1, 'count_norm_char': 0.001499605367008682}
+('God',): {'count': 20, 'count_norm_length': 4.733750218935948e-05, 'length': 1, 'count_norm_char': 0.0015785319652722968}
+('Campbell',): {'count': 21, 'count_norm_length': 4.970437729882745e-05, 'length': 1, 'count_norm_char': 0.0016574585635359116}
+('O',): {'count': 22, 'count_norm_length': 5.2071252408295426e-05, 'length': 1, 'count_norm_char': 0.0017363851617995265}
+('Davie',): {'count': 24, 'count_norm_length': 5.680500262723137e-05, 'length': 1, 'count_norm_char': 0.0018942383583267562}
+('King',): {'count': 28, 'count_norm_length': 6.627250306510327e-05, 'length': 1, 'count_norm_char': 0.0022099447513812156}
+('Cluny',): {'count': 28, 'count_norm_length': 6.627250306510327e-05, 'length': 1, 'count_norm_char': 0.0022099447513812156}
+('Shaws',): {'count': 29, 'count_norm_length': 6.863937817457124e-05, 'length': 1, 'count_norm_char': 0.0022888713496448305}
+('Hoseason',): {'count': 31, 'count_norm_length': 7.337312839350719e-05, 'length': 1, 'count_norm_char': 0.00244672454617206}
+('James',): {'count': 41, 'count_norm_length': 9.704187948818693e-05, 'length': 1, 'count_norm_char': 0.0032359905288082084}
+('Appin',): {'count': 42, 'count_norm_length': 9.94087545976549e-05, 'length': 1, 'count_norm_char': 0.0033149171270718232}
+('Ay',): {'count': 46, 'count_norm_length': 0.0001088762550355268, 'length': 1, 'count_norm_char': 0.0036306235201262827}
+('I.',): {'count': 66, 'count_norm_length': 0.00015621375722488627, 'length': 1, 'count_norm_char': 0.005209155485398579}
+('David',): {'count': 82, 'count_norm_length': 0.00019408375897637386, 'length': 1, 'count_norm_char': 0.006471981057616417}
+('Alan',): {'count': 395, 'count_norm_length': 0.0009349156682398497, 'length': 1, 'count_norm_char': 0.031176006314127862}
+('the', 'Highland'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'Maclarens'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'king'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'Hope'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Loch', 'Rannoch'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'Shaws'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'Hielands'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'shadow'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('David', 'man'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'sort'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'stranger'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'skipper'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'Duke'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'wife'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'mate'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'Act'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('The', 'lawyer'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Preston', 'Pans'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Mr.', 'Henley'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Mrs.', 'Maclaren'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('man', 'Alan'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Old', 'Bailey'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Mr.', 'Macgregor'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('O', 'man'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Neil', 'Roy'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Jennet', 'Clouston'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('the', 'barber'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 2, 'count_norm_char': 0.00023677979479084452}
+('Colin', 'Roy'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('Duncan', 'Stewart'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'English'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'creek'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('The', 'man'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'Lord'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'Isle'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('Ben', 'Alder'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('The', 'sun'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'Hawes'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'murderer'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'back'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('Mr.', 'Ebenezer'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('The', 'name'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'voice'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'tail'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('the', 'moor'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 2, 'count_norm_char': 0.00031570639305445933}
+('Colin', 'Campbell'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('the', 'Lowlands'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('the', 'Forth'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('the', 'mouth'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('Captain', 'Hoseason'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('Linnhe', 'Loch'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('the', 'Linnhe'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('the', 'shot'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('the', 'foot'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 2, 'count_norm_char': 0.0003946329913180742}
+('James', 'Stewart'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 2, 'count_norm_char': 0.00047355958958168905}
+('the', 'hand'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 2, 'count_norm_char': 0.00047355958958168905}
+('the', 'landlord'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 2, 'count_norm_char': 0.00047355958958168905}
+('John', 'Breck'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 2, 'count_norm_char': 0.00047355958958168905}
+('Uncle', 'Ebenezer'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 2, 'count_norm_char': 0.00047355958958168905}
+('the', 'boy'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 2, 'count_norm_char': 0.00047355958958168905}
+('the', 'laird'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 2, 'count_norm_char': 0.00047355958958168905}
+('the', 'Ross'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 2, 'count_norm_char': 0.00047355958958168905}
+('the', 'Sound'): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 2, 'count_norm_char': 0.0005524861878453039}
+('the', 'Ferry'): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 2, 'count_norm_char': 0.0005524861878453039}
+('the', 'Highlands'): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 2, 'count_norm_char': 0.0005524861878453039}
+('the', 'town'): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 2, 'count_norm_char': 0.0005524861878453039}
+('the', 'Appin'): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 2, 'count_norm_char': 0.0005524861878453039}
+('the', 'minister'): {'count': 7, 'count_norm_length': 1.6568125766275816e-05, 'length': 2, 'count_norm_char': 0.0005524861878453039}
+('the', 'King'): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 2, 'count_norm_char': 0.0006314127861089187}
+('the', 'gentleman'): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 2, 'count_norm_char': 0.0006314127861089187}
+('The', 'captain'): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 2, 'count_norm_char': 0.0006314127861089187}
+('the', 'head'): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 2, 'count_norm_char': 0.0006314127861089187}
+('the', 'Red'): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 2, 'count_norm_char': 0.0006314127861089187}
+('Mr.', 'Henderland'): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 2, 'count_norm_char': 0.0007103393843725335}
+('the', 'lass'): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 2, 'count_norm_char': 0.0007103393843725335}
+('the', 'Glens'): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 2, 'count_norm_char': 0.0007103393843725335}
+('Red', 'Fox'): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 2, 'count_norm_char': 0.0007103393843725335}
+('Mr.', 'Stewart'): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 2, 'count_norm_char': 0.0007103393843725335}
+('the', 'letter'): {'count': 10, 'count_norm_length': 2.366875109467974e-05, 'length': 2, 'count_norm_char': 0.0007892659826361484}
+('the', 'Campbells'): {'count': 10, 'count_norm_length': 2.366875109467974e-05, 'length': 2, 'count_norm_char': 0.0007892659826361484}
+('the', 'Cage'): {'count': 11, 'count_norm_length': 2.6035626204147713e-05, 'length': 2, 'count_norm_char': 0.0008681925808997632}
+('Mr.', 'Shuan'): {'count': 12, 'count_norm_length': 2.8402501313615684e-05, 'length': 2, 'count_norm_char': 0.0009471191791633781}
+('the', 'Covenant'): {'count': 12, 'count_norm_length': 2.8402501313615684e-05, 'length': 2, 'count_norm_char': 0.0009471191791633781}
+('King', 'George'): {'count': 13, 'count_norm_length': 3.076937642308366e-05, 'length': 2, 'count_norm_char': 0.001026045777426993}
+('the', 'face'): {'count': 13, 'count_norm_length': 3.076937642308366e-05, 'length': 2, 'count_norm_char': 0.001026045777426993}
+('David', 'Balfour'): {'count': 13, 'count_norm_length': 3.076937642308366e-05, 'length': 2, 'count_norm_char': 0.001026045777426993}
+('the', 'rock'): {'count': 14, 'count_norm_length': 3.313625153255163e-05, 'length': 2, 'count_norm_char': 0.0011049723756906078}
+('the', 'end'): {'count': 15, 'count_norm_length': 3.550312664201961e-05, 'length': 2, 'count_norm_char': 0.0011838989739542227}
+('Mr.', 'David'): {'count': 15, 'count_norm_length': 3.550312664201961e-05, 'length': 2, 'count_norm_char': 0.0011838989739542227}
+('Mr.', 'Campbell'): {'count': 16, 'count_norm_length': 3.787000175148758e-05, 'length': 2, 'count_norm_char': 0.0012628255722178373}
+('Mr.', 'Thomson'): {'count': 19, 'count_norm_length': 4.4970627079891504e-05, 'length': 2, 'count_norm_char': 0.001499605367008682}
+('Alan', 'Breck'): {'count': 22, 'count_norm_length': 5.2071252408295426e-05, 'length': 2, 'count_norm_char': 0.0017363851617995265}
+('Mr.', 'Rankeillor'): {'count': 22, 'count_norm_length': 5.2071252408295426e-05, 'length': 2, 'count_norm_char': 0.0017363851617995265}
+('the', 'lawyer'): {'count': 27, 'count_norm_length': 6.390562795563529e-05, 'length': 2, 'count_norm_char': 0.0021310181531176008}
+('the', 'sun'): {'count': 27, 'count_norm_length': 6.390562795563529e-05, 'length': 2, 'count_norm_char': 0.0021310181531176008}
+('the', 'name'): {'count': 30, 'count_norm_length': 7.100625328403921e-05, 'length': 2, 'count_norm_char': 0.0023677979479084454}
+('the', 'man'): {'count': 31, 'count_norm_length': 7.337312839350719e-05, 'length': 2, 'count_norm_char': 0.00244672454617206}
+('Mr.', 'Balfour'): {'count': 31, 'count_norm_length': 7.337312839350719e-05, 'length': 2, 'count_norm_char': 0.00244672454617206}
+('Mr.', 'Riach'): {'count': 32, 'count_norm_length': 7.574000350297516e-05, 'length': 2, 'count_norm_char': 0.0025256511444356746}
+('the', 'captain'): {'count': 70, 'count_norm_length': 0.00016568125766275817, 'length': 2, 'count_norm_char': 0.0055248618784530384}
+('way', 'to', 'Aucharn'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('friend', 'Mr.', 'Thomson'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('the', 'Good', 'People'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('D.', 'of', 'A.'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('brother', "'s", 'son'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('Balfour', 'of', 'Shaws'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('end', 'of', 'Mull'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('sheriff', "'s", 'officer'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('the', 'upper', 'hand'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('Thomson', "'s", 'kinsman'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('Alan', 'Breck', 'Stewart'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('the', 'old', 'gentleman'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('the', 'other', 'hand'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 3, 'count_norm_char': 0.00023677979479084452}
+('Isle', 'of', 'Mull'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 3, 'count_norm_char': 0.00031570639305445933}
+('country', 'of', 'Appin'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 3, 'count_norm_char': 0.00031570639305445933}
+('the', 'far', 'end'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 3, 'count_norm_char': 0.00031570639305445933}
+('HOUSE', 'OF', 'SHAWS'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 3, 'count_norm_char': 0.00031570639305445933}
+('the', 'little', 'man'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 3, 'count_norm_char': 0.00031570639305445933}
+('the', 'Linnhe', 'Loch'): {'count': 5, 'count_norm_length': 1.183437554733987e-05, 'length': 3, 'count_norm_char': 0.0003946329913180742}
+('king', "'s", 'name'): {'count': 6, 'count_norm_length': 1.4201250656807842e-05, 'length': 3, 'count_norm_char': 0.00047355958958168905}
+('the', 'Red', 'Fox'): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 3, 'count_norm_char': 0.0006314127861089187}
+('house', 'of', 'Shaws'): {'count': 12, 'count_norm_length': 2.8402501313615684e-05, 'length': 3, 'count_norm_char': 0.0009471191791633781}
+('the', 'way', 'to', 'Aucharn'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 4, 'count_norm_char': 0.00023677979479084452}
+('the', 'Isle', 'of', 'Mull'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 4, 'count_norm_char': 0.00023677979479084452}
+('Mr.', 'Thomson', "'s", 'kinsman'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 4, 'count_norm_char': 0.00023677979479084452}
+('friend', 'from', 'the', 'Lowlands'): {'count': 3, 'count_norm_length': 7.100625328403921e-06, 'length': 4, 'count_norm_char': 0.00023677979479084452}
+('LAD', 'WITH', 'THE', 'SILVER'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 4, 'count_norm_char': 0.00031570639305445933}
+('THE', 'HOUSE', 'OF', 'SHAWS'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 4, 'count_norm_char': 0.00031570639305445933}
+('FLIGHT', 'IN', 'THE', 'HEATHER'): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 4, 'count_norm_char': 0.0006314127861089187}
+('James', 'of', 'the', 'Glens'): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 4, 'count_norm_char': 0.0007103393843725335}
+('the', 'house', 'of', 'Shaws'): {'count': 9, 'count_norm_length': 2.1301875985211765e-05, 'length': 4, 'count_norm_char': 0.0007103393843725335}
+('THE', 'LAD', 'WITH', 'THE', 'SILVER'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 5, 'count_norm_char': 0.00031570639305445933}
+('LAD', 'WITH', 'THE', 'SILVER', 'BUTTON'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 5, 'count_norm_char': 0.00031570639305445933}
+('THE', 'FLIGHT', 'IN', 'THE', 'HEATHER'): {'count': 8, 'count_norm_length': 1.893500087574379e-05, 'length': 5, 'count_norm_char': 0.0006314127861089187}
+('THE', 'LAD', 'WITH', 'THE', 'SILVER', 'BUTTON'): {'count': 4, 'count_norm_length': 9.467500437871895e-06, 'length': 6, 'count_norm_char': 0.00031570639305445933}

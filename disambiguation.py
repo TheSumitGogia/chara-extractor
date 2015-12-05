@@ -16,9 +16,12 @@ def populate_gender_dict():
   return d
 
 gender_dict = populate_gender_dict()
-MALE_TITLES = ['Mr.', 'Mister']
-FEMALE_TITLES = ['Mrs.', 'Ms.', 'Miss', 'Madame']
-ALL_TITLES = MALE_TITLES + FEMALE_TITLES
+MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr', 'Monsieur':'Mr', 'M.':'M.'}
+FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame'}
+OTHER_TITLES = {'Dr.':'Dr.', 'Doctor':'Dr.', 'Jr.':'Jr.', 'Junior':'Jr.', 'Prof.':'Prof', 'Professor':'Prof.'}
+ALL_TITLES = MALE_TITLES.copy() 
+ALL_TITLES.update(FEMALE_TITLES) 
+ALL_TITLES.update(OTHER_TITLES)
 
 def disambiguate(candidates):
   all_maps = {}
@@ -40,26 +43,49 @@ def find_potential_references(candidates, cand):
            title_resolution(candidates, cand)
   return set(refs)
 
+def strict_match(s1, s2):
+    s1 = s1[0].lower() + s1[1:]
+    s2 = s2[0].lower() + s2[1:]
+    if s2.endswith('.'): #abbreviation
+        if s1.startswith(s2[:-1]):
+            return True
+        if len(s2) == 3 and s1.startswith(s1[0]) and s1.endswith(s2[1]):
+            return True
+    return s1 == s2
+
 def contains_tuple(t_outer, t_inner):
+  if t_outer == t_inner:
+      return False
   inner_idx=0
-  for t in t_outer:
-      if t.lower() == t_inner[inner_idx].lower():
-          inner_idx+=1
-      if inner_idx == len(t_inner):
-          return True
+  if strict_match(t_outer[0], t_inner[0]) or strict_match(t_outer[-1], t_inner[-1]):
+    for t in t_outer:
+        if strict_match(t, t_inner[inner_idx]):
+            inner_idx+=1
+        if inner_idx == len(t_inner):
+            return True
   return False
 
 def resolve_title(ocand, cand):
-  if cand != ocand and cand[0] in ALL_TITLES and cand[-1] == ocand[-1]:
-    first_name = ocand[0].lower()
-    if first_name in gender_dict:
-      if gender_dict[first_name] == 'MALE' and cand[0] in MALE_TITLES:
-        return True
-      elif gender_dict[first_name] == 'FEMALE' and cand[0] in FEMALE_TITLES:
-        return True
-  return False
+    if cand != ocand and cand[0] in ALL_TITLES and cand[-1] == ocand[-1]:
+        if ocand[0] in ALL_TITLES:
+            if ALL_TITLES[cand[0]] != ALL_TITLES[ocand[0]]:
+                return False
+            else:
+                return contains_tuple(ocand[1:], cand[1:])
+        elif contains_tuple(ocand, cand[1:]):
+            first_name = ocand[0].lower()
+            if cand[0] in OTHER_TITLES:
+                return True
+            if first_name in gender_dict:
+                if gender_dict[first_name] == 'MALE' and cand[0] in MALE_TITLES:
+                    return True
+                elif gender_dict[first_name] == 'FEMALE' and cand[0] in FEMALE_TITLES:
+                    return True
+    return False
 
 def fuzzy_match(s1, s2):
+  s1 = s1[0].lower() + s1[1:]
+  s2 = s2[0].lower() + s2[1:]
   # ignore titles
   return (s1 not in ALL_TITLES and s2 not in ALL_TITLES) and \
          (s1 in s2 or max(fuzz.ratio(s1, s2[:i]) for i in range(len(s2))) >= 70)
@@ -135,6 +161,8 @@ if __name__ == '__main__':
     ('Mr.', 'Tom'): 1,
     ('Mr.', 'Sawyer'): 1,
     ('Mrs.', 'Sawyer'): 1,
+    ('T.', 'Sawyer'): 1,
+    ('Doctor', 'Sawyer'): 1,
     ('Huck',): 1,
     ('Huckleberry',): 1,
     ('Huck', 'Finn'): 1,
