@@ -4,55 +4,87 @@ import argparse
 import itertools as it
 import disambiguation as dbg
 import numpy as np
+import sys
+from nltk.corpus import wordnet as wn
+import wordnet_hyponyms as wh
 from collections import deque
+from django.utils.encoding import smart_str
 from sklearn.feature_extraction import DictVectorizer
 
 SECTION_MAP = {'sentence': 'st', 'paragraph': 'pg', 'chapter': 'cp'}
 def abbrv(section_name):
     return SECTION_MAP[section_name]
 
-def section(tree, raw_filename):
+def section(tree, token_filename):
     markers = {}
-    def section_paragraphs_and_chapters(raw_fname):
-        raw_file = open(raw_fname, 'r')
-        raw_lines = raw_file.readlines()
-        pg_markers = []
-        cp_markers = []
-        skip = 2
-        char_offset = 0
-        for i in range(len(raw_lines)):
-            line = raw_lines[i]
-            if line == '\n':
-                skip += 1
-                char_offset += 1
-            elif skip >= 1:
-                line_strip = line.lstrip()
-                diff = len(line) - len(line_strip)
-                if skip >= 2:
-                    cp_markers.append(char_offset + diff)
-                pg_markers.append(char_offset + diff)
-                skip = 0
-                char_offset += len(line)
-            else:
-                char_offset += len(line)
-        markers['paragraph'] = pg_markers
-        markers['chapter'] = cp_markers
-        raw_file.close()
-    def section_sentences(nlptree):
-        root = nlptree.getroot()
-        st_markers = []
-        for document in root:
-            for sentences in document:
-                for sentence in sentences:
-                    first_token = sentence[0][0]
-                    offset = int(first_token[2].text)
-                    st_markers.append(offset)
-        markers['sentence'] = st_markers
+    all_sentences = tree.getroot()[0][0]
+    token_lines = open(token_filename, 'r')
+    token_lines = token_lines.readlines()
+    token_lines = [token[:-1] for token in token_lines]
+    token_lines = token_lines[2:]
+    tl_idx, sentence_idx, token_idx = 0, 0, 0
+    st_markers, pg_markers, cp_markers = [], [], []
+    for sentence in all_sentences:
+        for tokens in sentence:
+            st_markers.append(tokens[0][2].text)
+            token_idx = 0
+            for token in tokens:
+                token_t = smart_str(token[0].text.strip())
+                nl_count = 0
+                try:
+                    idx_start = tl_idx
+                    long_token_string = ''
+                    idx_change = 0
+                    while (smart_str(token_lines[tl_idx]) != token_t) and not token_t in long_token_string:
+                        test_token = token_lines[tl_idx]
+                        if test_token == '*NL*':
+                            nl_count += 1
+                        else:
+                            idx_change += 1
+                            long_token_string += test_token
+                        tl_idx += 1
+                    #if idx_change == 6:
+                    #    tl_idx = idx_start
+                    if token_lines[tl_idx] != token_t and token_t in long_token_string:
+                        #print 'hehe', token_t, long_token_string, tl_idx
+                        tl_idx -= 1
+                except:
+                    print "FAIL"
+                    print token_t, token[2].text
+                    print tl_idx
+                    print token_filename
+                    return
+                #print token_t, token_lines[tl_idx], tl_idx + 3, token[2].text
+                tl_idx += 1
+                if nl_count > 1 or len(pg_markers) == 0:
+                    if nl_count > 2 or len(cp_markers) == 0:
+                        cp_markers.append(int(token[2].text))
+                    pg_markers.append(int(token[2].text))
+                token_idx += 1
+        sentence_idx += 1
 
-    section_sentences(tree)
-    section_paragraphs_and_chapters(raw_filename)
+    while (tl_idx < len(token_lines) and token_lines[tl_idx] == '*NL*'):
+        tl_idx += 1
+    # final check!!
+    if (sentence_idx == len(all_sentences) and token_idx == len(all_sentences[sentence_idx-1][0])):
+        if tl_idx == len(token_lines):
+            #print "SUCCESS"
+            hoho = 1
+        else:
+            print "FAIL"
+            print len(token_lines), tl_idx
+            print token_filename
+    markers['sentence'] = st_markers
+    markers['paragraph'] = pg_markers
+    markers['chapter'] = cp_markers
+    markers['book'] = st_markers[-1]
 
     return markers
+
+def is_the(word):
+    if word == 'the' or word == 'The' or word == 'THE':
+        return True
+    return False
 
 # TODO: this method can be shortened easily, and should be
 def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
@@ -89,11 +121,16 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
 
     # chapter offsets and tracking
     cp_markers = markers['chapter']
+    total_length = int(markers['book'])
     cp_index = -1
 
     # stuff to indicate nesting of invalidity of candidate noun phrases
+    bad_title_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms'])
     bad_token_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms', 'Chapter', 'CHAPTER', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
     bad_np_tags = set(['CC', 'IN', 'TO', 'WDT', 'WP', 'WP$', 'WRB', 'UH', 'VB', 'VBD', 'VBP', 'VBZ', 'MD'])
+
+    # TODO: load person set
+    person_set = wh.enumerate_hyponyms(wn.synsets('person')[0])
 
     # loop through Stanford NLP tree, extracting initial candidate set
     root = tree.getroot()
@@ -112,8 +149,8 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                             ngrams.append({})
                             cp_index += 1
 
-                        # filter for candidates with last word capital noun
-                        if noun and any(l.isupper() for l in word):
+                        # filter for candidates with last word noun and some capital
+                        if noun and (any(l.isupper() for l in word) or word in person_set):
                             # loop through previous words, adding to noun phrase
                             curr_idx = token_idx
                             word_list = [word]
@@ -123,10 +160,16 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                             while np_condition and not exhausted:
                                 # check if valid candidate and count
                                 word_tuple = tuple(word_list)
-                                if word_tuple[0] in bad_token_set:
+                                if word_tuple[0] in bad_token_set or len(word_tuple) == 1 and word in bad_title_set:
                                     exhausted = True
                                     break
-                                if first_tag.startswith('NN') or first_tag == 'DT':
+                                if (first_tag.startswith('NN') or is_the(word_tuple[0])) and any(l.isupper() for l in word):
+                                    if curr_idx >= 1 and not any(l.isupper() for l in tokens[curr_idx - 1][0].text):
+                                        if word_tuple in ngrams[-1]:
+                                            ngrams[-1][word_tuple] += 1
+                                        else:
+                                            ngrams[-1][word_tuple] = 1
+                                elif word in person_set and ((first_tag.startswith('NN') and len(word_list) > 1) or is_the(word_tuple[0])):
                                     if word_tuple in ngrams[-1]:
                                         ngrams[-1][word_tuple] += 1
                                     else:
@@ -166,7 +209,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                                 if word_tuple[0] in bad_token_set:
                                     exhausted = True
                                     break
-                                if first_tag.startswith('NN'):
+                                if (first_tag.startswith('NN') or is_the(word_tuple[0])) and any(l.isupper() for l in word):
                                     if word_tuple in ngrams[-1]:
                                         ngrams[-1][word_tuple] += 1
                                     else:
@@ -184,6 +227,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                                 else:
                                     exhausted = True
 
+
     # add counts across all chapters
     norm_ngrams = {}
     for i in range(len(ngrams)):
@@ -193,44 +237,52 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                 norm_ngrams[key] += cp_ngrams[key]
             else:
                 norm_ngrams[key] = cp_ngrams[key]
-    check_keys = norm_ngrams.keys()
 
     # get frequent candidates across whole book
     gram_size = 1
     more_grams = True
     filtered_grams = []
-    while more_grams:
-        grams = { gram: norm_ngrams[gram] for gram in norm_ngrams.keys() if len(gram) == gram_size }
-        sorted_grams = sorted(grams.items(), key=operator.itemgetter(1))
-        if gram_size <= 3:
-            pass_grams = sorted_grams[-1 * cutoffs[gram_size - 1]:]
-            # don't include them if they don't occur often
-            pass_grams = [gram for gram in pass_grams if gram[1] > 2]
-            filtered_grams.extend(pass_grams)
-            gram_size += 1
-        else:
-            # don't include them if they don't occur often
-            pass_grams = [sorted_grams[idx] for idx in range(len(sorted_grams)) if sorted_grams[idx][1] > 5]
-            filtered_grams.extend(pass_grams)
-            gram_size += 1
-            # stop if no n-grams are being passed
-            if len(pass_grams) == 0:
-                more_grams = False
+    if cutoffs == 'flex':
+        filtered_grams.extend(sorted(norm_ngrams.items(), key=operator.itemgetter(1)))
+        filtered_grams = [gram for gram in filtered_grams if gram[1] > 2]
+    else:
+        while more_grams:
+            grams = { gram: norm_ngrams[gram] for gram in norm_ngrams.keys() if len(gram) == gram_size }
+            sorted_grams = sorted(grams.items(), key=operator.itemgetter(1))
+            if gram_size <= 3:
+                pass_grams = sorted_grams[-1 * cutoffs[gram_size - 1]:]
+                # don't include them if they don't occur often
+                pass_grams = [gram for gram in pass_grams if gram[1] > 2]
+                filtered_grams.extend(pass_grams)
+                gram_size += 1
+            else:
+                # don't include them if they don't occur often
+                pass_grams = [sorted_grams[idx] for idx in range(len(sorted_grams)) if sorted_grams[idx][1] > 5]
+                filtered_grams.extend(pass_grams)
+                gram_size += 1
+                # stop if no n-grams are being passed
+                if len(pass_grams) == 0:
+                    more_grams = False
 
-    # get frequenct candidates per chapter
-    for cp_idx in range(len(ngrams)):
-        cp_ngrams = ngrams[cp_idx]
-        cp_gram_size = 1
-        more_cp_grams = True
-        while more_cp_grams:
-            cp_grams = { gram: cp_ngrams[gram] for gram in cp_ngrams.keys() if len(gram) == cp_gram_size }
-            sorted_cp_grams = sorted(cp_grams.items(), key=operator.itemgetter(1))
-            top_cp_grams = sorted_cp_grams[-1 * cp_cutoff:]
-            pass_cp_grams = [(gram[0], norm_ngrams[gram[0]]) for gram in top_cp_grams if gram[1] > 5]
-            filtered_grams.extend(pass_cp_grams)
-            cp_gram_size += 1
-            if len(pass_cp_grams) == 0:
-                more_cp_grams = False
+    # get frequent candidates per chapter
+    if cutoffs == 'flex':
+        for cp_idx in range(len(ngrams)):
+            cp_ngrams = ngrams[cp_idx]
+            filtered_grams.extend([(gram, norm_ngrams[gram]) for gram in cp_ngrams if cp_ngrams[gram] > 4])
+    else:
+        for cp_idx in range(len(ngrams)):
+            cp_ngrams = ngrams[cp_idx]
+            cp_gram_size = 1
+            more_cp_grams = True
+            while more_cp_grams:
+                cp_grams = { gram: cp_ngrams[gram] for gram in cp_ngrams.keys() if len(gram) == cp_gram_size }
+                sorted_cp_grams = sorted(cp_grams.items(), key=operator.itemgetter(1))
+                top_cp_grams = sorted_cp_grams[-1 * cp_cutoff:]
+                pass_cp_grams = [(gram[0], norm_ngrams[gram[0]]) for gram in top_cp_grams if gram[1] > 5]
+                filtered_grams.extend(pass_cp_grams)
+                cp_gram_size += 1
+                if len(pass_cp_grams) == 0:
+                    more_cp_grams = False
 
     # changing list of candidate tuples with counts to feature map
     candidates = {}
@@ -239,11 +291,11 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
         key = filtered_grams[i][0]
         count = filtered_grams[i][1]
         total += count
-        candidates[key] = {'count': count}
-        candidates[key]['length'] = len(key)
-    for cand in candidates:
-        features = candidates[cand]
-        features['count_norm'] = features['count'] * 1.0 / total
+        candidates[key] = {
+            'count': count,
+            'length': len(key)
+        }
+        candidates[key]['count_norm'] = candidates[key]['count'] / total_length
 
     # create list of pair tuples with concatenated candidate features
     pairs = {}
@@ -367,7 +419,7 @@ def get_coref_features(ngrams, pairs):
         The method only changes the passed candidate feature dictionaries.
     """
     section_types = ["st", "pg", "cp"]
-    coref_feats = ["coref_shorter_count", "coref_longer_count"]
+    coref_feats = ["coref_shorter_count", "coref_longer_count", "coref_shorter_count_norm", "coref_longer_count_norm"]
     ex_coref_feats = [feat + "_" + sec_type for sec_type in section_types for feat in coref_feats]
     coref_feats.extend(ex_coref_feats)
     coref_feats.extend(["coref_shorter", "coref_longer"])
@@ -380,9 +432,13 @@ def get_coref_features(ngrams, pairs):
         features["coref_longer"] = 0
         features["coref_shorter_count"] = 0
         features["coref_longer_count"] = 0
+        #features["coref_shorter_count_norm"] = 0
+        #features["coref_longer_count_norm"] = 0
         for section_type in section_types:
             features["coref_shorter_count_" + section_type] = 0
+            #features["coref_shorter_count_norm_" + section_type] = 0
             features["coref_longer_count_" + section_type] = 0
+            #features["coref_longer_count_norm_" + section_type] = 0
 
     coref_graph = dbg.disambiguate(ngrams)
     for candidate in coref_graph:
@@ -394,10 +450,14 @@ def get_coref_features(ngrams, pairs):
             match_feats = ngrams[match]
             match_feats["coref_shorter"] = 1
             features["coref_longer_count"] += match_feats["count"]
+            #features["coref_longer_count_norm"] += match_feats["count_norm"]
             match_feats["coref_shorter_count"] += features["count"]
+            #match_feats["coref_shorter_count_norm"] += features["count_norm"]
             for section_type in section_types:
                 features["coref_longer_count_" + section_type] += match_feats["count_" + section_type]
+                #features["coref_longer_count_norm_" + section_type] += match_feats["count_norm_" + section_type]
                 match_feats["coref_shorter_count_" + section_type] += features["count_" + section_type]
+                #match_feats["coref_shorter_count_norm_" + section_type] += features["count_norm_" + section_type]
 
     for pair in pairs:
         pair_feats = pairs[pair]
@@ -500,6 +560,7 @@ def get_count_features(tree, markers, ngrams, pairs):
         section_v[section_type] = DictVectorizer(sparse=True)
         vectorizer = section_v[section_type]
         section_mats[section_type] = vectorizer.fit_transform(counts)
+        sec_norm_mat = section_mats[section_type] / len(section_markers[section_type])
 
         # marginalization to get total sentence, paragraph, chapter frequencies
         section_uforms[section_type] = section_mats[section_type].copy()
@@ -586,32 +647,34 @@ def write_feature_file(raw_fname, outdir, ngrams, pairs):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Extract candidate characters and feature values")
     parser.add_argument('-f', '--file', nargs=1, required=True, help='Book coreNLP file to extract candidates from')
-    parser.add_argument('-rf', '--rawfile', nargs=1, required=True, help='Book raw text file to extract candidates from')
+    parser.add_argument('-rf', '--tokenfile', nargs=1, required=True, help='Book tokens file to extract candidates from')
     parser.add_argument('-o', '--outdir', nargs=1, required=True, help='Output directory for feature dict')
     parser.add_argument('-dr', '--fulldir', required=False, default=False, action='store_true', help='Run extraction for full directory')
     parser.add_argument('-d', '--debug', required=False, default=False, action='store_true', help='Whether to print output at all feature extraction steps')
-    parser.add_argument('-n', '--numcands', nargs=1, required=False, default=None, help='number of 1gram, 2gram, 3gram candidates')
-    parser.add_argument('-cn', '--numcpcands', nargs=1, required=False, default=None, help='number of tested chapter candidates')
+    parser.add_argument('-n', '--numcands', nargs=1, required=False, default='true', help='number of 1gram, 2gram, 3gram candidates')
+    parser.add_argument('-cn', '--numcpcands', nargs=1, required=False, default='true', help='number of tested chapter candidates')
 
     args = vars(parser.parse_args())
     debug = args['debug']
-    raw_text = args['rawfile'][0]
+    tokens_text = args['tokenfile'][0]
     outdir = args['outdir'][0]
     full = args['fulldir']
     nlp_file = args['file'][0]
-    num_cands = eval(args['numcands'][0])
-    num_cp_cands = eval(args['numcpcands'][0])
+    num_cands = args['numcands'][0]
+    num_cands = None if num_cands == 't' else eval(num_cands)
+    num_cp_cands = args['numcpcands'][0]
+    num_cp_cands = None if num_cp_cands == 't' else eval(num_cp_cands)
 
     if not full:
         tree = ET.parse(nlp_file)
-        markers = section(tree, raw_text)
+        markers = section(tree, tokens_text)
         # test candidate selection
 
         candidates, pairs = None, None
         if num_cands is None and num_cp_cands is None:
-            candidates, pairs = get_candidates(tree, markers)
+            candidates, pairs = get_candidates(tree, markers, cutoffs='flex')
         elif num_cands is None:
-            candidates, pairs = get_candidates(tree, markers, cp_cutoff=num_cp_cands)
+            candidates, pairs = get_candidates(tree, markers, cutoffs='flex', cp_cutoff=num_cp_cands)
         elif num_cp_cands is None:
             candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands)
         else:
@@ -620,6 +683,7 @@ if __name__ == '__main__':
             print "".join(["-"] * 10 + ["CANDIDATES"] + ["-"] * 10)
             output(candidates)
 
+        sys.exit()
         # test tag feature extraction
         get_tag_features(tree, candidates, pairs)
         if debug:
@@ -643,9 +707,9 @@ if __name__ == '__main__':
         else:
             write_feature_file(raw_text, outdir, candidates, pairs)
     else:
-        all_raw = os.listdir(raw_text)
+        all_raw = os.listdir(tokens_text)
         all_nlp = [nlp_file + '/' + f + '.xml' for f in all_raw]
-        all_raw = [raw_text + '/' + f for f in all_raw]
+        all_raw = [tokens_text + '/' + f for f in all_raw]
         for i in range(len(all_raw)):
             raw, nlp = all_raw[i], all_nlp[i]
             tree = ET.parse(nlp)
