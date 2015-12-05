@@ -4,7 +4,7 @@ import argparse
 import itertools as it
 import disambiguation as dbg
 import numpy as np
-import sys
+import sys, os
 from nltk.corpus import wordnet as wn
 import wordnet_hyponyms as wh
 from collections import deque
@@ -120,7 +120,6 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
 
     # store candidates with counts per chapter
     ngrams = []
-
     # chapter offsets and tracking
     cp_markers = markers['chapter']
     total_length = int(markers['book'])
@@ -128,7 +127,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
 
     # stuff to indicate nesting of invalidity of candidate noun phrases
     bad_title_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms', 'Miss'])
-    bad_token_set = set(['Chapter', 'CHAPTER', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
+    bad_token_set = set(['Chapter', 'CHAPTER', 'PART', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
     bad_np_tags = set(['CC', 'IN', 'TO', 'WDT', 'WP', 'WP$', 'WRB', 'UH', 'VB', 'VBD', 'VBP', 'VBZ', 'MD'])
 
     # TODO: load person set
@@ -149,7 +148,6 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                         # handle new chapter
                         if cp_index < len(cp_markers) - 1 and int(token[2].text) == cp_markers[cp_index + 1]:
                             ngrams.append({})
-                            cp_index += 1
 
                         # filter for candidates with last word noun and some capital
                         if noun and (any(l.isupper() for l in word) or word in person_set):
@@ -162,7 +160,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                             while np_condition and not exhausted:
                                 # check if valid candidate and count
                                 word_tuple = tuple(word_list)
-                                if word_tuple[0] in bad_token_set or len(word_tuple) == 1 and word in bad_title_set:
+                                if (word_tuple[0] in bad_token_set) or (len(word_tuple) == 1 and word in bad_title_set):
                                     exhausted = True
                                     break
                                 if (first_tag.startswith('NN') or is_the(word_tuple[0])) and any(l.isupper() for l in word):
@@ -208,7 +206,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                             np_condition = True
                             while np_condition and not exhausted:
                                 word_tuple = tuple(word_list)
-                                if word_tuple[0] in bad_token_set:
+                                if (word_tuple[0] in bad_token_set) or (len(word_tuple) == 1 and word in bad_title_set):
                                     exhausted = True
                                     break
                                 if (first_tag.startswith('NN') or is_the(word_tuple[0])) and any(l.isupper() for l in word):
@@ -295,12 +293,44 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
         total += count
         candidates[key] = {
             'count': count,
-            'length': len(key)
+            'length': len(key),
+            'book_num_chars': total_length,
+            'book_num_st': len(markers['sentence']),
+            'book_num_pg': len(markers['paragraph']),
+            'book_num_cp': len(markers['chapter'])
         }
+    dedup_candidates(tree, candidates)
+    for key in candidates:
+        total += candidates[key]['count']
         candidates[key]['count_norm_length'] = candidates[key]['count'] * 1.0 / total_length
+        candidates[key]['count_norm_char'] = candidates[key]['count'] * 1.0 / total
+
+    # intense dedup scheme to get rid of this dumb case
+    # the widow Bartley, widow Bartley (both counted, but same occurrence)
+    '''
+    dedup = []
     for cand in candidates:
+        candlist = list(cand)
+        pbig = tuple(['the'] + candlist)
+        if pbig in candidates:
+            feats = candidates[pbig]
+            if feats['count'] == candidates[cand]['count']:
+                dedup.append(cand)
+                while not any(l.isupper() for l in candlist[0]):
+                    candlist = candlist[1:]
+                    candtup = tuple(candlist)
+                    if candtup in candidates and candidates[candtup]['count'] == feats['count']:
+                        dedup.append(candtup)
+                    else:
+                        break
         features = candidates[cand]
         features['count_norm_char'] = features['count'] * 1.0 / total
+    for cand in dedup:
+        candidates.pop(cand, None)
+    '''
+    #print 'prededup {0}'.format(len(candidates.keys()))
+    #print candidates.keys()
+    #print 'postdedup {0}'.format(len(candidates.keys()))
 
     # create list of pair tuples with concatenated candidate features
     pairs = {}
@@ -317,6 +347,121 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                 pair_features["1_" + feature] = cand1_feats[feature]
                 pair_features["2_" + feature] = cand2_feats[feature]
     return candidates, pairs
+
+def dedup_candidates(tree, ngrams):
+    max_gram = max(map(lambda x: len(x), ngrams.keys()))
+    sentences = tree.getroot()[0][0]
+
+    # track sentences, paragraphs, and chapters
+    section_idx = {'sentence': -1, 'paragraph': -1, 'chapter': -1}
+    section_counts_left = {'sentence': [], 'paragraph': [], 'chapter': []}
+    section_counts_right = {'sentence': [], 'paragraph': [], 'chapter': []}
+    section_markers = markers
+
+    # current dictionaries counting candidate occurrences
+    section_dicts_left = {'sentence': {}, 'paragraph': {}, 'chapter': {}}
+    section_dicts_right = {'sentence': {}, 'paragraph': {}, 'chapter': {}}
+    section_types = section_dicts_left.keys()
+
+    left_set, right_set = set([]), set([])
+    # loop through Stanford NLP tree, checking tags when candidates appear
+    for sentence in sentences:
+        for tokens in sentence:
+            pwords = deque([""] * max_gram)
+            nwords = None
+            if len(tokens) <= max_gram:
+                nwords = deque([token[0].text for token in tokens])
+            else:
+                nwords = deque([tokens[tidx][0].text for tidx in range(max_gram)])
+            for token_idx in range(len(tokens)):
+                token = tokens[token_idx]
+                word, offset = token[0].text, token[2].text
+                word_list = []
+
+                pwords.popleft()
+                pwords.append(word)
+
+                '''
+                # deal with new sections
+                for section_type in section_types:
+                    idx = section_idx[section_type]
+                    lcounts = section_counts_left[section_type]
+                    rcounts = section_counts_right[section_type]
+                    marks = section_markers[section_type]
+                    if idx < len(marks) - 1 and int(token[2].text) == marks[idx + 1]:
+                        section_idx[section_type] += 1
+                        lcounts.append({})
+                        rcounts.append({})
+                        section_dicts_left[section_type] = lcounts[-1]
+                        section_dicts_right[section_type] = rcounts[-1]
+                '''
+
+                # get candidates from pwords and add to appropriate dicts
+                lword_list = []
+                lbiggest = None
+                for i in range(1, len(pwords)+1):
+                    lword_list.insert(0, pwords[-i])
+                    lword_tuple = tuple(lword_list)
+                    if lword_tuple in ngrams:
+                        lbiggest = lword_tuple
+
+                '''
+                if lbiggest is not None:
+                    for section_type in section_types:
+                        section_dict = section_dicts_left[section_type]
+                        if lbiggest in section_dict:
+                            section_dict[lbiggest] += 1
+                        else:
+                            section_dict[lbiggest] = 1
+                '''
+                if lbiggest is not None:
+                    left_set.add(lbiggest)
+
+                rword_list = []
+                rbiggest = None
+                for i in range(len(nwords)):
+                    rword_list.append(nwords[i])
+                    rword_tuple = tuple(rword_list)
+                    if rword_tuple in ngrams:
+                        rbiggest = rword_tuple
+
+                '''
+                if rbiggest is not None:
+                    for section_type in section_types:
+                        section_dict = section_dicts_right[section_type]
+                        if rbiggest in section_dict:
+                            section_dict[rbiggest] += 1
+                        else:
+                            section_dict[rbiggest] = 1
+                '''
+                if rbiggest is not None:
+                    right_set.add(rbiggest)
+
+                nwords.popleft()
+                if token_idx + max_gram < len(tokens):
+                    nwords.append(tokens[token_idx + max_gram][0].text)
+
+    # union all section keys
+    '''
+    pg_left, pg_right = section_counts_left['paragraph'], section_counts_right['paragraph']
+    left_set, right_set = set([]), set([])
+    for section_idx in len(pg_left):
+        section_dictl = pg_left[section_idx]
+        section_dictr = pg_right[section_idx]
+        for key in section_dictl:
+            left_set.add(key)
+        for key in section_dictr:
+            right_set.add(key)
+    '''
+    final_candidates = left_set.intersection(right_set)
+    rem_list = []
+    for ngram in ngrams:
+        if ngram not in final_candidates:
+            rem_list.append(ngram)
+    #print 'removed'
+    #print rem_list
+    for ngram in rem_list:
+        ngrams.pop(ngram, None)
 
 def get_tag_features(tree, ngrams, pairs):
     """Extract NER, POS, and capitalization-based features for candidates
@@ -354,7 +499,18 @@ def get_tag_features(tree, ngrams, pairs):
         for feat in ner_feats:
             features[feat] = 0
 
+    for cand in ngrams:
+        feats = ngrams[cand]
+        lcaps = 1 if any(l.isupper() for l in cand[-1]) else 0
+        num_caps = 0
+        for token in cand:
+            if any(l.isupper() for l in token):
+                num_caps += 1
+        feats['avg_last_cap'] = lcaps * 1.0
+        feats['avg_cap'] = num_caps * 1.0
+
     # loop through Stanford NLP tree, checking tags when candidates appear
+    counter, nercounter = 0, 0
     root = tree.getroot()
     for document in root:
         for sentences in document:
@@ -363,32 +519,38 @@ def get_tag_features(tree, ngrams, pairs):
                     # track previous words, NER tags, and capitalization
                     pwords = deque([""] * max_gram)
                     pner = deque([0] * max_gram)
-                    pcaps = deque([0] * max_gram)
                     for token in tokens:
                         word = token[0].text
-                        ner = 1 if token[5].text == "MISC" or token[5].text == "PERSON" else 0
-                        caps = 1 if any(l.isupper() for l in token[0].text) else 0
-                        word_list, ner_list, caps_list = [], [], []
+                        ner = 1 if (token[5].text == "MISC" or token[5].text == "PERSON") else 0
+                        word_list, ner_list = [], []
 
                         pwords.popleft()
                         pner.popleft()
-                        pcaps.popleft()
                         pwords.append(word)
                         pner.append(ner)
-                        pcaps.append(caps)
 
                         # go through candidates ending with current token
+                        biggest = None
+                        big_ner = None
+                        top_ner = None
                         for i in range(1, len(pwords)+1):
                             word_list.insert(0, pwords[-i])
                             ner_list.insert(0, pner[-i])
-                            caps_list.insert(0, pcaps[-i])
                             word_tuple = tuple(word_list)
+                            ner_tuple = tuple(ner_list)
                             if word_tuple in ngrams:
-                                features = ngrams[word_tuple]
-                                features['avg_ner'] += ((sum(ner_list) * 1.0 / len(ner_list)) / features['count'])
-                                features['avg_last_ner'] += (ner * 1.0 / features['count'])
-                                features['avg_cap'] += ((sum(caps_list) * 1.0 / len(caps_list)) / features['count'])
-                                features['avg_last_cap'] += (caps * 1.0 / features['count'])
+                                biggest = word_tuple
+                                big_ner = ner_tuple
+
+                        if biggest is not None:
+                            if biggest == ('Elexander',):
+                                counter += 1
+                                nercounter += ner
+                                print counter, nercounter
+                                print ngrams[('Elexander',)]['count']
+                            features = ngrams[biggest]
+                            features['avg_ner'] += ((sum(big_ner) * 1.0 / len(big_ner)) / features['count'])
+                            features['avg_last_ner'] += (ner * 1.0 / features['count'])
 
     for pair in pairs:
         pair_feats = pairs[pair]
@@ -415,8 +577,8 @@ def get_coref_features(ngrams, pairs):
     Args:
         ngrams (dict[tuple[str]->dict]): the mapping from candidates to features
             Candidates should be represented as string token tuples and
-            features should be in a dict mapping string feature names to
-            values.
+        features should be in a dict mapping string feature names to
+        values.
 
     Returns:
         Nothing.
@@ -505,15 +667,15 @@ def get_count_features(tree, markers, ngrams, pairs):
     Args:
         tree (ElementTree): the parsed Stanford NLP tree
             This tree should be made with annotations tokenize, ssplit, pos,
-            lemma, and ner.
-        ngrams (dict[tuple[str]->dict):
-            Candidates should be represented as string token tuples and
-            features should be in a dict mapping string feature names to
-            values.
-        markers (dict[str->list[int]]):
-            The dictionary maps section types to lists of character offsets
-            from the beginning of the raw book text file. The character offsets
-            indicating beginnings of new sections.
+                lemma, and ner.
+            ngrams (dict[tuple[str]->dict):
+                Candidates should be represented as string token tuples and
+                features should be in a dict mapping string feature names to
+                values.
+            markers (dict[str->list[int]]):
+                The dictionary maps section types to lists of character offsets
+                from the beginning of the raw book text file. The character offsets
+                indicating beginnings of new sections.
 
     Returns:
         Nothing.
@@ -569,21 +731,50 @@ def get_count_features(tree, markers, ngrams, pairs):
 
                         # get candidates from pwords and add to appropriate dicts
                         word_list = []
+                        biggest = None
                         for i in range(1, len(pwords)+1):
                             word_list.insert(0, pwords[-i])
                             word_tuple = tuple(word_list)
                             if word_tuple in ngrams:
-                                for section_type in section_types:
-                                    section_dict = section_dicts[section_type]
-                                    if word_tuple in section_dict:
-                                        section_dict[word_tuple] += 1
-                                    else:
-                                        section_dict[word_tuple] = 1
+                                biggest = word_tuple
+
+                        if biggest is not None:
+                            for section_type in section_types:
+                                section_dict = section_dicts[section_type]
+                                if biggest in section_dict:
+                                    section_dict[biggest] += 1
+                                else:
+                                    section_dict[biggest] = 1
+
+    total = 0
+    for cand in ngrams:
+        cpcounts = section_counts['chapter']
+        count = 0
+        for cpcount in cpcounts:
+            if cand in cpcount:
+                count += cpcount[cand]
+        candfeats = ngrams[cand]
+        candfeats['count'] = count
+        candfeats['count_norm_length'] = candfeats['count'] * 1.0 / int(markers['book'] )
+        total += count
+    for cand in ngrams:
+        candfeats = ngrams[cand]
+        candfeats['count_norm_char'] = candfeats['count'] * 1.0 / total
+
+    # help debug dedup problem
+    for section_type in section_types:
+        counts = section_counts[section_type]
+        for ngram in ngrams:
+            in_sec = False
+            for section in counts:
+                if ngram in section:
+                    in_sec = True
+            if not in_sec:
+                print ngram
 
     # convert sentence, paragraph, chapter count dicts into matrices (sparse)
     for section_type in section_types:
         counts = section_counts[section_type]
-        print section_type, len(counts)
         vectorizer = DictVectorizer(sparse=True)
         section_mat = vectorizer.fit_transform(counts)
         index = {v: k for k, v in vectorizer.vocabulary_.items()}
@@ -714,6 +905,46 @@ def write_feature_file(raw_fname, outdir, ngrams, pairs):
     wfile.write(str(pairs))
     wfile.close()
 
+def write_readable_feature_file(raw_fname, outdir, ngrams, pairs):
+    raw_text_name = raw_fname.split('/')[-1]
+    char_name_split = raw_text_name.split('.')
+    char_name_split[0] += '_char_features_readable'
+    outfname = '.'.join(char_name_split)
+    pair_name_split = raw_text_name.split('.')
+    pair_name_split[0] += '_pair_features_readable'
+    pairfname = '.'.join(pair_name_split)
+
+    maxgram = max([len(ngram) for ngram in ngrams])
+    filestr = []
+    for size in range(1, maxgram+1):
+        grams = [ngram for ngram in ngrams.keys() if len(ngram) == size]
+        for gram in grams:
+            features = ngrams[gram]
+            filestr.append(str(gram))
+            filestr.append('\n')
+            for feature in features:
+                filestr.append('\t')
+                filestr.append(feature + ':' + str(features[feature]))
+                filestr.append('\n')
+    wfile = open(outdir + '/' + outfname, 'w')
+    wfile.write(''.join(filestr))
+    wfile.close()
+
+    for size in range(1, maxgram+1):
+        for psize in range(1, maxgram+1):
+            opairs = [pair for pair in pairs.keys() if len(pair[0]) == size and len(pair[1]) == psize]
+            for pair in opairs:
+                features = pairs[pair]
+                filestr.append(str(pair))
+                filestr.append('\n')
+                for feature in features:
+                    filestr.append('\t')
+                    filestr.append(feature + ':' + str(features[feature]))
+                    filestr.append('\n')
+    wfile = open(outdir + '/' + pairfname, 'w')
+    wfile.write(''.join(filestr))
+    wfile.close()
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Extract candidate characters and feature values")
     parser.add_argument('-f', '--file', nargs=1, required=True, help='Book coreNLP file to extract candidates from')
@@ -754,18 +985,18 @@ if __name__ == '__main__':
             output(candidates)
             sys.exit()
 
-        # test tag feature extraction
-        get_tag_features(tree, candidates, pairs)
-        if debug:
-            print "\n"
-            print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
-            output(candidates)
-
         # test count and co-occurence feature extraction
         get_count_features(tree, markers, candidates, pairs)
         if debug:
             print "\n"
             print "".join(["-"] * 10 + ["COUNTING"] + ["-"] * 10)
+            output(candidates)
+
+        # test tag feature extraction
+        get_tag_features(tree, candidates, pairs)
+        if debug:
+            print "\n"
+            print "".join(["-"] * 10 + ["TAGGING"] + ["-"] * 10)
             output(candidates)
 
         # test coref feature extraction
@@ -775,25 +1006,32 @@ if __name__ == '__main__':
             print "".join(["-"] * 10 + ["CONTAINMENT"] + ["-"] * 10)
             output(candidates)
         else:
-            write_feature_file(raw_text, outdir, candidates, pairs)
+            write_feature_file(tokens_text, outdir, candidates, pairs)
+            write_readable_feature_file(tokens_text, outdir, candidates, pairs)
     else:
-        all_raw = os.listdir(tokens_text)
-        all_nlp = [nlp_file + '/' + f + '.xml' for f in all_raw]
-        all_raw = [tokens_text + '/' + f for f in all_raw]
-        for i in range(len(all_raw)):
-            raw, nlp = all_raw[i], all_nlp[i]
+        all_tokens = os.listdir(tokens_text)
+        all_nlp = [nlp_file + '/' + f + '.xml' for f in all_tokens]
+        all_tokens = [tokens_text + '/' + f for f in all_tokens]
+        for i in range(len(all_tokens)):
+            tokens, nlp = all_tokens[i], all_nlp[i]
             tree = ET.parse(nlp)
-            markers = section(tree, raw)
-            candidates, pairs = None, None
-            if num_cands is None and num_cp_cands is None:
-                candidates, pairs = get_candidates(tree, markers)
-            elif num_cands is None:
-                candidates, pairs = get_candidates(tree, markers, cp_cutoff=num_cp_cands)
-            elif num_cp_cands is None:
-                candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands)
-            else:
-                candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands, cp_cutoff=num_cp_cands)
-            get_tag_features(tree, candidates, pairs)
-            get_count_features(tree, markers, candidates, pairs)
-            get_coref_features(candidates, pairs)
-            write_feature_file(raw, outdir, candidates, pairs)
+            try:
+                markers = section(tree, tokens)
+                candidates, pairs = None, None
+                if num_cands is None and num_cp_cands is None:
+                    candidates, pairs = get_candidates(tree, markers, cutoffs='flex')
+                elif num_cands is None:
+                    candidates, pairs = get_candidates(tree, markers, cutoffs='flex', cp_cutoff=num_cp_cands)
+                elif num_cp_cands is None:
+                    candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands)
+                else:
+                    candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands, cp_cutoff=num_cp_cands)
+                get_tag_features(tree, candidates, pairs)
+                get_count_features(tree, markers, candidates, pairs)
+                get_coref_features(candidates, pairs)
+                write_feature_file(tokens, outdir, candidates, pairs)
+                write_readable_feature_file(tokens, outdir, candidates, pairs)
+                print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
+            except:
+                print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
+                continue
