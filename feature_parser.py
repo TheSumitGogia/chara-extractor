@@ -125,7 +125,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
     cp_index = -1
 
     # stuff to indicate nesting of invalidity of candidate noun phrases
-    bad_title_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms'])
+    bad_title_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms', 'Miss'])
     bad_token_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms', 'Chapter', 'CHAPTER', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
     bad_np_tags = set(['CC', 'IN', 'TO', 'WDT', 'WP', 'WP$', 'WRB', 'UH', 'VB', 'VBD', 'VBP', 'VBZ', 'MD'])
 
@@ -295,7 +295,10 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
             'count': count,
             'length': len(key)
         }
-        candidates[key]['count_norm'] = candidates[key]['count'] / total_length
+        candidates[key]['count_norm_book'] = candidates[key]['count'] * 1.0 / total_length
+    for cand in candidates:
+        features = candidates[cand]
+        features['count_norm_char'] = features['count'] * 1.0 / total
 
     # create list of pair tuples with concatenated candidate features
     pairs = {}
@@ -560,7 +563,6 @@ def get_count_features(tree, markers, ngrams, pairs):
         section_v[section_type] = DictVectorizer(sparse=True)
         vectorizer = section_v[section_type]
         section_mats[section_type] = vectorizer.fit_transform(counts)
-        sec_norm_mat = section_mats[section_type] / len(section_markers[section_type])
 
         # marginalization to get total sentence, paragraph, chapter frequencies
         section_uforms[section_type] = section_mats[section_type].copy()
@@ -569,20 +571,35 @@ def get_count_features(tree, markers, ngrams, pairs):
         section_marg[section_type] = uform_mat.sum(axis=0)
         marg_mat = section_marg[section_type]
 
+        # section count and character over section count normalization
+        marg_mat_len_norm = marg_mat / len(section_markers[section_type])
+        marg_mat_count_norm = marg_mat / marg_mat.sum()
+
         # number of sections co-occurred in (as opposed to num co-occurrences in section)
+        uform_major = uform_mat * major_filter # TODO: major filter
         uform_or = uform_mat.sum(axis=1)
         uform_or = (uform_or >= 2)
-        full_and = uform_mat.multiply(uform_or)
-        cooc_sec = full_and.sum(axis=0)
+        cooc_sec = uform_mat.multiply(uform_or)
+        marg_cooc_sec = cooc_sec.sum(axis=0)
+        marg_cooc_sec_len_norm = cooc_sec / len(section_markers[section_type])
 
         # matrix multiplication to get co-occurrence sentence, paragraph, chapter matrices
         # TODO: might want to store these on disk since computation is expensive
         section_cooc[section_type] = (uform_mat.T).dot(uform_mat)
         cooc_mat = section_cooc[section_type]
+        cooc_mat_count_norm = cooc_mat * marg_mat_count_norm
+        cooc_mat_full_norm = cooc_mat * marg_mat_full_norm
+        cooc_uform = cooc_mat.copy()
+        cooc_uform[cooc_uform > 0] = 1.0
+        cooc_uform_count_norm = cooc_uform * marg_mat_count_norm
+        cooc_uform_full_norm = cooc_uform * marg_mat_full_norm
 
         # marginalization to get total sentence, paragraph, chapter co-occurrences for each candidate
         section_marg_cooc[section_type] = cooc_mat.sum(axis=1)
         marg_cooc = section_marg_cooc[section_type]
+        marg_cooc_uform = cooc_uform.sum(axis=1)
+        marg_cooc_uform_count_norm = cooc_uform_count_norm.sum(axis=1)
+        marg_cooc_uform_full_norm = cooc_uform_full_norm.sum(axis=1)
 
         index = {v: k for k, v in section_v[section_type].vocabulary_.items()}
         for idx in index:
