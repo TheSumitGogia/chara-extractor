@@ -1,0 +1,1 @@
+{'Aunt Bessie': [], 'Miles Bjornstam': ['Miles'], 'Kennicott': [], 'Fern Mullins': ['Fern'], 'Hugh': [], 'Percy Bresnahan': ['Bresnahan'], 'Raymond Wutherspoon': ['Raymond'], 'Uncle Whittier Smail': [], 'Vida Sherwin': ['Vida'], 'Maud Dyer': ['Maud'], 'Bea Sorenson': ['Bea'], 'Erik Valborg': ['Erik'], 'Carol': [], 'Mrs. Bogart': ['Bogart'], 'Guy Pollock': ['Guy']}

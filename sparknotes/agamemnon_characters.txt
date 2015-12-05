@@ -1,0 +1,1 @@
+{'Agamemnon': [], 'Chorus': [], 'The Watchman': ['The man'], 'The Herald': [], 'Aegisthus': [], 'Clytemnestra': [], 'Cassandra': []}

@@ -1,0 +1,1 @@
+{'Doctor Thomas Stockmann': ['Stockmann'], 'Billing': [], 'Peter Stockmann': [], 'Captain Horster': [], 'Aslaksen': [], 'Petra Stockmann': ['Mrs. Stockmann', 'Petra', 'Peter'], 'Morten Kiil': ['Kiil'], 'Hovstad': [], 'Mrs. Katherine Stockmann': []}

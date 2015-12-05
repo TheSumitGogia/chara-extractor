@@ -1,0 +1,1 @@
+{'Uncle Karl': [], 'Assistant Manager': [], 'Joseph K.': ['K.', 'Joseph K'], 'Huld, the Lawyer': ['Huld, the lawyer', 'the lawyer', 'Huld'], 'Leni': [], 'Frau Grubach': [], 'Titorelli, the Painter': ['Titorelli'], 'Block, the Tradesman': [], 'Fraulein Burstner': []}

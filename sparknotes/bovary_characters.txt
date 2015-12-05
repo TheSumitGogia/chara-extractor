@@ -1,0 +1,1 @@
+{'Monsieur Homais': ['Homais'], 'Rodolphe Boulanger': ['Rodolphe'], 'Monsieur Lheureux': ['Lheureux'], 'Heloise Dubuc': [], 'The elder Madame Bovary': [], 'Leon': [], 'Abbe Bournisien': [], 'Lariviere': [], 'Hippolyte': [], 'Emma Bovary': ['Emma'], 'Guillaumin': [], 'Binet': [], 'Berthe': [], 'Charles Bovary': ['Charles'], 'Rouault': ['Rouen'], 'Justin': []}

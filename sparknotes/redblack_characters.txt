@@ -1,0 +1,1 @@
+{'Julien Sorel': ['Julien'], 'Marquis de la Mole': [], 'M. Valenod': [], 'M. de Renal': [], 'Mme. de Fervaques': [], 'M. Chelan': [], 'Fouque': [], 'Mme. de Renal': ['Renal'], 'M. Pirard': [], 'Mathilde de la Mole': ['Mathilde'], 'Elisa': [], 'Napoleon': []}

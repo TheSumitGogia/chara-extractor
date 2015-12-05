@@ -1,0 +1,1 @@
+set([('Frau Eva', 'Max Demian'), ('Emil Sinclair', 'Max Demian'), ('Emil Sinclair', 'Pistorius'), ('Franz Kromer', 'Max Demian'), ('Alfons Beck', 'Emil Sinclair'), ('Max Demian', 'Pistorius'), ('Emil Sinclair', 'Franz Kromer'), ('Abraxas', 'Pistorius'), ('Emil Sinclair', 'Knauer'), ('Emil Sinclair', 'Frau Eva'), ('Beatrice', 'Emil Sinclair'), ('Abraxas', 'Emil Sinclair')])

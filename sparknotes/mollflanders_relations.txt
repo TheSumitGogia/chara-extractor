@@ -1,0 +1,1 @@
+set([('Humphrey', 'Moll Flanders'), ('"My Governess"', 'Moll Flanders'), ('Moll Flanders', 'The Gentleman'), ('Moll Flanders', "Moll's Mother"), ('Moll Flanders', 'The Draper'), ('Moll Flanders', 'Robert'), ('Moll Flanders', 'The Plantation Owner'), ('Moll Flanders', 'The Banker'), ('Moll Flanders', 'The Nurse'), ('Moll Flanders', 'The Elder Brother'), ('Jemy', 'Moll Flanders')])

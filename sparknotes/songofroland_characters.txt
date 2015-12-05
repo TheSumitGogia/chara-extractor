@@ -1,0 +1,1 @@
+{'Marsilla': [], 'Oger': [], 'Falsaron': [], 'Roland': [], 'Basil': [], 'Alde': [], 'Naimes': [], 'Pinabel': [], 'Turpin': [], 'Blancandrin': [], 'Bramimonde': [], 'Basan': [], 'Ganelon': [], 'Aelroth': [], 'Corsablis': [], 'Gautier': [], 'Charlemagne': [], 'Olivier': [], 'Jurfaleu': [], 'Margariz': [], 'Baligant': [], 'Thierry': []}

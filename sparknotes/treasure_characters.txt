@@ -1,0 +1,1 @@
+{'Captain Smollett': ['Smollett'], 'Billy Bones': ['Billy'], 'Dr. Livesey': ['Livesey'], 'Jim Hawkins': ['Jim'], 'Black Dog': [], 'Squire Trelawney': ['Trelawney'], 'Pew': [], 'Ben Gunn': ['Ben'], 'Tom Redruth': [], 'Long John Silver': [], 'Israel Hands': ['Hands']}

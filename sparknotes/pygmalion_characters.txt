@@ -1,0 +1,1 @@
+{'Freddy Eynsford Hill': ['Freddy'], 'Professor Henry Higgins': ['Professor Higgins', 'Henry Higgins', 'Higgins'], 'Eliza Doolittle': ['Eliza', 'Doolittle', 'a fool'], 'Mrs. Higgins': [], 'Alfred Doolittle': ['Alfred'], 'Colonel Pickering': ['Pickering']}

@@ -1,0 +1,1 @@
+set([('Hawkeye', 'Uncas'), ('Colonel Munro', 'Cora Munro'), ('Chingachgook', 'Hawkeye'), ('David Gamut', 'Hawkeye'), ('Chingachgook', 'Uncas'), ('Cora Munro', 'Uncas'), ('Hawkeye', 'Major Duncan Heyward'), ('Magua', 'Uncas'), ('Alice Munro', 'Colonel Munro'), ('Alice Munro', 'Cora Munro'), ('Colonel Munro', 'Magua'), ('Alice Munro', 'Major Duncan Heyward')])
