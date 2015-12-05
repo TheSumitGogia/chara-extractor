@@ -17,7 +17,7 @@ def populate_gender_dict():
 
 gender_dict = populate_gender_dict()
 MALE_TITLES = ['Mr.', 'Mister']
-FEMALE_TITLES = ['Mrs.', 'Ms.', 'Miss']
+FEMALE_TITLES = ['Mrs.', 'Ms.', 'Miss', 'Madame']
 ALL_TITLES = MALE_TITLES + FEMALE_TITLES
 
 def disambiguate(candidates):

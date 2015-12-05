@@ -1,0 +1,10 @@
+FAIL
+David 4
+91923
+tokens/frankenstein.txt
+Traceback (most recent call last):
+  File "feature_parser.py", line 692, in <module>
+    candidates, pairs = get_candidates(tree, markers, cutoffs='flex')
+  File "feature_parser.py", line 123, in get_candidates
+    cp_markers = markers['chapter']
+TypeError: 'NoneType' object has no attribute '__getitem__'

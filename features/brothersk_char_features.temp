@@ -1,0 +1,622 @@
+----------CANDIDATES----------
+('Euclid',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Excellency',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Man',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Madonna',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Hohlakovs',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Brothers',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Babel',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Voltaire',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('N',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Akim',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Thine',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Tut',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Stepanida',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Joseph',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Tatar',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Tatyana',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Ultramontanism',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Pater',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('K.',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Damnation',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Hurrah',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Great',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Adam',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Woman',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Galilee',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('French',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('I.O.U.',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Sicily',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Russians',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Varsonofy',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Pope',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Pavel',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Syracuse',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Yorick',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Lion',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Monk',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Onyegin',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Grand',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Glory',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Matryona',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Kolbasnikov',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Gogol',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Trifonov',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Matvey',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Silenus',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Epistle',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Aha',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Cana',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Uhlan',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('France',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Emperor',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Suhoy',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Prohorovna',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Judge',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Arina',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Plotnikovs',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Piron',): {'count': 3, 'length': 1, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Hamlet',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Kingdom',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Paradise',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Jesuit',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Sun',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Socialist',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Seville',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Nikita',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Speech',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Vater',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Napravnik',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Thursday',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Podvysotsky',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Ilyinskoe',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Maximushka',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Thyself',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Frenchman',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+("C'est",): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Abraham',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Parricide',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Russian',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('English',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Show',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Gossip',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Byelinsky',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('November',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Divine',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Geist',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Orthodox',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('High',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Egypt',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Le',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Markel',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Mihailovsky',): {'count': 4, 'length': 1, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Foma',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Latin',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('East',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Roman',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Sodom',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Sofya',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Sunday',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Agrippina',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Saints',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('AEsop',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Inquisitor',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Caesar',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Karl',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('May',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Phoebus',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Jerusalem',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Turks',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Everything',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Athos',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('St.',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Lives',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Bible',): {'count': 5, 'length': 1, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Pushkin',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Cross',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Panie',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Lake',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Word',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Ech',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Gorstkin',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Smaragdov',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Plotnikov',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Schiller',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Lent',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Kostya',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Jew',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('To-morrow',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Vrublevsky',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Jesus',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Europe',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Captain',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Caucasus',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Aie',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Ici',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Son',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Easter',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Varvinsky',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('H',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Job',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Ah',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Hang',): {'count': 6, 'length': 1, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Jews',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Ach',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Thanks',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Fool',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Madam',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Yulia',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Nastya',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Providence',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Dear',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Love',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Nonsense',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Sabaneyev',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Porfiry',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Enough',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Snegiryov',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Kartashov',): {'count': 7, 'length': 1, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Rome',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Prisoner',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Richard',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Bernard',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Morozov',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Zossima',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Mavriky',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Poland',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Varvara',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Afanasy',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Bravo',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Pani',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Christianity',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Tchizhov',): {'count': 8, 'length': 1, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Metropolis',): {'count': 9, 'length': 1, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('Jesuits',): {'count': 9, 'length': 1, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('Superior',): {'count': 10, 'length': 1, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('Obdorsk',): {'count': 10, 'length': 1, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('Timofey',): {'count': 10, 'length': 1, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('Diderot',): {'count': 10, 'length': 1, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('Yefim',): {'count': 10, 'length': 1, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('Volovya',): {'count': 10, 'length': 1, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('Nina',): {'count': 11, 'length': 1, 'count_norm_book': 5.675181502622966e-06, 'count_norm_char': 6.695559018309311e-05}
+('Gott',): {'count': 12, 'length': 1, 'count_norm_book': 6.191107093770508e-06, 'count_norm_char': 7.304246201791975e-05}
+('Doctor',): {'count': 12, 'length': 1, 'count_norm_book': 6.191107093770508e-06, 'count_norm_char': 7.304246201791975e-05}
+('Satan',): {'count': 12, 'length': 1, 'count_norm_book': 6.191107093770508e-06, 'count_norm_char': 7.304246201791975e-05}
+('Adelaida',): {'count': 12, 'length': 1, 'count_norm_book': 6.191107093770508e-06, 'count_norm_char': 7.304246201791975e-05}
+('I.',): {'count': 13, 'length': 1, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('Paris',): {'count': 13, 'length': 1, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('Fathers',): {'count': 13, 'length': 1, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('Nothing',): {'count': 13, 'length': 1, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('Holy',): {'count': 13, 'length': 1, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('Herzenstube',): {'count': 14, 'length': 1, 'count_norm_book': 7.2229582760655925e-06, 'count_norm_char': 8.521620568757304e-05}
+('America',): {'count': 15, 'length': 1, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('Brother',): {'count': 15, 'length': 1, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('Christian',): {'count': 15, 'length': 1, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('Karamazovs',): {'count': 15, 'length': 1, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('Mamma',): {'count': 15, 'length': 1, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('Pan',): {'count': 16, 'length': 1, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('Lyagavy',): {'count': 16, 'length': 1, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('Dardanelov',): {'count': 16, 'length': 1, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('Grusha',): {'count': 16, 'length': 1, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('Mother',): {'count': 16, 'length': 1, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('Lizaveta',): {'count': 16, 'length': 1, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('Zhutchka',): {'count': 17, 'length': 1, 'count_norm_book': 8.77073504950822e-06, 'count_norm_char': 0.00010347682119205298}
+('Troy',): {'count': 17, 'length': 1, 'count_norm_book': 8.77073504950822e-06, 'count_norm_char': 0.00010347682119205298}
+('Agafya',): {'count': 18, 'length': 1, 'count_norm_book': 9.286660640655763e-06, 'count_norm_char': 0.00010956369302687963}
+('Mihail',): {'count': 18, 'length': 1, 'count_norm_book': 9.286660640655763e-06, 'count_norm_char': 0.00010956369302687963}
+('Perhotin',): {'count': 19, 'length': 1, 'count_norm_book': 9.802586231803304e-06, 'count_norm_char': 0.00011565056486170627}
+('Gospel',): {'count': 20, 'length': 1, 'count_norm_book': 1.0318511822950846e-05, 'count_norm_char': 0.00012173743669653292}
+('Misha',): {'count': 21, 'length': 1, 'count_norm_book': 1.083443741409839e-05, 'count_norm_char': 0.00012782430853135957}
+('O',): {'count': 22, 'length': 1, 'count_norm_book': 1.1350363005245932e-05, 'count_norm_char': 0.00013391118036618622}
+('Heaven',): {'count': 22, 'length': 1, 'count_norm_book': 1.1350363005245932e-05, 'count_norm_char': 0.00013391118036618622}
+('Sohn',): {'count': 23, 'length': 1, 'count_norm_book': 1.1866288596393473e-05, 'count_norm_char': 0.00013999805220101286}
+('Stay',): {'count': 24, 'length': 1, 'count_norm_book': 1.2382214187541016e-05, 'count_norm_char': 0.0001460849240358395}
+('State',): {'count': 25, 'length': 1, 'count_norm_book': 1.2898139778688558e-05, 'count_norm_char': 0.00015217179587066615}
+('Poles',): {'count': 25, 'length': 1, 'count_norm_book': 1.2898139778688558e-05, 'count_norm_char': 0.00015217179587066615}
+('Ippolit',): {'count': 25, 'length': 1, 'count_norm_book': 1.2898139778688558e-05, 'count_norm_char': 0.00015217179587066615}
+('Kuzma',): {'count': 27, 'length': 1, 'count_norm_book': 1.3929990960983642e-05, 'count_norm_char': 0.00016434553954031944}
+('Fetyukovitch',): {'count': 30, 'length': 1, 'count_norm_book': 1.547776773442627e-05, 'count_norm_char': 0.00018260615504479938}
+('Gentlemen',): {'count': 32, 'length': 1, 'count_norm_book': 1.6509618916721354e-05, 'count_norm_char': 0.00019477989871445267}
+('Andrey',): {'count': 32, 'length': 1, 'count_norm_book': 1.6509618916721354e-05, 'count_norm_char': 0.00019477989871445267}
+('Marya',): {'count': 34, 'length': 1, 'count_norm_book': 1.754147009901644e-05, 'count_norm_char': 0.00020695364238410596}
+('Krassotkin',): {'count': 35, 'length': 1, 'count_norm_book': 1.805739569016398e-05, 'count_norm_char': 0.0002130405142189326}
+('Trifon',): {'count': 36, 'length': 1, 'count_norm_book': 1.8573321281311525e-05, 'count_norm_char': 0.00021912738605375925}
+('Siberia',): {'count': 36, 'length': 1, 'count_norm_book': 1.8573321281311525e-05, 'count_norm_char': 0.00021912738605375925}
+('Tchermashnya',): {'count': 37, 'length': 1, 'count_norm_book': 1.9089246872459066e-05, 'count_norm_char': 0.0002252142578885859}
+('Agrafena',): {'count': 38, 'length': 1, 'count_norm_book': 1.9605172463606607e-05, 'count_norm_char': 0.00023130112972341254}
+('Smurov',): {'count': 38, 'length': 1, 'count_norm_book': 1.9605172463606607e-05, 'count_norm_char': 0.00023130112972341254}
+('Perezvon',): {'count': 39, 'length': 1, 'count_norm_book': 2.0121098054754152e-05, 'count_norm_char': 0.00023738800155823919}
+('President',): {'count': 41, 'length': 1, 'count_norm_book': 2.1152949237049237e-05, 'count_norm_char': 0.0002495617452278925}
+('Samsonov',): {'count': 42, 'length': 1, 'count_norm_book': 2.166887482819678e-05, 'count_norm_char': 0.00025564861706271915}
+('Lord',): {'count': 42, 'length': 1, 'count_norm_book': 2.166887482819678e-05, 'count_norm_char': 0.00025564861706271915}
+('Marfa',): {'count': 43, 'length': 1, 'count_norm_book': 2.218480041934432e-05, 'count_norm_char': 0.0002617354888975458}
+('Fenya',): {'count': 44, 'length': 1, 'count_norm_book': 2.2700726010491864e-05, 'count_norm_char': 0.00026782236073237244}
+('Thy',): {'count': 45, 'length': 1, 'count_norm_book': 2.3216651601639405e-05, 'count_norm_char': 0.0002739092325671991}
+('Pole',): {'count': 45, 'length': 1, 'count_norm_book': 2.3216651601639405e-05, 'count_norm_char': 0.0002739092325671991}
+('Petersburg',): {'count': 47, 'length': 1, 'count_norm_book': 2.424850278393449e-05, 'count_norm_char': 0.0002860829762368524}
+('Miuesov',): {'count': 47, 'length': 1, 'count_norm_book': 2.424850278393449e-05, 'count_norm_char': 0.0002860829762368524}
+('Kalganov',): {'count': 47, 'length': 1, 'count_norm_book': 2.424850278393449e-05, 'count_norm_char': 0.0002860829762368524}
+('Christ',): {'count': 49, 'length': 1, 'count_norm_book': 2.5280353966229576e-05, 'count_norm_char': 0.00029825671990650566}
+('Maximov',): {'count': 54, 'length': 1, 'count_norm_book': 2.7859981921967285e-05, 'count_norm_char': 0.0003286910790806389}
+('Mokroe',): {'count': 54, 'length': 1, 'count_norm_book': 2.7859981921967285e-05, 'count_norm_char': 0.0003286910790806389}
+('Thee',): {'count': 56, 'length': 1, 'count_norm_book': 2.889183310426237e-05, 'count_norm_char': 0.0003408648227502922}
+('Katya',): {'count': 60, 'length': 1, 'count_norm_book': 3.095553546885254e-05, 'count_norm_char': 0.00036521231008959876}
+('Church',): {'count': 70, 'length': 1, 'count_norm_book': 3.611479138032796e-05, 'count_norm_char': 0.0004260810284378652}
+('Russia',): {'count': 76, 'length': 1, 'count_norm_book': 3.9210344927213215e-05, 'count_norm_char': 0.0004626022594468251}
+('Nikolay',): {'count': 84, 'length': 1, 'count_norm_book': 4.333774965639356e-05, 'count_norm_char': 0.0005112972341254383}
+('Madame',): {'count': 87, 'length': 1, 'count_norm_book': 4.488552642983619e-05, 'count_norm_char': 0.0005295578496299182}
+('Moscow',): {'count': 90, 'length': 1, 'count_norm_book': 4.643330320327881e-05, 'count_norm_char': 0.0005478184651343982}
+('Pyotr',): {'count': 103, 'length': 1, 'count_norm_book': 5.3140335888196864e-05, 'count_norm_char': 0.0006269477989871446}
+('Karamazov',): {'count': 107, 'length': 1, 'count_norm_book': 5.520403825278703e-05, 'count_norm_char': 0.0006512952863264511}
+('Lise',): {'count': 120, 'length': 1, 'count_norm_book': 6.191107093770508e-05, 'count_norm_char': 0.0007304246201791975}
+('Kolya',): {'count': 141, 'length': 1, 'count_norm_book': 7.274550835180346e-05, 'count_norm_char': 0.0008582489287105571}
+('Ilusha',): {'count': 144, 'length': 1, 'count_norm_book': 7.42932851252461e-05, 'count_norm_char': 0.000876509544215037}
+('Grigory',): {'count': 146, 'length': 1, 'count_norm_book': 7.532513630754118e-05, 'count_norm_char': 0.0008886832878846903}
+('Alexey',): {'count': 148, 'length': 1, 'count_norm_book': 7.635698748983627e-05, 'count_norm_char': 0.0009008570315543436}
+('Rakitin',): {'count': 151, 'length': 1, 'count_norm_book': 7.790476426327889e-05, 'count_norm_char': 0.0009191176470588235}
+('Katerina',): {'count': 181, 'length': 1, 'count_norm_book': 9.338253199770516e-05, 'count_norm_char': 0.0011017238021036229}
+('Fyodor',): {'count': 230, 'length': 1, 'count_norm_book': 0.00011866288596393474, 'count_norm_char': 0.0013999805220101286}
+('Grushenka',): {'count': 262, 'length': 1, 'count_norm_book': 0.00013517250488065608, 'count_norm_char': 0.0015947604207245812}
+('Father',): {'count': 273, 'length': 1, 'count_norm_book': 0.00014084768638327906, 'count_norm_char': 0.0016617160109076744}
+('Smerdyakov',): {'count': 301, 'length': 1, 'count_norm_book': 0.00015529360293541024, 'count_norm_char': 0.0018321484222828205}
+('Dmitri',): {'count': 323, 'length': 1, 'count_norm_book': 0.00016664396594065617, 'count_norm_char': 0.0019660596026490067}
+('God',): {'count': 332, 'length': 1, 'count_norm_book': 0.00017128729626098406, 'count_norm_char': 0.0020208414491624466}
+('Ivan',): {'count': 501, 'length': 1, 'count_norm_book': 0.0002584787211649187, 'count_norm_char': 0.0030495227892481497}
+('Mitya',): {'count': 643, 'length': 1, 'count_norm_book': 0.0003317401551078697, 'count_norm_char': 0.0039138585897935336}
+('Alyosha',): {'count': 884, 'length': 1, 'count_norm_book': 0.00045607822257442743, 'count_norm_char': 0.005380794701986755}
+('the', 'bishop'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('novice', 'Porfiry'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Petersburg'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'speaker'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('The', 'dog'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('bear', 'witness'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'teacher'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'colonel'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('setting', 'sun'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'shadow'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'guest'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('living', 'God'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('kind', 'God'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Pater', 'Seraphicus'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('The', 'case'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('The', 'subject'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Sofya', 'Ivanovna'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Alexey', 'Ivanitch'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Father', 'Anfim'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'governor'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Grand', 'Inquisitor'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'torturer'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'mistress'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Grand'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Father', 'Librarian'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'fellow'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Prisoner'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'rival'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Suhoy', 'Possyolok'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'French'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'clerk'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('friend', 'Rakitin'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('son', 'Ivan'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Kingdom'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Hohlakovs'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Madonna'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'arrival'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'realist'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'square'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Karamazov', 'case'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'deputy'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Alyosha', 'Karamazov'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Lion'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Mihailovsky', 'Street'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Sun'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'orphan'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'toast'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Orthodox', 'Church'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'foot'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('The', 'Grand'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('The', 'landlord'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('deputy', 'prosecutor'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Lord', 'God'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'wisp'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'job'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('peasant', 'woman'): {'count': 3, 'length': 2, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'High'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'tribune'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'suicide'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('The', 'visitor'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('heilige', 'Geist'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Mitya', 'Karamazov'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'landlady'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'creature'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('The', 'forester'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('guardian', 'angel'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'Christian'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'Orthodox'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'voice'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'puppy'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Ivan', 'Karamazov'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'Roman'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('The', 'child'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'enemy'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'orator'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'ideal'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'owner'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'Moscow'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'angel'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('The', 'lady'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'East'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('High', 'Street'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'demon'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'cook'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'sinner'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'coachman'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'prayer'): {'count': 4, 'length': 2, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'party'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'secretary'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'beast'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'officer'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'Saints'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Pan', 'Mussyalovitch'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Kolya', 'Krassotkin'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'Bible'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Alexey', 'Karamazov'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'Caucasus'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('court', 'usher'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'Cross'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'acquaintance'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'visitor'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'material'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Lake', 'Street'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Agafya', 'Ivanovna'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'Mother'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Captain', 'Snegiryov'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'superintendent'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'character'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'Son'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Moscow', 'doctor'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'pain'): {'count': 5, 'length': 2, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'lawyer'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('the', 'saint'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('the', 'Jesuits'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('The', 'letter'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('divinity', 'student'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Madame', 'Krassotkin'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('the', 'novice'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('brother', 'Mitya'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('the', 'patient'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('the', 'Word'): {'count': 6, 'length': 2, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('the', 'landlord'): {'count': 7, 'length': 2, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('The', 'woman'): {'count': 7, 'length': 2, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('the', 'driver'): {'count': 7, 'length': 2, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('the', 'merchant'): {'count': 7, 'length': 2, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('the', 'shot'): {'count': 7, 'length': 2, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('widow', 'Morozov'): {'count': 7, 'length': 2, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('the', 'queen'): {'count': 7, 'length': 2, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('Madame', 'Svyetlov'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Pan', 'Vrublevsky'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('the', 'hand'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('the', 'criminal'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Doctor', 'Herzenstube'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('the', 'life'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('The', 'priest'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('the', 'back'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Mavriky', 'Mavrikyevitch'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('The', 'prisoner'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('the', 'maid'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('Thy', 'name'): {'count': 8, 'length': 2, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('the', 'general'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('the', 'Karamazov'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('the', 'Holy'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('the', 'forester'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('the', 'hope'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('the', 'daughter'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('the', 'Superior'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('the', 'fool'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('The', 'peasant'): {'count': 9, 'length': 2, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('Yefim', 'Petrovitch'): {'count': 10, 'length': 2, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('the', 'Karamazovs'): {'count': 10, 'length': 2, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('the', 'light'): {'count': 10, 'length': 2, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('the', 'monster'): {'count': 10, 'length': 2, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('the', 'gentleman'): {'count': 11, 'length': 2, 'count_norm_book': 5.675181502622966e-06, 'count_norm_char': 6.695559018309311e-05}
+('the', 'reader'): {'count': 11, 'length': 2, 'count_norm_book': 5.675181502622966e-06, 'count_norm_char': 6.695559018309311e-05}
+('The', 'monk'): {'count': 11, 'length': 2, 'count_norm_book': 5.675181502622966e-06, 'count_norm_char': 6.695559018309311e-05}
+('the', 'valet'): {'count': 11, 'length': 2, 'count_norm_book': 5.675181502622966e-06, 'count_norm_char': 6.695559018309311e-05}
+('Adelaida', 'Ivanovna'): {'count': 12, 'length': 2, 'count_norm_book': 6.191107093770508e-06, 'count_norm_char': 7.304246201791975e-05}
+('the', 'charge'): {'count': 12, 'length': 2, 'count_norm_book': 6.191107093770508e-06, 'count_norm_char': 7.304246201791975e-05}
+('The', 'man'): {'count': 12, 'length': 2, 'count_norm_book': 6.191107093770508e-06, 'count_norm_char': 7.304246201791975e-05}
+('the', 'baby'): {'count': 13, 'length': 2, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('the', 'master'): {'count': 13, 'length': 2, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('the', 'widow'): {'count': 13, 'length': 2, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('the', 'girl'): {'count': 13, 'length': 2, 'count_norm_book': 6.707032684918051e-06, 'count_norm_char': 7.91293338527464e-05}
+('the', 'State'): {'count': 14, 'length': 2, 'count_norm_book': 7.2229582760655925e-06, 'count_norm_char': 8.521620568757304e-05}
+('the', 'father'): {'count': 15, 'length': 2, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('the', 'name'): {'count': 15, 'length': 2, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('Mihail', 'Makarovitch'): {'count': 15, 'length': 2, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('Dmitri', 'Karamazov'): {'count': 15, 'length': 2, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('O', 'Lord'): {'count': 15, 'length': 2, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('Father', 'Iosif'): {'count': 15, 'length': 2, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('the', 'servant'): {'count': 15, 'length': 2, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('the', 'sort'): {'count': 15, 'length': 2, 'count_norm_book': 7.738883867213134e-06, 'count_norm_char': 9.130307752239969e-05}
+('the', 'son'): {'count': 16, 'length': 2, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('The', 'boy'): {'count': 16, 'length': 2, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('the', 'witness'): {'count': 16, 'length': 2, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('the', 'sun'): {'count': 16, 'length': 2, 'count_norm_book': 8.254809458360677e-06, 'count_norm_char': 9.738994935722633e-05}
+('the', 'lady'): {'count': 17, 'length': 2, 'count_norm_book': 8.77073504950822e-06, 'count_norm_char': 0.00010347682119205298}
+('The', 'doctor'): {'count': 18, 'length': 2, 'count_norm_book': 9.286660640655763e-06, 'count_norm_char': 0.00010956369302687963}
+('the', 'subject'): {'count': 18, 'length': 2, 'count_norm_book': 9.286660640655763e-06, 'count_norm_char': 0.00010956369302687963}
+('the', 'Gospel'): {'count': 18, 'length': 2, 'count_norm_book': 9.286660640655763e-06, 'count_norm_char': 0.00010956369302687963}
+('von', 'Sohn'): {'count': 19, 'length': 2, 'count_norm_book': 9.802586231803304e-06, 'count_norm_char': 0.00011565056486170627}
+('the', 'Pole'): {'count': 20, 'length': 2, 'count_norm_book': 1.0318511822950846e-05, 'count_norm_char': 0.00012173743669653292}
+('the', 'Poles'): {'count': 20, 'length': 2, 'count_norm_book': 1.0318511822950846e-05, 'count_norm_char': 0.00012173743669653292}
+('Kuzma', 'Kuzmitch'): {'count': 20, 'length': 2, 'count_norm_book': 1.0318511822950846e-05, 'count_norm_char': 0.00012173743669653292}
+('Marfa', 'Ignatyevna'): {'count': 21, 'length': 2, 'count_norm_book': 1.083443741409839e-05, 'count_norm_char': 0.00012782430853135957}
+('The', 'captain'): {'count': 21, 'length': 2, 'count_norm_book': 1.083443741409839e-05, 'count_norm_char': 0.00012782430853135957}
+('the', 'head'): {'count': 21, 'length': 2, 'count_norm_book': 1.083443741409839e-05, 'count_norm_char': 0.00012782430853135957}
+('the', 'mother'): {'count': 23, 'length': 2, 'count_norm_book': 1.1866288596393473e-05, 'count_norm_char': 0.00013999805220101286}
+('brother', 'Ivan'): {'count': 23, 'length': 2, 'count_norm_book': 1.1866288596393473e-05, 'count_norm_char': 0.00013999805220101286}
+('the', 'priest'): {'count': 24, 'length': 2, 'count_norm_book': 1.2382214187541016e-05, 'count_norm_char': 0.0001460849240358395}
+('the', 'dog'): {'count': 24, 'length': 2, 'count_norm_book': 1.2382214187541016e-05, 'count_norm_char': 0.0001460849240358395}
+('Ippolit', 'Kirillovitch'): {'count': 24, 'length': 2, 'count_norm_book': 1.2382214187541016e-05, 'count_norm_char': 0.0001460849240358395}
+('Grigory', 'Vassilyevitch'): {'count': 25, 'length': 2, 'count_norm_book': 1.2898139778688558e-05, 'count_norm_char': 0.00015217179587066615}
+('Father', 'Ferapont'): {'count': 25, 'length': 2, 'count_norm_book': 1.2898139778688558e-05, 'count_norm_char': 0.00015217179587066615}
+('the', 'peasant'): {'count': 25, 'length': 2, 'count_norm_book': 1.2898139778688558e-05, 'count_norm_char': 0.00015217179587066615}
+('brother', 'Dmitri'): {'count': 26, 'length': 2, 'count_norm_book': 1.3414065369836101e-05, 'count_norm_char': 0.0001582586677054928}
+('Marya', 'Kondratyevna'): {'count': 26, 'length': 2, 'count_norm_book': 1.3414065369836101e-05, 'count_norm_char': 0.0001582586677054928}
+('the', 'murderer'): {'count': 27, 'length': 2, 'count_norm_book': 1.3929990960983642e-05, 'count_norm_char': 0.00016434553954031944}
+('the', 'letter'): {'count': 27, 'length': 2, 'count_norm_book': 1.3929990960983642e-05, 'count_norm_char': 0.00016434553954031944}
+('police', 'captain'): {'count': 27, 'length': 2, 'count_norm_book': 1.3929990960983642e-05, 'count_norm_char': 0.00016434553954031944}
+('Father', 'Superior'): {'count': 28, 'length': 2, 'count_norm_book': 1.4445916552131185e-05, 'count_norm_char': 0.0001704324113751461}
+('the', 'fence'): {'count': 28, 'length': 2, 'count_norm_book': 1.4445916552131185e-05, 'count_norm_char': 0.0001704324113751461}
+('the', 'woman'): {'count': 29, 'length': 2, 'count_norm_book': 1.4961842143278728e-05, 'count_norm_char': 0.00017651928320997273}
+('the', 'child'): {'count': 29, 'length': 2, 'count_norm_book': 1.4961842143278728e-05, 'count_norm_char': 0.00017651928320997273}
+('the', 'Lord'): {'count': 30, 'length': 2, 'count_norm_book': 1.547776773442627e-05, 'count_norm_char': 0.00018260615504479938}
+('the', 'Father'): {'count': 30, 'length': 2, 'count_norm_book': 1.547776773442627e-05, 'count_norm_char': 0.00018260615504479938}
+('Trifon', 'Borissovitch'): {'count': 31, 'length': 2, 'count_norm_book': 1.5993693325573813e-05, 'count_norm_char': 0.00018869302687962602}
+('The', 'prosecutor'): {'count': 32, 'length': 2, 'count_norm_book': 1.6509618916721354e-05, 'count_norm_char': 0.00019477989871445267}
+('the', 'monk'): {'count': 34, 'length': 2, 'count_norm_book': 1.754147009901644e-05, 'count_norm_char': 0.00020695364238410596}
+('Pyotr', 'Alexandrovitch'): {'count': 35, 'length': 2, 'count_norm_book': 1.805739569016398e-05, 'count_norm_char': 0.0002130405142189326}
+('Agrafena', 'Alexandrovna'): {'count': 36, 'length': 2, 'count_norm_book': 1.8573321281311525e-05, 'count_norm_char': 0.00021912738605375925}
+('the', 'President'): {'count': 36, 'length': 2, 'count_norm_book': 1.8573321281311525e-05, 'count_norm_char': 0.00021912738605375925}
+('the', 'face'): {'count': 38, 'length': 2, 'count_norm_book': 1.9605172463606607e-05, 'count_norm_char': 0.00023130112972341254}
+('the', 'doctor'): {'count': 43, 'length': 2, 'count_norm_book': 2.218480041934432e-05, 'count_norm_char': 0.0002617354888975458}
+('the', 'case'): {'count': 47, 'length': 2, 'count_norm_book': 2.424850278393449e-05, 'count_norm_char': 0.0002860829762368524}
+('Ivan', 'Fyodorovitch'): {'count': 47, 'length': 2, 'count_norm_book': 2.424850278393449e-05, 'count_norm_char': 0.0002860829762368524}
+('Father', 'Paissy'): {'count': 52, 'length': 2, 'count_norm_book': 2.6828130739672202e-05, 'count_norm_char': 0.0003165173354109856}
+('the', 'Church'): {'count': 53, 'length': 2, 'count_norm_book': 2.7344056330819744e-05, 'count_norm_char': 0.00032260420724581224}
+('the', 'captain'): {'count': 53, 'length': 2, 'count_norm_book': 2.7344056330819744e-05, 'count_norm_char': 0.00032260420724581224}
+('the', 'man'): {'count': 57, 'length': 2, 'count_norm_book': 2.9407758695409914e-05, 'count_norm_char': 0.0003469516945851188}
+('the', 'boy'): {'count': 63, 'length': 2, 'count_norm_book': 3.250331224229517e-05, 'count_norm_char': 0.0003834729255940787}
+('Pyotr', 'Ilyitch'): {'count': 65, 'length': 2, 'count_norm_book': 3.353516342459025e-05, 'count_norm_char': 0.000395646669263732}
+('Madame', 'Hohlakov'): {'count': 71, 'length': 2, 'count_norm_book': 3.66307169714755e-05, 'count_norm_char': 0.00043216790027269186}
+('Father', 'Zossima'): {'count': 75, 'length': 2, 'count_norm_book': 3.8694419336065674e-05, 'count_norm_char': 0.00045651538761199844}
+('the', 'end'): {'count': 78, 'length': 2, 'count_norm_book': 4.0242196109508304e-05, 'count_norm_char': 0.00047477600311647837}
+('Nikolay', 'Parfenovitch'): {'count': 79, 'length': 2, 'count_norm_book': 4.0758121700655845e-05, 'count_norm_char': 0.000480862874951305}
+('Alexey', 'Fyodorovitch'): {'count': 100, 'length': 2, 'count_norm_book': 5.1592559114754234e-05, 'count_norm_char': 0.0006086871834826646}
+('the', 'prosecutor'): {'count': 120, 'length': 2, 'count_norm_book': 6.191107093770508e-05, 'count_norm_char': 0.0007304246201791975}
+('the', 'town'): {'count': 126, 'length': 2, 'count_norm_book': 6.500662448459034e-05, 'count_norm_char': 0.0007669458511881574}
+('the', 'prisoner'): {'count': 139, 'length': 2, 'count_norm_book': 7.171365716950838e-05, 'count_norm_char': 0.0008460751850409038}
+('Dmitri', 'Fyodorovitch'): {'count': 157, 'length': 2, 'count_norm_book': 8.100031781016415e-05, 'count_norm_char': 0.0009556388780677834}
+('Katerina', 'Ivanovna'): {'count': 168, 'length': 2, 'count_norm_book': 8.667549931278711e-05, 'count_norm_char': 0.0010225944682508766}
+('Fyodor', 'Pavlovitch'): {'count': 227, 'length': 2, 'count_norm_book': 0.00011711510919049212, 'count_norm_char': 0.0013817199065056485}
+('man', "'s", 'head'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Lord', 'God'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('The', 'Grand', 'Inquisitor'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('The', 'old', 'woman'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('throne', 'of', 'God'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Orthodox', 'Church'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('merchant', "'s", 'wife'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('sword', 'of', 'Caesar'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('love', 'with', 'Katerina'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('prisoner', 'and', 'Smerdyakov'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('son', 'of', 'Fyodor'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'servant', 'Grigory'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('round', 'his', 'head'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Grigory', "'s", 'wife'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('The', 'whole', 'town'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Father', 'Librarian'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'deputy', 'prosecutor'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Pyotr', 'Ilyitch', 'Perhotin'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'future', 'life'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'talented', 'prosecutor'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'living', 'God'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('man', "'s", 'voice'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Hurrah', 'for', 'Karamazov'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('tower', 'of', 'Babel'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'court', 'usher'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('hand', 'to', 'Alyosha'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Grand', 'Inquisitor'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('kiss', 'his', 'hand'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('doctor', "'s", 'wife'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'young', 'official'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'one', 'man'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Alyosha', "'s", 'mother'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'two', 'Poles'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'very', 'end'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('bread', 'of', 'Heaven'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('faith', 'in', 'God'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('existence', 'of', 'God'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'luckless', 'man'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'murdered', 'woman'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('woman', "'s", 'voice'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'setting', 'sun'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Son', 'of', 'God'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'valet', 'Smerdyakov'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'unhappy', 'man'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'old', 'lady'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Mitya', "'s", 'face'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Moscow', 'and', 'Petersburg'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('glory', 'of', 'God'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Ivan', 'and', 'Alexey'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('relations', 'with', 'Grushenka'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('image', 'of', 'Christ'): {'count': 3, 'length': 3, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'poor', 'child'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'young', 'doctor'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Alexey', 'Fyodorovitch', 'Karamazov'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Gott', 'der', 'Sohn'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'young', 'officer'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Interview', 'With', 'Smerdyakov'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'Moscow', 'doctor'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('founders', 'of', 'Troy'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Rakitin', 'and', 'Alyosha'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Pyotr', 'Alexandrovitch', 'Miuesov'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('man', 'of', 'God'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'same', 'man'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('kiss', 'your', 'hand'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'High', 'Street'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Balaam', "'s", 'ass'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Alyosha', "'s", 'hand'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Alyosha', "'s", 'arrival'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Kingdom', 'of', 'Heaven'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Gott', 'der', 'Vater'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'real', 'murderer'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Ivan', 'and', 'Alyosha'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Dmitri', 'Fyodorovitch', 'Karamazov'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', '`', 'Metropolis'): {'count': 4, 'length': 3, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'sick', 'man'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Alyosha', "'s", 'face'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'chief', 'town'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('brother', 'Dmitri', 'Fyodorovitch'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('The', 'young', 'man'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('man', "'s", 'life'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('murder', 'his', 'father'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('doctor', 'from', 'Moscow'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('Mother', 'of', 'God'): {'count': 5, 'length': 3, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'little', 'bag'): {'count': 6, 'length': 3, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('the', 'little', 'Pole'): {'count': 6, 'length': 3, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('Fyodor', 'Pavlovitch', 'Karamazov'): {'count': 6, 'length': 3, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('the', 'old', 'servant'): {'count': 7, 'length': 3, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('monk', 'from', 'Obdorsk'): {'count': 7, 'length': 3, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('man', "'s", 'face'): {'count': 7, 'length': 3, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('the', 'widow', 'Morozov'): {'count': 7, 'length': 3, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('the', 'dead', 'man'): {'count': 8, 'length': 3, 'count_norm_book': 4.127404729180339e-06, 'count_norm_char': 4.869497467861317e-05}
+('general', "'s", 'widow'): {'count': 9, 'length': 3, 'count_norm_book': 4.643330320327881e-06, 'count_norm_char': 5.478184651343981e-05}
+('the', 'old', 'woman'): {'count': 10, 'length': 3, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('the', 'whole', 'town'): {'count': 10, 'length': 3, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('the', 'other', 'hand'): {'count': 10, 'length': 3, 'count_norm_book': 5.159255911475423e-06, 'count_norm_char': 6.086871834826646e-05}
+('the', 'present', 'case'): {'count': 11, 'length': 3, 'count_norm_book': 5.675181502622966e-06, 'count_norm_char': 6.695559018309311e-05}
+('the', 'other', 'end'): {'count': 11, 'length': 3, 'count_norm_book': 5.675181502622966e-06, 'count_norm_char': 6.695559018309311e-05}
+('the', 'young', 'lady'): {'count': 11, 'length': 3, 'count_norm_book': 5.675181502622966e-06, 'count_norm_char': 6.695559018309311e-05}
+('the', 'young', 'man'): {'count': 21, 'length': 3, 'count_norm_book': 1.083443741409839e-05, 'count_norm_char': 0.00012782430853135957}
+('the', 'police', 'captain'): {'count': 21, 'length': 3, 'count_norm_book': 1.083443741409839e-05, 'count_norm_char': 0.00012782430853135957}
+('the', 'Father', 'Superior'): {'count': 24, 'length': 3, 'count_norm_book': 1.2382214187541016e-05, 'count_norm_char': 0.0001460849240358395}
+('the', 'investigating', 'lawyer'): {'count': 26, 'length': 3, 'count_norm_book': 1.3414065369836101e-05, 'count_norm_char': 0.0001582586677054928}
+('The', 'old', 'man'): {'count': 37, 'length': 3, 'count_norm_book': 1.9089246872459066e-05, 'count_norm_char': 0.0002252142578885859}
+('the', 'old', 'man'): {'count': 98, 'length': 3, 'count_norm_book': 5.056070793245915e-05, 'count_norm_char': 0.0005965134398130113}
+('the', 'sword', 'of', 'Caesar'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'monk', 'from', 'Obdorsk'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Son', 'of', 'God'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Kingdom', 'of', 'Heaven'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'bread', 'of', 'Heaven'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'throne', 'of', 'God'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Lion', 'and', 'the', 'Sun'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'prisoner', 'and', 'Smerdyakov'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('towel', 'round', 'his', 'head'): {'count': 3, 'length': 4, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('the', 'Mother', 'of', 'God'): {'count': 4, 'length': 4, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Gott', 'der', 'heilige', 'Geist'): {'count': 4, 'length': 4, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('The', 'monk', 'from', 'Obdorsk'): {'count': 4, 'length': 4, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('the', 'founders', 'of', 'Troy'): {'count': 4, 'length': 4, 'count_norm_book': 2.0637023645901693e-06, 'count_norm_char': 2.4347487339306584e-05}
+('Lives', 'of', 'the', 'Saints'): {'count': 5, 'length': 4, 'count_norm_book': 2.5796279557377116e-06, 'count_norm_char': 3.043435917413323e-05}
+('the', 'general', "'s", 'widow'): {'count': 7, 'length': 4, 'count_norm_book': 3.6114791380327963e-06, 'count_norm_char': 4.260810284378652e-05}
+('the', 'Lion', 'and', 'the', 'Sun'): {'count': 3, 'length': 5, 'count_norm_book': 1.547776773442627e-06, 'count_norm_char': 1.826061550447994e-05}
+('Confession', 'Of', 'A', 'Passionate', 'Heart'): {'count': 6, 'length': 5, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}
+('The', 'Confession', 'Of', 'A', 'Passionate', 'Heart'): {'count': 6, 'length': 6, 'count_norm_book': 3.095553546885254e-06, 'count_norm_char': 3.652123100895988e-05}

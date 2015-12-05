@@ -1,0 +1,56 @@
+----------CANDIDATES----------
+('Women',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Peace',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Beauty',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Fatherhood',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Men',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Colonels',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Woman',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('MAN',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Epictetus',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Nonsense',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Nothing',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Plenty',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('OUR',): {'count': 3, 'length': 1, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Power',): {'count': 4, 'length': 1, 'count_norm_book': 1.3485312808687238e-05, 'count_norm_char': 0.0010392309690828788}
+('New',): {'count': 4, 'length': 1, 'count_norm_book': 1.3485312808687238e-05, 'count_norm_char': 0.0010392309690828788}
+('Temple',): {'count': 4, 'length': 1, 'count_norm_book': 1.3485312808687238e-05, 'count_norm_char': 0.0010392309690828788}
+('Mothers',): {'count': 4, 'length': 1, 'count_norm_book': 1.3485312808687238e-05, 'count_norm_char': 0.0010392309690828788}
+('People',): {'count': 5, 'length': 1, 'count_norm_book': 1.685664101085905e-05, 'count_norm_char': 0.0012990387113535984}
+('Mother',): {'count': 5, 'length': 1, 'count_norm_book': 1.685664101085905e-05, 'count_norm_char': 0.0012990387113535984}
+('Girls',): {'count': 5, 'length': 1, 'count_norm_book': 1.685664101085905e-05, 'count_norm_char': 0.0012990387113535984}
+('Love',): {'count': 7, 'length': 1, 'count_norm_book': 2.3599297415202667e-05, 'count_norm_char': 0.0018186541958950377}
+('Motherhood',): {'count': 8, 'length': 1, 'count_norm_book': 2.6970625617374476e-05, 'count_norm_char': 0.0020784619381657575}
+('Van',): {'count': 8, 'length': 1, 'count_norm_book': 2.6970625617374476e-05, 'count_norm_char': 0.0020784619381657575}
+('Zava',): {'count': 11, 'length': 1, 'count_norm_book': 3.7084610223889905e-05, 'count_norm_char': 0.0028578851649779164}
+('Moadine',): {'count': 14, 'length': 1, 'count_norm_book': 4.7198594830405334e-05, 'count_norm_char': 0.0036373083917900753}
+('Celis',): {'count': 21, 'length': 1, 'count_norm_book': 7.0797892245608e-05, 'count_norm_char': 0.005455962587685113}
+('Herland',): {'count': 24, 'length': 1, 'count_norm_book': 8.091187685212343e-05, 'count_norm_char': 0.006235385814497272}
+('God',): {'count': 25, 'length': 1, 'count_norm_book': 8.428320505429525e-05, 'count_norm_char': 0.006495193556767992}
+('Somel',): {'count': 27, 'length': 1, 'count_norm_book': 9.102586145863886e-05, 'count_norm_char': 0.007014809041309431}
+('Alima',): {'count': 31, 'length': 1, 'count_norm_book': 0.0001045111742673261, 'count_norm_char': 0.00805404001039231}
+('Ellador',): {'count': 55, 'length': 1, 'count_norm_book': 0.00018542305111944954, 'count_norm_char': 0.014289425824889582}
+('Jeff',): {'count': 107, 'length': 1, 'count_norm_book': 0.00036073211763238365, 'count_norm_char': 0.027799428422967003}
+('Terry',): {'count': 187, 'length': 1, 'count_norm_book': 0.0006304383738061284, 'count_norm_char': 0.04858404780462458}
+('the', 'foot'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('the', 'male'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('The', 'guide'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('Herland', 'child'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('the', 'light'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('the', 'life'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('the', 'name'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('the', 'subject'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('the', 'Temple'): {'count': 3, 'length': 2, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('the', 'town'): {'count': 4, 'length': 2, 'count_norm_book': 1.3485312808687238e-05, 'count_norm_char': 0.0010392309690828788}
+('the', 'end'): {'count': 4, 'length': 2, 'count_norm_book': 1.3485312808687238e-05, 'count_norm_char': 0.0010392309690828788}
+('the', 'case'): {'count': 4, 'length': 2, 'count_norm_book': 1.3485312808687238e-05, 'count_norm_char': 0.0010392309690828788}
+('the', 'cow'): {'count': 4, 'length': 2, 'count_norm_book': 1.3485312808687238e-05, 'count_norm_char': 0.0010392309690828788}
+('the', 'face'): {'count': 6, 'length': 2, 'count_norm_book': 2.022796921303086e-05, 'count_norm_char': 0.001558846453624318}
+('the', 'girl'): {'count': 6, 'length': 2, 'count_norm_book': 2.022796921303086e-05, 'count_norm_char': 0.001558846453624318}
+('the', 'child'): {'count': 6, 'length': 2, 'count_norm_book': 2.022796921303086e-05, 'count_norm_char': 0.001558846453624318}
+('the', 'woman'): {'count': 7, 'length': 2, 'count_norm_book': 2.3599297415202667e-05, 'count_norm_char': 0.0018186541958950377}
+('the', 'mother'): {'count': 8, 'length': 2, 'count_norm_book': 2.6970625617374476e-05, 'count_norm_char': 0.0020784619381657575}
+('the', 'man'): {'count': 10, 'length': 2, 'count_norm_book': 3.37132820217181e-05, 'count_norm_char': 0.002598077422707197}
+('Jeff', 'and', 'Celis'): {'count': 3, 'length': 3, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}
+('women', 'of', 'Herland'): {'count': 5, 'length': 3, 'count_norm_book': 1.685664101085905e-05, 'count_norm_char': 0.0012990387113535984}
+('the', 'women', 'of', 'Herland'): {'count': 3, 'length': 4, 'count_norm_book': 1.011398460651543e-05, 'count_norm_char': 0.000779423226812159}

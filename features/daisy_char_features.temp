@@ -1,0 +1,47 @@
+----------CANDIDATES----------
+('Pincian',): {'count': 3, 'length': 1, 'count_norm_book': 2.45613747820178e-05, 'count_norm_char': 0.0016375545851528383}
+('America',): {'count': 4, 'length': 1, 'count_norm_book': 3.274849970935706e-05, 'count_norm_char': 0.002183406113537118}
+('English',): {'count': 4, 'length': 1, 'count_norm_book': 3.274849970935706e-05, 'count_norm_char': 0.002183406113537118}
+('Italians',): {'count': 4, 'length': 1, 'count_norm_book': 3.274849970935706e-05, 'count_norm_char': 0.002183406113537118}
+('Roman',): {'count': 4, 'length': 1, 'count_norm_book': 3.274849970935706e-05, 'count_norm_char': 0.002183406113537118}
+('Dr.',): {'count': 5, 'length': 1, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
+('Colosseum',): {'count': 5, 'length': 1, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
+('American',): {'count': 5, 'length': 1, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
+('Chateau',): {'count': 5, 'length': 1, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
+('Schenectady',): {'count': 6, 'length': 1, 'count_norm_book': 4.91227495640356e-05, 'count_norm_char': 0.0032751091703056767}
+('Americans',): {'count': 7, 'length': 1, 'count_norm_book': 5.7309874491374865e-05, 'count_norm_char': 0.003820960698689956}
+('Mother',): {'count': 8, 'length': 1, 'count_norm_book': 6.549699941871413e-05, 'count_norm_char': 0.004366812227074236}
+('New',): {'count': 8, 'length': 1, 'count_norm_book': 6.549699941871413e-05, 'count_norm_char': 0.004366812227074236}
+('Italy',): {'count': 8, 'length': 1, 'count_norm_book': 6.549699941871413e-05, 'count_norm_char': 0.004366812227074236}
+('Europe',): {'count': 12, 'length': 1, 'count_norm_book': 9.82454991280712e-05, 'count_norm_char': 0.006550218340611353}
+('Chillon',): {'count': 15, 'length': 1, 'count_norm_book': 0.000122806873910089, 'count_norm_char': 0.008187772925764192}
+('Vevey',): {'count': 16, 'length': 1, 'count_norm_book': 0.00013099399883742825, 'count_norm_char': 0.008733624454148471}
+('Geneva',): {'count': 19, 'length': 1, 'count_norm_book': 0.00015555537361944605, 'count_norm_char': 0.01037117903930131}
+('Rome',): {'count': 19, 'length': 1, 'count_norm_book': 0.00015555537361944605, 'count_norm_char': 0.01037117903930131}
+('Eugenio',): {'count': 20, 'length': 1, 'count_norm_book': 0.00016374249854678532, 'count_norm_char': 0.010917030567685589}
+('Giovanelli',): {'count': 22, 'length': 1, 'count_norm_book': 0.00018011674840146387, 'count_norm_char': 0.012008733624454149}
+('Randolph',): {'count': 34, 'length': 1, 'count_norm_book': 0.00027836224752953505, 'count_norm_char': 0.018558951965065504}
+('Daisy',): {'count': 102, 'length': 1, 'count_norm_book': 0.0008350867425886052, 'count_norm_char': 0.055676855895196505}
+('Winterbourne',): {'count': 178, 'length': 1, 'count_norm_book': 0.0014573082370663893, 'count_norm_char': 0.09716157205240175}
+('the', 'signorina'): {'count': 3, 'length': 2, 'count_norm_book': 2.45613747820178e-05, 'count_norm_char': 0.0016375545851528383}
+('the', 'hand'): {'count': 3, 'length': 2, 'count_norm_book': 2.45613747820178e-05, 'count_norm_char': 0.0016375545851528383}
+('the', 'boy'): {'count': 3, 'length': 2, 'count_norm_book': 2.45613747820178e-05, 'count_norm_char': 0.0016375545851528383}
+('the', 'Pincian'): {'count': 3, 'length': 2, 'count_norm_book': 2.45613747820178e-05, 'count_norm_char': 0.0016375545851528383}
+('the', 'Chateau'): {'count': 4, 'length': 2, 'count_norm_book': 3.274849970935706e-05, 'count_norm_char': 0.002183406113537118}
+('the', 'Colosseum'): {'count': 5, 'length': 2, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
+('Dr.', 'Davis'): {'count': 5, 'length': 2, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
+('New', 'York'): {'count': 8, 'length': 2, 'count_norm_book': 6.549699941871413e-05, 'count_norm_char': 0.004366812227074236}
+('Daisy', 'Miller'): {'count': 9, 'length': 2, 'count_norm_book': 7.36841243460534e-05, 'count_norm_char': 0.0049126637554585155}
+('the', 'child'): {'count': 10, 'length': 2, 'count_norm_book': 8.187124927339266e-05, 'count_norm_char': 0.0054585152838427945}
+('Miss', 'Daisy'): {'count': 26, 'length': 2, 'count_norm_book': 0.0002128652481108209, 'count_norm_char': 0.014192139737991267}
+('Miss', 'Miller'): {'count': 26, 'length': 2, 'count_norm_book': 0.0002128652481108209, 'count_norm_char': 0.014192139737991267}
+('the', 'elder', 'lady'): {'count': 3, 'length': 3, 'count_norm_book': 2.45613747820178e-05, 'count_norm_char': 0.0016375545851528383}
+('Chateau', 'de', 'Chillon'): {'count': 5, 'length': 3, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
+('The', 'young', 'man'): {'count': 5, 'length': 3, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
+('The', 'young', 'lady'): {'count': 6, 'length': 3, 'count_norm_book': 4.91227495640356e-05, 'count_norm_char': 0.0032751091703056767}
+('The', 'young', 'girl'): {'count': 6, 'length': 3, 'count_norm_book': 4.91227495640356e-05, 'count_norm_char': 0.0032751091703056767}
+('the', 'young', 'lady'): {'count': 11, 'length': 3, 'count_norm_book': 9.005837420073194e-05, 'count_norm_char': 0.006004366812227074}
+('the', 'young', 'man'): {'count': 14, 'length': 3, 'count_norm_book': 0.00011461974898274973, 'count_norm_char': 0.007641921397379912}
+('Miss', 'Daisy', 'Miller'): {'count': 18, 'length': 3, 'count_norm_book': 0.0001473682486921068, 'count_norm_char': 0.009825327510917031}
+('the', 'young', 'girl'): {'count': 32, 'length': 3, 'count_norm_book': 0.0002619879976748565, 'count_norm_char': 0.017467248908296942}
+('the', 'Chateau', 'de', 'Chillon'): {'count': 5, 'length': 4, 'count_norm_book': 4.093562463669633e-05, 'count_norm_char': 0.0027292576419213972}
