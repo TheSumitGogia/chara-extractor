@@ -16,9 +16,12 @@ def populate_gender_dict():
   return d
 
 gender_dict = populate_gender_dict()
-MALE_TITLES = ['Mr.', 'Mister']
-FEMALE_TITLES = ['Mrs.', 'Ms.', 'Miss', 'Madame']
-ALL_TITLES = MALE_TITLES + FEMALE_TITLES
+MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr', 'Monsieur':'Mr', 'M.':'M.'}
+FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame'}
+OTHER_TITLES = {'Dr.':'Dr.', 'Doctor':'Dr.', 'Jr.':'Jr.', 'Junior':'Jr.', 'Prof.':'Prof', 'Professor':'Prof.'}
+ALL_TITLES = MALE_TITLES.copy() 
+ALL_TITLES.update(FEMALE_TITLES) 
+ALL_TITLES.update(OTHER_TITLES)
 
 def disambiguate(candidates):
   all_maps = {}
@@ -52,7 +55,9 @@ def contains_tuple(t_outer, t_inner):
 def resolve_title(ocand, cand):
   if cand != ocand and cand[0] in ALL_TITLES and cand[-1] == ocand[-1]:
     first_name = ocand[0].lower()
-    if first_name in gender_dict:
+    if cand[0] in OTHER_TITLES:
+        return True
+    elif first_name in gender_dict:
       if gender_dict[first_name] == 'MALE' and cand[0] in MALE_TITLES:
         return True
       elif gender_dict[first_name] == 'FEMALE' and cand[0] in FEMALE_TITLES:

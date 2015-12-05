@@ -1,0 +1,4 @@
+----------CANDIDATES----------
+('Jennie',): {'count': 8, 'count_norm_length': 0.00025524040455604123, 'length': 1, 'count_norm_char': 0.06451612903225806}
+('John',): {'count': 28, 'count_norm_length': 0.0008933414159461443, 'length': 1, 'count_norm_char': 0.22580645161290322}
+('the', 'sun'): {'count': 4, 'count_norm_length': 0.00012762020227802062, 'length': 2, 'count_norm_char': 0.03225806451612903}

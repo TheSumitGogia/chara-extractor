@@ -1,83 +1,85 @@
 ----------CANDIDATES----------
-('Norway',): {'count': 3, 'length': 1, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('Springfield',): {'count': 3, 'length': 1, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('L',): {'count': 3, 'length': 1, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('Puss',): {'count': 3, 'length': 1, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('Junction',): {'count': 4, 'length': 1, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('Stamford',): {'count': 4, 'length': 1, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('School',): {'count': 4, 'length': 1, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('New',): {'count': 4, 'length': 1, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('Aunt',): {'count': 4, 'length': 1, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('Dr.',): {'count': 5, 'length': 1, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('West',): {'count': 5, 'length': 1, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('Michael',): {'count': 5, 'length': 1, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('Fromes',): {'count': 5, 'length': 1, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('Byrne',): {'count': 5, 'length': 1, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('Eady',): {'count': 5, 'length': 1, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('Andrew',): {'count': 6, 'length': 1, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Falls',): {'count': 6, 'length': 1, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Shadd',): {'count': 6, 'length': 1, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Zenobia',): {'count': 6, 'length': 1, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Dan',): {'count': 6, 'length': 1, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Worcester',): {'count': 6, 'length': 1, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Ruth',): {'count': 7, 'length': 1, 'count_norm_book': 3.721246723973866e-05, 'count_norm_char': 0.001227639424763241}
-('Ned',): {'count': 8, 'length': 1, 'count_norm_book': 4.252853398827276e-05, 'count_norm_char': 0.0014030164854437039}
-('Harmon',): {'count': 9, 'length': 1, 'count_norm_book': 4.784460073680685e-05, 'count_norm_char': 0.001578393546124167}
-('Hale',): {'count': 10, 'length': 1, 'count_norm_book': 5.3160667485340945e-05, 'count_norm_char': 0.00175377060680463}
-('Varnum',): {'count': 12, 'length': 1, 'count_norm_book': 6.379280098240913e-05, 'count_norm_char': 0.002104524728165556}
-('Denis',): {'count': 16, 'length': 1, 'count_norm_book': 8.505706797654552e-05, 'count_norm_char': 0.0028060329708874078}
-('Corbury',): {'count': 17, 'length': 1, 'count_norm_book': 9.037313472507961e-05, 'count_norm_char': 0.002981410031567871}
-('Bettsbridge',): {'count': 23, 'length': 1, 'count_norm_book': 0.00012226953521628418, 'count_norm_char': 0.004033672395650649}
-('Flats',): {'count': 24, 'length': 1, 'count_norm_book': 0.00012758560196481826, 'count_norm_char': 0.004209049456331112}
-('Jotham',): {'count': 34, 'length': 1, 'count_norm_book': 0.00018074626945015923, 'count_norm_char': 0.005962820063135742}
-('Frome',): {'count': 35, 'length': 1, 'count_norm_book': 0.0001860623361986933, 'count_norm_char': 0.0061381971238162044}
-('Matt',): {'count': 46, 'length': 1, 'count_norm_book': 0.00024453907043256836, 'count_norm_char': 0.008067344791301298}
-('Starkfield',): {'count': 56, 'length': 1, 'count_norm_book': 0.0002976997379179093, 'count_norm_char': 0.009821115398105928}
-('Zeena',): {'count': 108, 'length': 1, 'count_norm_book': 0.0005741352088416823, 'count_norm_char': 0.018940722553490004}
-('Mattie',): {'count': 133, 'length': 1, 'count_norm_book': 0.0007070368775550346, 'count_norm_char': 0.023325149070501577}
-('Ethan',): {'count': 152, 'length': 1, 'count_norm_book': 0.0008080421457771823, 'count_norm_char': 0.026657313223430377}
-('the', 'Frome'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('the', 'foot'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('kitchen', 'Mattie'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('Ruth', 'Varnum'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('the', 'West'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('the', 'life'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('lawyer', 'Varnum'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('the', 'case'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('New', 'England'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('the', 'minister'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('the', 'Junction'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('Aunt', 'Martha'): {'count': 3, 'length': 2, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('School', 'House'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('The', 'girl'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('Harmon', 'Gow'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('Dr.', 'Buck'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('the', 'name'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('the', 'Fromes'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('the', 'dresser'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('Corbury', 'Flats'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('Ned', 'Hale'): {'count': 4, 'length': 2, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('the', 'light'): {'count': 5, 'length': 2, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('Michael', 'Eady'): {'count': 5, 'length': 2, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('l', 'Byrne'): {'count': 5, 'length': 2, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('the', 'builder'): {'count': 5, 'length': 2, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('the', 'sun'): {'count': 5, 'length': 2, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
-('the', 'Bettsbridge'): {'count': 6, 'length': 2, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Mattie', 'Silver'): {'count': 6, 'length': 2, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Andrew', 'Hale'): {'count': 6, 'length': 2, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('the', 'Starkfield'): {'count': 6, 'length': 2, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('the', 'back'): {'count': 8, 'length': 2, 'count_norm_book': 4.252853398827276e-05, 'count_norm_char': 0.0014030164854437039}
-('the', 'Varnum'): {'count': 8, 'length': 2, 'count_norm_book': 4.252853398827276e-05, 'count_norm_char': 0.0014030164854437039}
-('The', 'cat'): {'count': 9, 'length': 2, 'count_norm_book': 4.784460073680685e-05, 'count_norm_char': 0.001578393546124167}
-('the', 'Corbury'): {'count': 10, 'length': 2, 'count_norm_book': 5.3160667485340945e-05, 'count_norm_char': 0.00175377060680463}
-('Denis', 'Eady'): {'count': 12, 'length': 2, 'count_norm_book': 6.379280098240913e-05, 'count_norm_char': 0.002104524728165556}
-('the', 'cat'): {'count': 14, 'length': 2, 'count_norm_book': 7.442493447947732e-05, 'count_norm_char': 0.002455278849526482}
-('the', 'end'): {'count': 14, 'length': 2, 'count_norm_book': 7.442493447947732e-05, 'count_norm_char': 0.002455278849526482}
-('Jotham', 'Powell'): {'count': 15, 'length': 2, 'count_norm_book': 7.974100122801142e-05, 'count_norm_char': 0.002630655910206945}
-('Ethan', 'Frome'): {'count': 17, 'length': 2, 'count_norm_book': 9.037313472507961e-05, 'count_norm_char': 0.002981410031567871}
-('the', 'girl'): {'count': 24, 'length': 2, 'count_norm_book': 0.00012758560196481826, 'count_norm_char': 0.004209049456331112}
-('the', 'Flats'): {'count': 24, 'length': 2, 'count_norm_book': 0.00012758560196481826, 'count_norm_char': 0.004209049456331112}
-('Mattie', "'s", 'hand'): {'count': 3, 'length': 3, 'count_norm_book': 1.5948200245602283e-05, 'count_norm_char': 0.000526131182041389}
-('School', 'House', 'Hill'): {'count': 4, 'length': 3, 'count_norm_book': 2.126426699413638e-05, 'count_norm_char': 0.0007015082427218519}
-('Shadd', "'s", 'Falls'): {'count': 6, 'length': 3, 'count_norm_book': 3.1896400491204566e-05, 'count_norm_char': 0.001052262364082778}
-('Dan', "'", 'l', 'Byrne'): {'count': 5, 'length': 4, 'count_norm_book': 2.6580333742670472e-05, 'count_norm_char': 0.000876885303402315}
+('Norway',): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 1, 'count_norm_char': 0.0005234688536032106}
+('Springfield',): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 1, 'count_norm_char': 0.0005234688536032106}
+('L',): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 1, 'count_norm_char': 0.0005234688536032106}
+('Puss',): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 1, 'count_norm_char': 0.0005234688536032106}
+('Junction',): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 1, 'count_norm_char': 0.0006979584714709475}
+('Stamford',): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 1, 'count_norm_char': 0.0006979584714709475}
+('School',): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 1, 'count_norm_char': 0.0006979584714709475}
+('New',): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 1, 'count_norm_char': 0.0006979584714709475}
+('Aunt',): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 1, 'count_norm_char': 0.0006979584714709475}
+('Dr.',): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 1, 'count_norm_char': 0.0008724480893386843}
+('West',): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 1, 'count_norm_char': 0.0008724480893386843}
+('Michael',): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 1, 'count_norm_char': 0.0008724480893386843}
+('Fromes',): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 1, 'count_norm_char': 0.0008724480893386843}
+('Byrne',): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 1, 'count_norm_char': 0.0008724480893386843}
+('Eady',): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 1, 'count_norm_char': 0.0008724480893386843}
+('Andrew',): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 1, 'count_norm_char': 0.0010469377072064212}
+('Falls',): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 1, 'count_norm_char': 0.0010469377072064212}
+('Shadd',): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 1, 'count_norm_char': 0.0010469377072064212}
+('Zenobia',): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 1, 'count_norm_char': 0.0010469377072064212}
+('Dan',): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 1, 'count_norm_char': 0.0010469377072064212}
+('Worcester',): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 1, 'count_norm_char': 0.0010469377072064212}
+('Ruth',): {'count': 7, 'count_norm_length': 3.721246723973866e-05, 'length': 1, 'count_norm_char': 0.001221427325074158}
+('Ned',): {'count': 8, 'count_norm_length': 4.252853398827276e-05, 'length': 1, 'count_norm_char': 0.001395916942941895}
+('Harmon',): {'count': 9, 'count_norm_length': 4.784460073680685e-05, 'length': 1, 'count_norm_char': 0.001570406560809632}
+('Hale',): {'count': 10, 'count_norm_length': 5.3160667485340945e-05, 'length': 1, 'count_norm_char': 0.0017448961786773686}
+('Varnum',): {'count': 12, 'count_norm_length': 6.379280098240913e-05, 'length': 1, 'count_norm_char': 0.0020938754144128424}
+('Denis',): {'count': 16, 'count_norm_length': 8.505706797654552e-05, 'length': 1, 'count_norm_char': 0.00279183388588379}
+('Corbury',): {'count': 17, 'count_norm_length': 9.037313472507961e-05, 'length': 1, 'count_norm_char': 0.002966323503751527}
+('Bettsbridge',): {'count': 23, 'count_norm_length': 0.00012226953521628418, 'length': 1, 'count_norm_char': 0.004013261210957948}
+('Flats',): {'count': 24, 'count_norm_length': 0.00012758560196481826, 'length': 1, 'count_norm_char': 0.004187750828825685}
+('Jotham',): {'count': 34, 'count_norm_length': 0.00018074626945015923, 'length': 1, 'count_norm_char': 0.005932647007503054}
+('Frome',): {'count': 35, 'count_norm_length': 0.0001860623361986933, 'length': 1, 'count_norm_char': 0.006107136625370791}
+('Matt',): {'count': 46, 'count_norm_length': 0.00024453907043256836, 'length': 1, 'count_norm_char': 0.008026522421915896}
+('Starkfield',): {'count': 56, 'count_norm_length': 0.0002976997379179093, 'length': 1, 'count_norm_char': 0.009771418600593265}
+('Zeena',): {'count': 108, 'count_norm_length': 0.0005741352088416823, 'length': 1, 'count_norm_char': 0.018844878729715582}
+('Mattie',): {'count': 133, 'count_norm_length': 0.0007070368775550346, 'length': 1, 'count_norm_char': 0.023207119176409004}
+('Ethan',): {'count': 152, 'count_norm_length': 0.0008080421457771823, 'length': 1, 'count_norm_char': 0.026522421915896006}
+('the', 'Frome'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('Mr.', 'Hale'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('the', 'foot'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('kitchen', 'Mattie'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('Ruth', 'Varnum'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('the', 'West'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('the', 'life'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('lawyer', 'Varnum'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('the', 'case'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('New', 'England'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('the', 'minister'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('the', 'Junction'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('Aunt', 'Martha'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 2, 'count_norm_char': 0.0005234688536032106}
+('School', 'House'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('The', 'girl'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('Harmon', 'Gow'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('Dr.', 'Buck'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('the', 'name'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('the', 'Fromes'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('the', 'dresser'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('Corbury', 'Flats'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('Ned', 'Hale'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 2, 'count_norm_char': 0.0006979584714709475}
+('the', 'light'): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 2, 'count_norm_char': 0.0008724480893386843}
+('Michael', 'Eady'): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 2, 'count_norm_char': 0.0008724480893386843}
+('l', 'Byrne'): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 2, 'count_norm_char': 0.0008724480893386843}
+('the', 'builder'): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 2, 'count_norm_char': 0.0008724480893386843}
+('the', 'sun'): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 2, 'count_norm_char': 0.0008724480893386843}
+('the', 'Bettsbridge'): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 2, 'count_norm_char': 0.0010469377072064212}
+('Mattie', 'Silver'): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 2, 'count_norm_char': 0.0010469377072064212}
+('Andrew', 'Hale'): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 2, 'count_norm_char': 0.0010469377072064212}
+('the', 'Starkfield'): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 2, 'count_norm_char': 0.0010469377072064212}
+('the', 'back'): {'count': 8, 'count_norm_length': 4.252853398827276e-05, 'length': 2, 'count_norm_char': 0.001395916942941895}
+('the', 'Varnum'): {'count': 8, 'count_norm_length': 4.252853398827276e-05, 'length': 2, 'count_norm_char': 0.001395916942941895}
+('The', 'cat'): {'count': 9, 'count_norm_length': 4.784460073680685e-05, 'length': 2, 'count_norm_char': 0.001570406560809632}
+('the', 'Corbury'): {'count': 10, 'count_norm_length': 5.3160667485340945e-05, 'length': 2, 'count_norm_char': 0.0017448961786773686}
+('Denis', 'Eady'): {'count': 12, 'count_norm_length': 6.379280098240913e-05, 'length': 2, 'count_norm_char': 0.0020938754144128424}
+('Mrs.', 'Hale'): {'count': 13, 'count_norm_length': 6.910886773094323e-05, 'length': 2, 'count_norm_char': 0.0022683650322805793}
+('the', 'cat'): {'count': 14, 'count_norm_length': 7.442493447947732e-05, 'length': 2, 'count_norm_char': 0.002442854650148316}
+('the', 'end'): {'count': 14, 'count_norm_length': 7.442493447947732e-05, 'length': 2, 'count_norm_char': 0.002442854650148316}
+('Jotham', 'Powell'): {'count': 15, 'count_norm_length': 7.974100122801142e-05, 'length': 2, 'count_norm_char': 0.002617344268016053}
+('Ethan', 'Frome'): {'count': 17, 'count_norm_length': 9.037313472507961e-05, 'length': 2, 'count_norm_char': 0.002966323503751527}
+('the', 'girl'): {'count': 24, 'count_norm_length': 0.00012758560196481826, 'length': 2, 'count_norm_char': 0.004187750828825685}
+('the', 'Flats'): {'count': 24, 'count_norm_length': 0.00012758560196481826, 'length': 2, 'count_norm_char': 0.004187750828825685}
+('Mattie', "'s", 'hand'): {'count': 3, 'count_norm_length': 1.5948200245602283e-05, 'length': 3, 'count_norm_char': 0.0005234688536032106}
+('School', 'House', 'Hill'): {'count': 4, 'count_norm_length': 2.126426699413638e-05, 'length': 3, 'count_norm_char': 0.0006979584714709475}
+('Shadd', "'s", 'Falls'): {'count': 6, 'count_norm_length': 3.1896400491204566e-05, 'length': 3, 'count_norm_char': 0.0010469377072064212}
+('Dan', "'", 'l', 'Byrne'): {'count': 5, 'count_norm_length': 2.6580333742670472e-05, 'length': 4, 'count_norm_char': 0.0008724480893386843}

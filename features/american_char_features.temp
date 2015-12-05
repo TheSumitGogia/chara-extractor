@@ -1,252 +1,261 @@
 ----------CANDIDATES----------
-('General',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('West',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('HER',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('SHE',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Salon',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('May',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Blanche',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Alps',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Frenchmen',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Dorchester',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Englishwoman',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Fifth',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Earl',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('United',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Lady',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Henry',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Luini',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Germany',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Dr.',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Combien',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('HIM',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Milan',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Hotel',): {'count': 3, 'length': 1, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('C.',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Whenever',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Bread',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Comte',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Friday',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Patrie',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Holland',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('God',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Mon',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Grand',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Messine',): {'count': 4, 'length': 1, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Geneva',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('I.',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('ME',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Comtesse',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-("C'est",): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Dublin',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Sunday',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Bullier',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Don',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Cafe',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Rochefidele',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Palais',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Pope',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Tuileries',): {'count': 5, 'length': 1, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Princess',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('I',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Something',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('England',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Switzerland',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Catholic',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Venice',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Everything',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Americans',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Marquis',): {'count': 6, 'length': 1, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Poor',): {'count': 7, 'length': 1, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('Marquise',): {'count': 7, 'length': 1, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('Noemie',): {'count': 7, 'length': 1, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('American',): {'count': 7, 'length': 1, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('Tom',): {'count': 7, 'length': 1, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('New',): {'count': 7, 'length': 1, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('London',): {'count': 8, 'length': 1, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('Lizzie',): {'count': 8, 'length': 1, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('Madonna',): {'count': 8, 'length': 1, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('San',): {'count': 8, 'length': 1, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('Carmelites',): {'count': 8, 'length': 1, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('Seine',): {'count': 8, 'length': 1, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('Count',): {'count': 8, 'length': 1, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('Englishman',): {'count': 10, 'length': 1, 'count_norm_book': 1.35462074682951e-05, 'count_norm_char': 0.00015257159422058802}
-('Nothing',): {'count': 10, 'length': 1, 'count_norm_book': 1.35462074682951e-05, 'count_norm_char': 0.00015257159422058802}
-('Dear',): {'count': 11, 'length': 1, 'count_norm_book': 1.4900828215124611e-05, 'count_norm_char': 0.00016782875364264682}
-('Avenue',): {'count': 11, 'length': 1, 'count_norm_book': 1.4900828215124611e-05, 'count_norm_char': 0.00016782875364264682}
-('St.',): {'count': 11, 'length': 1, 'count_norm_book': 1.4900828215124611e-05, 'count_norm_char': 0.00016782875364264682}
-('Boulevard',): {'count': 12, 'length': 1, 'count_norm_book': 1.625544896195412e-05, 'count_norm_char': 0.00018308591306470562}
-('Christopher',): {'count': 12, 'length': 1, 'count_norm_book': 1.625544896195412e-05, 'count_norm_char': 0.00018308591306470562}
-('Grosjoyaux',): {'count': 12, 'length': 1, 'count_norm_book': 1.625544896195412e-05, 'count_norm_char': 0.00018308591306470562}
-('Heaven',): {'count': 12, 'length': 1, 'count_norm_book': 1.625544896195412e-05, 'count_norm_char': 0.00018308591306470562}
-('Monsieur',): {'count': 13, 'length': 1, 'count_norm_book': 1.7610069708783633e-05, 'count_norm_char': 0.00019834307248676442}
-('French',): {'count': 13, 'length': 1, 'count_norm_book': 1.7610069708783633e-05, 'count_norm_char': 0.00019834307248676442}
-('Babcock',): {'count': 14, 'length': 1, 'count_norm_book': 1.896469045561314e-05, 'count_norm_char': 0.00021360023190882321}
-("l'Universite",): {'count': 14, 'length': 1, 'count_norm_book': 1.896469045561314e-05, 'count_norm_char': 0.00021360023190882321}
-('Frenchman',): {'count': 15, 'length': 1, 'count_norm_book': 2.0319311202442654e-05, 'count_norm_char': 0.00022885739133088201}
-('America',): {'count': 16, 'length': 1, 'count_norm_book': 2.1673931949272163e-05, 'count_norm_char': 0.0002441145507529408}
-('France',): {'count': 16, 'length': 1, 'count_norm_book': 2.1673931949272163e-05, 'count_norm_char': 0.0002441145507529408}
-('Poitiers',): {'count': 17, 'length': 1, 'count_norm_book': 2.302855269610167e-05, 'count_norm_char': 0.00025937171017499964}
-('Louvre',): {'count': 20, 'length': 1, 'count_norm_book': 2.70924149365902e-05, 'count_norm_char': 0.00030514318844117604}
-('Claire',): {'count': 20, 'length': 1, 'count_norm_book': 2.70924149365902e-05, 'count_norm_char': 0.00030514318844117604}
-('Rue',): {'count': 24, 'length': 1, 'count_norm_book': 3.251089792390824e-05, 'count_norm_char': 0.00036617182612941123}
-('Fleurieres',): {'count': 26, 'length': 1, 'count_norm_book': 3.5220139417567265e-05, 'count_norm_char': 0.00039668614497352883}
-('Bellegardes',): {'count': 27, 'length': 1, 'count_norm_book': 3.6574760164396774e-05, 'count_norm_char': 0.00041194330439558763}
-('Urbain',): {'count': 29, 'length': 1, 'count_norm_book': 3.928400165805579e-05, 'count_norm_char': 0.00044245762323970523}
-('Europe',): {'count': 30, 'length': 1, 'count_norm_book': 4.063862240488531e-05, 'count_norm_char': 0.00045771478266176403}
-('English',): {'count': 33, 'length': 1, 'count_norm_book': 4.4702484645373834e-05, 'count_norm_char': 0.0005034862609279404}
-('Tristram',): {'count': 34, 'length': 1, 'count_norm_book': 4.605710539220334e-05, 'count_norm_char': 0.0005187434203499993}
-('Lord',): {'count': 35, 'length': 1, 'count_norm_book': 4.741172613903285e-05, 'count_norm_char': 0.000534000579772058}
-('Mademoiselle',): {'count': 76, 'length': 1, 'count_norm_book': 0.00010295117675904277, 'count_norm_char': 0.001159544116076469}
-('Paris',): {'count': 90, 'length': 1, 'count_norm_book': 0.00012191586721465591, 'count_norm_char': 0.001373144347985292}
-('M.',): {'count': 184, 'length': 1, 'count_norm_book': 0.00024925021741662985, 'count_norm_char': 0.0028073173336588195}
-('Valentin',): {'count': 198, 'length': 1, 'count_norm_book': 0.000268214907872243, 'count_norm_char': 0.0030209175655676428}
-('Cintre',): {'count': 300, 'length': 1, 'count_norm_book': 0.00040638622404885305, 'count_norm_char': 0.00457714782661764}
-('Madame',): {'count': 360, 'length': 1, 'count_norm_book': 0.00048766346885862363, 'count_norm_char': 0.005492577391941168}
-('Bellegarde',): {'count': 405, 'length': 1, 'count_norm_book': 0.0005486214024659516, 'count_norm_char': 0.006179149565933815}
-('Newman',): {'count': 1027, 'length': 1, 'count_norm_book': 0.001391195506993907, 'count_norm_char': 0.01566910272645439}
-('the', 'waiter'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'reader'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'voice'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Miss', 'Kitty'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Rue', "d'Enfer"): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('M.', 'Kapp'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('St.', 'Dunstan'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'visitor'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'life'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Rue', "d'Anjou"): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('General', 'Packard'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Salon', 'Carre'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'United'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'Salon'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('United', 'States'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'charge'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('The', 'man'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Dr.', 'Franklin'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'sort'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('St.', 'Louis'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'American'): {'count': 3, 'length': 2, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('The', 'lady'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Madame', 'Urbain'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('la', 'Patrie'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'Tuileries'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'Marquise'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'daughter'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Boulevard', 'Haussmann'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'case'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Madame', "d'Outreville"): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('la', 'Rochefidele'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Madame', 'Dandelard'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'wife'): {'count': 4, 'length': 2, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'letter'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('brother', 'Valentin'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('the', 'Pope'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('Palais', 'Royal'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('The', 'gentleman'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('the', 'porter'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('the', 'Palais'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('the', 'Cafe'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('the', 'servant'): {'count': 5, 'length': 2, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('the', 'light'): {'count': 6, 'length': 2, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('the', 'Princess'): {'count': 6, 'length': 2, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('New', 'York'): {'count': 6, 'length': 2, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Miss', 'Dora'): {'count': 6, 'length': 2, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('the', 'Carmelites'): {'count': 6, 'length': 2, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Tom', 'Tristram'): {'count': 7, 'length': 2, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('Miss', 'Noemie'): {'count': 7, 'length': 2, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('the', 'woman'): {'count': 7, 'length': 2, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('the', 'subject'): {'count': 7, 'length': 2, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('The', 'duchess'): {'count': 7, 'length': 2, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('Avenue', "d'Iena"): {'count': 7, 'length': 2, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('the', 'Count'): {'count': 7, 'length': 2, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('the', 'countess'): {'count': 7, 'length': 2, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('The', 'doctor'): {'count': 8, 'length': 2, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('M.', 'Stanislas'): {'count': 8, 'length': 2, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('the', 'sun'): {'count': 8, 'length': 2, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('Count', 'Valentin'): {'count': 8, 'length': 2, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('M.', 'Ledoux'): {'count': 8, 'length': 2, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('San', 'Francisco'): {'count': 8, 'length': 2, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('the', 'Seine'): {'count': 8, 'length': 2, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('the', 'face'): {'count': 9, 'length': 2, 'count_norm_book': 1.2191586721465592e-05, 'count_norm_char': 0.00013731443479852922}
-('the', 'count'): {'count': 10, 'length': 2, 'count_norm_book': 1.35462074682951e-05, 'count_norm_char': 0.00015257159422058802}
-('the', 'man'): {'count': 10, 'length': 2, 'count_norm_book': 1.35462074682951e-05, 'count_norm_char': 0.00015257159422058802}
-('the', 'Avenue'): {'count': 10, 'length': 2, 'count_norm_book': 1.35462074682951e-05, 'count_norm_char': 0.00015257159422058802}
-('Christopher', 'Newman'): {'count': 10, 'length': 2, 'count_norm_book': 1.35462074682951e-05, 'count_norm_char': 0.00015257159422058802}
-('the', 'Boulevard'): {'count': 11, 'length': 2, 'count_norm_book': 1.4900828215124611e-05, 'count_norm_char': 0.00016782875364264682}
-('the', 'name'): {'count': 11, 'length': 2, 'count_norm_book': 1.4900828215124611e-05, 'count_norm_char': 0.00016782875364264682}
-('the', 'hand'): {'count': 11, 'length': 2, 'count_norm_book': 1.4900828215124611e-05, 'count_norm_char': 0.00016782875364264682}
-('the', 'lady'): {'count': 11, 'length': 2, 'count_norm_book': 1.4900828215124611e-05, 'count_norm_char': 0.00016782875364264682}
-('the', 'back'): {'count': 12, 'length': 2, 'count_norm_book': 1.625544896195412e-05, 'count_norm_char': 0.00018308591306470562}
-('the', 'gentleman'): {'count': 12, 'length': 2, 'count_norm_book': 1.625544896195412e-05, 'count_norm_char': 0.00018308591306470562}
-('the', 'Louvre'): {'count': 18, 'length': 2, 'count_norm_book': 2.4383173442931184e-05, 'count_norm_char': 0.00027462886959705844}
-('the', 'duchess'): {'count': 21, 'length': 2, 'count_norm_book': 2.8447035683419714e-05, 'count_norm_char': 0.00032040034786323484}
-('the', 'doctor'): {'count': 23, 'length': 2, 'count_norm_book': 3.115627717707873e-05, 'count_norm_char': 0.00035091466670735243}
-('the', 'Rue'): {'count': 24, 'length': 2, 'count_norm_book': 3.251089792390824e-05, 'count_norm_char': 0.00036617182612941123}
-('the', 'end'): {'count': 25, 'length': 2, 'count_norm_book': 3.3865518670737756e-05, 'count_norm_char': 0.00038142898555147003}
-('Mademoiselle', 'Nioche'): {'count': 26, 'length': 2, 'count_norm_book': 3.5220139417567265e-05, 'count_norm_char': 0.00039668614497352883}
-('the', 'Bellegardes'): {'count': 26, 'length': 2, 'count_norm_book': 3.5220139417567265e-05, 'count_norm_char': 0.00039668614497352883}
-('Lord', 'Deepmere'): {'count': 29, 'length': 2, 'count_norm_book': 3.928400165805579e-05, 'count_norm_char': 0.00044245762323970523}
-('The', 'marquis'): {'count': 41, 'length': 2, 'count_norm_book': 5.553945062000992e-05, 'count_norm_char': 0.0006255435363044108}
-('Mademoiselle', 'Noemie'): {'count': 44, 'length': 2, 'count_norm_book': 5.9603312860498445e-05, 'count_norm_char': 0.0006713150145705873}
-('M.', 'Nioche'): {'count': 69, 'length': 2, 'count_norm_book': 9.34688315312362e-05, 'count_norm_char': 0.0010527440001220573}
-('the', 'marquis'): {'count': 106, 'length': 2, 'count_norm_book': 0.00014358979916392808, 'count_norm_char': 0.0016172588987382328}
-('the', 'Rue', "d'Anjou"): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'poor', 'fellow'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'United', 'States'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('The', 'young', 'girl'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'Rue', "d'Enfer"): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Earl', 'of', 'St.'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'Salon', 'Carre'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'loveliest', 'woman'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Miss', 'Kitty', 'Upjohn'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('house', 'of', 'Bellegarde'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Newman', "'s", 'hand'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'poor', 'countess'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'other', 'end'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Newman', "'s", 'companion'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('doctor', 'from', 'Paris'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('return', 'to', 'Paris'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'old', 'gentleman'): {'count': 3, 'length': 3, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'little', 'doctor'): {'count': 4, 'length': 3, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'little', 'dog'): {'count': 4, 'length': 3, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Avenue', 'de', 'Messine'): {'count': 4, 'length': 3, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Marquise', 'de', 'Bellegarde'): {'count': 4, 'length': 3, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'late', 'marquis'): {'count': 4, 'length': 3, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('eyes', 'upon', 'Newman'): {'count': 4, 'length': 3, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'Boulevard', 'Haussmann'): {'count': 4, 'length': 3, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('the', 'Palais', 'Royal'): {'count': 5, 'length': 3, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('M.', 'Stanislas', 'Kapp'): {'count': 5, 'length': 3, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('doctor', 'from', 'Poitiers'): {'count': 5, 'length': 3, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('M.', 'de', 'Grosjoyaux'): {'count': 5, 'length': 3, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('The', 'old', 'man'): {'count': 5, 'length': 3, 'count_norm_book': 6.77310373414755e-06, 'count_norm_char': 7.628579711029401e-05}
-('the', 'poor', 'marquis'): {'count': 6, 'length': 3, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('Miss', 'Dora', 'Finch'): {'count': 6, 'length': 3, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('The', 'young', 'lady'): {'count': 6, 'length': 3, 'count_norm_book': 8.12772448097706e-06, 'count_norm_char': 9.154295653235281e-05}
-('the', 'Count', 'Valentin'): {'count': 7, 'length': 3, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('the', 'Avenue', "d'Iena"): {'count': 7, 'length': 3, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('the', 'other', 'hand'): {'count': 7, 'length': 3, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('M.', 'de', 'Cintre'): {'count': 8, 'length': 3, 'count_norm_book': 1.0836965974636081e-05, 'count_norm_char': 0.0001220572753764704}
-('The', 'old', 'lady'): {'count': 10, 'length': 3, 'count_norm_book': 1.35462074682951e-05, 'count_norm_char': 0.00015257159422058802}
-('The', 'young', 'man'): {'count': 10, 'length': 3, 'count_norm_book': 1.35462074682951e-05, 'count_norm_char': 0.00015257159422058802}
-('the', 'young', 'girl'): {'count': 12, 'length': 3, 'count_norm_book': 1.625544896195412e-05, 'count_norm_char': 0.00018308591306470562}
-('Urbain', 'de', 'Bellegarde'): {'count': 13, 'length': 3, 'count_norm_book': 1.7610069708783633e-05, 'count_norm_char': 0.00019834307248676442}
-('the', 'old', 'woman'): {'count': 14, 'length': 3, 'count_norm_book': 1.896469045561314e-05, 'count_norm_char': 0.00021360023190882321}
-('the', 'young', 'lady'): {'count': 14, 'length': 3, 'count_norm_book': 1.896469045561314e-05, 'count_norm_char': 0.00021360023190882321}
-('Rue', 'de', "l'Universite"): {'count': 14, 'length': 3, 'count_norm_book': 1.896469045561314e-05, 'count_norm_char': 0.00021360023190882321}
-('Valentin', 'de', 'Bellegarde'): {'count': 20, 'length': 3, 'count_norm_book': 2.70924149365902e-05, 'count_norm_char': 0.00030514318844117604}
-('the', 'old', 'man'): {'count': 23, 'length': 3, 'count_norm_book': 3.115627717707873e-05, 'count_norm_char': 0.00035091466670735243}
-('the', 'young', 'man'): {'count': 26, 'length': 3, 'count_norm_book': 3.5220139417567265e-05, 'count_norm_char': 0.00039668614497352883}
-('the', 'old', 'lady'): {'count': 27, 'length': 3, 'count_norm_book': 3.6574760164396774e-05, 'count_norm_char': 0.00041194330439558763}
-('M.', 'de', 'Bellegarde'): {'count': 78, 'length': 3, 'count_norm_book': 0.00010566041825270179, 'count_norm_char': 0.0011900584349205864}
-('Madame', 'de', 'Bellegarde'): {'count': 123, 'length': 3, 'count_norm_book': 0.00016661835186002974, 'count_norm_char': 0.0018766306089132326}
-('Madame', 'de', 'Cintre'): {'count': 232, 'length': 3, 'count_norm_book': 0.00031427201326444633, 'count_norm_char': 0.003539660985917642}
-('the', 'Avenue', 'de', 'Messine'): {'count': 3, 'length': 4, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('house', 'in', 'the', 'Rue'): {'count': 3, 'length': 4, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'Earl', 'of', 'St.'): {'count': 3, 'length': 4, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Earl', 'of', 'St.', 'Dunstan'): {'count': 3, 'length': 4, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('Cafe', 'de', 'la', 'Patrie'): {'count': 4, 'length': 4, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
-('Young', 'Madame', 'de', 'Bellegarde'): {'count': 7, 'length': 4, 'count_norm_book': 9.48234522780657e-06, 'count_norm_char': 0.00010680011595441161}
-('the', 'Rue', 'de', "l'Universite"): {'count': 14, 'length': 4, 'count_norm_book': 1.896469045561314e-05, 'count_norm_char': 0.00021360023190882321}
-('the', 'Earl', 'of', 'St.', 'Dunstan'): {'count': 3, 'length': 5, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'little', 'doctor', 'from', 'Poitiers'): {'count': 3, 'length': 5, 'count_norm_book': 4.06386224048853e-06, 'count_norm_char': 4.5771478266176404e-05}
-('the', 'Cafe', 'de', 'la', 'Patrie'): {'count': 4, 'length': 5, 'count_norm_book': 5.418482987318041e-06, 'count_norm_char': 6.10286376882352e-05}
+('General',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('West',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('HER',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('SHE',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Salon',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('May',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Blanche',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Alps',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Frenchmen',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Dorchester',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Englishwoman',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Fifth',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Earl',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('United',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Lady',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Henry',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Luini',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Germany',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Dr.',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Combien',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('HIM',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Milan',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('Hotel',): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 1, 'count_norm_char': 4.471005529143504e-05}
+('C.',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Whenever',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Bread',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Comte',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Friday',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Patrie',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Holland',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('God',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Mon',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Grand',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Messine',): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 1, 'count_norm_char': 5.961340705524673e-05}
+('Geneva',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('I.',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('ME',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Comtesse',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+("C'est",): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Dublin',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Sunday',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Bullier',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Don',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Cafe',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Rochefidele',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Palais',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Pope',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Tuileries',): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 1, 'count_norm_char': 7.45167588190584e-05}
+('Princess',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('I',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('Something',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('England',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('Switzerland',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('Catholic',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('Venice',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('Everything',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('Americans',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('Marquis',): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 1, 'count_norm_char': 8.942011058287009e-05}
+('Poor',): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 1, 'count_norm_char': 0.00010432346234668177}
+('Marquise',): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 1, 'count_norm_char': 0.00010432346234668177}
+('Noemie',): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 1, 'count_norm_char': 0.00010432346234668177}
+('American',): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 1, 'count_norm_char': 0.00010432346234668177}
+('Tom',): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 1, 'count_norm_char': 0.00010432346234668177}
+('New',): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 1, 'count_norm_char': 0.00010432346234668177}
+('London',): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 1, 'count_norm_char': 0.00011922681411049346}
+('Lizzie',): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 1, 'count_norm_char': 0.00011922681411049346}
+('Madonna',): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 1, 'count_norm_char': 0.00011922681411049346}
+('San',): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 1, 'count_norm_char': 0.00011922681411049346}
+('Carmelites',): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 1, 'count_norm_char': 0.00011922681411049346}
+('Seine',): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 1, 'count_norm_char': 0.00011922681411049346}
+('Count',): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 1, 'count_norm_char': 0.00011922681411049346}
+('Englishman',): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 1, 'count_norm_char': 0.0001490335176381168}
+('Nothing',): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 1, 'count_norm_char': 0.0001490335176381168}
+('Dear',): {'count': 11, 'count_norm_length': 1.4900828215124611e-05, 'length': 1, 'count_norm_char': 0.00016393686940192848}
+('Avenue',): {'count': 11, 'count_norm_length': 1.4900828215124611e-05, 'length': 1, 'count_norm_char': 0.00016393686940192848}
+('St.',): {'count': 11, 'count_norm_length': 1.4900828215124611e-05, 'length': 1, 'count_norm_char': 0.00016393686940192848}
+('Boulevard',): {'count': 12, 'count_norm_length': 1.625544896195412e-05, 'length': 1, 'count_norm_char': 0.00017884022116574017}
+('Christopher',): {'count': 12, 'count_norm_length': 1.625544896195412e-05, 'length': 1, 'count_norm_char': 0.00017884022116574017}
+('Grosjoyaux',): {'count': 12, 'count_norm_length': 1.625544896195412e-05, 'length': 1, 'count_norm_char': 0.00017884022116574017}
+('Heaven',): {'count': 12, 'count_norm_length': 1.625544896195412e-05, 'length': 1, 'count_norm_char': 0.00017884022116574017}
+('Monsieur',): {'count': 13, 'count_norm_length': 1.7610069708783633e-05, 'length': 1, 'count_norm_char': 0.00019374357292955186}
+('French',): {'count': 13, 'count_norm_length': 1.7610069708783633e-05, 'length': 1, 'count_norm_char': 0.00019374357292955186}
+('Babcock',): {'count': 14, 'count_norm_length': 1.896469045561314e-05, 'length': 1, 'count_norm_char': 0.00020864692469336354}
+("l'Universite",): {'count': 14, 'count_norm_length': 1.896469045561314e-05, 'length': 1, 'count_norm_char': 0.00020864692469336354}
+('Frenchman',): {'count': 15, 'count_norm_length': 2.0319311202442654e-05, 'length': 1, 'count_norm_char': 0.00022355027645717523}
+('America',): {'count': 16, 'count_norm_length': 2.1673931949272163e-05, 'length': 1, 'count_norm_char': 0.0002384536282209869}
+('France',): {'count': 16, 'count_norm_length': 2.1673931949272163e-05, 'length': 1, 'count_norm_char': 0.0002384536282209869}
+('Poitiers',): {'count': 17, 'count_norm_length': 2.302855269610167e-05, 'length': 1, 'count_norm_char': 0.0002533569799847986}
+('Louvre',): {'count': 20, 'count_norm_length': 2.70924149365902e-05, 'length': 1, 'count_norm_char': 0.0002980670352762336}
+('Claire',): {'count': 20, 'count_norm_length': 2.70924149365902e-05, 'length': 1, 'count_norm_char': 0.0002980670352762336}
+('Rue',): {'count': 24, 'count_norm_length': 3.251089792390824e-05, 'length': 1, 'count_norm_char': 0.00035768044233148034}
+('Fleurieres',): {'count': 26, 'count_norm_length': 3.5220139417567265e-05, 'length': 1, 'count_norm_char': 0.0003874871458591037}
+('Bellegardes',): {'count': 27, 'count_norm_length': 3.6574760164396774e-05, 'length': 1, 'count_norm_char': 0.0004023904976229154}
+('Urbain',): {'count': 29, 'count_norm_length': 3.928400165805579e-05, 'length': 1, 'count_norm_char': 0.00043219720115053877}
+('Europe',): {'count': 30, 'count_norm_length': 4.063862240488531e-05, 'length': 1, 'count_norm_char': 0.00044710055291435045}
+('English',): {'count': 33, 'count_norm_length': 4.4702484645373834e-05, 'length': 1, 'count_norm_char': 0.0004918106082057855}
+('Tristram',): {'count': 34, 'count_norm_length': 4.605710539220334e-05, 'length': 1, 'count_norm_char': 0.0005067139599695972}
+('Lord',): {'count': 35, 'count_norm_length': 4.741172613903285e-05, 'length': 1, 'count_norm_char': 0.0005216173117334089}
+('Mademoiselle',): {'count': 76, 'count_norm_length': 0.00010295117675904277, 'length': 1, 'count_norm_char': 0.0011326547340496879}
+('Paris',): {'count': 90, 'count_norm_length': 0.00012191586721465591, 'length': 1, 'count_norm_char': 0.0013413016587430512}
+('M.',): {'count': 184, 'count_norm_length': 0.00024925021741662985, 'length': 1, 'count_norm_char': 0.0027422167245413492}
+('Valentin',): {'count': 198, 'count_norm_length': 0.000268214907872243, 'length': 1, 'count_norm_char': 0.002950863649234713}
+('Cintre',): {'count': 300, 'count_norm_length': 0.00040638622404885305, 'length': 1, 'count_norm_char': 0.004471005529143504}
+('Madame',): {'count': 360, 'count_norm_length': 0.00048766346885862363, 'length': 1, 'count_norm_char': 0.005365206634972205}
+('Bellegarde',): {'count': 405, 'count_norm_length': 0.0005486214024659516, 'length': 1, 'count_norm_char': 0.0060358574643437305}
+('Newman',): {'count': 1027, 'count_norm_length': 0.001391195506993907, 'length': 1, 'count_norm_char': 0.015305742261434597}
+('M.', 'Kapp'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('Salon', 'Carre'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('United', 'States'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('The', 'man'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('St.', 'Louis'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'reader'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('Rue', "d'Enfer"): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'life'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('Dr.', 'Franklin'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'Salon'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'American'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'United'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('St.', 'Dunstan'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'visitor'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('General', 'Packard'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('Rue', "d'Anjou"): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'sort'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('Miss', 'Kitty'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'voice'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'charge'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'waiter'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 2, 'count_norm_char': 4.471005529143504e-05}
+('the', 'Tuileries'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('Madame', "d'Outreville"): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('la', 'Rochefidele'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('Madame', 'Dandelard'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('the', 'Marquise'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('the', 'daughter'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('the', 'wife'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('Madame', 'Urbain'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('the', 'case'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('Boulevard', 'Haussmann'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('la', 'Patrie'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('The', 'lady'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 2, 'count_norm_char': 5.961340705524673e-05}
+('the', 'letter'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('the', 'porter'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('Palais', 'Royal'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('the', 'Cafe'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('the', 'Palais'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('the', 'servant'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('brother', 'Valentin'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('the', 'Pope'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('The', 'gentleman'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 2, 'count_norm_char': 7.45167588190584e-05}
+('New', 'York'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 2, 'count_norm_char': 8.942011058287009e-05}
+('Mr.', 'Babcock'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 2, 'count_norm_char': 8.942011058287009e-05}
+('the', 'Carmelites'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 2, 'count_norm_char': 8.942011058287009e-05}
+('the', 'Princess'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 2, 'count_norm_char': 8.942011058287009e-05}
+('Miss', 'Dora'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 2, 'count_norm_char': 8.942011058287009e-05}
+('the', 'light'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 2, 'count_norm_char': 8.942011058287009e-05}
+('the', 'woman'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 2, 'count_norm_char': 0.00010432346234668177}
+('The', 'duchess'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 2, 'count_norm_char': 0.00010432346234668177}
+('the', 'countess'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 2, 'count_norm_char': 0.00010432346234668177}
+('Miss', 'Noemie'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 2, 'count_norm_char': 0.00010432346234668177}
+('Tom', 'Tristram'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 2, 'count_norm_char': 0.00010432346234668177}
+('Avenue', "d'Iena"): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 2, 'count_norm_char': 0.00010432346234668177}
+('the', 'subject'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 2, 'count_norm_char': 0.00010432346234668177}
+('the', 'Count'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 2, 'count_norm_char': 0.00010432346234668177}
+('San', 'Francisco'): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 2, 'count_norm_char': 0.00011922681411049346}
+('the', 'Seine'): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 2, 'count_norm_char': 0.00011922681411049346}
+('M.', 'Ledoux'): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 2, 'count_norm_char': 0.00011922681411049346}
+('the', 'sun'): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 2, 'count_norm_char': 0.00011922681411049346}
+('The', 'doctor'): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 2, 'count_norm_char': 0.00011922681411049346}
+('Count', 'Valentin'): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 2, 'count_norm_char': 0.00011922681411049346}
+('M.', 'Stanislas'): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 2, 'count_norm_char': 0.00011922681411049346}
+('the', 'face'): {'count': 9, 'count_norm_length': 1.2191586721465592e-05, 'length': 2, 'count_norm_char': 0.00013413016587430514}
+('the', 'man'): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 2, 'count_norm_char': 0.0001490335176381168}
+('Mr.', 'Valentin'): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 2, 'count_norm_char': 0.0001490335176381168}
+('Christopher', 'Newman'): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 2, 'count_norm_char': 0.0001490335176381168}
+('the', 'count'): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 2, 'count_norm_char': 0.0001490335176381168}
+('the', 'Avenue'): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 2, 'count_norm_char': 0.0001490335176381168}
+('Mr.', 'Urbain'): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 2, 'count_norm_char': 0.0001490335176381168}
+('the', 'Boulevard'): {'count': 11, 'count_norm_length': 1.4900828215124611e-05, 'length': 2, 'count_norm_char': 0.00016393686940192848}
+('the', 'hand'): {'count': 11, 'count_norm_length': 1.4900828215124611e-05, 'length': 2, 'count_norm_char': 0.00016393686940192848}
+('the', 'name'): {'count': 11, 'count_norm_length': 1.4900828215124611e-05, 'length': 2, 'count_norm_char': 0.00016393686940192848}
+('the', 'lady'): {'count': 11, 'count_norm_length': 1.4900828215124611e-05, 'length': 2, 'count_norm_char': 0.00016393686940192848}
+('the', 'gentleman'): {'count': 12, 'count_norm_length': 1.625544896195412e-05, 'length': 2, 'count_norm_char': 0.00017884022116574017}
+('the', 'back'): {'count': 12, 'count_norm_length': 1.625544896195412e-05, 'length': 2, 'count_norm_char': 0.00017884022116574017}
+('Mr.', 'Tristram'): {'count': 16, 'count_norm_length': 2.1673931949272163e-05, 'length': 2, 'count_norm_char': 0.0002384536282209869}
+('the', 'Louvre'): {'count': 18, 'count_norm_length': 2.4383173442931184e-05, 'length': 2, 'count_norm_char': 0.0002682603317486103}
+('the', 'duchess'): {'count': 21, 'count_norm_length': 2.8447035683419714e-05, 'length': 2, 'count_norm_char': 0.0003129703870400453}
+('the', 'doctor'): {'count': 23, 'count_norm_length': 3.115627717707873e-05, 'length': 2, 'count_norm_char': 0.00034277709056766865}
+('the', 'Rue'): {'count': 24, 'count_norm_length': 3.251089792390824e-05, 'length': 2, 'count_norm_char': 0.00035768044233148034}
+('the', 'end'): {'count': 25, 'count_norm_length': 3.3865518670737756e-05, 'length': 2, 'count_norm_char': 0.000372583794095292}
+('Mademoiselle', 'Nioche'): {'count': 26, 'count_norm_length': 3.5220139417567265e-05, 'length': 2, 'count_norm_char': 0.0003874871458591037}
+('the', 'Bellegardes'): {'count': 26, 'count_norm_length': 3.5220139417567265e-05, 'length': 2, 'count_norm_char': 0.0003874871458591037}
+('Lord', 'Deepmere'): {'count': 29, 'count_norm_length': 3.928400165805579e-05, 'length': 2, 'count_norm_char': 0.00043219720115053877}
+('Mr.', 'Newman'): {'count': 35, 'count_norm_length': 4.741172613903285e-05, 'length': 2, 'count_norm_char': 0.0005216173117334089}
+('The', 'marquis'): {'count': 41, 'count_norm_length': 5.553945062000992e-05, 'length': 2, 'count_norm_char': 0.0006110374223162789}
+('Mademoiselle', 'Noemie'): {'count': 44, 'count_norm_length': 5.9603312860498445e-05, 'length': 2, 'count_norm_char': 0.0006557474776077139}
+('M.', 'Nioche'): {'count': 69, 'count_norm_length': 9.34688315312362e-05, 'length': 2, 'count_norm_char': 0.001028331271703006}
+('Mrs.', 'Bread'): {'count': 78, 'count_norm_length': 0.00010566041825270179, 'length': 2, 'count_norm_char': 0.0011624614375773112}
+('Mrs.', 'Tristram'): {'count': 96, 'count_norm_length': 0.00013004359169563296, 'length': 2, 'count_norm_char': 0.0014307217693259214}
+('the', 'marquis'): {'count': 106, 'count_norm_length': 0.00014358979916392808, 'length': 2, 'count_norm_char': 0.0015797552869640382}
+('the', 'Rue', "d'Anjou"): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'poor', 'fellow'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'United', 'States'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('The', 'young', 'girl'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'Rue', "d'Enfer"): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('Earl', 'of', 'St.'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'Salon', 'Carre'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'loveliest', 'woman'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('Miss', 'Kitty', 'Upjohn'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('house', 'of', 'Bellegarde'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('Newman', "'s", 'hand'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'poor', 'countess'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'other', 'end'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('Newman', "'s", 'companion'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('doctor', 'from', 'Paris'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('friend', 'Mr.', 'Newman'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('return', 'to', 'Paris'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'old', 'gentleman'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 3, 'count_norm_char': 4.471005529143504e-05}
+('the', 'little', 'doctor'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 3, 'count_norm_char': 5.961340705524673e-05}
+('the', 'little', 'dog'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 3, 'count_norm_char': 5.961340705524673e-05}
+('Avenue', 'de', 'Messine'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 3, 'count_norm_char': 5.961340705524673e-05}
+('Marquise', 'de', 'Bellegarde'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 3, 'count_norm_char': 5.961340705524673e-05}
+('the', 'late', 'marquis'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 3, 'count_norm_char': 5.961340705524673e-05}
+('eyes', 'upon', 'Newman'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 3, 'count_norm_char': 5.961340705524673e-05}
+('the', 'Boulevard', 'Haussmann'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 3, 'count_norm_char': 5.961340705524673e-05}
+('the', 'Palais', 'Royal'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 3, 'count_norm_char': 7.45167588190584e-05}
+('M.', 'Stanislas', 'Kapp'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 3, 'count_norm_char': 7.45167588190584e-05}
+('doctor', 'from', 'Poitiers'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 3, 'count_norm_char': 7.45167588190584e-05}
+('M.', 'de', 'Grosjoyaux'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 3, 'count_norm_char': 7.45167588190584e-05}
+('The', 'old', 'man'): {'count': 5, 'count_norm_length': 6.77310373414755e-06, 'length': 3, 'count_norm_char': 7.45167588190584e-05}
+('the', 'poor', 'marquis'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 3, 'count_norm_char': 8.942011058287009e-05}
+('Miss', 'Dora', 'Finch'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 3, 'count_norm_char': 8.942011058287009e-05}
+('The', 'young', 'lady'): {'count': 6, 'count_norm_length': 8.12772448097706e-06, 'length': 3, 'count_norm_char': 8.942011058287009e-05}
+('the', 'Count', 'Valentin'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 3, 'count_norm_char': 0.00010432346234668177}
+('the', 'Avenue', "d'Iena"): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 3, 'count_norm_char': 0.00010432346234668177}
+('the', 'other', 'hand'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 3, 'count_norm_char': 0.00010432346234668177}
+('M.', 'de', 'Cintre'): {'count': 8, 'count_norm_length': 1.0836965974636081e-05, 'length': 3, 'count_norm_char': 0.00011922681411049346}
+('The', 'old', 'lady'): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 3, 'count_norm_char': 0.0001490335176381168}
+('The', 'young', 'man'): {'count': 10, 'count_norm_length': 1.35462074682951e-05, 'length': 3, 'count_norm_char': 0.0001490335176381168}
+('the', 'young', 'girl'): {'count': 12, 'count_norm_length': 1.625544896195412e-05, 'length': 3, 'count_norm_char': 0.00017884022116574017}
+('Urbain', 'de', 'Bellegarde'): {'count': 13, 'count_norm_length': 1.7610069708783633e-05, 'length': 3, 'count_norm_char': 0.00019374357292955186}
+('the', 'old', 'woman'): {'count': 14, 'count_norm_length': 1.896469045561314e-05, 'length': 3, 'count_norm_char': 0.00020864692469336354}
+('the', 'young', 'lady'): {'count': 14, 'count_norm_length': 1.896469045561314e-05, 'length': 3, 'count_norm_char': 0.00020864692469336354}
+('Rue', 'de', "l'Universite"): {'count': 14, 'count_norm_length': 1.896469045561314e-05, 'length': 3, 'count_norm_char': 0.00020864692469336354}
+('Valentin', 'de', 'Bellegarde'): {'count': 20, 'count_norm_length': 2.70924149365902e-05, 'length': 3, 'count_norm_char': 0.0002980670352762336}
+('the', 'old', 'man'): {'count': 23, 'count_norm_length': 3.115627717707873e-05, 'length': 3, 'count_norm_char': 0.00034277709056766865}
+('the', 'young', 'man'): {'count': 26, 'count_norm_length': 3.5220139417567265e-05, 'length': 3, 'count_norm_char': 0.0003874871458591037}
+('the', 'old', 'lady'): {'count': 27, 'count_norm_length': 3.6574760164396774e-05, 'length': 3, 'count_norm_char': 0.0004023904976229154}
+('M.', 'de', 'Bellegarde'): {'count': 78, 'count_norm_length': 0.00010566041825270179, 'length': 3, 'count_norm_char': 0.0011624614375773112}
+('Madame', 'de', 'Bellegarde'): {'count': 123, 'count_norm_length': 0.00016661835186002974, 'length': 3, 'count_norm_char': 0.0018331122669488368}
+('Madame', 'de', 'Cintre'): {'count': 232, 'count_norm_length': 0.00031427201326444633, 'length': 3, 'count_norm_char': 0.00345757760920431}
+('the', 'Avenue', 'de', 'Messine'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 4, 'count_norm_char': 4.471005529143504e-05}
+('house', 'in', 'the', 'Rue'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 4, 'count_norm_char': 4.471005529143504e-05}
+('the', 'Earl', 'of', 'St.'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 4, 'count_norm_char': 4.471005529143504e-05}
+('lady', 'and', 'Mr.', 'Urbain'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 4, 'count_norm_char': 4.471005529143504e-05}
+('Earl', 'of', 'St.', 'Dunstan'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 4, 'count_norm_char': 4.471005529143504e-05}
+('Cafe', 'de', 'la', 'Patrie'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 4, 'count_norm_char': 5.961340705524673e-05}
+('Young', 'Madame', 'de', 'Bellegarde'): {'count': 7, 'count_norm_length': 9.48234522780657e-06, 'length': 4, 'count_norm_char': 0.00010432346234668177}
+('the', 'Rue', 'de', "l'Universite"): {'count': 14, 'count_norm_length': 1.896469045561314e-05, 'length': 4, 'count_norm_char': 0.00020864692469336354}
+('the', 'Earl', 'of', 'St.', 'Dunstan'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 5, 'count_norm_char': 4.471005529143504e-05}
+('the', 'little', 'doctor', 'from', 'Poitiers'): {'count': 3, 'count_norm_length': 4.06386224048853e-06, 'length': 5, 'count_norm_char': 4.471005529143504e-05}
+('the', 'Cafe', 'de', 'la', 'Patrie'): {'count': 4, 'count_norm_length': 5.418482987318041e-06, 'length': 5, 'count_norm_char': 5.961340705524673e-05}
