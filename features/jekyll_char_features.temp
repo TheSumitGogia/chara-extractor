@@ -1,0 +1,59 @@
+----------CANDIDATES----------
+('Satan',): {'count': 3, 'length': 1, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('January',): {'count': 3, 'length': 1, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('Cavendish',): {'count': 3, 'length': 1, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('Harry',): {'count': 4, 'length': 1, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('Guest',): {'count': 5, 'length': 1, 'count_norm_book': 3.569541813612805e-05, 'count_norm_char': 0.0031525851197982345}
+('Sunday',): {'count': 5, 'length': 1, 'count_norm_book': 3.569541813612805e-05, 'count_norm_char': 0.0031525851197982345}
+('Enfield',): {'count': 6, 'length': 1, 'count_norm_book': 4.2834501763353655e-05, 'count_norm_char': 0.0037831021437578815}
+('Soho',): {'count': 7, 'length': 1, 'count_norm_book': 4.997358539057926e-05, 'count_norm_char': 0.004413619167717529}
+('O',): {'count': 7, 'length': 1, 'count_norm_book': 4.997358539057926e-05, 'count_norm_char': 0.004413619167717529}
+('Sir',): {'count': 9, 'length': 1, 'count_norm_book': 6.425175264503048e-05, 'count_norm_char': 0.005674653215636823}
+('London',): {'count': 10, 'length': 1, 'count_norm_book': 7.13908362722561e-05, 'count_norm_char': 0.006305170239596469}
+('God',): {'count': 17, 'length': 1, 'count_norm_book': 0.00012136442166283536, 'count_norm_char': 0.010718789407313998}
+('Lanyon',): {'count': 21, 'length': 1, 'count_norm_book': 0.0001499207561717378, 'count_norm_char': 0.013240857503152586}
+('Henry',): {'count': 24, 'length': 1, 'count_norm_book': 0.00017133800705341462, 'count_norm_char': 0.015132408575031526}
+('Edward',): {'count': 25, 'length': 1, 'count_norm_book': 0.00017847709068064024, 'count_norm_char': 0.015762925598991173}
+('Jekyll',): {'count': 33, 'length': 1, 'count_norm_book': 0.0002355897596984451, 'count_norm_char': 0.02080706179066835}
+('Dr.',): {'count': 36, 'length': 1, 'count_norm_book': 0.0002570070105801219, 'count_norm_char': 0.02269861286254729}
+('Hyde',): {'count': 36, 'length': 1, 'count_norm_book': 0.0002570070105801219, 'count_norm_char': 0.02269861286254729}
+('Utterson',): {'count': 44, 'length': 1, 'count_norm_book': 0.00031411967959792684, 'count_norm_char': 0.027742749054224466}
+('Poole',): {'count': 47, 'length': 1, 'count_norm_book': 0.0003355369304796036, 'count_norm_char': 0.029634300126103404}
+('the', 'officer'): {'count': 3, 'length': 2, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('the', 'creature'): {'count': 3, 'length': 2, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('the', 'master'): {'count': 3, 'length': 2, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('the', 'girl'): {'count': 3, 'length': 2, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('Cavendish', 'Square'): {'count': 3, 'length': 2, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('the', 'victim'): {'count': 3, 'length': 2, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('the', 'subject'): {'count': 3, 'length': 2, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('O', 'God'): {'count': 3, 'length': 2, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('the', 'letter'): {'count': 4, 'length': 2, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('the', 'square'): {'count': 4, 'length': 2, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('the', 'light'): {'count': 4, 'length': 2, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('the', 'drawer'): {'count': 4, 'length': 2, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('the', 'clerk'): {'count': 4, 'length': 2, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('the', 'end'): {'count': 4, 'length': 2, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('The', 'man'): {'count': 4, 'length': 2, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('the', 'murderer'): {'count': 4, 'length': 2, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('Sir', 'Danvers'): {'count': 5, 'length': 2, 'count_norm_book': 3.569541813612805e-05, 'count_norm_char': 0.0031525851197982345}
+('The', 'doctor'): {'count': 5, 'length': 2, 'count_norm_book': 3.569541813612805e-05, 'count_norm_char': 0.0031525851197982345}
+('Dr.', 'Lanyon'): {'count': 6, 'length': 2, 'count_norm_book': 4.2834501763353655e-05, 'count_norm_char': 0.0037831021437578815}
+('The', 'lawyer'): {'count': 7, 'length': 2, 'count_norm_book': 4.997358539057926e-05, 'count_norm_char': 0.004413619167717529}
+('the', 'maid'): {'count': 7, 'length': 2, 'count_norm_book': 4.997358539057926e-05, 'count_norm_char': 0.004413619167717529}
+('the', 'child'): {'count': 8, 'length': 2, 'count_norm_book': 5.711266901780488e-05, 'count_norm_char': 0.005044136191677175}
+('the', 'hand'): {'count': 8, 'length': 2, 'count_norm_book': 5.711266901780488e-05, 'count_norm_char': 0.005044136191677175}
+('the', 'butler'): {'count': 9, 'length': 2, 'count_norm_book': 6.425175264503048e-05, 'count_norm_char': 0.005674653215636823}
+('the', 'face'): {'count': 11, 'length': 2, 'count_norm_book': 7.852991989948171e-05, 'count_norm_char': 0.0069356872635561164}
+('the', 'man'): {'count': 15, 'length': 2, 'count_norm_book': 0.00010708625440838414, 'count_norm_char': 0.009457755359394703}
+('the', 'name'): {'count': 15, 'length': 2, 'count_norm_book': 0.00010708625440838414, 'count_norm_char': 0.009457755359394703}
+('Henry', 'Jekyll'): {'count': 24, 'length': 2, 'count_norm_book': 0.00017133800705341462, 'count_norm_char': 0.015132408575031526}
+('Dr.', 'Jekyll'): {'count': 24, 'length': 2, 'count_norm_book': 0.00017133800705341462, 'count_norm_char': 0.015132408575031526}
+('Edward', 'Hyde'): {'count': 25, 'length': 2, 'count_norm_book': 0.00017847709068064024, 'count_norm_char': 0.015762925598991173}
+('the', 'doctor'): {'count': 32, 'length': 2, 'count_norm_book': 0.0002284506760712195, 'count_norm_char': 0.0201765447667087}
+('the', 'lawyer'): {'count': 63, 'length': 2, 'count_norm_book': 0.0004497622685152134, 'count_norm_char': 0.03972257250945776}
+('name', 'of', 'Hyde'): {'count': 3, 'length': 3, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('doctor', "'s", 'hand'): {'count': 3, 'length': 3, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('house', 'in', 'Soho'): {'count': 4, 'length': 3, 'count_norm_book': 2.855633450890244e-05, 'count_norm_char': 0.0025220680958385876}
+('the', 'doctor', "'s", 'hand'): {'count': 3, 'length': 4, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('the', 'house', 'in', 'Soho'): {'count': 3, 'length': 4, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}
+('the', 'name', 'of', 'Hyde'): {'count': 3, 'length': 4, 'count_norm_book': 2.1417250881676828e-05, 'count_norm_char': 0.0018915510718789407}

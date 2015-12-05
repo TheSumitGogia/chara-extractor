@@ -1,0 +1,1 @@
+{'Gilbert Osmond': ['Gilbert', 'Osmond'], 'Madame Merle': ['Merle'], 'Edward Rosier': ['Rosier'], 'Caspar Goodwood': ['Caspar'], 'Isabel Archer': ['Isabel'], 'Ralph Touchett': ['Touchett', 'Ralph'], 'Henrietta Stackpole': ['Henrietta'], 'Mr. Bantling': [], 'Pansy Osmond': ['Pansy'], 'Lord Warburton': ['Warburton'], 'Mrs. Touchett': [], 'Countess Gemini': [], 'Mr. Touchett': []}

@@ -223,6 +223,9 @@ def resolve_references(book):
                     name = name[:-2].strip()
                 if name.endswith('s\''):
                     name = name[:-1].strip()
+                if name == '':
+                    break
+                
                 if name in book.references:
                     #book.add_mention(book.references[name])
                     character = book.references[name]
@@ -242,34 +245,39 @@ def resolve_references(book):
                             potential_charas = filter(lambda x: book.characters[x].sex != 'FEMALE', potential_charas)
                         if cand[0] in FEMALE_TITLES:
                             potential_charas = filter(lambda x: book.characters[x].sex != 'MALE', potential_charas)
-
+                    
+                    # if cannot resolve this mention, try something else
+                    if len(potential_charas) == 0:
+                        for ocand in candidates:
+                            # to map "Margaret Moss" to "Mrs. Moss"
+                            if resolve_title(cand, ocand):
+                                potential_charas.add(" ".join(ocand))
+                    
+                    resolved_character =  ''
                     if len(potential_charas) == 1:
-                        book.add_reference(potential_charas.pop(), name)
-                        #book.add_mention(mention, book.references[name])
-                        character = book.references[name]
-                        if sex != '':
-                            book.characters[character].set_sex(sex)
+                        resolved_character = potential_charas.pop()
                     elif len(potential_charas) > 1:
                         # resolve to the first one
-                        chara = ''
+                        resolved_character = ''
                         for p in book.paragraphs:
                             for c in p.characters:
                                 if c in potential_charas:
-                                    chara = c
+                                    resolved_character = c
                                     break
-                            if chara != '':
+                            if resolved_character != '':
                                 break
-                        book.add_reference(chara, name)
-                        #book.add_mention(mention, book.references[name])
-                        character = book.references[name]
-                        if sex != '':
-                            book.characters[character].set_sex(sex)
-
                         if verbose:
-                            print "resolve %s to %s among %s" %(name, character, potential_charas)
+                            print "resolve %s to %s among %s" %(name, resolved_character, potential_charas)
                     else:
                         if verbose:
                             print "can't resolve %s" %(name)
+
+                    if resolved_character != '':
+                        book.add_reference(resolved_character, name)
+                        #book.add_mention(mention, book.references[name])
+                        resolved_character = book.references[name]
+                        if sex != '':
+                            book.characters[resolved_character].set_sex(sex)
 
 # resolve stuff like the Pevensies, the Pevensie children/house/family
 def family_resolution(families, text):
