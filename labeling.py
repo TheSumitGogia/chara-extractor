@@ -27,8 +27,7 @@ def strict_fuzzy_match(s1, s2):
             return 0.5
         if fuzz.ratio(s1, s2) >= 80:
             return fuzz.ratio(s1, s2)/100.0
-    else:
-        return 0
+    return 0
 
 def strict_fuzzy_contains_tuple(t_outer, t_inner):
     if len(t_inner) == 0:
