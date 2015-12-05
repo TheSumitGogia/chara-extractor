@@ -9,7 +9,9 @@ from nltk.corpus import wordnet as wn
 import wordnet_hyponyms as wh
 from collections import deque
 from django.utils.encoding import smart_str
+from scipy.sparse import csr_matrix, lil_matrix
 from sklearn.feature_extraction import DictVectorizer
+from sklearn.preprocessing import normalize
 
 SECTION_MAP = {'sentence': 'st', 'paragraph': 'pg', 'chapter': 'cp'}
 def abbrv(section_name):
@@ -26,7 +28,7 @@ def section(tree, token_filename):
     st_markers, pg_markers, cp_markers = [], [], []
     for sentence in all_sentences:
         for tokens in sentence:
-            st_markers.append(tokens[0][2].text)
+            st_markers.append(int(tokens[0][2].text))
             token_idx = 0
             for token in tokens:
                 token_t = smart_str(token[0].text.strip())
@@ -126,7 +128,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
 
     # stuff to indicate nesting of invalidity of candidate noun phrases
     bad_title_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms', 'Miss'])
-    bad_token_set = set(['Mr.', 'Mr', 'Mrs.', 'Ms.', 'Mrs', 'Ms', 'Chapter', 'CHAPTER', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
+    bad_token_set = set(['Chapter', 'CHAPTER', 'said', ',', "''", 'and', ';', '-RSB-', '-LSB-', '_', '--', '``', '.'])
     bad_np_tags = set(['CC', 'IN', 'TO', 'WDT', 'WP', 'WP$', 'WRB', 'UH', 'VB', 'VBD', 'VBP', 'VBZ', 'MD'])
 
     # TODO: load person set
@@ -295,7 +297,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
             'count': count,
             'length': len(key)
         }
-        candidates[key]['count_norm_book'] = candidates[key]['count'] * 1.0 / total_length
+        candidates[key]['count_norm_length'] = candidates[key]['count'] * 1.0 / total_length
     for cand in candidates:
         features = candidates[cand]
         features['count_norm_char'] = features['count'] * 1.0 / total
@@ -422,7 +424,14 @@ def get_coref_features(ngrams, pairs):
         The method only changes the passed candidate feature dictionaries.
     """
     section_types = ["st", "pg", "cp"]
-    coref_feats = ["coref_shorter_count", "coref_longer_count", "coref_shorter_count_norm", "coref_longer_count_norm"]
+    coref_feats = [
+        "coref_shorter_count",
+        "coref_longer_count",
+        "coref_shorter_count_norm_length",
+        "coref_longer_count_norm_length",
+        "coref_shorter_count_norm_char",
+        "coref_longer_count_norm_char"
+    ]
     ex_coref_feats = [feat + "_" + sec_type for sec_type in section_types for feat in coref_feats]
     coref_feats.extend(ex_coref_feats)
     coref_feats.extend(["coref_shorter", "coref_longer"])
@@ -435,13 +444,17 @@ def get_coref_features(ngrams, pairs):
         features["coref_longer"] = 0
         features["coref_shorter_count"] = 0
         features["coref_longer_count"] = 0
-        #features["coref_shorter_count_norm"] = 0
-        #features["coref_longer_count_norm"] = 0
+        features["coref_shorter_count_norm_length"] = 0
+        features["coref_longer_count_norm_length"] = 0
+        features["coref_shorter_count_norm_char"] = 0
+        features["coref_longer_count_norm_char"] = 0
         for section_type in section_types:
             features["coref_shorter_count_" + section_type] = 0
-            #features["coref_shorter_count_norm_" + section_type] = 0
+            features["coref_shorter_count_norm_length_" + section_type] = 0
+            features["coref_shorter_count_norm_char_" + section_type] = 0
             features["coref_longer_count_" + section_type] = 0
-            #features["coref_longer_count_norm_" + section_type] = 0
+            features["coref_longer_count_norm_length_" + section_type] = 0
+            features["coref_longer_count_norm_char_" + section_type] = 0
 
     coref_graph = dbg.disambiguate(ngrams)
     for candidate in coref_graph:
@@ -453,14 +466,18 @@ def get_coref_features(ngrams, pairs):
             match_feats = ngrams[match]
             match_feats["coref_shorter"] = 1
             features["coref_longer_count"] += match_feats["count"]
-            #features["coref_longer_count_norm"] += match_feats["count_norm"]
+            features["coref_longer_count_norm_length"] += match_feats["count_norm_length"]
+            features["coref_longer_count_norm_char"] += match_feats["count_norm_char"]
             match_feats["coref_shorter_count"] += features["count"]
-            #match_feats["coref_shorter_count_norm"] += features["count_norm"]
+            match_feats["coref_shorter_count_norm_length"] += features["count_norm_length"]
+            match_feats["coref_shorter_count_norm_char"] += features["count_norm_char"]
             for section_type in section_types:
                 features["coref_longer_count_" + section_type] += match_feats["count_" + section_type]
-                #features["coref_longer_count_norm_" + section_type] += match_feats["count_norm_" + section_type]
+                features["coref_longer_count_norm_length_" + section_type] += match_feats["count_norm_length_" + section_type]
+                features["coref_longer_count_norm_char_" + section_type] += match_feats["count_norm_char_" + section_type]
                 match_feats["coref_shorter_count_" + section_type] += features["count_" + section_type]
-                #match_feats["coref_shorter_count_norm_" + section_type] += features["count_norm_" + section_type]
+                match_feats["coref_shorter_count_norm_length_" + section_type] += features["count_norm_length_" + section_type]
+                match_feats["coref_shorter_count_norm_char_" + section_type] += features["count_norm_char_" + section_type]
 
     for pair in pairs:
         pair_feats = pairs[pair]
@@ -513,9 +530,21 @@ def get_count_features(tree, markers, ngrams, pairs):
     section_dicts = {'sentence': {}, 'paragraph': {}, 'chapter': {}}
     section_types = section_dicts.keys()
 
-    count_feats = set(['count', 'cooc_cand', 'cooc_sec'])
+    count_feats = set([
+        'count',
+        'count_norm_length',
+        'count_norm_char',
+        'cooc_cand',
+        'cooc_cand_norm_sec',
+        'cooc_cand_norm_char',
+        'cooc_sec',
+        'cooc_sec_norm_length',
+        'cooc_cand_dd_norm_sec',
+        'cooc_cand_dd_norm_char'
+    ])
     max_gram = max(map(lambda x: len(x), ngrams.keys()))
 
+    flag = False
     # loop through tree and count candidates in sections
     root = tree.getroot()
     for document in root:
@@ -552,68 +581,92 @@ def get_count_features(tree, markers, ngrams, pairs):
                                         section_dict[word_tuple] = 1
 
     # convert sentence, paragraph, chapter count dicts into matrices (sparse)
-    section_v = {'sentence': None, 'paragraph': None, 'chapter': None}
-    section_mats = {'sentence': None, 'paragraph': None, 'chapter': None}
-    section_uforms = {'sentence': None, 'paragraph': None, 'chapter': None}
-    section_marg = {'sentence': None, 'paragraph': None, 'chapter': None}
-    section_cooc = {'sentence': None, 'paragraph': None, 'chapter': None}
-    section_marg_cooc = {'sentence': None, 'paragraph': None, 'chapter': None}
     for section_type in section_types:
         counts = section_counts[section_type]
-        section_v[section_type] = DictVectorizer(sparse=True)
-        vectorizer = section_v[section_type]
-        section_mats[section_type] = vectorizer.fit_transform(counts)
+        print section_type, len(counts)
+        vectorizer = DictVectorizer(sparse=True)
+        section_mat = vectorizer.fit_transform(counts)
+        index = {v: k for k, v in vectorizer.vocabulary_.items()}
+        marg_mat_full_norm = [ngrams[index[idx]]['count_norm_char'] for idx in range(len(index.keys()))]
+        marg_mat_full_norm = np.array(marg_mat_full_norm)
+        best_ind = np.argpartition(marg_mat_full_norm, -40)[-40:]
+        major_filter = np.zeros(marg_mat_full_norm.shape[0])
+        major_filter[best_ind] = 1
+        major_filter_sparse = lil_matrix((major_filter.shape[0], major_filter.shape[0]))
+        major_filter_sparse.setdiag(major_filter)
 
         # marginalization to get total sentence, paragraph, chapter frequencies
-        section_uforms[section_type] = section_mats[section_type].copy()
-        uform_mat = section_uforms[section_type]
+        uform_mat = section_mat.copy()
         uform_mat[uform_mat > 0] = 1.0
-        section_marg[section_type] = uform_mat.sum(axis=0)
-        marg_mat = section_marg[section_type]
+        marg_mat = uform_mat.sum(axis=0)
 
         # section count and character over section count normalization
         marg_mat_len_norm = marg_mat / len(section_markers[section_type])
         marg_mat_count_norm = marg_mat / marg_mat.sum()
 
         # number of sections co-occurred in (as opposed to num co-occurrences in section)
-        uform_major = uform_mat * major_filter # TODO: major filter
-        uform_or = uform_mat.sum(axis=1)
-        uform_or = (uform_or >= 2)
-        cooc_sec = uform_mat.multiply(uform_or)
-        marg_cooc_sec = cooc_sec.sum(axis=0)
+        uform_major = uform_mat.dot(major_filter_sparse)
+        uform_major = uform_major.sum(axis=1)
+        uform_major[uform_major >= 1] = 1
+        cooc_sec = (uform_mat.T).dot(uform_major)
         marg_cooc_sec_len_norm = cooc_sec / len(section_markers[section_type])
 
         # matrix multiplication to get co-occurrence sentence, paragraph, chapter matrices
         # TODO: might want to store these on disk since computation is expensive
-        section_cooc[section_type] = (uform_mat.T).dot(uform_mat)
-        cooc_mat = section_cooc[section_type]
-        cooc_mat_count_norm = cooc_mat * marg_mat_count_norm
-        cooc_mat_full_norm = cooc_mat * marg_mat_full_norm
+        cooc_mat = (uform_mat.T).dot(uform_mat)
+        cooc_mat_pre_norm = normalize(cooc_mat, norm='l1', axis=1)
+        marg_sparse_count_norm = lil_matrix(cooc_mat.shape)
+        marg_sparse_full_norm = lil_matrix(cooc_mat.shape)
+        marg_sparse_count_norm.setdiag(marg_mat_count_norm.A1)
+        marg_sparse_full_norm.setdiag(marg_mat_full_norm)
+        cooc_mat_count_norm = cooc_mat_pre_norm.dot(marg_sparse_count_norm)
+        cooc_mat_full_norm = cooc_mat_pre_norm.dot(marg_sparse_full_norm)
         cooc_uform = cooc_mat.copy()
         cooc_uform[cooc_uform > 0] = 1.0
-        cooc_uform_count_norm = cooc_uform * marg_mat_count_norm
-        cooc_uform_full_norm = cooc_uform * marg_mat_full_norm
+        cooc_uform_count_norm = cooc_uform.dot(marg_sparse_count_norm)
+        cooc_uform_full_norm = cooc_uform.dot(marg_sparse_full_norm)
 
         # marginalization to get total sentence, paragraph, chapter co-occurrences for each candidate
-        section_marg_cooc[section_type] = cooc_mat.sum(axis=1)
-        marg_cooc = section_marg_cooc[section_type]
+        marg_cooc = cooc_mat.sum(axis=1)
+        marg_cooc_count_norm = cooc_mat_count_norm.sum(axis=1)
+        marg_cooc_full_norm = cooc_mat_full_norm.sum(axis=1)
         marg_cooc_uform = cooc_uform.sum(axis=1)
         marg_cooc_uform_count_norm = cooc_uform_count_norm.sum(axis=1)
         marg_cooc_uform_full_norm = cooc_uform_full_norm.sum(axis=1)
 
-        index = {v: k for k, v in section_v[section_type].vocabulary_.items()}
         for idx in index:
             ngram, count, cooc = index[idx], marg_mat[0, idx], marg_cooc[idx, 0]
+            count_norm_length = marg_mat_len_norm[0, idx]
+            count_norm_char = marg_mat_count_norm[0, idx]
+            cooc_sec_val = cooc_sec[idx, 0]
+            cooc_sec_norm_length = marg_cooc_sec_len_norm[idx, 0]
+            cooc_total_char_norm_sec = marg_cooc_count_norm[idx, 0]
+            cooc_total_char_norm_char = marg_cooc_full_norm[idx, 0]
+            cooc_char_norm_sec = marg_cooc_uform_count_norm[idx, 0]
+            cooc_char_norm_char = marg_cooc_uform_full_norm[idx, 0]
+
             features = ngrams[ngram]
             features["count_" + abbrv(section_type)] = count
+            features["count_norm_length_" + abbrv(section_type)] = count_norm_length
+            features["count_norm_char_" + abbrv(section_type)] = count_norm_char
             features["cooc_cand_" + abbrv(section_type)] = cooc
-            features["cooc_sec_" + abbrv(section_type)] = cooc_sec[0, idx]
+            features["cooc_cand_norm_sec_" + abbrv(section_type)] = cooc_total_char_norm_sec
+            features["cooc_cand_norm_char_" + abbrv(section_type)] = cooc_total_char_norm_char
+            features["cooc_sec_" + abbrv(section_type)] = cooc_sec_val
+            features["cooc_sec_norm_length_" + abbrv(section_type)] = cooc_sec_norm_length
+            features["cooc_cand_dd_norm_sec_" + abbrv(section_type)] = cooc_char_norm_sec
+            features["cooc_cand_dd_norm_char_" + abbrv(section_type)] = cooc_char_norm_char
             for idx2 in index:
                 if idx == idx2:
                     continue
                 pair = (ngram, index[idx2])
                 pair_feats = pairs[pair]
                 pair_feats["cooc_" + abbrv(section_type)] = cooc_mat[idx, idx2]
+                pair_feats["cooc_norm_sec_" + abbrv(section_type)] = cooc_mat_count_norm[idx, idx2]
+                pair_feats["cooc_norm_char_" + abbrv(section_type)] = cooc_mat_full_norm[idx, idx2]
+                pair_feats["cooc_bool_" + abbrv(section_type)] = cooc_uform[idx, idx2]
+                pair_feats["cooc_bool_norm_sec_" + abbrv(section_type)] = cooc_uform_count_norm[idx, idx2]
+                pair_feats["cooc_bool_norm_char_" + abbrv(section_type)] = cooc_uform_full_norm[idx, idx2]
 
         for pair in pairs:
             pair_feats = pairs[pair]
@@ -699,8 +752,8 @@ if __name__ == '__main__':
         if debug:
             print "".join(["-"] * 10 + ["CANDIDATES"] + ["-"] * 10)
             output(candidates)
+            sys.exit()
 
-        sys.exit()
         # test tag feature extraction
         get_tag_features(tree, candidates, pairs)
         if debug:
