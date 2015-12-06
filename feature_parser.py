@@ -4,7 +4,7 @@ import argparse
 import itertools as it
 import disambiguation as dbg
 import numpy as np
-import sys, os
+import sys, os, traceback
 from nltk.corpus import wordnet as wn
 import wordnet_hyponyms as wh
 from collections import deque
@@ -346,8 +346,6 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
             for feature in cand1_feats:
                 pair_features["1_" + feature] = cand1_feats[feature]
                 pair_features["2_" + feature] = cand2_feats[feature]
-    for pair in pairs:
-        print pair
     return candidates, pairs
 
 def dedup_candidates(tree, ngrams):
@@ -848,8 +846,6 @@ def get_count_features(tree, markers, ngrams, pairs):
                 if idx == idx2:
                     continue
                 pair = (ngram, index[idx2])
-                if len(pair) == 1:
-                    print 'what the'
                 pair_feats = pairs[pair]
                 pair_feats["cooc_" + abbrv(section_type)] = cooc_mat[idx, idx2]
                 pair_feats["cooc_norm_sec_" + abbrv(section_type)] = cooc_mat_count_norm[idx, idx2]
@@ -1032,6 +1028,7 @@ if __name__ == '__main__':
                 write_feature_file(tokens, outdir, candidates, pairs)
                 write_readable_feature_file(tokens, outdir, candidates, pairs)
                 print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
-            except:
+            except Exception as e:
+                traceback.print_exc()
                 print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
                 continue
