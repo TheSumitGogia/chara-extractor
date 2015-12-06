@@ -1,5 +1,6 @@
 from collections import deque
 from fuzzywuzzy import fuzz, process
+import pprint
 
 def populate_gender_dict():
   d = {}
@@ -16,7 +17,7 @@ def populate_gender_dict():
   return d
 
 gender_dict = populate_gender_dict()
-MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr', 'Monsieur':'Mr', 'M.':'M.'}
+MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr.', 'Monsieur':'Mr.', 'M.':'M.'}
 FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame'}
 OTHER_TITLES = {'Dr.':'Dr.', 'Doctor':'Dr.', 'Jr.':'Jr.', 'Junior':'Jr.', 'Prof.':'Prof', 'Professor':'Prof.'}
 ALL_TITLES = MALE_TITLES.copy() 
@@ -36,6 +37,21 @@ def disambiguate(candidates):
     all_maps[cand].update(connected_cands[cand])
 
   return all_maps
+
+def find_unique_characters(candidates):
+    all_maps = disambiguate(candidates)
+    # make the map to a tree
+    for cand1 in candidates:
+        for cand2 in candidates:
+            if cand1 > cand2 and \
+                    cand1 in all_maps[cand2] and \
+                    cand2 in all_maps[cand1]:
+                    all_maps[cand1].remove(cand2)
+    
+    # find leaves of the tree
+    unique = [cand for cand in candidates if len(all_maps[cand]) == 0]
+    return unique
+
 
 def find_potential_references(candidates, cand):
   refs = partial_reference(candidates, cand) + \
@@ -59,9 +75,9 @@ def contains_tuple(t_outer, t_inner, match):
   if t_outer == t_inner:
       return False
   inner_idx=0
-  if strict_match(t_outer[0], t_inner[0]) or strict_match(t_outer[-1], t_inner[-1]):
+  if match(t_outer[0], t_inner[0]) or match(t_outer[-1], t_inner[-1]):
     for t in t_outer:
-        if strict_match(t, t_inner[inner_idx]):
+        if match(t, t_inner[inner_idx]):
             inner_idx+=1
         if inner_idx == len(t_inner):
             return True
@@ -71,12 +87,15 @@ def strict_contains_tuple(t_outer, t_inner):
     return contains_tuple(t_outer, t_inner, strict_match)
 
 def resolve_title(ocand, cand):
-    if cand != ocand and cand[0] in ALL_TITLES and cand[-1] == ocand[-1]:
+    if cand != ocand and cand[0] in ALL_TITLES:
         if ocand[0] in ALL_TITLES:
             if ALL_TITLES[cand[0]] != ALL_TITLES[ocand[0]]:
                 return False
             else:
-                return strict_contains_tuple(ocand[1:], cand[1:])
+                if ocand[1:] == cand[1:]:
+                    return ALL_TITLES[ocand[0]] > ALL_TITLES[ocand[0]]
+                else:
+                    return strict_contains_tuple(ocand[1:], cand[1:])
         elif strict_contains_tuple(ocand, cand[1:]):
             first_name = ocand[0].lower()
             if cand[0] in OTHER_TITLES:
@@ -93,23 +112,10 @@ def fuzzy_match(s1, s2):
   s2 = s2[0].lower() + s2[1:]
   # ignore titles
   return (s1 not in ALL_TITLES and s2 not in ALL_TITLES) and \
-         (s1 in s2 or max(fuzz.ratio(s1, s2[:i]) for i in range(len(s2))) >= 70)
+         (s2 in s1 or max(fuzz.ratio(s2, s1[:i]) for i in range(len(s1))) >= 70)  
 
 def fuzzy_contains_tuple(t_outer, t_inner):
     return contains_tuple(t_outer, t_inner, fuzzy_match)
-
-def score(t):
-  title_score = (t[0] in MALE_TITLES) - (t[0] in FEMALE_TITLES)
-  first_name = t[0].lower()
-  name_score = (first_name in gender_dict and gender_dict[first_name] == 'MALE') - \
-                (first_name in gender_dict and gender_dict[first_name] == 'FEMALE')
-  return title_score + name_score
-
-def gender_match(t1, t2):
-  return abs(score(t1) - score(t2)) < 2
-
-def str_gender_match(s1, s2):
-  return gender_match(tuple(s1.split()), tuple(s2.split()))
 
 # (A,) -> (A, B)
 def partial_reference(candidates, cand):
@@ -178,8 +184,10 @@ if __name__ == '__main__':
     ('Frederick', 'Weasley'): 1,
     ('Tweedledee',): 1,
     ('Tweedledum',): 1,
-    ('Monsieur',): 1
+    ('Monsieur',): 1,
+    ('D\'Artagan',): 1,
+    ('d\'Artagan',): 1
   }
 
-  import pprint
-  pprint.pprint(disambiguate(candidates))
+  #pprint.pprint(disambiguate(candidates))
+  print(find_unique_characters(candidates))

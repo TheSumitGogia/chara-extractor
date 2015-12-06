@@ -18,4 +18,4 @@ def evaludate_candidates(characters, candidates):
             else:
                 duplicate_candidates.append(cand)
 
-    return (resolved_characters, duplicate_candidates, invalid_candidates)
+    return (unresolved_characters, duplicate_candidates, invalid_candidates)
