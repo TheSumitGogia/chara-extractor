@@ -7,19 +7,19 @@ def populate_gender_dict():
   with open('stanford/namegender.combine.txt') as f:
     for line in f:
       name, gender = line.rsplit('\t', 1)
-      d[name] = gender.strip()
+      d[name.strip()] = gender.strip()
   with open('stanford/male.unigrams.txt') as f:
     for name in f:
-      d[name] = 'MALE'
+      d[name.strip()] = 'MALE'
   with open('stanford/female.unigrams.txt') as f:
     for name in f:
-      d[name] = 'FEMALE'
+      d[name.strip()] = 'FEMALE'
   return d
 
 gender_dict = populate_gender_dict()
-MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr.', 'Monsieur':'Mr.', 'M.':'M.'}
-FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame', 'Madam': 'Madame'}
-OTHER_TITLES = {'Dr.':'Dr.', 'Doctor':'Dr.', 'Jr.':'Jr.', 'Junior':'Jr.', 'Prof.':'Prof', 'Professor':'Prof.', 'The': 'The'}
+MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr.', 'Monsieur':'Mr.', 'M.':'M.', 'Brother':'Brother', 'Uncle':'Uncle', 'Father':'Father'}
+FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame', 'Madam': 'Madame', 'Sister':'Sister', 'Aunt':'Aunt', 'Mother': 'Mother'}
+OTHER_TITLES = {'Dr.':'Dr.', 'Doctor':'Dr.', 'Jr.':'Jr.', 'Junior':'Jr.', 'Prof.':'Prof', 'Professor':'Prof.', 'The': 'The', 'the': 'The'}
 ALL_TITLES = MALE_TITLES.copy() 
 ALL_TITLES.update(FEMALE_TITLES) 
 ALL_TITLES.update(OTHER_TITLES)
@@ -40,6 +40,7 @@ def disambiguate(candidates):
 
 def find_unique_characters(candidates):
     all_maps = disambiguate(candidates)
+    pprint.pprint(all_maps)
     # make the map to a tree
     for cand1 in candidates:
         for cand2 in candidates:
@@ -105,6 +106,8 @@ def resolve_title(ocand, cand):
                     return True
                 elif gender_dict[first_name] == 'FEMALE' and cand[0] in FEMALE_TITLES:
                     return True
+            elif strict_match(first_name, cand[1].lower()):
+                return True
     return False
 
 def fuzzy_match(s1, s2):

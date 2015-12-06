@@ -1,6 +1,7 @@
 from labeling import *
 from disambiguation import *
 import networkx as nx
+import matplotlib.pyplot as plt
 
 def evaluate_candidates(characters, candidates):
     (matching, G) = match_candidates_and_characters(characters, candidates)
@@ -22,39 +23,15 @@ def evaluate_candidates(characters, candidates):
     return (unresolved_characters, duplicate_candidates, invalid_candidates)
 
 if __name__ == '__main__':
-    candidates = {
-    ('Tom',): 1,
-    ('Tom', 'Sawyer'): 1,
-    ('Sid', 'Sawyer'): 1,
-    ('Sally', 'Sawyer'): 1,
-    ('Mr.', 'Tom'): 1,
-    ('Mr.', 'Sawyer'): 1,
-    ('Mrs.', 'Sawyer'): 1,
-    ('T.', 'Sawyer'): 1,
-    ('Doctor', 'Sawyer'): 1,
-    ('Monsieur', 'Sawyer'): 1,
-    ('Huck',): 1,
-    ('Huckleberry',): 1,
-    ('Huck', 'Finn'): 1,
-    ('Huckleberry', 'Finn'): 1,
-    ('Mr.', 'Finn'): 1,
-    ('Sawyer',): 1,
-    ('Sawyers',): 1,
-    ('Fred', 'Weasley'): 1,
-    ('Freddy', 'Weasley'): 1,
-    ('Frederick', 'Weasley'): 1,
-    ('Tweedledee',): 1,
-    ('Tweedledum',): 1,
-    ('Monsieur',): 1,
-    ('D\'Artagan',): 1,
-    ('d\'Artagan',): 1
-    }
-
-    candidates = find_unique_characters(candidates)
-    characters = {}  
-    get_sparknote_characters_from_file('huckfinn', characters)
+    candidates = [('Dr.', 'Van', 'Helsing'), ('Lord', 'Godalming'), ('Jonathan', 'Harker'), ('Dr.', 'Seward'), ('Count',), ('Lucy', 'Westenra'), ('Mr.', 'Hawkins'), ('Renfield',), ('Arthur',), ('Mr.', 'Quincey'), ('Mrs.', 'Harker'), ('Quincey', 'Morris'), ('friend', 'John'), ('Professor',), ('Mina', 'Murray'), ('Mr.', 'Morris')]
     
-    (unresolved_characters, duplicate_candidates, invalid_candidates) = evaludate_candidates(characters, candidates)
+    print candidates
+    candidates = find_unique_characters(candidates)
+    print candidates
+    characters = {}  
+    get_sparknote_characters_from_file('dracula', characters)
+    
+    (unresolved_characters, duplicate_candidates, invalid_candidates) = evaluate_candidates(characters, candidates)
     print unresolved_characters
     print duplicate_candidates
     print invalid_candidates
