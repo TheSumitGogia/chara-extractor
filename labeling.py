@@ -121,25 +121,11 @@ def match_candidates_and_characters(characters, candidates):
    
     max_matching = nx.max_weight_matching(G, maxcardinality=True)
     
-    unresolved = []
-
-    for character in characters:
-        if character in max_matching:
-            if verbose:
-                print "%s: %s among %s" % (character, max_matching[character], str(matches[character]))
-        else:
-            unresolved.append(character)
-            if len(matches[character]) > 0:
-                print "Unresolve %s with matched candidates %s" % (character, str(matches[character]))
-    print "Unresolved %s" % (unresolved)
-    
-    perc = len(unresolved)*1.0/len(characters)
-    print "Unresolved percentage %f" % perc
-    return (max_matching, perc)
+    return (max_matching, matches)
 
 def get_features_from_file(book, temp, feature_directory, features):
     # get features from file
-    file = 'features/%s_char_features.%s' % (book, 'temp' if temp else 'txt')
+    file = '%s/%s_char_features.%s' % (feature_directory, book, 'temp' if temp else 'txt')
     try:
         with open(file) as f:
             lines = f.readlines()
@@ -174,7 +160,7 @@ def label_book(book, temp, feature_directory):
     if not get_sparknote_characters_from_file(book, characters):
         return -1
 
-    (max_matching, perc) = match_candidates_and_characters(characters, candidates)
+    (max_matching, all_matches) = match_candidates_and_characters(characters, candidates)
     labels = dict([(cand, "") for cand in candidates])
     for cand in candidates:
         if cand in max_matching:
@@ -182,6 +168,20 @@ def label_book(book, temp, feature_directory):
     
     with open('labels/%s_characters.txt' % book, 'w') as f:
         f.write(str(labels))
+    
+    unresolved = []
+    for character in characters:
+        if character in max_matching:
+            if verbose:
+                print "%s: %s among %s" % (character, max_matching[character], str(all_matches[character]))
+        else:
+            unresolved.append(character)
+            if len(all_matches[character]) > 0:
+                print "Unresolve %s with matched candidates %s" % (character, str(all_matches[character]))
+    print "Unresolved %s" % (unresolved)
+    
+    perc = len(unresolved)*1.0/len(characters)
+    print "Unresolved percentage %f" % perc
     return perc
 
 
