@@ -98,10 +98,7 @@ def section(tree, token_filename):
         tl_idx += 1
     # final check!!
     if (sentence_idx == len(all_sentences) and token_idx == len(all_sentences[sentence_idx-1][0])):
-        if tl_idx == len(token_lines):
-            #print "SUCCESS"
-            hoho = 1
-        else:
+        if tl_idx != len(token_lines):
             print "FAIL"
             print len(token_lines), tl_idx
             print token_filename
@@ -259,26 +256,32 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
 
 
     # add counts across all chapters
-    norm_ngrams = {}
+    marg_ngrams = {}
     for i in range(len(ngrams)):
         cp_ngrams = ngrams[i]
         for key in cp_ngrams:
-            if key in norm_ngrams:
-                norm_ngrams[key] += cp_ngrams[key]
+            if key in marg_ngrams:
+                marg_ngrams[key] += cp_ngrams[key]
             else:
-                norm_ngrams[key] = cp_ngrams[key]
+                marg_ngrams[key] = cp_ngrams[key]
 
-    dedup_candidates(tree, norm_ngrams)
-    ngrams = get_general_count_feature(tree, norm_ngrams, markers)
+    dedup_candidates(tree, marg_ngrams)
+    ngrams = get_general_count_feature(tree, marg_ngrams, markers)
 
     # get frequent candidates across whole book
     filtered_grams = []
     if cutoffs == 'flex':
-        filtered_grams.extend(sorted(norm_ngrams.items(), key=operator.itemgetter(1)))
+        filtered_grams.extend(sorted(marg_ngrams.items(), key=operator.itemgetter(1)))
         filtered_grams = [gram for gram in filtered_grams if gram[1] > 2]
     else:
         for gram_size in range(1, 8):
-            grams = { gram: norm_ngrams[gram] for gram in norm_ngrams.keys() if len(gram) == gram_size }
+            grams = { gram: marg_ngrams[gram] for gram in marg_ngrams.keys() if len(gram) == gram_size }
+            norm_grams = {}
+            total = 0
+            for gram in grams:
+                total += grams[gram]
+            for gram in grams:
+                norm_grams[gram] = grams[gram] * 1.0 / total
             sorted_grams = sorted(grams.items(), key=operator.itemgetter(1))
             if gram_size <= len(cutoffs):
                 if len(sorted_grams) == 0: continue
@@ -287,30 +290,36 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                 # don't include them if they don't occur often
                 pass_grams = [gram for gram in pass_grams if gram[1] > 2]
                 filtered_grams.extend(pass_grams)
-                filtered_grams.extend([(gram, grams[gram]) for gram in grams if grams[gram] > 10])
+                filtered_grams.extend([(gram, grams[gram]) for gram in grams if norm_grams[gram] > 0.05])
             else:
                 # don't include them if they don't occur often
                 pass_grams = [sorted_grams[idx] for idx in range(len(sorted_grams)) if sorted_grams[idx][1] > 3]
                 filtered_grams.extend(pass_grams)
-                filtered_grams.extend([(gram, grams[gram]) for gram in grams if grams[gram] > 10])
+                filtered_grams.extend([(gram, grams[gram]) for gram in grams if norm_grams[gram] > 0.05])
 
     # get frequent candidates per chapter
     if cutoffs == 'flex':
         for cp_idx in range(len(ngrams)):
             cp_ngrams = ngrams[cp_idx]
-            filtered_grams.extend([(gram, norm_ngrams[gram]) for gram in cp_ngrams if cp_ngrams[gram] > 4])
+            filtered_grams.extend([(gram, marg_ngrams[gram]) for gram in cp_ngrams if cp_ngrams[gram] > 4])
     else:
         for cp_idx in range(len(ngrams)):
             cp_ngrams = ngrams[cp_idx]
+            norm_grams = {}
+            total = 0
+            for gram in cp_ngrams:
+                total += cp_ngrams[gram]
+            for gram in cp_ngrams:
+                norm_grams[gram] = cp_ngrams[gram] * 1.0 / total
             for cp_gram_size in range(1, 8):
                 cp_grams = { gram: cp_ngrams[gram] for gram in cp_ngrams.keys() if len(gram) == cp_gram_size }
                 sorted_cp_grams = sorted(cp_grams.items(), key=operator.itemgetter(1))
                 if len(sorted_cp_grams) == 0: continue
                 cutoff_idx = int(-1.0 * cp_cutoff / 100 * len(sorted_cp_grams))
                 top_cp_grams = sorted_cp_grams[cutoff_idx:]
-                pass_cp_grams = [(gram[0], norm_ngrams[gram[0]]) for gram in top_cp_grams if gram[1] > 3]
+                pass_cp_grams = [(gram[0], marg_ngrams[gram[0]]) for gram in top_cp_grams if gram[1] > 3]
                 filtered_grams.extend(pass_cp_grams)
-                filtered_grams.extend([(gram, cp_grams[gram]) for gram in cp_grams if cp_grams[gram] > 5])
+                filtered_grams.extend([(gram, cp_grams[gram]) for gram in cp_grams if norm_grams[gram] > 0.2])
 
     # changing list of candidate tuples with counts to feature map
     candidates = {}
