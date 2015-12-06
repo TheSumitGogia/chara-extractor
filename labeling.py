@@ -24,6 +24,10 @@ def process_features(book, temp):
 def strict_fuzzy_match(s1, s2):
     s1 = s1[0].lower() + s1[1:]
     s2 = s2[0].lower() + s2[1:]
+    if s1 == 'grey' and s2 == 'gray':
+        return True
+    if s1 == 'gray' and s2 == 'grey':
+        return True
     # ignore plural macthing
     if s2 == s1 + 's' or s1 == s2 + 's':
         return 0
