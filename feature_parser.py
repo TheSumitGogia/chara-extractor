@@ -4,7 +4,7 @@ import argparse
 import itertools as it
 import disambiguation as dbg
 import numpy as np
-import sys, os
+import sys, os, traceback
 from nltk.corpus import wordnet as wn
 import wordnet_hyponyms as wh
 from collections import deque
@@ -543,11 +543,6 @@ def get_tag_features(tree, ngrams, pairs):
                                 big_ner = ner_tuple
 
                         if biggest is not None:
-                            if biggest == ('Elexander',):
-                                counter += 1
-                                nercounter += ner
-                                print counter, nercounter
-                                print ngrams[('Elexander',)]['count']
                             features = ngrams[biggest]
                             features['avg_ner'] += ((sum(big_ner) * 1.0 / len(big_ner)) / features['count'])
                             features['avg_last_ner'] += (ner * 1.0 / features['count'])
@@ -930,6 +925,7 @@ def write_readable_feature_file(raw_fname, outdir, ngrams, pairs):
     wfile.write(''.join(filestr))
     wfile.close()
 
+    filestr = []
     for size in range(1, maxgram+1):
         for psize in range(1, maxgram+1):
             opairs = [pair for pair in pairs.keys() if len(pair[0]) == size and len(pair[1]) == psize]
@@ -1026,12 +1022,13 @@ if __name__ == '__main__':
                     candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands)
                 else:
                     candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands, cp_cutoff=num_cp_cands)
-                get_tag_features(tree, candidates, pairs)
                 get_count_features(tree, markers, candidates, pairs)
+                get_tag_features(tree, candidates, pairs)
                 get_coref_features(candidates, pairs)
                 write_feature_file(tokens, outdir, candidates, pairs)
                 write_readable_feature_file(tokens, outdir, candidates, pairs)
                 print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
-            except:
+            except Exception as e:
+                traceback.print_exc()
                 print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
                 continue
