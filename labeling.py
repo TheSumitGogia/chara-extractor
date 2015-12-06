@@ -85,6 +85,8 @@ def strict_fuzzy_match_reference(ocand, cand):
                     return score + 0.2
                 elif gender_dict[first_name] == 'FEMALE' and cand[0] in FEMALE_TITLES:
                     return score + 0.2
+            else:
+                return score
     return 0
 
 def match_to_any_names(character_names, cand):

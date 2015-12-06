@@ -18,8 +18,8 @@ def populate_gender_dict():
 
 gender_dict = populate_gender_dict()
 MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr.', 'Monsieur':'Mr.', 'M.':'M.'}
-FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame'}
-OTHER_TITLES = {'Dr.':'Dr.', 'Doctor':'Dr.', 'Jr.':'Jr.', 'Junior':'Jr.', 'Prof.':'Prof', 'Professor':'Prof.'}
+FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame', 'Madam': 'Madame'}
+OTHER_TITLES = {'Dr.':'Dr.', 'Doctor':'Dr.', 'Jr.':'Jr.', 'Junior':'Jr.', 'Prof.':'Prof', 'Professor':'Prof.', 'The': 'The'}
 ALL_TITLES = MALE_TITLES.copy() 
 ALL_TITLES.update(FEMALE_TITLES) 
 ALL_TITLES.update(OTHER_TITLES)
@@ -186,8 +186,9 @@ if __name__ == '__main__':
     ('Tweedledum',): 1,
     ('Monsieur',): 1,
     ('D\'Artagan',): 1,
-    ('d\'Artagan',): 1
+    ('d\'Artagan',): 1,
+    ('The', 'Sid'): 1
   }
 
-  #pprint.pprint(disambiguate(candidates))
-  print(find_unique_characters(candidates))
+  pprint.pprint(disambiguate(candidates))
+  #print(find_unique_characters(candidates))
