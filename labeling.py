@@ -142,7 +142,7 @@ def get_sparknote_characters_from_file(book, characters):
         print 'sparknotes/%s_characters.txt does not exist!' % book
         return False
 
-def label_book(book, temp, feature_directory):
+def label_book(book, temp, feature_directory, unique):
     print 'Labeling %s' % book
     
     features = {}
@@ -155,12 +155,19 @@ def label_book(book, temp, feature_directory):
         return -1
 
     (max_matching, G) = match_candidates_and_characters(characters, candidates)
-    labels = dict([(cand, "") for cand in candidates])
-    for cand in candidates:
-        if cand in max_matching:
-            labels[cand] = max_matching[cand]
+    if unique:
+        labels = dict([(cand, "") for cand in candidates])
+        for cand in candidates:
+            if cand in max_matching:
+                labels[cand] = max_matching[cand]
+    else:
+        labels = dict([(cand, 0) for cand in candidates])
+        for cand in candidates:
+            if G.degree(cand) > 0:
+                labels[cand] = 1
     
-    with open('labels/%s_characters.txt' % book, 'w') as f:
+    name = "%s_non_unique_characters.txt" % book if not unique else "%s_characters" % book 
+    with open('labels/%s' % (name), 'w') as f:
         f.write(str(labels))
     
     unresolved = []
@@ -170,7 +177,7 @@ def label_book(book, temp, feature_directory):
                 print "%s: %s among %s" % (character, max_matching[character], str(G.neighbors(character)))
         else:
             unresolved.append(character)
-            if len(all_matches[character]) > 0:
+            if G.degree(character) > 0:
                 print "Unresolve %s with matched candidates %s" % (character, G.neighbors(character))
     print "Unresolved %s" % (unresolved)
     
@@ -187,6 +194,7 @@ if __name__ == '__main__':
     parser.add_option("-v", "--verbose", dest="verbose", action="store_true", default=False)
     parser.add_option("-d", "--feature_directory", dest="feature_directory", default="features")
     parser.add_option("-s", "--sparknote_directory", dest="sparknote_directory", default="sparknotes")
+    parser.add_option("-u", "--unique", dest="unique", action="store_true", default=False)
     (options, args) = parser.parse_args()
     verbose = options.verbose
     if options.book == 'all':
@@ -201,7 +209,7 @@ if __name__ == '__main__':
         if options.features:
             to_label = process_features(book, options.temp)
         if to_label:
-            p = label_book(book, options.temp, options.feature_directory)
+            p = label_book(book, options.temp, options.feature_directory, options.unique)
             if p >= 0:
                 perc.append(p)
     if len(perc) != 0:
