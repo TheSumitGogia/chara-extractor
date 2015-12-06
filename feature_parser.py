@@ -346,6 +346,8 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
             for feature in cand1_feats:
                 pair_features["1_" + feature] = cand1_feats[feature]
                 pair_features["2_" + feature] = cand2_feats[feature]
+    for pair in pairs:
+        print pair
     return candidates, pairs
 
 def dedup_candidates(tree, ngrams):
@@ -543,11 +545,6 @@ def get_tag_features(tree, ngrams, pairs):
                                 big_ner = ner_tuple
 
                         if biggest is not None:
-                            if biggest == ('Elexander',):
-                                counter += 1
-                                nercounter += ner
-                                print counter, nercounter
-                                print ngrams[('Elexander',)]['count']
                             features = ngrams[biggest]
                             features['avg_ner'] += ((sum(big_ner) * 1.0 / len(big_ner)) / features['count'])
                             features['avg_last_ner'] += (ner * 1.0 / features['count'])
@@ -851,6 +848,8 @@ def get_count_features(tree, markers, ngrams, pairs):
                 if idx == idx2:
                     continue
                 pair = (ngram, index[idx2])
+                if len(pair) == 1:
+                    print 'what the'
                 pair_feats = pairs[pair]
                 pair_feats["cooc_" + abbrv(section_type)] = cooc_mat[idx, idx2]
                 pair_feats["cooc_norm_sec_" + abbrv(section_type)] = cooc_mat_count_norm[idx, idx2]
@@ -930,6 +929,7 @@ def write_readable_feature_file(raw_fname, outdir, ngrams, pairs):
     wfile.write(''.join(filestr))
     wfile.close()
 
+    filestr = []
     for size in range(1, maxgram+1):
         for psize in range(1, maxgram+1):
             opairs = [pair for pair in pairs.keys() if len(pair[0]) == size and len(pair[1]) == psize]
@@ -1026,8 +1026,8 @@ if __name__ == '__main__':
                     candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands)
                 else:
                     candidates, pairs = get_candidates(tree, markers, cutoffs=num_cands, cp_cutoff=num_cp_cands)
-                get_tag_features(tree, candidates, pairs)
                 get_count_features(tree, markers, candidates, pairs)
+                get_tag_features(tree, candidates, pairs)
                 get_coref_features(candidates, pairs)
                 write_feature_file(tokens, outdir, candidates, pairs)
                 write_readable_feature_file(tokens, outdir, candidates, pairs)
