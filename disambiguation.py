@@ -53,7 +53,9 @@ def strict_match(s1, s2):
             return True
     return s1 == s2
 
-def contains_tuple(t_outer, t_inner):
+def contains_tuple(t_outer, t_inner, match):
+  if len(t_outer) == 0 or len(t_inner) == 0:
+      return False
   if t_outer == t_inner:
       return False
   inner_idx=0
@@ -65,14 +67,17 @@ def contains_tuple(t_outer, t_inner):
             return True
   return False
 
+def strict_contains_tuple(t_outer, t_inner):
+    return contains_tuple(t_outer, t_inner, strict_match)
+
 def resolve_title(ocand, cand):
     if cand != ocand and cand[0] in ALL_TITLES and cand[-1] == ocand[-1]:
         if ocand[0] in ALL_TITLES:
             if ALL_TITLES[cand[0]] != ALL_TITLES[ocand[0]]:
                 return False
             else:
-                return contains_tuple(ocand[1:], cand[1:])
-        elif contains_tuple(ocand, cand[1:]):
+                return strict_contains_tuple(ocand[1:], cand[1:])
+        elif strict_contains_tuple(ocand, cand[1:]):
             first_name = ocand[0].lower()
             if cand[0] in OTHER_TITLES:
                 return True
@@ -91,10 +96,7 @@ def fuzzy_match(s1, s2):
          (s1 in s2 or max(fuzz.ratio(s1, s2[:i]) for i in range(len(s2))) >= 70)
 
 def fuzzy_contains_tuple(t_outer, t_inner):
-  for i in range(len(t_outer) - len(t_inner) + 1):
-    if all(fuzzy_match(a, b) for a, b in zip(t_inner, t_outer[i:i + len(t_inner)])):
-      return True
-  return False
+    return contains_tuple(t_outer, t_inner, fuzzy_match)
 
 def score(t):
   title_score = (t[0] in MALE_TITLES) - (t[0] in FEMALE_TITLES)
@@ -113,7 +115,7 @@ def str_gender_match(s1, s2):
 def partial_reference(candidates, cand):
   ret = []
   for ocand in candidates:
-    if cand != ocand and contains_tuple(ocand, cand):
+    if cand != ocand and strict_contains_tuple(ocand, cand):
       ret.append(ocand)
   return ret
 
@@ -163,6 +165,7 @@ if __name__ == '__main__':
     ('Mrs.', 'Sawyer'): 1,
     ('T.', 'Sawyer'): 1,
     ('Doctor', 'Sawyer'): 1,
+    ('Monsieur', 'Sawyer'): 1,
     ('Huck',): 1,
     ('Huckleberry',): 1,
     ('Huck', 'Finn'): 1,
@@ -174,7 +177,8 @@ if __name__ == '__main__':
     ('Freddy', 'Weasley'): 1,
     ('Frederick', 'Weasley'): 1,
     ('Tweedledee',): 1,
-    ('Tweedledum',): 1
+    ('Tweedledum',): 1,
+    ('Monsieur',): 1
   }
 
   import pprint
