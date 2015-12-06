@@ -166,7 +166,7 @@ def label_book(book, temp, feature_directory, unique):
             if G.degree(cand) > 0:
                 labels[cand] = 1
     
-    name = "%s_non_unique_characters.txt" % book if not unique else "%s_characters" % book 
+    name = "%s_non_unique_characters.txt" % book if not unique else "%s_characters.txt" % book 
     with open('labels/%s' % (name), 'w') as f:
         f.write(str(labels))
     

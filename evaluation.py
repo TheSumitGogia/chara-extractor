@@ -2,7 +2,7 @@ from labeling import *
 from disambiguation import *
 import networkx as nx
 
-def evaludate_candidates(characters, candidates):
+def evaluate_candidates(characters, candidates):
     (matching, G) = match_candidates_and_characters(characters, candidates)
     unresolved_characters = []
     duplicate_candidates = []
