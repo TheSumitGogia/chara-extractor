@@ -5,13 +5,18 @@ from optparse import OptionParser
 import networkx as nx
 from networkx.algorithms import bipartite
 
-def process_features(book):
+def process_features(book, temp):
     print book
     try:
-        with open('features/%s_char_features.temp' % book, 'w') as f:
-            command = ['python', 'feature_parser.py', '-f', 'raw_nlp/%s.txt.xml' % book, '-rf', 'tokens/%s.txt' % book, '-d', '-o', 'features']
-            check_call(command, stderr=subprocess.STDOUT, stdout=f)
-        return True
+        if temp:
+            with open('features/%s_char_features.temp' % book, 'w') as f:
+                command = ['python', 'feature_parser.py', '-f', 'raw_nlp/%s.txt.xml' % book, '-rf', 'tokens/%s.txt' % book, '-d', '-o', 'features']
+                check_call(command, stderr=subprocess.STDOUT, stdout=f)
+            return True
+        else:
+            command = ['python', 'feature_parser.py', '-f', 'raw_nlp/%s.txt.xml' % book, '-rf', 'tokens/%s.txt' % book, '-o', 'features']
+            check_call(command, stderr=subprocess.STDOUT)
+            return True
     except subprocess.CalledProcessError:
         print "ERROR command %s" % " ".join(command)
         return False
@@ -86,7 +91,6 @@ def match_to_any_names(character_names, cand):
     return max([strict_fuzzy_match_reference(character_name, cand) for character_name in character_names])
 
 def match_candidates_and_characters(characters, candidates):
-    labels = dict([(cand, "") for cand in candidates])
     matches = dict([(character, {}) for character in characters])
     
     # matches is a map that maps characters to a list of candidates that can 
@@ -106,9 +110,6 @@ def match_candidates_and_characters(characters, candidates):
             index, value = max(enumerate(scores), key=operator.itemgetter(1))
             if value > 0:
                 matches[character][candidates[index]] = value
-        
-        if verbose:
-            print "%s: %s" % (character, str(matches[character]))
     
     # generate a graph from matches and run max matching
     G = nx.Graph()
@@ -119,69 +120,70 @@ def match_candidates_and_characters(characters, candidates):
             G.add_edge(character, cand, weight=matches[character][cand])
    
     max_matching = nx.max_weight_matching(G, maxcardinality=True)
+    
     unresolved = []
+
     for character in characters:
         if character in max_matching:
-            labels[character] = max_matching[character]
             if verbose:
-                print "%s: %s among %s" % (character, labels[character], str(matches[character]))
+                print "%s: %s among %s" % (character, max_matching[character], str(matches[character]))
         else:
+            unresolved.append(character)
             if len(matches[character]) > 0:
                 print "Unresolve %s with matched candidates %s" % (character, str(matches[character]))
-            unresolved.append(character)
     print "Unresolved %s" % (unresolved)
     
-    with open('labels/%s_characters.txt' % book, 'w') as f:
-        f.write(str(labels))
-
     perc = len(unresolved)*1.0/len(characters)
     print "Unresolved percentage %f" % perc
-    return perc
-'''
-    for character in characters:
-        if len(matches[character]) == 0:
-            unresolved.append(character)
-        else:
-            max_score = 0
-            best_cand = ""
-            candidates_score = matches[character]
-            for cand in candidates_score:
-                score = candidates_score[cand]
-                if score > max_score:
-                    best_cand = cand
-                    max_score = score
-            labels[best_cand] = character
-            if verbose:
-                print "%s: %s among %s" % (character, best_cand, str(matches[character]))
-    if len(unresolved) > 0:
-        print "Unresolved %s" % unresolved 
-        '''
+    return (max_matching, perc)
 
-def label_book(book, temp):
-    print 'Labeling %s' % book
-    
+def get_features_from_file(book, temp, feature_directory, features):
     # get features from file
     file = 'features/%s_char_features.%s' % (book, 'temp' if temp else 'txt')
     try:
         with open(file) as f:
-            features = f.readlines()
+            lines = f.readlines()
     except:
         print '%s does not exist!' % file
-        return -1
-    features = [feature.strip() for feature in features if feature.strip() != ""]
+        return False
+    lines = [feature.strip() for feature in lines if feature.strip() != ""]
     if temp:
-        features = eval("{" + ", ".join(features[1:]) + "}")
+        features.update(eval("{" + ", ".join(lines[1:]) + "}"))
     else:
-        features = eval(features[0])
+        features.update(eval(lines[0]))
+    return True
 
-    candidates = features.keys()
+def get_sparknote_characters_from_file(book, characters):
     try:
         with open('sparknotes/%s_characters.txt' % book) as f:
-            characters = eval(f.readline())
+            characters.update(eval(f.readline()))
+            return True
     except:
         print 'sparknotes/%s_characters.txt does not exist!' % book
+        return False
+
+def label_book(book, temp, feature_directory):
+    print 'Labeling %s' % book
+    
+    features = {}
+    if not get_features_from_file(book, temp, feature_directory, features):
+       return -1 
+    candidates = features.keys()
+
+    characters = {}
+    if not get_sparknote_characters_from_file(book, characters):
         return -1
-    return match_candidates_and_characters(characters, candidates)
+
+    (max_matching, perc) = match_candidates_and_characters(characters, candidates)
+    labels = dict([(cand, "") for cand in candidates])
+    for cand in candidates:
+        if cand in max_matching:
+            labels[cand] = max_matching[cand]
+    
+    with open('labels/%s_characters.txt' % book, 'w') as f:
+        f.write(str(labels))
+    return perc
+
 
 if __name__ == '__main__':
     parser = OptionParser()
@@ -189,17 +191,13 @@ if __name__ == '__main__':
     parser.add_option("-f", "--process_features", dest="features", action="store_true", default=False)
     parser.add_option("-t", "--temp_features", dest="temp", action="store_true", default=False)
     parser.add_option("-v", "--verbose", dest="verbose", action="store_true", default=False)
+    parser.add_option("-d", "--feature_directory", dest="feature_directory", default="features")
+    parser.add_option("-s", "--sparknote_directory", dest="sparknote_directory", default="sparknotes")
     (options, args) = parser.parse_args()
     verbose = options.verbose
     if options.book == 'all':
         all_books = os.listdir('raw_texts')
-        with open("bad_books.txt", 'r') as f:
-            bad_books = f.readlines()
-        
-        bad_books = set([book[:-1] for book in bad_books if book.endswith('.txt\n')])
-        print bad_books
-
-        all_books = [book[:-4] for book in all_books if book not in bad_books]
+        all_books = [book[:-4] for book in all_books]
     else:
         all_books = [options.book]
 
@@ -207,9 +205,9 @@ if __name__ == '__main__':
     for book in all_books:
         to_label = True
         if options.features:
-            to_label = process_features(book)
+            to_label = process_features(book, options.temp)
         if to_label:
-            p = label_book(book, options.temp)
+            p = label_book(book, options.temp, options.feature_directory)
             if p >= 0:
                 perc.append(p)
     if len(perc) != 0:
