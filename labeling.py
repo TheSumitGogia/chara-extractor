@@ -93,8 +93,10 @@ def match_to_any_names(character_names, cand):
 def match_candidates_and_characters(characters, candidates):
     matches = dict([(character, {}) for character in characters])
     
-    # matches is a map that maps characters to a list of candidates that can 
-    # represent this character
+    # generate a graph that connects candidates and characters that match
+    G = nx.Graph()
+    G.add_nodes_from(characters, bipartite=0)
+    G.add_nodes_from(candidates, bipartite=1)
     for character in characters:
         names = []
         for name in [character] + characters[character]:
@@ -102,26 +104,18 @@ def match_candidates_and_characters(characters, candidates):
         for cand in candidates:
             score = match_to_any_names(names, cand)
             if score > 0:
-                matches[character][cand] = score
+                G.add_edge(character, cand, weight=score)
         # if don't find any match, try the other direction
         # sparknote character name might be contained by some candidate names
         if len(matches[character]) == 0:
             scores = [strict_fuzzy_match_reference(cand, names[0]) for cand in candidates]
-            index, value = max(enumerate(scores), key=operator.itemgetter(1))
-            if value > 0:
-                matches[character][candidates[index]] = value
-    
-    # generate a graph from matches and run max matching
-    G = nx.Graph()
-    G.add_nodes_from(characters, bipartite=0)
-    G.add_nodes_from(candidates, bipartite=1)
-    for character in matches:
-        for cand in matches[character]:
-            G.add_edge(character, cand, weight=matches[character][cand])
+            index, score = max(enumerate(scores), key=operator.itemgetter(1))
+            if score > 0:
+                G.add_edge(character, candidates[index], weight=score)
    
     max_matching = nx.max_weight_matching(G, maxcardinality=True)
     
-    return (max_matching, matches)
+    return (max_matching, G)
 
 def get_features_from_file(book, temp, feature_directory, features):
     # get features from file
@@ -160,7 +154,7 @@ def label_book(book, temp, feature_directory):
     if not get_sparknote_characters_from_file(book, characters):
         return -1
 
-    (max_matching, all_matches) = match_candidates_and_characters(characters, candidates)
+    (max_matching, G) = match_candidates_and_characters(characters, candidates)
     labels = dict([(cand, "") for cand in candidates])
     for cand in candidates:
         if cand in max_matching:
@@ -173,11 +167,11 @@ def label_book(book, temp, feature_directory):
     for character in characters:
         if character in max_matching:
             if verbose:
-                print "%s: %s among %s" % (character, max_matching[character], str(all_matches[character]))
+                print "%s: %s among %s" % (character, max_matching[character], str(G.neighbors(character)))
         else:
             unresolved.append(character)
             if len(all_matches[character]) > 0:
-                print "Unresolve %s with matched candidates %s" % (character, str(all_matches[character]))
+                print "Unresolve %s with matched candidates %s" % (character, G.neighbors(character))
     print "Unresolved %s" % (unresolved)
     
     perc = len(unresolved)*1.0/len(characters)
