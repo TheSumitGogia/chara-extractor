@@ -1033,7 +1033,7 @@ def get_coref_pair_features(ngrams, pairs):
                 for feat in section_cooc_feats:
                     for section_type in section_types:
                         coocfeat = feat + '_' + section_type
-                        pair_feats[coocfeat + '_ss'] += slpair_feats[coocfeat]
+                        pair_feats[coocfeat + '_ss'] += sspair_feats[coocfeat]
 
 def get_count_features(tree, markers, ngrams, pairs=None):
     """Extract candidate frequency and co-occurrence features.
@@ -1407,8 +1407,8 @@ if __name__ == '__main__':
         else:
             all_tokens = os.listdir(tokens_text)
             all_nlp = [nlp_file + '/' + f + '.xml' for f in all_tokens]
-            all_tokens = [tokens_text + '/' + f for f in all_tokens]
             all_cands = [candfile + '/' + f.split('.')[0] + '_non_unique_characters.txt' for f in all_tokens]
+            all_tokens = [tokens_text + '/' + f for f in all_tokens]
             for i in range(len(all_tokens)):
                 tokens, nlp, cands = all_tokens[i], all_nlp[i], all_cands[i]
                 print "Starting {0}".format(tokens.split('/')[-1])
@@ -1419,5 +1419,5 @@ if __name__ == '__main__':
                     print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
                 except Exception as e:
                     traceback.print_exc()
-                print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
+                    print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
                 continue
