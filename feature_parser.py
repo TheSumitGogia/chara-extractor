@@ -974,6 +974,8 @@ def get_coref_pair_features(ngrams, pairs):
         pair_feats = pairs[pair]
         cand1long, cand2long = coref_graph[cand1], coref_graph[cand2]
         cand1short, cand2short = coref_reverse[cand1], coref_reverse[cand2]
+        if cand1 in cand2long or cand2 in cand1long:
+            pair_feats['coref'] = 1
         for lcand in cand1long:
             if lcand == cand2: continue
             lpair_feats = pairs[lcand, cand2]
