@@ -113,7 +113,7 @@ def match_candidates_and_characters(characters, candidates):
                 G.add_edge(character, cand, weight=score)
         # if don't find any match, try the other direction
         # sparknote character name might be contained by some candidate names
-        if len(matches[character]) == 0:
+        if len(matches[character]) == 0 and len(candidates) > 0:
             scores = [strict_fuzzy_match_reference(cand, names[0]) for cand in candidates]
             index, score = max(enumerate(scores), key=operator.itemgetter(1))
             if score > 0:
@@ -123,7 +123,7 @@ def match_candidates_and_characters(characters, candidates):
     
     return (max_matching, G)
 
-def get_features_from_file(book, temp, feature_directory, features):
+def get_char_features_from_file(book, temp, feature_directory):
     # get features from file
     file = '%s/%s_char_features.%s' % (feature_directory, book, 'temp' if temp else 'txt')
     try:
@@ -131,50 +131,85 @@ def get_features_from_file(book, temp, feature_directory, features):
             lines = f.readlines()
     except:
         print '%s does not exist!' % file
-        return False
+        return None
     lines = [feature.strip() for feature in lines if feature.strip() != ""]
     if temp:
-        features.update(eval("{" + ", ".join(lines[1:]) + "}"))
+        features = eval("{" + ", ".join(lines[1:]) + "}")
     else:
-        features.update(eval(lines[0]))
-    return True
+        features = eval(lines[0])
+    return features.keys()
 
-def get_sparknote_characters_from_file(book, characters):
+def get_sparknote_characters_from_file(book):
     try:
         with open('sparknotes/%s_characters.txt' % book) as f:
-            characters.update(eval(f.readline()))
-            return True
+            line = f.readline()
     except:
         print 'sparknotes/%s_characters.txt does not exist!' % book
-        return False
+        return None
+    characters = eval(line)
+    return characters
 
-def label_book(book, temp, feature_directory, unique):
+def get_sparknote_relations_from_file(book):
+    try:
+        with open('sparknotes/%s_relations.txt' % book) as f:
+            relationships = eval(f.readline())
+            return relationships
+    except:
+        print 'sparknotes/%s_relations.txt does not exist!' % book
+        return None
+            
+def label_book(book, temp, feature_directory, unique, from_sparknote=True):
     print 'Labeling %s' % book
+   
+    # reading features and annotations
+    candidates = get_char_features_from_file(book, temp, feature_directory)
+    characters = get_sparknote_characters_from_file(book)
+    relations= get_sparknote_relations_from_file(book)
     
-    features = {}
-    if not get_features_from_file(book, temp, feature_directory, features):
-       return -1 
-    candidates = features.keys()
-
-    characters = {}
-    if not get_sparknote_characters_from_file(book, characters):
-        return -1
-
+    if candidates == None or characters == None or relations == None:
+        return 
+    
+    # matching candidates to sparknote characters
     (max_matching, G) = match_candidates_and_characters(characters, candidates)
+    
+    # labeling candidates
     if unique:
-        labels = dict([(cand, "") for cand in candidates])
+        cand_labels = dict([(cand, "") for cand in candidates])
         for cand in candidates:
             if cand in max_matching:
-                labels[cand] = max_matching[cand]
+                cand_labels[cand] = max_matching[cand]
     else:
-        labels = dict([(cand, 0) for cand in candidates])
+        cand_labels = dict([(cand, 0) for cand in candidates])
         for cand in candidates:
             if G.degree(cand) > 0:
-                labels[cand] = 1
+                cand_labels[cand] = 1
+    
+    if from_sparknote:
+        pair_candidates = [cand for cand in candidates if cand_labels[cand]==1]
+    else:
+        # TODO get candidates from output of character extractor
+        pass
+    
+    # labeling pair
+    # only between candidates that do not map to the same character
+    pair_labels = dict([((cand1, cand2), 0) \
+            for cand1 in pair_candidates for cand2 in pair_candidates \
+            if not (cand1 in max_matching and cand2 in max_matching and max_matching[cand1] == max_matching[cand2])])
+    for cand1 in candidates:
+        for cand2 in candidates:
+            if cand1 != cand2:
+                char_set1 = G.neighbors(cand1)
+                char_set2 = G.neighbors(cand2)
+                if any([True for char1 in char_set1 for char2 in char_set2 if \
+                        (char1, char2) in relations]):
+                    pair_labels[(cand1, cand2)] = 1
     
     name = "%s_non_unique_characters.txt" % book if not unique else "%s_characters.txt" % book 
     with open('labels/%s' % (name), 'w') as f:
-        f.write(str(labels))
+        f.write(str(cand_labels))
+    name = "%s_non_unique_relations.txt" % book if not unique else "%s_relations.txt" % book 
+    with open('labels/%s' % (name), 'w') as f:
+        f.write(str(pair_labels))
     
     unresolved = []
     for character in characters:
@@ -199,8 +234,8 @@ if __name__ == '__main__':
     parser.add_option("-t", "--temp_features", dest="temp", action="store_true", default=False)
     parser.add_option("-v", "--verbose", dest="verbose", action="store_true", default=False)
     parser.add_option("-d", "--feature_directory", dest="feature_directory", default="features")
-    parser.add_option("-s", "--sparknote_directory", dest="sparknote_directory", default="sparknotes")
     parser.add_option("-u", "--unique", dest="unique", action="store_true", default=False)
+    
     (options, args) = parser.parse_args()
     verbose = options.verbose
     if options.book == 'all':
@@ -216,7 +251,7 @@ if __name__ == '__main__':
             to_label = process_features(book, options.temp)
         if to_label:
             p = label_book(book, options.temp, options.feature_directory, options.unique)
-            if p >= 0:
+            if p is not None:
                 perc.append(p)
-    if len(perc) != 0:
+    if len(perc) > 0:
         print "Unresolved percentage range [%f, %f] mean %f" %(min(perc), max(perc), sum(perc)/len(perc))
