@@ -116,7 +116,7 @@ def is_the(word):
     return False
 
 # TODO: this method can be shortened easily, and should be
-def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
+def get_candidates(tree, markers, num_cutoffs='flex', num_cp_cutoff='flex', per_cutoffs='flex', per_cp_cutoff='flex'):
     """Extract candidate character names for a book.
 
     Character names are defined as simple noun phrases consisting of at most
@@ -270,9 +270,16 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
 
     # get frequent candidates across whole book
     filtered_grams = []
-    if cutoffs == 'flex':
-        filtered_grams.extend(sorted(marg_ngrams.items(), key=operator.itemgetter(1)))
-        filtered_grams = [gram for gram in filtered_grams if gram[1] > 2]
+    if per_cutoffs == 'flex':
+        try_grams = (sorted(marg_ngrams.items(), key=operator.itemgetter(1)))
+        try_grams = [gram for gram in try_grams if gram[1] > 2]
+        if num_cutoffs != 'flex':
+            for gram_size in range(1, 8):
+                if gram_size <= len(num_cutoffs):
+                    size_grams = [gram for gram in try_grams if len(gram[0])==i]
+                    size_grams = sorted(size_grams, key=operator.itemgetter(1))
+                    size_grams = size_grams[-num_cutoffs[gram_size-1]:]
+                    filtered_grams.extend(size_grams)
     else:
         for gram_size in range(1, 8):
             grams = { gram: marg_ngrams[gram] for gram in marg_ngrams.keys() if len(gram) == gram_size }
@@ -283,25 +290,39 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
             for gram in grams:
                 norm_grams[gram] = grams[gram] * 1.0 / total
             sorted_grams = sorted(grams.items(), key=operator.itemgetter(1))
-            if gram_size <= len(cutoffs):
-                if len(sorted_grams) == 0: continue
-                cutoff_idx = int(-1.0 * cutoffs[gram_size-1] / 100 * len(sorted_grams))
+            if gram_size <= len(per_cutoffs):
+                if len(sorted_grams) == 0:continue
+                cutoff_idx = int(-1.0 * per_cutoffs[gram_size-1] / 100 * len(sorted_grams))
                 pass_grams = sorted_grams[cutoff_idx:]
                 # don't include them if they don't occur often
                 pass_grams = [gram for gram in pass_grams if gram[1] > 2]
+                pass_grams.extend([(gram, grams[gram]) for gram in grams if norm_grams[gram] > 0.05])
+                pass_grams = list(set(pass_grams))
+                if num_cutoffs != 'flex':
+                    if len(pass_grams) >= num_cutoffs[gram_size-1]:
+                        pass_grams = sorted(pass_grams, key=operator.itemgetter(1))
+                        pass_grams = pass_grams[-num_cutoffs[gram_size-1]:]
                 filtered_grams.extend(pass_grams)
-                filtered_grams.extend([(gram, grams[gram]) for gram in grams if norm_grams[gram] > 0.05])
             else:
                 # don't include them if they don't occur often
                 pass_grams = [sorted_grams[idx] for idx in range(len(sorted_grams)) if sorted_grams[idx][1] > 3]
+                pass_grams.extend([(gram, grams[gram]) for gram in grams if norm_grams[gram] > 0.05])
+                pass_grams = list(set(pass_grams))
+                if not num_cutoffs == 'flex':
+                    if len(pass_grams) >= 3:
+                        pass_grams = pass_grams[-3:]
                 filtered_grams.extend(pass_grams)
-                filtered_grams.extend([(gram, grams[gram]) for gram in grams if norm_grams[gram] > 0.05])
 
     # get frequent candidates per chapter
-    if cutoffs == 'flex':
+    if per_cutoffs == 'flex':
         for cp_idx in range(len(ngrams)):
             cp_ngrams = ngrams[cp_idx]
-            filtered_grams.extend([(gram, marg_ngrams[gram]) for gram in cp_ngrams if cp_ngrams[gram] > 4])
+            pass_grams = [(gram, marg_ngrams[gram]) for gram in cp_ngrams if cp_ngrams[gram] > 4]
+            if num_cp_cutoff != 'flex':
+                if len(pass_grams) >= num_cp_cutoff:
+                    pass_grams = sorted(pass_grams, key=operator.itemgetter(1))
+                    pass_grams = pass_grams[-num_cp_cutoff:]
+            filtered_grams.extend(pass_grams)
     else:
         for cp_idx in range(len(ngrams)):
             cp_ngrams = ngrams[cp_idx]
@@ -315,10 +336,15 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
                 cp_grams = { gram: cp_ngrams[gram] for gram in cp_ngrams.keys() if len(gram) == cp_gram_size }
                 sorted_cp_grams = sorted(cp_grams.items(), key=operator.itemgetter(1))
                 if len(sorted_cp_grams) == 0: continue
-                cutoff_idx = int(-1.0 * cp_cutoff / 100 * len(sorted_cp_grams))
+                cutoff_idx = int(-1.0 * per_cp_cutoff / 100 * len(sorted_cp_grams))
                 top_cp_grams = sorted_cp_grams[cutoff_idx:]
                 pass_cp_grams = [(gram[0], marg_ngrams[gram[0]]) for gram in top_cp_grams if gram[1] > 3]
-                filtered_grams.extend(pass_cp_grams)
+                pass_cp_grams.extend([(gram, cp_grams[gram]) for gram in cp_grams if norm_grams[gram] > 0.2])
+                pass_cp_grams = list(set(pass_cp_grams))
+                if num_cp_cutoff != 'flex':
+                    if len(pass_cp_grams) >= num_cp_cutoff:
+                        pass_cp_grams = sorted(pass_cp_grams, key=operator.itemgetter(1))
+                        pass_cp_grams = pass_cp_grams[-num_cp_cutoff:]
                 filtered_grams.extend([(gram, cp_grams[gram]) for gram in cp_grams if norm_grams[gram] > 0.2])
 
     # changing list of candidate tuples with counts to feature map
@@ -344,7 +370,7 @@ def get_candidates(tree, markers, cutoffs=[20, 20, 5], cp_cutoff=10):
     print 'Got {0} candidates!'.format(len(candidates.keys()))
     return candidates
 
-def get_candidate_pairs(ngrams):
+def get_candidate_pairs(candidates):
     pairs = {}
     for cand in candidates:
         cand1_feats = candidates[cand]
@@ -358,6 +384,7 @@ def get_candidate_pairs(ngrams):
             for feature in cand1_feats:
                 pair_features["1_" + feature] = cand1_feats[feature]
                 pair_features["2_" + feature] = cand2_feats[feature]
+    return pairs
 
 def dedup_candidates(tree, ngrams):
     max_gram = max(map(lambda x: len(x), ngrams.keys()))
@@ -606,7 +633,7 @@ def get_tag_char_features(tree, ngrams):
                     features['avg_ner'] += ((sum(big_ner) * 1.0 / len(big_ner)) / features['count'])
     print 'Got character tag features...'
 
-def get_tag_pair_features(pairs):
+def get_tag_pair_features(ngrams, pairs):
     ner_feats = set(['avg_ner', 'avg_last_ner', 'avg_cap', 'avg_last_cap'])
 
     for pair in pairs:
@@ -754,9 +781,9 @@ def get_coref_char_features(ngrams):
                     match_feats["coref_shorter_" + featstring] += features[featstring]
     print 'Got character coref features!'
 
-def get_coref_pair_features(pairs):
+def get_coref_pair_features(ngrams, pairs):
     section_types = ["st", "pg", "cp"]
-    coref_feats = set("coref_shorter", "coref_longer")
+    coref_feats = set(["coref_shorter", "coref_longer"])
 
     full_count_feats = set([
         'count', 'count_norm_length', 'count_norm_char'
@@ -788,7 +815,7 @@ def get_coref_pair_features(pairs):
                     pair_feats["1_" + fullfeat] = cand1_feats[fullfeat]
                     pair_feats["2_" + fullfeat] = cand2_feats[fullfeat]
 
-def get_count_features(tree, markers, ngrams):
+def get_count_features(tree, markers, ngrams, pairs=None):
     """Extract candidate frequency and co-occurrence features.
 
     Using the parsed Stanford NLP tree, get sentence, paragraph, and chapter
@@ -964,40 +991,51 @@ def get_count_features(tree, markers, ngrams):
             features["cooc_sec_norm_length_" + abbrv(section_type)] = cooc_sec_norm_length
             features["cooc_cand_dd_norm_sec_" + abbrv(section_type)] = cooc_char_norm_sec
             features["cooc_cand_dd_norm_char_" + abbrv(section_type)] = cooc_char_norm_char
-            '''
-            for idx2 in index:
-                if idx == idx2:
-                    continue
-                pair = (ngram, index[idx2])
-                pair_feats = pairs[pair]
-                pair_feats["cooc_" + abbrv(section_type)] = cooc_mat[idx, idx2]
-                pair_feats["cooc_norm_sec_" + abbrv(section_type)] = cooc_mat_count_norm[idx, idx2]
-                pair_feats["cooc_norm_char_" + abbrv(section_type)] = cooc_mat_full_norm[idx, idx2]
-                pair_feats["cooc_bool_" + abbrv(section_type)] = cooc_uform[idx, idx2]
-                pair_feats["cooc_bool_norm_sec_" + abbrv(section_type)] = cooc_uform_count_norm[idx, idx2]
-                pair_feats["cooc_bool_norm_char_" + abbrv(section_type)] = cooc_uform_full_norm[idx, idx2]
-            '''
 
-        '''
-        for pair in pairs:
-            pair_feats = pairs[pair]
-            cand1_feats = ngrams[pair[0]]
-            cand2_feats = ngrams[pair[1]]
-            for feat in count_feats:
-                sec_feat = feat + "_" + abbrv(section_type)
-                pair_feats["1_" + sec_feat] = cand1_feats[sec_feat]
-                pair_feats["2_" + sec_feat] = cand2_feats[sec_feat]
-        '''
+            if pairs is not None:
+                for idx2 in index:
+                    if idx == idx2:
+                        continue
+                    pair = (ngram, index[idx2])
+                    pair_feats = pairs[pair]
+                    pair_feats["cooc_" + abbrv(section_type)] = cooc_mat[idx, idx2]
+                    pair_feats["cooc_norm_sec_" + abbrv(section_type)] = cooc_mat_count_norm[idx, idx2]
+                    pair_feats["cooc_norm_char_" + abbrv(section_type)] = cooc_mat_full_norm[idx, idx2]
+                    pair_feats["cooc_bool_" + abbrv(section_type)] = cooc_uform[idx, idx2]
+                    pair_feats["cooc_bool_norm_sec_" + abbrv(section_type)] = cooc_uform_count_norm[idx, idx2]
+                    pair_feats["cooc_bool_norm_char_" + abbrv(section_type)] = cooc_uform_full_norm[idx, idx2]
+
+        if pairs is not None:
+            for pair in pairs:
+                pair_feats = pairs[pair]
+                cand1_feats = ngrams[pair[0]]
+                cand2_feats = ngrams[pair[1]]
+                for feat in count_feats:
+                    sec_feat = feat + "_" + abbrv(section_type)
+                    pair_feats["1_" + sec_feat] = cand1_feats[sec_feat]
+                    pair_feats["2_" + sec_feat] = cand2_feats[sec_feat]
     print 'Got count features!'
 
-def get_char_features(tokenfile, nlpfile, cutoffs, cp_cutoff):
+def get_char_features(tokenfile, nlpfile, ncutoffs, cncutoff, pcutoffs, cpcutoff):
     tree = ET.parse(nlpfile)
     markers = section(tree, tokenfile)
-    candidates = get_candidates(tree, markers, cutoffs, cp_cutoff)
+    candidates = get_candidates(tree, markers, ncutoffs, cncutoff, pcutoffs, cpcutoff)
     get_count_features(tree, markers, candidates)
     get_tag_char_features(tree, candidates)
     get_coref_char_features(candidates)
     return candidates
+
+def get_all_features(tokenfile, nlpfile, ncutoffs, cncutoff, pcutoffs, cpcutoff):
+    tree = ET.parse(nlpfile)
+    markers = section(tree, tokenfile)
+    candidates = get_candidates(tree, markers, ncutoffs, cncutoff, pcutoffs, cpcutoff)
+    pairs = get_candidate_pairs(candidates)
+    get_count_features(tree, markers, candidates, pairs)
+    get_tag_char_features(tree, candidates)
+    get_tag_pair_features(candidates, pairs)
+    get_coref_char_features(candidates)
+    get_coref_pair_features(candidates, pairs)
+    return candidates, pairs
 
 def output(candidates):
     gram_size = 1
@@ -1021,7 +1059,8 @@ def write_char_feature_file(raw_fname, outdir, ngrams):
     wfile.write(str(ngrams))
     wfile.close()
 
-def write_pair_feature_file(raw_fname, outdir, pairs):
+def write_pair_feature_file(raw_fname, outdir, pairs, chunks=4):
+    raw_text_name = raw_fname.split('/')[-1]
     pair_name_split = raw_text_name.split('.')
     pair_name_split[0] += '_pair_features'
     pairfname = '.'.join(pair_name_split)
@@ -1052,9 +1091,12 @@ def write_readable_char_feature_file(raw_fname, outdir, ngrams):
     wfile.close()
 
 def write_readable_pair_feature_file(raw_fname, outdir, pairs):
+    raw_text_name = raw_fname.split('/')[-1]
     pair_name_split = raw_text_name.split('.')
     pair_name_split[0] += '_pair_features_readable'
     pairfname = '.'.join(pair_name_split)
+
+    maxgram = max([len(pair[0]) for pair in pairs])
     filestr = []
     for size in range(1, maxgram+1):
         for psize in range(1, maxgram+1):
@@ -1078,8 +1120,10 @@ if __name__ == '__main__':
     parser.add_argument('-o', '--outdir', nargs=1, required=True, help='Output directory for feature dict')
     parser.add_argument('-dr', '--fulldir', required=False, default=False, action='store_true', help='Run extraction for full directory')
     parser.add_argument('-d', '--debug', required=False, default=False, action='store_true', help='Whether to print output at all feature extraction steps')
-    parser.add_argument('-n', '--numcands', nargs=1, required=False, default='flex', help='number of 1gram, 2gram, 3gram candidates')
-    parser.add_argument('-cn', '--numcpcands', nargs=1, required=False, default='flex', help='number of tested chapter candidates')
+    parser.add_argument('-p', '--percands', nargs=1, required=False, default='flex', help='number of 1gram, 2gram, 3gram candidates')
+    parser.add_argument('-cp', '--percpcands', nargs=1, required=False, default='flex', help='number of tested chapter candidates')
+    parser.add_argument('-n', '--numcands', nargs=1, required=False, default='flex', help='number of n-grams to keep')
+    parser.add_argument('-cn', '--numcpcands', nargs=1, required=False, default='flex', help='number of chapter n-grams to keep')
 
     args = vars(parser.parse_args())
     debug = args['debug']
@@ -1087,17 +1131,24 @@ if __name__ == '__main__':
     outdir = args['outdir'][0]
     full = args['fulldir']
     nlp_file = args['file'][0]
-    cutoffs = args['numcands'][0]
-    cutoffs = 'flex' if cutoffs == 'f' else eval(cutoffs)
-    cp_cutoff = args['numcpcands'][0]
-    cp_cutoff = 'flex' if cp_cutoff == 'f' else eval(cp_cutoff)
+    n_cutoffs = args['numcands'][0]
+    n_cutoffs = n_cutoffs if n_cutoffs == 'f' else eval(n_cutoffs)
+    n_cp_cutoff = args['numcpcands'][0]
+    n_cp_cutoff = 'flex' if n_cp_cutoff == 'f' else eval(n_cp_cutoff)
+    p_cutoffs = args['percands'][0]
+    p_cutoffs = p_cutoffs if p_cutoffs == 'f' else eval(p_cutoffs)
+    p_cp_cutoff = args['percpcands'][0]
+    p_cp_cutoff = 'flex' if p_cp_cutoff == 'f' else eval(p_cp_cutoff)
 
     if not full:
         # test candidate selection
 
-        candidates = get_char_features(tokens_text, nlp_file, cutoffs, cp_cutoff)
+        #candidates = get_char_features(tokens_text, nlp_file, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
+        candidates, pairs = get_all_features(tokens_text, nlp_file, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
         write_char_feature_file(tokens_text, outdir, candidates)
         write_readable_char_feature_file(tokens_text, outdir, candidates)
+        write_pair_feature_file(tokens, outdir, pairs)
+        write_readable_pair_feature_file(tokens, outdir, pairs)
     else:
         all_tokens = os.listdir(tokens_text)
         all_nlp = [nlp_file + '/' + f + '.xml' for f in all_tokens]
@@ -1106,9 +1157,12 @@ if __name__ == '__main__':
             tokens, nlp = all_tokens[i], all_nlp[i]
             print "Starting {0}".format(tokens.split('/')[-1])
             try:
-                candidates = get_char_features(tokens, nlp, cutoffs, cp_cutoff)
+                #candidates = get_char_features(tokens, nlp, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
+                candidates, pairs = get_all_features(tokens, nlp, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
                 write_char_feature_file(tokens, outdir, candidates)
                 write_readable_char_feature_file(tokens, outdir, candidates)
+                write_pair_feature_file(tokens, outdir, pairs)
+                write_readable_pair_feature_file(tokens, outdir, pairs)
                 print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
             except Exception as e:
                 traceback.print_exc()
