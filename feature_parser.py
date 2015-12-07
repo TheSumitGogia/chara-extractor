@@ -1397,7 +1397,7 @@ if __name__ == '__main__':
                     print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
                 except Exception as e:
                     traceback.print_exc()
-                print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
+                    print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
                 continue
     else:
         if not full:
