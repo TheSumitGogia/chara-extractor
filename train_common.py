@@ -21,51 +21,75 @@ def generate_train_test(pct_train, seed, dir):
     test_set = books.difference(train_set)
     return train_set, test_set
 
-# Read single character features from file
 def read_features(book, dir, extension, feature_filter):
+    print book
     file = dir + '/' + book + extension
-    try:
-        with open(file) as f:
-            features_dict = eval(f.readline())
-    except:
-        print "%s does not exist" % file
-        return 
-    if len(feature_filter) == 0:
-        return features_dict
-    filtered_features = filter(lambda s: re.match(feature_filter, s), \
-                            features_dict.itervalues().next())
-    return {cand: {feature: features_dict[cand][feature] \
-                    for feature in filtered_features}
-            for cand in features_dict}
     
+    with open(file) as f:
+        lines = [line.strip() for line in f.readlines() if line.strip() != '']
+    data_split = [1 if line[0] == '(' else 0 for line in lines]
+    num_data = sum(data_split)
+    num_features = data_split[1:].index(1)
+    # some pair features does not contain coref
+    if not any([True if line.startswith('coref:') else False for line in lines[1:num_features+1]]):
+        num_features += 1
+    feature_values = np.zeros([num_data, num_features], dtype=np.float64)
+    features = []
+    names = []
+    line_num = 0
+    for line in lines:
+        line_num += 1
+        if line[0] == '(':
+            idx = len(names)
+            feature_idx = 0
+            name = eval(line)
+            names.append(name)
+        else:
+            tokens = line.split(':')
+            if tokens[0] != 'coref':
+                if idx == 0:
+                    features.append(tokens[0])
+                else:
+                    assert features[feature_idx] == tokens[0], "%s vs %s feature %d line %d" % (features[feature_idx], tokens[0], feature_idx, line_num)
+                feature_values[idx][feature_idx] = float(tokens[1])
+                feature_idx+=1
+            else:
+                feature_values[idx][num_features-1] = float(tokens[1])
 
-# DictVectorizer for a single book
-def vectorize(features_dict):
-    v = DictVectorizer(sparse=False)
-    return v.fit_transform(features_dict.values())   
-
+    if len(feature_filter) == 0:
+        return (feature_values, features, names)
+    filtered_features = filter(lambda s: re.match(feature_filter, s), features)
+    valid_features = [i for i in range(len(features)) if features[i] in filtered_features]
+    feature_values = feature_values[:,valid_features]
+    assert feature_values.shape == (len(names), len(filtered_features))
+    return (feature_values, filtered_features, names)
+    
 # Sparknotes labels
-def get_labels(book, features_dict, dir, extension):
+def get_labels(book, dir, extension):
     with open(dir + '/' + book + extension) as f:
         d = eval(f.readline())
         labels_dict = {k: int(d[k] != '' and d[k] != 0) for k in d}
-    return np.array(map(labels_dict.__getitem__, features_dict.keys()))
+    return labels_dict
 
 def get_data(books, features_dir, features_ext, labels_dir, labels_ext, feature_filter, print_features=False):
     Xs = []
     ys = []
     cands = []
     for book in books:
-        features_dict = read_features(book, features_dir, features_ext, feature_filter)
+        (feature_values, features, cands) = read_features(book, features_dir, features_ext, feature_filter)
         if print_features:
-            print features_dict.itervalues().next().keys()
+            print features
             print_features=False
-        if features_dict is not None:
-            X = vectorize(features_dict)
-            y = get_labels(book, features_dict, labels_dir, labels_ext)
-            Xs.append(X)
-            ys.append(y)
-            cands.extend(features_dict.keys())
+        labels_dict = get_labels(book, labels_dir, labels_ext)
+        # filter the unlabeled data
+        labeled_cands = [cand for cand in cands if cand in labels_dict]
+        rows = [i for i in range(len(cands)) if cands[i] in labeled_cands]
+        X = feature_values[rows,:]
+        y = np.array(map(labels_dict.__getitem__, labeled_cands))
+        assert X.shape[0] == y.shape[0]
+        Xs.append(X)
+        ys.append(y)
+        cands.extend(labeled_cands)
     return np.vstack(Xs), np.hstack(ys), np.array(cands)
 
 def precision(y_pred, y_true):
