@@ -10,6 +10,8 @@ import numpy as np
 import os, random, re
 from train_common import *
 
+FEATURES_DIR = 'features'
+LABELS_DIR = 'labels'
 CHAR_FEATURES_EXTENSION = '_char_features.txt'
 CHAR_LABELS_EXTENSION = '_non_unique_characters.txt'
 
@@ -152,7 +154,7 @@ if __name__ == '__main__':
     # set traning options
     kernel = options.kernel
     degree = int(options.degree)
-    train_books, test_books = generate_train_test(float(options.train_ratio), options.seed)
+    train_books, test_books = generate_train_test(float(options.train_ratio), options.seed, FEATURES_DIR)
     train_method = locals()['train_%s' % options.model]
     class_weight = {1:float(options.bias), 0:1}
     n_estimators = int(options.n_estimators)
