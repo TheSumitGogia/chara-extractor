@@ -370,6 +370,137 @@ def get_candidates(tree, markers, num_cutoffs='flex', num_cp_cutoff='flex', per_
     print 'Got {0} candidates!'.format(len(candidates.keys()))
     return candidates
 
+def filter_candidates(ngrams, marg_ngrams, num_cutoffs='flex', num_cp_cutoff='flex', per_cutoffs='flex', per_cp_cutoff='flex'):
+    # get frequent candidates across whole book
+    filtered_grams = []
+    if per_cutoffs == 'flex':
+        try_grams = (sorted(marg_ngrams.items(), key=operator.itemgetter(1)))
+        try_grams = [gram for gram in try_grams if gram[1] > 2]
+        if num_cutoffs != 'flex':
+            for gram_size in range(1, 8):
+                if gram_size <= len(num_cutoffs):
+                    size_grams = [gram for gram in try_grams if len(gram[0])==i]
+                    size_grams = sorted(size_grams, key=operator.itemgetter(1))
+                    size_grams = size_grams[-num_cutoffs[gram_size-1]:]
+                    filtered_grams.extend(size_grams)
+    else:
+        for gram_size in range(1, 8):
+            grams = { gram: marg_ngrams[gram] for gram in marg_ngrams.keys() if len(gram) == gram_size }
+            norm_grams = {}
+            total = 0
+            for gram in grams:
+                total += grams[gram]
+            for gram in grams:
+                norm_grams[gram] = grams[gram] * 1.0 / total
+            sorted_grams = sorted(grams.items(), key=operator.itemgetter(1))
+            if gram_size <= len(per_cutoffs):
+                if len(sorted_grams) == 0:continue
+                cutoff_idx = int(-1.0 * per_cutoffs[gram_size-1] / 100 * len(sorted_grams))
+                pass_grams = sorted_grams[cutoff_idx:]
+                # don't include them if they don't occur often
+                pass_grams = [gram for gram in pass_grams if gram[1] > 2]
+                pass_grams.extend([(gram, grams[gram]) for gram in grams if norm_grams[gram] > 0.05])
+                pass_grams = list(set(pass_grams))
+                if num_cutoffs != 'flex':
+                    if len(pass_grams) >= num_cutoffs[gram_size-1]:
+                        pass_grams = sorted(pass_grams, key=operator.itemgetter(1))
+                        pass_grams = pass_grams[-num_cutoffs[gram_size-1]:]
+                filtered_grams.extend(pass_grams)
+            else:
+                # don't include them if they don't occur often
+                pass_grams = [sorted_grams[idx] for idx in range(len(sorted_grams)) if sorted_grams[idx][1] > 3]
+                pass_grams.extend([(gram, grams[gram]) for gram in grams if norm_grams[gram] > 0.05])
+                pass_grams = list(set(pass_grams))
+                if not num_cutoffs == 'flex':
+                    if len(pass_grams) >= 3:
+                        pass_grams = pass_grams[-3:]
+                filtered_grams.extend(pass_grams)
+
+    # get frequent candidates per chapter
+    if per_cutoffs == 'flex':
+        for cp_idx in range(len(ngrams)):
+            cp_ngrams = ngrams[cp_idx]
+            pass_grams = [(gram, marg_ngrams[gram]) for gram in cp_ngrams if cp_ngrams[gram] > 4]
+            if num_cp_cutoff != 'flex':
+                if len(pass_grams) >= num_cp_cutoff:
+                    pass_grams = sorted(pass_grams, key=operator.itemgetter(1))
+                    pass_grams = pass_grams[-num_cp_cutoff:]
+            filtered_grams.extend(pass_grams)
+    else:
+        for cp_idx in range(len(ngrams)):
+            cp_ngrams = ngrams[cp_idx]
+            norm_grams = {}
+            total = 0
+            for gram in cp_ngrams:
+                total += cp_ngrams[gram]
+            for gram in cp_ngrams:
+                norm_grams[gram] = cp_ngrams[gram] * 1.0 / total
+            for cp_gram_size in range(1, 8):
+                cp_grams = { gram: cp_ngrams[gram] for gram in cp_ngrams.keys() if len(gram) == cp_gram_size }
+                sorted_cp_grams = sorted(cp_grams.items(), key=operator.itemgetter(1))
+                if len(sorted_cp_grams) == 0: continue
+                cutoff_idx = int(-1.0 * per_cp_cutoff / 100 * len(sorted_cp_grams))
+                top_cp_grams = sorted_cp_grams[cutoff_idx:]
+                pass_cp_grams = [(gram[0], marg_ngrams[gram[0]]) for gram in top_cp_grams if gram[1] > 3]
+                pass_cp_grams.extend([(gram, cp_grams[gram]) for gram in cp_grams if norm_grams[gram] > 0.2])
+                pass_cp_grams = list(set(pass_cp_grams))
+                if num_cp_cutoff != 'flex':
+                    if len(pass_cp_grams) >= num_cp_cutoff:
+                        pass_cp_grams = sorted(pass_cp_grams, key=operator.itemgetter(1))
+                        pass_cp_grams = pass_cp_grams[-num_cp_cutoff:]
+                filtered_grams.extend([(gram, cp_grams[gram]) for gram in cp_grams if norm_grams[gram] > 0.2])
+
+    # changing list of candidate tuples with counts to feature map
+    candidates = {}
+    total = 0
+    for i in range(len(filtered_grams)):
+        key = filtered_grams[i][0]
+        count = filtered_grams[i][1]
+        total += count
+        candidates[key] = {
+            'count': count,
+            'length': len(key),
+            'book_num_chars': total_length,
+            'book_num_st': len(markers['sentence']),
+            'book_num_pg': len(markers['paragraph']),
+            'book_num_cp': len(markers['chapter'])
+        }
+    for key in candidates:
+        candidates[key]['count_norm_length'] = candidates[key]['count'] * 1.0 / total_length
+        candidates[key]['count_norm_char'] = candidates[key]['count'] * 1.0 / total
+
+    print 'Got {0} candidates!'.format(len(candidates.keys()))
+    return candidates
+
+def get_candidates_from_file(cand_file, tree, markers):
+    # for relationship training
+    # training data should only consist of candidates with matched sparknotes labels
+
+    cands = open(cand_file, 'r')
+    cands = cands.read()
+    cands = eval(cands)
+    true_cands = {cand: 0 for cand in cands if cands[cand] == 1}
+    cp_true_cands = get_general_count_feature(tree, true_cands, markers)
+    total_length = markers['sentence'][-1]
+    total = 0
+    for cand in true_cands:
+        count = true_cands[cand]
+        total += count
+        true_cands[cand] = {
+            'count': count,
+            'length': len(cand),
+            'book_num_chars': total_length,
+            'book_num_st': len(markers['sentence']),
+            'book_num_pg': len(markers['paragraph']),
+            'book_num_cp': len(markers['chapter'])
+        }
+    for cand in true_cands:
+        true_cands[cand]['count_norm_length'] = true_cands[cand]['count'] * 1.0 / total_length
+        true_cands[cand]['count_norm_char'] = true_cands[cand]['count'] * 1.0 / total
+    print 'Got {0} candidates'.format(len(true_cands.keys()))
+
+    return true_cands
+
 def get_candidate_pairs(candidates):
     pairs = {}
     for cand in candidates:
@@ -796,6 +927,20 @@ def get_coref_pair_features(ngrams, pairs):
         'cooc_cand_dd_norm_char'
     ])
 
+    section_cooc_feats = set([
+        'cooc', 'cooc_norm_sec', 'cooc_norm_char',
+        'cooc_bool', 'cooc_bool_norm_sec', 'cooc_bool_norm_char'
+    ])
+
+    coref_pair_types = ['ll', 'le', 'ls', 'se', 'sl', 'ss', 'el', 'es']
+
+    for pair in pairs:
+        pairfeats = pairs[pair]
+        for feat in section_cooc_feats:
+            for section_type in section_types:
+                for tp in coref_pair_types:
+                    pairfeats[feat + '_' + section_type + '_' + tp] = 0
+
     for pair in pairs:
         pair_feats = pairs[pair]
         cand1_feats = ngrams[pair[0]]
@@ -814,6 +959,83 @@ def get_coref_pair_features(ngrams, pairs):
                     fullfeat = (prefeat + "_" + feat + "_" + section_type)
                     pair_feats["1_" + fullfeat] = cand1_feats[fullfeat]
                     pair_feats["2_" + fullfeat] = cand2_feats[fullfeat]
+
+    coref_graph = dbg.disambiguate(ngrams)
+    coref_reverse = {}
+    for cand in coref_graph:
+        coref_reverse[cand] = []
+    for cand in coref_graph:
+        candlong = coref_graph[cand]
+        for lcand in candlong:
+            coref_reverse[lcand].append(cand)
+
+    for pair in pairs:
+        cand1, cand2 = pair[0], pair[1]
+        pair_feats = pairs[pair]
+        cand1long, cand2long = coref_graph[cand1], coref_graph[cand2]
+        cand1short, cand2short = coref_reverse[cand1], coref_reverse[cand2]
+        if cand1 in cand2long or cand2 in cand1long:
+            pair_feats['coref'] = 1
+        for lcand in cand1long:
+            if lcand == cand2: continue
+            lpair_feats = pairs[lcand, cand2]
+            for feat in section_cooc_feats:
+                for section_type in section_types:
+                    coocfeat = feat + '_' + section_type
+                    pair_feats[coocfeat + '_le'] += lpair_feats[coocfeat]
+        for lcand in cand2long:
+            if lcand == cand1: continue
+            lpair_feats = pairs[cand1, lcand]
+            for feat in section_cooc_feats:
+                for section_type in section_types:
+                    coocfeat = feat + '_' + section_type
+                    pair_feats[coocfeat + '_el'] += lpair_feats[coocfeat]
+        for scand in cand1short:
+            if scand == cand2: continue
+            spair_feats = pairs[scand, cand2]
+            for feat in section_cooc_feats:
+                for section_type in section_types:
+                    coocfeat = feat + '_' + section_type
+                    pair_feats[coocfeat + '_se'] += spair_feats[coocfeat]
+        for scand in cand2short:
+            if scand == cand1: continue
+            spair_feats = pairs[cand1, scand]
+            for feat in section_cooc_feats:
+                for section_type in section_types:
+                    coocfeat = feat + '_' + section_type
+                    pair_feats[coocfeat + '_es'] += spair_feats[coocfeat]
+        for lcand1 in cand1long:
+            for lcand2 in cand2long:
+                if lcand1 == lcand2: continue
+                llpair_feats = pairs[lcand1, lcand2]
+                for feat in section_cooc_feats:
+                    for section_type in section_types:
+                        coocfeat = feat + '_' + section_type
+                        pair_feats[coocfeat + '_ll'] += llpair_feats[coocfeat]
+        for lcand1 in cand1long:
+            for scand2 in cand2short:
+                if lcand1 == scand2: continue
+                lspair_feats = pairs[lcand1, scand2]
+                for feat in section_cooc_feats:
+                    for section_type in section_types:
+                        coocfeat = feat + '_' + section_type
+                        pair_feats[coocfeat + '_ls'] += lspair_feats[coocfeat]
+        for scand1 in cand1short:
+            for lcand2 in cand2long:
+                if scand1 == lcand2: continue
+                slpair_feats = pairs[scand1, lcand2]
+                for feat in section_cooc_feats:
+                    for section_type in section_types:
+                        coocfeat = feat + '_' + section_type
+                        pair_feats[coocfeat + '_sl'] += slpair_feats[coocfeat]
+        for scand1 in cand1short:
+            for scand2 in cand2short:
+                if scand1 == scand2: continue
+                sspair_feats = pairs[scand1, scand2]
+                for feat in section_cooc_feats:
+                    for section_type in section_types:
+                        coocfeat = feat + '_' + section_type
+                        pair_feats[coocfeat + '_ss'] += sspair_feats[coocfeat]
 
 def get_count_features(tree, markers, ngrams, pairs=None):
     """Extract candidate frequency and co-occurrence features.
@@ -1026,9 +1248,22 @@ def get_char_features(tokenfile, nlpfile, ncutoffs, cncutoff, pcutoffs, cpcutoff
     return candidates
 
 def get_all_features(tokenfile, nlpfile, ncutoffs, cncutoff, pcutoffs, cpcutoff):
+    # NOTE: bad method
     tree = ET.parse(nlpfile)
     markers = section(tree, tokenfile)
     candidates = get_candidates(tree, markers, ncutoffs, cncutoff, pcutoffs, cpcutoff)
+    pairs = get_candidate_pairs(candidates)
+    get_count_features(tree, markers, candidates, pairs)
+    get_tag_char_features(tree, candidates)
+    get_tag_pair_features(candidates, pairs)
+    get_coref_char_features(candidates)
+    get_coref_pair_features(candidates, pairs)
+    return candidates, pairs
+
+def get_pair_features(tokenfile, nlpfile, candfile):
+    tree = ET.parse(nlpfile)
+    markers = section(tree, tokenfile)
+    candidates = get_candidates_from_file(candfile, tree, markers)
     pairs = get_candidate_pairs(candidates)
     get_count_features(tree, markers, candidates, pairs)
     get_tag_char_features(tree, candidates)
@@ -1117,6 +1352,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Extract candidate characters and feature values")
     parser.add_argument('-f', '--file', nargs=1, required=True, help='Book coreNLP file to extract candidates from')
     parser.add_argument('-rf', '--tokenfile', nargs=1, required=True, help='Book tokens file to extract candidates from')
+    parser.add_argument('-cf', '--candfile', nargs=1, required=False, default=False, help='True candidae file to extract pairs from')
     parser.add_argument('-o', '--outdir', nargs=1, required=True, help='Output directory for feature dict')
     parser.add_argument('-dr', '--fulldir', required=False, default=False, action='store_true', help='Run extraction for full directory')
     parser.add_argument('-d', '--debug', required=False, default=False, action='store_true', help='Whether to print output at all feature extraction steps')
@@ -1128,6 +1364,7 @@ if __name__ == '__main__':
     args = vars(parser.parse_args())
     debug = args['debug']
     tokens_text = args['tokenfile'][0]
+    candfile = args['candfile'][0]
     outdir = args['outdir'][0]
     full = args['fulldir']
     nlp_file = args['file'][0]
@@ -1140,31 +1377,49 @@ if __name__ == '__main__':
     p_cp_cutoff = args['percpcands'][0]
     p_cp_cutoff = 'flex' if p_cp_cutoff == 'f' else eval(p_cp_cutoff)
 
-    if not full:
-        # test candidate selection
 
-        #candidates = get_char_features(tokens_text, nlp_file, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
-        candidates, pairs = get_all_features(tokens_text, nlp_file, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
-        write_char_feature_file(tokens_text, outdir, candidates)
-        write_readable_char_feature_file(tokens_text, outdir, candidates)
-        write_pair_feature_file(tokens, outdir, pairs)
-        write_readable_pair_feature_file(tokens, outdir, pairs)
+    if not candfile:
+        if not full:
+            # test candidate selection
+
+            candidates = get_char_features(tokens_text, nlp_file, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
+            write_char_feature_file(tokens_text, outdir, candidates)
+            write_readable_char_feature_file(tokens_text, outdir, candidates)
+        else:
+            all_tokens = os.listdir(tokens_text)
+            all_nlp = [nlp_file + '/' + f + '.xml' for f in all_tokens]
+            all_tokens = [tokens_text + '/' + f for f in all_tokens]
+            for i in range(len(all_tokens)):
+                tokens, nlp = all_tokens[i], all_nlp[i]
+                print "Starting {0}".format(tokens.split('/')[-1])
+                try:
+                    candidates = get_char_features(tokens, nlp, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
+                    write_char_feature_file(tokens, outdir, candidates)
+                    write_readable_char_feature_file(tokens, outdir, candidates)
+                    print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
+                except Exception as e:
+                    traceback.print_exc()
+                    print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
+                continue
     else:
-        all_tokens = os.listdir(tokens_text)
-        all_nlp = [nlp_file + '/' + f + '.xml' for f in all_tokens]
-        all_tokens = [tokens_text + '/' + f for f in all_tokens]
-        for i in range(len(all_tokens)):
-            tokens, nlp = all_tokens[i], all_nlp[i]
-            print "Starting {0}".format(tokens.split('/')[-1])
-            try:
-                #candidates = get_char_features(tokens, nlp, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
-                candidates, pairs = get_all_features(tokens, nlp, n_cutoffs, n_cp_cutoff, p_cutoffs, p_cp_cutoff)
-                write_char_feature_file(tokens, outdir, candidates)
-                write_readable_char_feature_file(tokens, outdir, candidates)
-                write_pair_feature_file(tokens, outdir, pairs)
-                write_readable_pair_feature_file(tokens, outdir, pairs)
-                print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
-            except Exception as e:
-                traceback.print_exc()
-                print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
+        if not full:
+            candidates, pairs = get_pair_features(tokens_text, nlp_file, candfile)
+            write_pair_feature_file(tokens_text, outdir, pairs)
+            write_readable_pair_feature_file(tokens_text, outdir, pairs)
+        else:
+            all_tokens = os.listdir(tokens_text)
+            all_nlp = [nlp_file + '/' + f + '.xml' for f in all_tokens]
+            all_cands = [candfile + '/' + f.split('.')[0] + '_non_unique_characters.txt' for f in all_tokens]
+            all_tokens = [tokens_text + '/' + f for f in all_tokens]
+            for i in range(len(all_tokens)):
+                tokens, nlp, cands = all_tokens[i], all_nlp[i], all_cands[i]
+                print "Starting {0}".format(tokens.split('/')[-1])
+                try:
+                    candidates, pairs = get_pair_features(tokens, nlp, cands)
+                    write_pair_feature_file(tokens, outdir, pairs)
+                    write_readable_pair_feature_file(tokens, outdir, pairs)
+                    print "Feature Parsing for {0}: SUCCESS".format(tokens.split('/')[-1])
+                except Exception as e:
+                    traceback.print_exc()
+                    print "Feature Parsing for {0}: FAILURE".format(tokens.split('/')[-1])
                 continue
