@@ -17,8 +17,8 @@ def populate_gender_dict():
   return d
 
 gender_dict = populate_gender_dict()
-MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr.', 'Monsieur':'Mr.', 'M.':'M.', 'Brother':'Brother', 'Uncle':'Uncle', 'Father':'Father'}
-FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame', 'Madam': 'Madame', 'Sister':'Sister', 'Aunt':'Aunt', 'Mother': 'Mother'}
+MALE_TITLES = {'Mr.':'Mr.', 'Mister':'Mr.', 'Monsieur':'Mr.', 'M.':'M.', 'Brother':'Brother', 'Uncle':'Uncle', 'Father':'Father', 'King':'king', 'king':'king', 'Prince':'prince', 'Captain':'captain', 'captain':'captain', 'Mester':'Mester', 'Master':'Master'}
+FEMALE_TITLES = {'Mrs.':'Mrs.', 'Ms.':'Ms.', 'Miss':'Miss', 'Madame':'Madame', 'Madam': 'Madame', 'Sister':'Sister', 'Aunt':'Aunt', 'Mother': 'Mother', 'Lady':'lady', 'lady':'lady', 'Princess':'princess', 'princess':'princess', 'Mistress':'Miss'}
 OTHER_TITLES = {'Dr.':'Dr.', 'Doctor':'Dr.', 'Jr.':'Jr.', 'Junior':'Jr.', 'Prof.':'Prof', 'Professor':'Prof.', 'The': 'The', 'the': 'The'}
 ALL_TITLES = MALE_TITLES.copy() 
 ALL_TITLES.update(FEMALE_TITLES) 
@@ -40,7 +40,7 @@ def disambiguate(candidates):
 
 def find_unique_characters(candidates):
     all_maps = disambiguate(candidates)
-    pprint.pprint(all_maps)
+    #pprint.pprint(all_maps)
     # make the map to a tree
     for cand1 in candidates:
         for cand2 in candidates:
@@ -63,10 +63,10 @@ def find_potential_references(candidates, cand):
 def strict_match(s1, s2):
     s1 = s1[0].lower() + s1[1:]
     s2 = s2[0].lower() + s2[1:]
-    if s2.endswith('.'): #abbreviation
+    if s2.endswith('.') and not s1.endswith('.'): #abbreviation
         if s1.startswith(s2[:-1]):
             return True
-        if len(s2) == 3 and s1.startswith(s1[0]) and s1.endswith(s2[1]):
+        if len(s2) == 3 and s1.startswith(s2[0]) and s1.endswith(s2[1]):
             return True
     return s1 == s2
 
@@ -111,11 +111,12 @@ def resolve_title(ocand, cand):
     return False
 
 def fuzzy_match(s1, s2):
-  s1 = s1[0].lower() + s1[1:]
-  s2 = s2[0].lower() + s2[1:]
-  # ignore titles
-  return (s1 not in ALL_TITLES and s2 not in ALL_TITLES) and \
-         (s2 in s1 or max(fuzz.ratio(s2, s1[:i]) for i in range(len(s1))) >= 70)  
+  if s1 not in ALL_TITLES and s2 not in ALL_TITLES:
+    s1 = s1[0].lower() + s1[1:]
+    s2 = s2[0].lower() + s2[1:]
+    # ignore titles
+    return (s2 in s1 or max(fuzz.ratio(s2, s1[:i]) for i in range(len(s1))) >= 70)  
+  return False
 
 def fuzzy_contains_tuple(t_outer, t_inner):
     return contains_tuple(t_outer, t_inner, fuzzy_match)

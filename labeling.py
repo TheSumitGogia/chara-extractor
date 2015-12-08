@@ -194,7 +194,7 @@ def label_book(book, temp, feature_directory, unique, from_sparknote=True):
     # only between candidates that do not map to the same character
     pair_labels = dict([((cand1, cand2), 0) \
             for cand1 in pair_candidates for cand2 in pair_candidates \
-            if not (cand1 in max_matching and cand2 in max_matching and max_matching[cand1] == max_matching[cand2])])
+            if not (cand1 == cand2)])
     for cand1 in candidates:
         for cand2 in candidates:
             if cand1 != cand2:
