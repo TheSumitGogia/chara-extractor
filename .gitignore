@@ -10,3 +10,5 @@ report/**/*.png
 */*/.DS_Store
 raw_nlp/
 labels/
+features/
+new_features/
