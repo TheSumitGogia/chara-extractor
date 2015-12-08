@@ -22,7 +22,7 @@ def generate_train_test(pct_train, seed, dir):
     return train_set, test_set
 
 # Read single character features from file
-def read_features(book, dir, extension, filter):
+def read_features(book, dir, extension, feature_filter):
     file = dir + '/' + book + extension
     try:
         with open(file) as f:
@@ -30,9 +30,9 @@ def read_features(book, dir, extension, filter):
     except:
         print "%s does not exist" % file
         return 
-    if len(filter) == 0:
+    if len(feature_filter) == 0:
         return features_dict
-    filtered_features = filter(lambda s: re.match(filter, s), \
+    filtered_features = filter(lambda s: re.match(feature_filter, s), \
                             features_dict.itervalues().next())
     return {cand: {feature: features_dict[cand][feature] \
                     for feature in filtered_features}
