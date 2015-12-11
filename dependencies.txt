@@ -10,86 +10,202 @@ scikit-learn
 gutenberg
 Stanford CoreNLP
 
+=================================================================
+
 Our Scripts:
 
-annotation_check
-    verify whether "matching" for annotations to candidates captures SN data
-bname_extractor
-    sample books (for evaluation of Sparknotes labeler)
-crossref
-    check for plays/poetry/language with google to verify gutenberg books
-data_collect
-    extracts book names and character descriptions from Sparknotes
-disambiguation
-    takes candidates and links them if similar "name-wise" (heuristic)
-evaluation
-    takes characters, (char clf output), matches and finds P/R
-extraction (sh)
-    runs feature parser for different parameter sets given nlp, tokens dirs
-get_text
-    takes good book list and (fixed ugly) book list, gets raw text from PG
-labeling
-    takes books, features (candidate list), and assigns labels (annotations)
-parsing
-    runs Stanford CoreNLP on sparknotes, books
-process_sparknote
-    finds characters and relations from sparknotes descriptions
-split_files
-    partitions corenlp, tokens, text dirs (distribute feature extraction)
-train_char
-    run different training algorithms on feature matrices for char data
-train_pair
-    run different training algorithms on feature matrices for pair data
-train_common
-    contains util functions for training
-        translate feature files into matrices
-        translate labels into matrices
-        split training and test data
-training
-    ?? deprecated??
-    has bunch of util functions and training functions
-wordnet_hyponyms
-    for getting hyponyms of words, used for "person" hyponyms
+    annotation_check
+        verify whether "matching" for annotations to candidates captures SN data
+    bname_extractor
+        sample books (for evaluation of Sparknotes labeler)
+    crossref
+        check for plays/poetry/language with google to verify gutenberg books
+    data_collect
+        extracts book names and character descriptions from Sparknotes
+    disambiguation
+        takes candidates and links them if similar "name-wise" (heuristic)
+    evaluation
+        takes characters, (char clf output), matches and finds P/R
+    extraction (sh)
+        runs feature parser for different parameter sets given nlp, tokens dirs
+    get_text
+        takes good book list and (fixed ugly) book list, gets raw text from PG
+    labeling
+        takes books, features (candidate list), and assigns labels (annotations)
+    parsing
+        runs Stanford CoreNLP on sparknotes, books
+    process_sparknote
+        finds characters and relations from sparknotes descriptions
+    split_files
+        partitions corenlp, tokens, text dirs (distribute feature extraction)
+    train_char
+        run different training algorithms on feature matrices for char data
+    train_pair
+        run different training algorithms on feature matrices for pair data
+    train_common
+        contains util functions for training
+            translate feature files into matrices
+            translate labels into matrices
+            split training and test data
+    training
+        ?? deprecated??
+        has bunch of util functions and training functions
+    wordnet_hyponyms
+        for getting hyponyms of words, used for "person" hyponyms
+
+==================================================================
 
 Spec (use for merging files, re-organizing code):
+    Collect
+        python collect.py (--crossref) [-i index] [-b booksfile] [-o outdir]
+            - SPEC: get good, bad, ugly files using index and booklist
+            - index: gutenberg index file
+                - default 'gutenberg/index.txt'
+            - booksfile: file with list of book names
+                - default 'books/booklist.txt'
+            - outdir: place to output good,bad,ugly
+                - default 'gutenberg' 
+
+        python collect.py (--download) [-g goodfile] [-u uglyfixfile] [-b blacklist] [-o outdir]
+            - SPEC: get raw texts 
+            - goodfile: good books in index
+                - default 'gutenberg/good.txt'
+            - uglyfixfile: ugly fixes in index
+                - default 'gutenberg/uglyfix.txt'
+                - if file doesn't exist, ignore this 
+            - blacklist: bad files in index 
+                - default 'gutenberg/blacklist.txt'
+                - if file doesn't exist, ignore this
+            - outdir: place to put raw texts
+                - default 'raw'
+
+        python collect.py (--parse) ([-d rawtextdir] | [-f rawtextfile]) [-o outdir]
+            - SPEC: run Stanford CoreNLP and candidate extraction on raw text, output to 'corenlp', 'tokens', 'candidates'
+            - rawtextdir: directory of full texts from Gutenberg
+                - default 'raw'
+            - rawtextfile: raw text file from Gutenberg
+                - no default
+            - outdir: place to put corenlp, tokens, candidate files
+                - default current directory
+    
     Labeling
-        Get Sparknotes Data
-        (Get Books -> Call Gutenberg)
-        (Parse Books -> Call Data Parser)
-        (Get Candidates -> Call Data Parser)
-        (Get Candidates -> Call Feature Extractor)
-        Apply Sparknotes Labels
-        Check Sparknotes Labels 
-        Sample Books (for labeling Sparknotes labeler test data)
-            - note: should leave default (we already made tags)
-    Gutenberg
-        (Need List of Viable Books) 
-        CrossRef
-        Get Books 
-    Data Parser
-        Run CoreNLP
-            Sparknotes (token, split, pos, parse, ner, coref)
-            Raw texts (tokenize, ssplit, pos, ner)
-            Raw texts (special tokenization) 
-        Section
-        Get Candidates 
-    Feature Extractor
-        Get Count Features
-        Get Tag Features
-        Get Coref Features
-        Get Cooc Features 
+        python labeling.py (--collect) [-o outdir] 
+            - SPEC: collect all book and character description lists from Sparknotes, CoreNLP
+            - outdir: place to put all the summaries, booklist
+                - default 'sparknotes'
+                    (subdir 'corenlp', subdir 'descriptions')
+    
+        python labeling.py (--label) [-d inpdir] [-o outdir] [-v verbose]
+            - SPEC: run automated tagger on sparknotes, output label files are dictionaries cand->{0,1}
+            - indir: Sparknotes dir with corenlp and descriptions
+                - default 'sparknotes'
+            - outdir: directory to put label files
+                - default 'labels'
+            - verbose: print label check output
+                - how many characters were found in candidate?
+
+    Feature Extraction
+        python features.py (--characters) [-d rawnlpdir] [-t rawtokensdir] [-c canddir] [-f featurelist] [-o outdir] [-r readable]
+            - SPEC: run character feature extraction, output to features folder
+            - rawcorenlpdir: directory with all CoreNLP files for raw texts
+                - default 'rawcorenlp'
+            - rawtokensdir: directory with all CoreNLP tokens files for raw texts
+                - default 'rawtokens'
+            - canddir: directory with all candidates for raw texts
+                - default 'candidates'
+            - featurelist: list of feature types to extract
+                - default all
+                - '[count,tag,cooc,coref]'
+            - outdir: directory to place feature files 
+                - default 'features/characters'
+                - feature files are dictionaries (can just use eval)
+                - readable feature files are just...readable
+            - readable: output readable feature files
+                - default False
+                - readable feature files which contain candidate, then tabbed features below, is output
+   
+        python features.py (--relations) [-d rawnlpdir] [-t rawtokensdir] [-l labeldir] [-f featurelist] [-o outdir] [-r readable]
+            - SPEC: run pair feature extraction, output to features folder
+            - rawcorenlpdir: directory with all CoreNLP files for raw texts
+                - default 'rawcorenlp'
+            - rawtokensdir: directory with all CoreNLP tokens files for raw texts
+                - default 'rawtokens'
+            - canddir: directory with all labeled candidate relations 
+                - default 'labels'
+            - featurelist: list of feature types to extract
+                - default all
+                - '[count,tag,cooc,coref]'
+            - outdir: directory to place feature files
+                - default 'features/relations'
+                - feature files are dictionaries (can just use eval)
+                - readable feature files are just... readable
+            - readable: output readable feature files
+                - default False
+                - readable feature files which contain candidate pair, then tabbed features below, is output 
+
     Learning
-        Translate Features
-        Train/Test Split 
-        Train w/ Algorithm
-            Chars
-            Pairs
+        python learning.py (--translate) [-t type] [-f featuredir] [-o outfile]
+            - SPEC: translate dictionary of candidate features in feature matrix
+            - type: choice of character or relation features for translation
+                - choices: 'char' or 'rel'
+                - default: 'char' 
+            - featuredir: directory with all features files
+                - default: 'features'
+            - outfile: output file name
+                - default: 'data' 
+                - actually appends 'features.mat', 'labels.mat', 'index.txt' to filename before saving
+                - features is feature matrix, labels is label matrix, index is dict mapping chara/pair to indices
+        
+        python learning.py (--datasplit) [-f featurematfile] [-l labelmatfile] [-o outfile]
+            - SPEC: splits the features and labels into training and testing sets
+            - featurematfile: file with feature matrix
+                - default: 'datafeatures.mat'
+            - labelmatfile: file labels matrix
+                - default: 'datalabels.mat'
+            - outfile: output file name
+                - default: 'data'
+                - actually appends 'featurestrain.mat', 'featurestest.mat', 'labelstrain.mat', ... accordingly
+
+        python learning.py (--train) [-t type] [-f featurematfile] [-l labelmatfile] [-o outdir]
+            - SPEC: trains binary classifier on features and labels
+            - type: choice of character or relation features for translation
+                - choices: 'char' or 'rel'
+                - default: 'char'
+            - featurematfile: file with feature matrix
+                - default: 'datafeaturestrain.mat'
+            - labelsmatfile: file with label matrix
+                - default: 'datalabelstrain.mat'
+            - outdir: output file name
+                - default: 'data', appends 'clfparams.mat' 
+
     Evaluation
-        Check Classifier p/r
-        Check Classifier disambig p/r
-        Test Book 
-        Test Books
-    Disambiguation 
+        python evaluate.py (--clf) [-f featuremat] [-l labelmat] [-n nonunique] [-d disambiguated] 
+            - SPEC: gets precision/recall for classifier
+            - featuremat: file with feature matrix
+                - default: 'datafeaturestest.mat'
+            - labelmat: file with label matrix
+                - default: 'datalabelstest.mat'
+            - nonunique: bool, whether to get raw classifier precision and recall
+                - default: True
+            - disambiguated: bool, whether to get disambiguated classifier precision and recall
+                - default: True   
+ 
+        python evaluate.py (--test) [-b bookfile/bookdir] [-c candfile/canddir] [-t tokensfile/tokensdir] [-n corenlpfile/corenlpdir]
+            - SPEC: outputs found characters for input books
+            - bookfile/bookdir: raw book text file or directory
+                - default False
+                - for this to work, gotta run Stanford CoreNLP, and do candidate extraction -> SLOW, not default
+            - candfile/canddir: file/directory with candidates
+                - default 'candidates' 
+            - tokensfile/tokensdir: file/directory with raw text tokens (output by CoreNLP)
+                - default 'rawtokens'
+            - corenlpfile/corenlpdir: file/directory with raw text CoreNLP files
+                - default 'rawcorenlp'
+            
     Pipeline
-        (Allows user to run parts of pipeline for project)
-        Labeling -> Feature Extraction -> Learning -> Evaluation 
+        python pipeline.py [-s steplist] 
+            - SPEC: runs the pipeline steps
+            - steplist: list of pipeline steps to run
+                - default: all
+                - '[collect,labeling,features,learning,evaluate]'
+                - note that non contiguous steps don't make sense! and default conditions must be satisfied!
