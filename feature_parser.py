@@ -38,10 +38,7 @@ def section_process_token(token):
             idx_change += 1
             long_token_string += test_token
         tl_idx += 1
-    #if idx_change == 6:
-    #    tl_idx = idx_start
     if token_lines[tl_idx] != token_t and token_t in long_token_string:
-        #print 'hehe', token_t, long_token_string, tl_idx
         tl_idx -= 1
 
 
@@ -363,7 +360,6 @@ def get_candidates(tree, markers, num_cutoffs='flex', num_cp_cutoff='flex', per_
             'book_num_cp': len(markers['chapter'])
         }
     for key in candidates:
-        total += candidates[key]['count']
         candidates[key]['count_norm_length'] = candidates[key]['count'] * 1.0 / total_length
         candidates[key]['count_norm_char'] = candidates[key]['count'] * 1.0 / total
 
@@ -1364,7 +1360,7 @@ if __name__ == '__main__':
     args = vars(parser.parse_args())
     debug = args['debug']
     tokens_text = args['tokenfile'][0]
-    candfile = args['candfile'][0]
+    candfile = args['candfile'][0] if args['candfile'] else False
     outdir = args['outdir'][0]
     full = args['fulldir']
     nlp_file = args['file'][0]
