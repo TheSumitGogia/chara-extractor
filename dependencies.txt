@@ -1,0 +1,53 @@
+django (specifically django.utils.encoding)
+BeautifulSoup
+networkx
+fuzzywuzzy
+NumPy/SciPy
+matplotlib
+stop_words
+nltk
+scikit-learn
+gutenberg
+Stanford CoreNLP
+
+Our Scripts:
+
+annotation_check
+    verify whether "matching" for annotations to candidates captures SN data
+bname_extractor
+    sample books (for evaluation of Sparknotes labeler)
+crossref
+    check for plays/poetry/language with google to verify gutenberg books
+data_collect
+    extracts book names and character descriptions from Sparknotes
+disambiguation
+    takes candidates and links them if similar "name-wise" (heuristic)
+evaluation
+    takes characters, (char clf output), matches and finds P/R
+extraction (sh)
+    runs feature parser for different parameter sets given nlp, tokens dirs
+get_text
+    takes good book list and (fixed ugly) book list, gets raw text from PG
+labeling
+    takes books, features (candidate list), and assigns labels (annotations)
+parsing
+    runs Stanford CoreNLP on sparknotes, books
+process_sparknote
+    finds characters and relations from sparknotes descriptions
+split_files
+    partitions corenlp, tokens, text dirs (distribute feature extraction)
+train_char
+    run different training algorithms on feature matrices for char data
+train_pair
+    run different training algorithms on feature matrices for pair data
+train_common
+    contains util functions for training
+        translate feature files into matrices
+        translate labels into matrices
+        split training and test data
+training
+    ?? deprecated??
+    has bunch of util functions and training functions
+wordnet_hyponyms
+    for getting hyponyms of words, used for "person" hyponyms
+
