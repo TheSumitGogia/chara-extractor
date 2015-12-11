@@ -51,3 +51,45 @@ training
 wordnet_hyponyms
     for getting hyponyms of words, used for "person" hyponyms
 
+Spec (use for merging files, re-organizing code):
+    Labeling
+        Get Sparknotes Data
+        (Get Books -> Call Gutenberg)
+        (Parse Books -> Call Data Parser)
+        (Get Candidates -> Call Data Parser)
+        (Get Candidates -> Call Feature Extractor)
+        Apply Sparknotes Labels
+        Check Sparknotes Labels 
+        Sample Books (for labeling Sparknotes labeler test data)
+            - note: should leave default (we already made tags)
+    Gutenberg
+        (Need List of Viable Books) 
+        CrossRef
+        Get Books 
+    Data Parser
+        Run CoreNLP
+            Sparknotes (token, split, pos, parse, ner, coref)
+            Raw texts (tokenize, ssplit, pos, ner)
+            Raw texts (special tokenization) 
+        Section
+        Get Candidates 
+    Feature Extractor
+        Get Count Features
+        Get Tag Features
+        Get Coref Features
+        Get Cooc Features 
+    Learning
+        Translate Features
+        Train/Test Split 
+        Train w/ Algorithm
+            Chars
+            Pairs
+    Evaluation
+        Check Classifier p/r
+        Check Classifier disambig p/r
+        Test Book 
+        Test Books
+    Disambiguation 
+    Pipeline
+        (Allows user to run parts of pipeline for project)
+        Labeling -> Feature Extraction -> Learning -> Evaluation 
