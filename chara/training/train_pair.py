@@ -64,6 +64,16 @@ def train_and_test(train_books, test_books, train, scale=True):
     print 'Test Non-unique Precision:', precision(y_test_pred, y_test), 'Recall:', recall(y_test_pred, y_test)
     return clf, scaler, X_train, y_train, X_test, y_test
 
+def get_and_save_data(books, outdir='clfdata'):
+    X, y, cands = get_pair_data(books, True)
+    if not os.path.exists(outdir):
+        os.makedirs(outdir)
+    np.save(outdir + '/rel_features.npy', X)
+    np.save(outdir + '/rel_labels.npy', y)
+    bookfile = open(outdir + '/' + 'books.txt', 'w')
+    bookfile.write('\n'.join(books))
+    bookfile.close()
+
 # `train` is a function that takes in training data and output clf
 def train_and_save(train_books, train, clf_fname, scale=True):
     X_train, cands_train = get_pair_data(train_books, True)
@@ -81,6 +91,24 @@ def train_and_save(train_books, train, clf_fname, scale=True):
     trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
     trainfile.write('\n'.join(train_books))
     trainfile.close()
+
+def train_from_file_and_save(train_dir='clfdata', train, clf_name='rel_clf', scale=True):
+    train_bfile = open(train_dir + '/books.txt', 'r')
+    train_books = train_bfile.readlines()
+    train_books = [book.strip() for book in train_books]
+    X_train = np.load(train_dir + '/rel_features.npy')
+    y_train = np.load(train_dir + '/rel_labels.npy')
+    scaler = None
+    if scale:
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+    clf = train(X_train, y_train)
+    if not os.path.exists(clf_fname):
+        os.makedirs(clf_fname)
+    joblib.dump(clf, clf_fname + '/' + 'classifier.pkl')
+    joblib.dump(clf, clf_fname + '/' + 'scaler.pkl')
+    trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
+    trainfile.write('\n'.join(train_books))
 
 def evaluate_clf_from_file(clf_dirname, featdir):
     books = set(map(lambda f: f.split('_')[0], \

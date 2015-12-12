@@ -90,8 +90,18 @@ def train_and_test(train_books, test_books, train, scale=True):
     print "Test Overall Unresolve: %f, duplicate %f, invalid: %f" % (test_perf[0], test_perf[1], test_perf[2])
     return clf, scaler
 
+def get_and_save_data(books, outdir='clfdata'):
+    X, y, cands = get_char_data(books, True)
+    if not os.path.exists(outdir):
+        os.makedirs(outdir)
+    np.save(outdir + '/char_features.npy', X)
+    np.save(outdir + '/char_labels.npy', y)
+    bookfile = open(outdir + '/' + 'books.txt', 'w')
+    bookfile.write('\n'.join(books))
+    bookfile.close()
+
 # `train` is a function that takes in training data and output clf
-def train_and_save(train_books, train, clf_fname, scale=True):
+def train_and_save(train_books, train, clf_name='char_clf', scale=True):
     X_train, cands_train = get_char_data(train_books, True)
 
     scaler = None
@@ -107,6 +117,24 @@ def train_and_save(train_books, train, clf_fname, scale=True):
     trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
     trainfile.write('\n'.join(train_books))
     trainfile.close()
+
+def train_from_file_and_save(train_dir='clfdata', train, clf_name='char_clf', scale=True):
+    train_bfile = open(train_dir + '/books.txt', 'r')
+    train_books = train_bfile.readlines()
+    train_books = [book.strip() for book in train_books]
+    X_train = np.load(train_dir + '/char_features.npy')
+    y_train = np.load(train_dir + '/char_labels.npy')
+    scaler = None
+    if scale:
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+    clf = train(X_train, y_train)
+    if not os.path.exists(clf_fname):
+        os.makedirs(clf_fname)
+    joblib.dump(clf, clf_fname + '/' + 'classifier.pkl')
+    joblib.dump(clf, clf_fname + '/' + 'scaler.pkl')
+    trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
+    trainfile.write('\n'.join(train_books))
 
 def evaluate_clf_from_file(clf_dirname, featdir):
     books = set(map(lambda f: f.split('_')[0], \
