@@ -34,6 +34,7 @@ def evaluate_char(clf, book, scaler = None):
     print 'Non unqiue Precision:', precision(y_pred, y), 'Non unique Recall:', recall(y_pred, y)
 
     characters = get_sparknote_characters_from_file(book)
+    # TODO: option for suppressing this output
     if characters is not None:
         cands_pred = cands[y_pred==1]
         cands_pred_unique = find_unique_characters(cands_pred)
@@ -101,7 +102,7 @@ def get_and_save_data(books, outdir='clfdata'):
     bookfile.close()
 
 # `train` is a function that takes in training data and output clf
-def train_and_save(train_books, train, clf_name='char_clf', scale=True):
+def train_and_save(train_books, train, clf_name='clfparams', scale=True):
     X_train, cands_train = get_char_data(train_books, True)
 
     scaler = None
@@ -136,14 +137,17 @@ def train_from_file_and_save(train_dir='clfdata', train, clf_name='char_clf', sc
     trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
     trainfile.write('\n'.join(train_books))
 
-def evaluate_clf_from_file(clf_dirname, featdir):
-    books = set(map(lambda f: f.split('_')[0], \
-                    filter(lambda f: not f.endswith('.swp'),
-                            os.listdir(featdir))))
-    train_bkfile = open(clf_dirname + '/train_books.txt', 'r')
-    train_books = train_bkfile.readlines()
-    train_books = set([train_books.strip()])
-    test_books = books.difference(train_books)
+def evaluate_clf_from_file(clf_dirname, books=None):
+    if not books:
+        books = set(map(lambda f: f.split('_')[0], \
+                        filter(lambda f: not f.endswith('.swp'),
+                                os.listdir(FEATURES_DIR))))
+        train_bkfile = open(clf_dirname + '/train_books.txt', 'r')
+        train_books = train_bkfile.readlines()
+        train_books = set([train_books.strip()])
+        test_books = books.difference(train_books)
+    else:
+        test_books = books
 
     clf = joblib.load(clf_dirname + '/classifier.pkl')
     scaler = joblib.load(clf_dirname + '/scaler.pkl')

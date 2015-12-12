@@ -5,10 +5,39 @@ from training import *
 '''
 
 def handle_clf_command(args):
-    pass
+    tp = args.type
+    clfdir = args.clfdir
+    featdir = args.featdir
+    labeldir = args.labeldir
+
+    if tp == 'char':
+        train_char.featdir = featdir + '/characters'
+        train_char.labeldir = labeldir
+        train_char.verbose = False
+        train_char.evaluate_clf_from_file(clfdir)
+    if tp == 'rel':
+        train_pair.featdir = featdir + '/relations'
+        train_pair.labeldir = labeldir
+        train_pair.verbose = False
+        train_pair.evaluate_clf_from_file(clfdir)
 
 def handle_test_command(args):
-    pass
+    tp = args.type
+    clfdir = args.clfdir
+    featdir = args.featdir
+    labeldir = args.labeldir
+    books = args.books
+
+    if tp == 'char':
+        train_char.featdir = featdir + '/characters'
+        train_char.labeldir = labeldir
+        train_char.verbose = True
+        train_char.evaluate_clf_from_file(clfdir, books)
+    if tp == 'rel':
+        train_pair.featdir = featdir + '/relations'
+        train_pair.labeldir = labeldir
+        train_pair.verbose = True
+        train_pair.evaluate_clf_from_file(clfdir, books)
 
 if __name__ == '__main__':
 
@@ -17,14 +46,16 @@ if __name__ == '__main__':
     subparsers = parser.add_subparsers(help='sub-command information')
 
     # clf subcommand argument parsing
-    clf_parser = subparsers.add_parser('clf', help='get precision/recall for classifier')
-    clf_parser.add_argument('-d', '--datadir', default='data', help='directory with test features, labels')
-    clf_parser.add_argument('-n', '--nonuniq', action='store_true', help='get straight classifier prec/recall')
-    clf_parser.add_argument('-d', '--disamb', action='store_true', help='get disambiguated classifier prec/recall')
+    clf_parser = subparsers.add_parser('quant', help='get precision/recall for classifier')
+    clf_parser.add_argument('-t', '--type', default='char', help='test characters or relations')
+    clf_parser.add_argument('-c', '--clfdir', default='data/classifiers/clfparams', help='directory with classifier params')
+    clf_parser.add_argument('-f', '--featdir', default='data/features', help='directory with features')
+    clf_parser.add_argument('-l', '--labeldir', default='data/labels', help='directory with labels')
 
     # test subcommand argument parsing
-    test_parser = subparsers.add_parsers('test', help='output found characters for input books')
-    test_parser.add_argument('-b', '--books', default=False, help='book file/folder to test on, off by default since slow')
-    test_parser.add_argument('-c', '--candidates', default='candidates', help='file/folder with candidates')
-    test_parser.add_argument('-t', '--tokens', default='rawtokens', help='file/folder with raw text tokens (CoreNLP)')
-    test_parser.add_argument('-n', '--corenlp', default='rawcorenlp', help='file/folder with raw text CoreNLP files')
+    test_parser = subparsers.add_parsers('qual', help='output found characters for input books')
+    test_parser.add_argument('-t', '--type', default='char', help='test characters or relations')
+    test_parser.add_argument('-b', '--books', nargs='+', help='book names or book list file')
+    test_parser.add_argument('-d', '--datadir', default='data/training/clfdata', help='train data dir to determine test books')
+    test_parser.add_argument('-f', '--featdir', default='data/features', help='file/folder with features')
+    test_parser.add_argument('-l', '--labeldir', default='data/labels', help='directory with labels')
