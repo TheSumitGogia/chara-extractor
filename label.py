@@ -1,11 +1,6 @@
 import argparse
 import os
 from labeling import *
-'''
-import data_collect
-import process_sparknote
-import labeler
-'''
 
 '''Sparknotes Label extraction and application to character candidates.'''
 
