@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+
+% Any percent sign marks a comment to the end of the line
+
+% Every latex document starts with a documentclass declaration like this
+% The option dvips allows for graphics, 12pt is the font size, and article
+%   is the style
+
+\usepackage{amsmath, amssymb}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[font={small,it}]{caption}
+
+% These are additional packages for "pdflatex", graphics, and to include
+% hyperlinks inside a document.
+
+%\setlength{\oddsidemargin}{0.25in}
+%\setlength{\textwidth}{6.5in}
+%\setlength{\topmargin}{0in}
+%\setlength{\textheight}{8.5in}
+\setlength{\parindent}{0pt}
+
+% These force using more of the margins that is the default style
+
+\begin{document}
+
+
+\title{Learning Character Graphs from Literature}
+\author{Sumit Gogia, Min Zhang, Tommy Zhang}
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+We present a method for extracting salient characters and recognizing salient character relationships from literature. As opposed to previous work which extracts \emph{social} networks by examining dialogue given characters, our trained system finds characters and relationships directly from raw novel text. Our approach utilizes a novel supervised learning approach where we retrieve labels from a simple, digestible online source (Sparknotes) to train classifiers that identify characters as salient or pairs of characters as related. Initial results show that even basic classification methods produce good performance for salient character extraction, while relationship detection warrants significant improvement. 
+\end{abstract}
+
+\section{Introduction}
+\section{Related Work}
+\section{Methodology}
+% DISCUSS PIPELINE AT TOP
+    \subsection{Unlabeled Data Collection}
+    
+\section{Experiments}
+\section{Conclusion}
+
+\end{document}
