@@ -1,1 +1,0 @@
-{'Mina Murray': ['Mina'], 'Count Dracula': ['Dracula'], 'Lucy Westenra': ['Lucy'], 'Arthur Holmwood': ['Arthur', 'Holmwood'], 'Mrs. Westenra': [], 'Van Helsing': [], 'Jonathan Harker': ['Harker'], 'John Seward': ['Seward'], 'Quincey Morris': ['Quincey'], 'Renfield': []}

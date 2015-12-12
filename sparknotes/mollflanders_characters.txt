@@ -1,1 +1,0 @@
-{'The Plantation Owner': [], 'The Draper': [], 'The Banker': [], '"My Governess"': [], 'Moll Flanders': ['Moll'], "Moll's Mother": ["Moll's mother"], 'Jemy': [], 'Robert': [], 'The Gentleman': [], 'Humphrey': [], 'The Nurse': [], 'The Elder Brother': []}

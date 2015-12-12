@@ -1,1 +1,0 @@
-set([('Joseph K.', 'Titorelli, the Painter'), ('Joseph K.', 'Leni'), ('Assistant Manager', 'Joseph K.'), ('Huld, the Lawyer', 'Leni'), ('Block, the Tradesman', 'Huld, the Lawyer'), ('Huld, the Lawyer', 'Uncle Karl'), ('Fraulein Burstner', 'Joseph K.'), ('Frau Grubach', 'Joseph K.'), ('Huld, the Lawyer', 'Joseph K.'), ('Joseph K.', 'Uncle Karl')])

@@ -1,1 +1,0 @@
-{'Sibyl Vane': ['Sibyl'], 'Lord Fermor': [], 'James Vane': ['James'], 'Lady Agatha': [], 'Dorian Gray': ['Dorian'], 'Mrs. Vane': [], 'Lord Henry Wotton': ['Henry Wotton', 'Lord Henry', 'Henry'], 'Basil Hallward': ['Basil'], 'Mrs. Leaf': [], 'Victoria Wotton': ['Victoria'], 'Alan Campbell': [], 'Duchess of Monmouth': [], 'Victor': []}

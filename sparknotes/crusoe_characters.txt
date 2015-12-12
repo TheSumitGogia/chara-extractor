@@ -1,1 +1,0 @@
-{'The Portuguese captain': ['the Portuguese captain', 'the captain'], 'Friday': [], 'Xury': [], 'Robinson Crusoe': ['Crusoe'], 'The widow': ['the widow'], 'The Spaniard': []}

@@ -1,1 +1,0 @@
-{'Gentleman Brown': ['Brown'], 'Stein': [], 'Captain Brierly': [], 'Jewel': [], 'Dutch-Malay woman': ['Two'], 'Jim': [], 'Dain Waris': [], 'French lieutenant': ['Freed'], 'Sherif Ali': [], 'Bugis': [], 'Marlow': [], "Tamb'Itam": [], 'Chester': [], 'Doramin': [], 'Cornelius': [], 'Robinson': [], 'Crew of the Patna': ['Patusan'], 'Rajah Allang': ['Allang']}

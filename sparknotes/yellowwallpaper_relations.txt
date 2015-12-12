@@ -1,1 +1,0 @@
-set([('John', 'The Narrator'), ('Jennie', 'The Narrator'), ('Jennie', 'John')])

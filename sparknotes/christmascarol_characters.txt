@@ -1,1 +1,0 @@
-{'Jacob Marley': ['Marley'], 'Ebenezer Scrooge': ['Scrooge'], 'Belle': [], 'Peter Cratchit': [], 'Tiny Tim': [], 'Martha Cratchit': [], 'Fred': [], 'The Ghost of Christmas Present': [], 'Fan': [], 'The Portly Gentlemen': [], 'The Ghost of Christmas Yet to Come': [], 'Bob Cratchit': ['Bob'], 'Fezziwig': [], 'The Ghost of Christmas Past': ['Christmas'], 'Mrs. Cratchit': []}

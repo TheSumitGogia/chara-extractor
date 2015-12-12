@@ -1,1 +1,0 @@
-{'Pistorius': [], 'Alfons Beck': [], 'Beatrice': [], 'Emil Sinclair': ['Sinclair'], 'Frau Eva': [], 'Abraxas': [], 'Knauer': [], 'Franz Kromer': [], 'Max Demian': ['Demian']}

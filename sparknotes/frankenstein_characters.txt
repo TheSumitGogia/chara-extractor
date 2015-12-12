@@ -1,1 +1,0 @@
-{'Caroline Beaufort': ['Caroline'], 'Peasants': [], 'Henry Clerval': [], 'Justine Moritz': [], 'Robert Walton': ['Walton'], 'Mr. Kirwin': [], 'M. Krempe': [], 'The monster': ['the monster'], 'William Frankenstein': ['William'], 'Victor Frankenstein': ['Victor'], 'M. Waldman': [], 'Elizabeth Lavenza': ['Elizabeth'], 'Alphonse Frankenstein': [], 'Beaufort': []}

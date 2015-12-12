@@ -1,1 +1,0 @@
-set([('Robinson Crusoe', 'The widow'), ('The Portuguese captain', 'The widow'), ('Robinson Crusoe', 'Xury'), ('Friday', 'The widow'), ('The Portuguese captain', 'Xury'), ('Friday', 'Robinson Crusoe'), ('Robinson Crusoe', 'The Portuguese captain'), ('Robinson Crusoe', 'The Spaniard')])

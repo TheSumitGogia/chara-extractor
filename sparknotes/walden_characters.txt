@@ -1,1 +1,0 @@
-{'Mencius': [], 'James Russell Lowell': ['Lowell'], 'Henry David Thoreau': ['Thoreau'], 'Confucius': [], 'Alex Therien': ['Therien'], 'Amos Bronson Alcott': ['Alcott'], 'Ralph Waldo Emerson': ['Emerson'], 'Lidian Emerson': [], 'Henry Clay': ['Clay'], 'William Ellery Channing': [], 'John Field': ['Field'], 'John Thoreau': []}

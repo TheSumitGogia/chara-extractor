@@ -1,1 +1,0 @@
-{'Charley': [], 'Johnny Nonsuch': [], 'Local laborers': [], 'Diggory Venn': ['Venn'], 'Damon Wildeve': ['Damon'], 'Eustacia Vye': ['Eustacia'], 'Mrs. Yeobright': [], 'Thomasin Yeobright': ['Thomasin'], 'Christian Cantle': ['Christian'], 'Captain Vye': [], 'Clym Yeobright': ['Clym', 'Yeobright']}

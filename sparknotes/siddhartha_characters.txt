@@ -1,1 +1,0 @@
-{'Vasudeva': [], "Siddhartha's Father": ["Siddhartha's father"], 'Gotama': [], 'Kamaswami': [], 'Govinda': [], 'The Samanas': ['the Samanas'], 'Young Siddhartha': ['young Siddhartha'], 'Siddhartha': [], 'Kamala': []}

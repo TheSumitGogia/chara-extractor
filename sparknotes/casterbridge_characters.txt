@@ -1,1 +1,0 @@
-{'Newson': [], 'Solomon Longways': [], 'Mother Cuxsom': [], 'Christopher Coney': [], 'Nance Mockridge': [], 'Benjamin Grower': [], 'Elizabeth-Jane Newson': ['Elizabeth-Jane'], 'Abel Whittle': ['Whittle'], 'Joshua Jopp': [], 'Lucetta Templeman': ['Lucetta'], 'Donald Farfrae': ['Farfrae'], 'Michael Henchard': ['Henchard'], 'Susan Henchard': ['Susan']}

@@ -1,1 +1,0 @@
-set([('Jim Hawkins', 'Long John Silver'), ('Billy Bones', 'Black Dog'), ('Dr. Livesey', 'Jim Hawkins'), ('Ben Gunn', 'Dr. Livesey'), ('Billy Bones', 'Pew'), ('Ben Gunn', 'Jim Hawkins'), ('Captain Smollett', 'Jim Hawkins'), ('Billy Bones', 'Jim Hawkins'), ('Captain Smollett', 'Squire Trelawney'), ('Captain Smollett', 'Dr. Livesey'), ('Jim Hawkins', 'Tom Redruth')])
