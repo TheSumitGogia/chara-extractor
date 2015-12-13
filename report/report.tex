@@ -123,8 +123,6 @@ Our approach to creating these extractors is to use binary classifiers that act 
     in future work.
 
 \section{Methodology}
-% DISCUSS PIPELINE AT TOP
-
 \begin{figure}[H]
     \centering
     %\includegraphics[width=7in]{pipeline.png}
@@ -133,9 +131,53 @@ Our approach to creating these extractors is to use binary classifiers that act 
     characters given Sparknotes.}
 \end{figure}
 
-    \subsection{Candidate Extraction}
-    \subsection{Feature Extraction}
+Our approach is to treat both character extraction and relationship identification as binary classification problems. 
+We thus have two main stages for our system: a training stage and an execution stage. 
+In the training stage, we collect data, extract features, apply labels, and then train classifiers; 
+in the execution stage we run our extractors on raw test novels, extracting unlabeled data with features 
+and running the classifiers on it. Pipelines for both of these stages are shown in the figure above. 
+In the following sections, we discuss the components of both pipelines in further detail.\\
 
+    \subsection{Candidate Extraction}
+        Our classifiers, rather than run on all token sequences in text, are both trained and executed on
+        broad sets of multi-token character \emph{candidates} obtained from the raw text automatically. 
+        As in certain multi-token NER systems (J Da Silva), this strategy is employed because we do not
+        know a priori the number of tokens for characters and want to avoid training on large numbers
+        of clearly negative examples. In addition, it is also because the complexity of our feature extraction 
+        depends on the number of candidates through co-occurrence counting. \\
+
+        The method for candidate extraction is very tied to our understanding of character names: we assume
+        that character names accord to the following rules:
+        \begin{enumerate}
+            \item Names are noun phrases with at most one level of nesting and ending in a capitalized noun. OR
+            \item Names are noun phrases consisting of a determiner and hyponyms of ``person" in WordNet (reference). 
+        \end{enumerate}
+        A diagram describing these rules and examples is shown below for clarity.
+
+        \begin{figure}[H]
+            \centering
+            %\includegraphics{}
+            \caption{A depiction of the rules for candidate extraction.}
+        \end{figure}
+
+        We extract all token sequences satisfying these rules as candidates.
+        While many character names are captured just by taking consecutive capitalized tokens, the rules
+        are more flexible to account for character names such as \emph{the Count of Monte Cristo} and 
+        \emph{the helmsman}, characters in the eponymously-named book and \emph{Heart of Darkness} respectively.
+        In the first we have parts of speech other than nouns, while in the second there is no capitalization,
+        just the recognition that the word refers to a person. There may be characters names which break
+        this rule, but we did not observe any.\\
+
+        This rule-based approach also faces potential issues in that unmeaningful token sequences such as
+        ``the woman" in a book with many women may get passed and affect co-occurrence features; however,
+        we observe that co-occurrence with even these ``non-characters" is often important, and also
+        include weighted co-occurrence features to help account for this issue. Though we do not
+        report numerical results, we observe that not including these candidates does not affect 
+        end performance.
+
+    \subsection{Feature Extraction}
+        The main types of features we extract for each of our candidates, for both singletons and pairs,
+        include those seen in NER systems such as 
     \subsection{Data Collection}
     \subsection{Classification}
 
