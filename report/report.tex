@@ -268,11 +268,79 @@ In the following sections, we discuss the components of both pipelines in furthe
         methods to deal with the noise in it.
 
     \subsection{Data Collection}
+
     \subsection{Classification}
 
+        We employed two classification methods: SVM and random forests. These
+        two methods have been shown to have been shown to perform well for a variety of
+        classification problems, are particularly useful to avoid overfitting (insert references),
+        and were accessible through Python's \texttt{scikit-learn}.
+        We expected that $100$ novels was not enough to represent the novel space very comletely,
+        making overfitting avoidance more important. \\
+
+        We also note that our datasets, both for characters and relationships, are imbalanced.
+        As the methods we use can be susceptible to dataset imbalance, we use the method of
+        data weighting for correction. As it was not clear what factor would be ideal to 
+        reweight the positive examples, we treated it as a hyperparameter. For the character
+        extractor, we found that weights between $2-4$ gave similar and best performance,
+        while with the relationship identifier $10$ worked best.
+
 \section{Experiments}
+
+    We tested our classifiers with both quantitative and qualitative metrics. The quantitative
+    metrics we used included precision and recall. Because our classifier is trained with positive 
+    labels on all matching candidates found with our disambiguation, we expect that our classifiers 
+    will output multiple references to the same character. Thus, we include a ``unique" precision (UP) 
+    and recall (UR) as well, where output characters are first disambiguated, and then matched to
+    the pure Sparknotes characters. \\
+    
+    The qualitative metrics included visual verification of characters and relationships found 
+    by the classifiers for test novels. For all our classifiers mentioned in this section, we 
+    used a training data ratio of $0.7$. 
+
     \subsection{Character Extraction}
+        
+        For character extraction we implemented one simple baseline and two versions of our method.
+        The baseline was extraction of candidates by frequency: we took the top $20$ $1$-gram candidates,
+        $10$ $2$-gram candidates, and $5$ $3$-gram candidates. While precision and recall will vary
+        between different types of novels, our choices for these numbers stemmed
+        from the fact that Sparknotes had an average of $15$ candidates per novel, and that we had an average of
+        $15$ candidates after disambiguation with these numbers. Characters also, we found, are typically
+        referred to by shorter identifiers, leading to the decreasing numbers with respect to $n$-gram length. \\
+
+        The two versions of our method are differentiated in feature sets: for Version 1 we only used
+        frequency features, while for Version 2 we used the entire feature set. We tested both of these versions
+        as we were interested in seeing if features besides frequency really were helpful in the character
+        extraction task. A table describing the results of all $3$ methods is shown below. 
+
+        %% TODO: INSERT RESULTS TABLE
+
+        We notice first that both variations of our method significantly outperform the baseline, regardless
+        of the classification method used. This indicates that the classification approach is useful,
+        since the various features can be used for discrimination, and the high dimensionality of the feature
+        space makes rule-based approaches difficult. On the other hand, the difference in performance
+        between Version 1 and Version 2 only shows in non-unique precision and recall, indicating that
+        feature types besides frequency are not particularly helpful when included. While slightly
+        counterintuitive, it appears that candidate selection already provides the information of tag
+        features, coocurrence features are not much different than frequency features, and that coreference
+        features do not stop at least one of the true character references passing the classifier. \\
+
+        The overall performance of our approach, while promising however, does not appear high enough to warrant
+        adoption for literary purposes, with precision and recall both roughly $65\%$. It would appear
+        that the features chosen are not expressive enough for this task, or that the derived features
+        from our kernels are not expressive enough.  
+
     \subsection{Relationship Identification}
+
+        For relationship identification we also implemented one simple baseline and two versions of our method.
+        The baseline was analagous - instead we used pairs of characters whose coocurrence in paragraphs crossed 
+        a manually-tuned threshold ($0.1$, normalized by number of paragraphs). Notably though, it does not
+        limit the number of relationships identified, unlike the character extractor. This accords with a
+        phenomenon we saw on Sparknotes: no matter how many characters there are, roughly the same number
+        are recognized as salient for each book; relationships are not like this. \\
+
+        The two versions of our method are again differentiated in feature sets: for Version 1 we only used
+        pairs' normalized coocurrence for each section type, while for Version 2 we use all features 
 
 \section{Conclusion}
 
