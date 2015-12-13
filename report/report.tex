@@ -34,16 +34,115 @@
 \maketitle
 
 \begin{abstract}
-We present a method for extracting salient characters and recognizing salient character relationships from literature. As opposed to previous work which extracts \emph{social} networks by examining dialogue given characters, our trained system finds characters and relationships directly from raw novel text. Our approach utilizes a novel supervised learning approach where we retrieve labels from a simple, digestible online source (Sparknotes) to train classifiers that identify characters as salient or pairs of characters as related. Initial results show that even basic classification methods produce good performance for salient character extraction, while relationship detection warrants significant improvement. 
+
+We present a method for extracting salient characters and recognizing salient character relationships from literature. As opposed to previous work which extracts \emph{social} networks by examining dialogue \emph{given} characters, our trained system finds characters and relationships directly from raw novel text. Our approach utilizes a novel supervised learning approach where we retrieve labels from a simple, digestible online source (Sparknotes) to train classifiers that identify characters as salient or pairs of characters as related. Initial results show that even basic classification methods produce good performance for salient character extraction, while relationship detection warrants significant improvement. 
+
 \end{abstract}
 
 \section{Introduction}
+
+Literary scholars, when comparing different works of literature, frequently examine major characters and their relationships for comparison. These examinations utilize attributes such as number of major characters, names of characters, and types of relationships in each novel to make higher-level statements about novel form. \\
+
+Unfortunately, at current, the approaches to such examination are typically manual and require close reading, preventing comparison of the large existing bodies of literature. While statements can and have been made for a small manageable subset, this notably results in a heavily-studied canon and a largely-ignored general body of literature (insert Moretti reference). A conclusion literary scholars have come to is this: we need efficient \emph{automated} methods for extracting higher-level representations from literature (also Moretti reference). \\
+
+Recent years have seen work founded in this realization, both for character analysis as well as other high-level analyses such as plot extraction. In character analysis, methods have focused on \emph{social network extraction}, as many literary theories involve the communication between characters (insert references). These methods take lists of characters in a novel and then describe their relationships in a graph, with edges connecting characters indicating relationships. They utilize \emph{dialogue} as the basis for their analysis, extracting dialogue from raw text and attributing it to characters to compute edge weights and node sizes. \\
+
+However, despite the success of these methods, they do not address many of the needs for automated character examination, including automated extraction of many attributes noted above. The goal in this paper is to supplement automated social network extraction with automated methods for extracting two useful representations:  
+
+\begin{enumerate}
+    \setlength\itemsep{0em}
+    \item A list of major characters in a novel. 
+    \item A list of pairs of major characters with a salient relationship in a novel. 
+\end{enumerate}
+
+Importantly, these representations are different from those found in social network extraction. Firstly, social network extractors have character lists as input instead of output - our character extractor can feed output into social network extractors. Secondly, social network relationships are found through dialogue only as opposed to the text entirety. A graphic describing the representations found by social network extractors and our extractors is given below for clarity. 
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=6in]{rep_graphs.png}
+    \caption{Representations output by social network extractors (left) and our extractors (right). Note that social network extractors take nodes as input and output weighted or labeled edges, while ours outputs nodes and binary edges. Our extractors also utilize text entirety, as opposed to dialogue alone.} 
+\end{figure}
+
+Our approach to creating these extractors is to use binary classifiers that act on broad sets of automatically-found character candidates and pairs of major characters, to detect salient characters and relationships respectively. We develop a set of global novel-wide features, such as candidate count and coocurrence, and a novel automated labeling method where we read Sparknotes (insert reference), an online reference with character lists and descriptions for literature, and match their data to ours. 
+
+% NOTE: Might want to reword previous paragraph to summarize contributions
+% NOTE: Might want to add brief paper sectioning overview
+
 \section{Related Work}
+% GENERAL OVERVIEW, VERY BRIEF
+
+\subsection{Named Entity Recognition}
+
+    Our first problem of character extraction can is closely related to NER problems. The goal in NER tasks
+    is to label text token sequences as special entities with respect to the rest of the text. Similarly, in 
+    character extraction the goal is to recognize identifiable unique references to major characters, which
+    we take to fall in the class of consecutive token sequences. \\
+
+    As such, we can look to previous work on NER problems to influence our design. A large portion of NER systems
+    attempt to label special entities in short, stand-alone documents based on local features for token
+    sequences, such as capitalization, prefixes and suffixes (insert references here). These types of word-level
+    features are important in our case as well, but given the basic hypothesis that the salience of characters 
+    is dependent on how they appear throughout the book, we can imagine that they would not prove particularly 
+    effective. \\
+
+    On the other hand, NER systems which target longer types or sets of documents or attempt to focus on
+    salient entities also exist, and use additional features to significantly boost performance. 
+    Previous work in this vein includes systems which target extraction of important figures 
+    from news articles (insert reference) and identification of proper nouns in Chinese text (insert reference).
+    The systems described utilize features such as candidate entity frequency and presence of other
+    entities in vicinity to help capture the comparative importance of desirable entities. Given that in 
+    character extraction we aim to identify \emph{salient} characters, these works significantly influence
+    our own. \\
+
+\subsection{Social Network Extraction}
+
+    Previous character-based attribute extraction work has focused on social network extraction.
+    Social network extraction consists of tasks similar to the relationship labeling task we focus on, but which 
+    focus on a representation influenced only by dialogue in novels. The tasks in social network
+    extraction tend to be considerably more well-defined than those we explore - in (insert reference),
+    the authors identify the amount of dialogue between characters to represent the network, and in
+    (insert reference) the authors identify other determinstic features for dialogue such as
+    point-of-view in narration. While the language processing can be difficult to determine these
+    features, they are fairly clear to human annotators. \\
+
+    In contrast, in both our character extraction and relationship identification tasks, we identify
+    \emph{salient} characters and relationships. This concept of \emph{salience} is ambiguous even
+    to many literary scholars; it is often difficult to agree on which characters and relationships
+    are important in novels due to novel complexity, and context which each reader brings with them.
+    We note that ideally, the tasks we wish to address would be satisfied by tools that adapt to
+    different users' perspectives, possibly taking into account personal annotations. In this work,
+    we attempt to overcome this problem by using a source which has aggregated many perspectives,
+    Sparknotes (insert reference), but it is worth noting that given the novel language isn't
+    enough to fully define \emph{salience} for humans, there is extra complexity in the language
+    processing task. \\
+
+    Despite this difference, it is not to say that the approaches to social network extraction are
+    unrelated to our work. The features used in models for dialogue detection and dialogue attribute
+    detection, such as number of speakers, can potentially be useful in our tasks as well. We make use
+    of some, like cooccurrence features, but there are many that we have not that could be tested
+    in future work.
+
 \section{Methodology}
 % DISCUSS PIPELINE AT TOP
-    \subsection{Unlabeled Data Collection}
-    
+
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=7in]{pipeline.png}
+    \caption{The training and extraction pipelines for both our character extractor and relationship identifier.
+        Note that in relationship identification, the training data consists of pairs of candidates labeled as
+    characters given Sparknotes.}
+\end{figure}
+
+    \subsection{Candidate Extraction}
+    \subsection{Feature Extraction}
+
+    \subsection{Data Collection}
+    \subsection{Classification}
+
 \section{Experiments}
+    \subsection{Character Extraction}
+    \subsection{Relationship Identification}
+
 \section{Conclusion}
 
 \end{document}
