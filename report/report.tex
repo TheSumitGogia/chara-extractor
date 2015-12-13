@@ -149,8 +149,8 @@ In the following sections, we discuss the components of both pipelines in furthe
         The method for candidate extraction is very tied to our understanding of character names: we assume
         that character names accord to the following rules:
         \begin{enumerate}
-            \item Names are noun phrases with at most one level of nesting and ending in a capitalized noun. OR
-            \item Names are noun phrases consisting of a determiner and hyponyms of ``person" in WordNet (reference). 
+            \item A name is a noun phrases with at most one level of nesting and ending in a capitalized noun. OR
+            \item A name is a noun phrase consisting of a determiner and a hyponyms ``person" in WordNet (reference). 
         \end{enumerate}
         A diagram describing these rules and examples is shown below for clarity.
 
@@ -176,8 +176,97 @@ In the following sections, we discuss the components of both pipelines in furthe
         end performance.
 
     \subsection{Feature Extraction}
-        The main types of features we extract for each of our candidates, for both singletons and pairs,
-        include those seen in NER systems such as 
+
+        We extract four main types of features for both candidates and pairs: tag features,
+        coreference features, frequency features, and coocurrence features. The first three are common
+        for NER systems, and are included due to the tasks' similarity to NER noted previously. The last
+        feature type, also seen in \emph{Related Entity Finding} tasks (insert references), is to account
+        for the idea that characters are considered salient due to their relationships with other
+        entities in the novel, and that cooccurrence of characters in some section indicates interaction. \\
+
+        There are actually a large number of features included for each feature type, arising from a number
+        of normalization schemes we use to account for differences between novels. We do not expect
+        all of these to be particularly helpful, and instead count on our learning methods ruling out
+        noisy or uncorrelated features. Details for features of each feature type are described below.
+
+        \subsubsection{Tag Features}
+        
+        What we call \emph{tag} features refer to just features dependent on capitalization of tokens in
+        candidates, and whether Stanford's CoreNLP NER tagger (insert reference) labeled tokens as 
+        named entities or not. We noted that while current NER systems such as Stanford's were
+        not very good at understanding when titles or modifiers were parts of names, they frequently
+        recognized given names of characters, like ``Sally". Since character names often 
+        include given names, we decided to use the presence of NER tags for indicator features. \\
+
+        As we need to normalize the tag features we obtained over candidates, sequences of tokens,
+        we use presence of capitalization or NER ``person" tag on last token, as well as fractions
+        of tokens with capitalization or ``person" tags. The NER tagger is non-deterministic so
+        we use a fractional count of ``person" tags over all instances of the candidate for NER
+        tag features. Tag features for pairs of candidates are just concatenations of the tag
+        features for both candidates.
+
+        \subsubsection{Frequency Features}
+
+        Frequency features are indications of how often a candidate appears in the given novel. We include 
+        these since we expect salient characters and relationships to be tied to how often they occur. 
+        The simplest feature of this type is just the raw frequency of how many times a candidate
+        appears in the novel. However, we include many variations on this feature to account for
+        differences in book lengths and differences in general candidate reference frequency across books.
+        These include frequencies for different section types (sentence, paragraph, and chapter), as well
+        as normalization across the number of sections and total number of section mentiones for candidates.
+        Explicitly, for section type $s$, we have:
+        
+        \[\mbox{count}_s(\mbox{candidate}) = \mbox{(\# of sections candidate appears in)}\]
+        \[\overline{\mbox{count}}_s(\mbox{candidate}) = \frac{\mbox{count}_s(\mbox{candidate})}{\mbox{\# of sections}}\]
+        \[\hat{\mbox{count}}_s(\mbox{candidate}) = \frac{\mbox{count}_s(\mbox{candidate})}{\sum_{\mbox{cand}\in{C}}\mbox{count}_s(\mbox{cand})}\]
+
+        The count over the entire book we normalize by the number of characters (text) in the book, and the total
+        counts of all candidates. Again, for pairs of candidates we concatenate the frequency features for both
+        candidates.
+
+        \subsubsection{Cooccurrence Features}
+
+        Cooccurrence features describe the number of times candidates appear with each other candidates. 
+        While it seems clear that such features would be important for identifying salient relationships,
+        that it would be helpful for salient character extraction is less obvious. Our reasoning is that 
+        characters in novels are often important precisely because they interact with other
+        characters. \\
+
+        The particular features of this type we compute are similar to our frequency features. We identify
+        which sections characters occur in to build occurrence matrices, and then compute inner products
+        of these occurrence matrices to obtain coocurrence matrices. The features for candidates are
+        given by sums of coocurrences with all other candidates. 
+
+        \[\mbox{cooc}_s(\mbox{candidate}) = \sum_{\mbox{c'} \in C} \mbox{cooc}_s(\mbox{candidate}, \mbox{c'})\]
+
+        To normalize across books, as well as try and account for importance of characters, we also
+        weight the cooccurrence matrices along $1$ dimension by normalized overall and section frequency
+        features. We do not weight across the second dimension (the one not summed) because we desire to
+        get the importance of candidates a candidate cooccurs with, not accounting for the importance
+        of the original candidate itself.
+
+        % Might want an equation here to describe normalization
+
+        For pairs of characters, we both concatenate the coocurrence features for each character, as well
+        as include the values from the original un-marginalized coocurrence matrices.
+
+        \subsubsection{Coreference Features}
+        
+        Coreference features are to account for cases where characters are referred to by different 
+        names within a book. For example, ``Huckleberry Finn" may be addressed as ``Huck", ``Huck Finn",
+        or ``Huckleberry", but all are instances of the same character. As we are using different
+        types of frequencies (including cooccurrence) to help account for importance, to help
+        with measuring a candidate's true importance it should have features recognizing the 
+        frequencies of coreferences. \\
+
+        To ensure this, we developed a rule-based disambiguation scheme that accounts for titles,
+        nicknames by means of fuzzy matching, and partial reference. The disambiguator takes
+        candidate sets and maps each to other candidates which are coreferences. Each candidate then has
+        features accounting for the presence of shorter and longer coreferences, as well as
+        the total frequencies for those coreferences respectively. While the disambiguation
+        scheme is certainly not perfect, we observed it to work well, and relied on the classification
+        methods to deal with the noise in it.
+
     \subsection{Data Collection}
     \subsection{Classification}
 
