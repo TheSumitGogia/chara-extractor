@@ -30,16 +30,16 @@ In addition to the packages listed here, some extra work will need to be done to
 running:
 
 1. You must have a build of Stanford's CoreNLP toolset, with the top directory for that project stored
-   in the environment variable __CORE_NLP__.
+   in the environment variable `CORE_NLP`. If you have no BASH script called `corenlp.sh` in there,
+   something is seriously wrong.
 
 2. You must have WordNet installed with the NLTK package; to perform the installation after installing
    NLTK, open up a command line and attempt to access WordNet from NLTK corpus. NLTK will bring up
    a GUI that you can use to install WordNet. 
 
 3. To reproduce our results, and likely for your own organization as well, you will want to download
-   our full data folder from MIT Dropbox 
-   
-   <https://www.dropbox.com/s/af02rfka01sbtdu/chara_extractor_data.tar.gz?dl=0> 
+   our full data folder from MIT Dropbox:
+    <https://www.dropbox.com/s/af02rfka01sbtdu/chara_extractor_data.tar.gz?dl=0> 
    and unzip it at the level of the main scripts (`evaluate`, `collect`,...). 
    While our scripts provide decent high-level functionality
    for collecting all the data, it is extremely time-consuming, taking on the order of days for
