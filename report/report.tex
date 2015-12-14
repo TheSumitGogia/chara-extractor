@@ -69,7 +69,12 @@ Our approach to creating these extractors is to use binary classifiers that act 
 % NOTE: Might want to add brief paper sectioning overview
 
 \section{Related Work}
-% GENERAL OVERVIEW, VERY BRIEF
+
+    Previous work by Elson et al. in a 2010 paper \cite{elson} builds a social network between characters in a
+    novel, focusing on identifying and attributing dialogue to characters.  In their model, the relationship
+    strength between two characters is defined by the number of interactions between the characters in dialogue
+    sections throughout the text.  In addition, this model assumes that a list of characters is already provided,
+    i.e. the portion of identifying characters in the first place is not an issue.
 
 \subsection{Named Entity Recognition}
 
@@ -275,7 +280,7 @@ In the following sections, we discuss the components of both pipelines in furthe
         twofold: we felt that all of the different ways to refer to a single character could be fairly well
         enumerated, and since no pre-existing model existed for the disambiguation task we required, we wanted
         to minize the amount of false positive matches and other confounding variables that would inevitably
-        arise from training our own model.
+        arise from training our own model. \\
 
         The disambiguation rules can be split into three broad categories:
         \begin{itemize}
@@ -296,11 +301,11 @@ In the following sections, we discuss the components of both pipelines in furthe
         We view candidate names as nodes in a graph, and disambiguated a candidate name to another as directed edges
         in the graph.  To enforce transitivity of disambiguation (i.e. if $A$ maps to $B$ and $B$ maps to $C$, then $A$
         maps to $C$), we then insert additional edges from each node to all reachable other nodes.  This is implemented
-        as a sequence of depth-first searches from each node to determine connectivity and reachability.
+        as a sequence of depth-first searches from each node to determine connectivity and reachability. \\
 
         As discussed above, our disambiguation model is used during feature extraction to determine coreference
         features.  At a high level, this essentially accounts for different mentions of the same character within the
-        raw text of the book.
+        raw text of the book. \\
 
         However, we also need to account for discrepancies between the book's mentions of a character and Sparknotes'
         mentions of the same character.  Often times, the official Sparknotes name for a character may be the character's
@@ -316,25 +321,25 @@ In the following sections, we discuss the components of both pipelines in furthe
         character annotations for as many books as possible.  To this end, data collection is divided into
         two phases: first, gathering a list of books with character descriptions available on Sparknotes,
         and second, crossreferencing this list with Project Gutenberg to find those books with their text
-        available online and in the public domain.
+        available online and in the public domain. \\
 
         Project Gutenberg is a digital library of over 50,000 literary works; however, only a very small
         subset of these works are also found on Sparknotes.  The intersection of these two sets consists
         mostly of older ``classical" literature, such as \emph{Don Quixote} or \emph{Great Expectations}, 
         whose copyrights don't exist or have expired.  This is important in understanding the types of texts
-        we train our models on.
+        we train our models on. \\
 
         To extract character descriptions from Sparknotes, we crawl their website alphabetically and extract
         the ``Character List" pages.  From these pages, we can also extract title and author information.  The
         title and author information is then searched in the Project Gutenberg index.  This index is a text
         file mapping Project Gutenberg entries by title and author to a unique id number.  The id number is used
         to find and download the raw text from the main Project Gutenberg website or a certified mirror.  We
-        used the \texttt{gutenberg} PyPI to assist in fetching the texts from a mirror site.
+        used the \texttt{gutenberg} PyPI to assist in fetching the texts from a mirror site. \\
 
         The index is well formatted, but there are still a large number of inconsistencies, in the form of
         misspellings or alternate spellings, as well as duplicate entries and entries in languages besides
         English.  As a result, we have a large number of error checks in place to account for misspellings and
-        to ensure that the raw texts we retrieve are all in English.
+        to ensure that the raw texts we retrieve are all in English. \\
 
         The final filtering we perform is to eliminate plays and poems from the Gutenberg results.  Since the
         language type and formatting is so different for these mediums, it may skew our learning models and
@@ -467,6 +472,9 @@ In the following sections, we discuss the components of both pipelines in furthe
     learning with neural networks, and structured prediction are all directions we would like
     to explore.
 
+\begin{thebibliography}{9}
+  \bibitem{elson} D. Elson, N. Dames, K. McKeown, \emph{Extracting Social Networks from Literary Fiction}
+\end{thebibliography}
 
 
 \end{document}
