@@ -12,6 +12,9 @@
 \usepackage{float}
 \usepackage[margin=1.0in]{geometry}
 \usepackage[font={small,it}]{caption}
+\usepackage{url}
+\usepackage{cite}
+\usepackage[square,numbers]{natbib}
 
 % These are additional packages for "pdflatex", graphics, and to include
 % hyperlinks inside a document.
@@ -41,11 +44,11 @@ We present a method for extracting salient characters and recognizing salient ch
 
 \section{Introduction}
 
-Literary scholars, when comparing different works of literature, frequently examine major characters and their relationships for comparison. These examinations utilize attributes such as number of major characters, names of characters, and types of relationships in each novel to make higher-level statements about novel form. \\
+Literary scholars, when comparing different works of literature, frequently examine major characters and their relationships. These examinations cover attributes such as number of major characters, names of characters, and types of relationships in each novel to make higher-level statements about novel form. \\
 
-Unfortunately, at current, the approaches to such examination are typically manual and require close reading, preventing comparison of the large existing bodies of literature. While statements can and have been made for a small manageable subset, this notably results in a heavily-studied canon and a largely-ignored general body of literature (insert Moretti reference). A conclusion literary scholars have come to is this: we need efficient \emph{automated} methods for extracting higher-level representations from literature (also Moretti reference). \\
+Unfortunately, at current, the approaches to such examination are typically manual and require close reading, preventing comparison of the large existing bodies of literature. While statements can and have been made for a small manageable subset, this notably results in a heavily-studied canon and a largely-ignored general body of literature \cite{moretti2013distant}. A conclusion literary scholars have come to is this: we need efficient \emph{automated} methods for extracting higher-level representations from literature \cite{moretti2005graphs}. \\
 
-Recent years have seen work founded in this realization, both for character analysis as well as other high-level analyses such as plot extraction. In character analysis, methods have focused on \emph{social network extraction}, as many literary theories involve the communication between characters (insert references). These methods take lists of characters in a novel and then describe their relationships in a graph, with edges connecting characters indicating relationships. They utilize \emph{dialogue} as the basis for their analysis, extracting dialogue from raw text and attributing it to characters to compute edge weights and node sizes. \\
+Recent years have seen work founded in this realization, both for character analysis as well as other high-level analyses such as plot extraction. In character analysis, methods have focused on \emph{social network extraction}, as many literary theories involve the communication between characters \cite{moretti1999atlas, bakhtin1937forms, williams1975country}. These methods take lists of characters in a novel and then describe their relationships in a graph, with edges connecting characters indicating relationships. They utilize \emph{dialogue} as the basis for their analysis, extracting dialogue from raw text and attributing it to characters to compute edge weights and node sizes. \\
 
 However, despite the success of these methods, they do not address many of the needs for automated character examination, including automated extraction of many attributes noted above. The goal in this paper is to supplement automated social network extraction with automated methods for extracting two useful representations:  
 
@@ -59,17 +62,16 @@ Importantly, these representations are different from those found in social netw
 
 \begin{figure}[H]
     \centering
-    %\includegraphics[width=6in]{rep_graphs.png}
+    \includegraphics[width=6in]{emma_nw.png}
     \caption{Representations output by social network extractors (left) and our extractors (right). Note that social network extractors take nodes as input and output weighted or labeled edges, while ours outputs nodes and binary edges. Our extractors also utilize text entirety, as opposed to dialogue alone.} 
 \end{figure}
 
-Our approach to creating these extractors is to use binary classifiers that act on broad sets of automatically-found character candidates and pairs of major characters, to detect salient characters and relationships respectively. We develop a set of global novel-wide features, such as candidate count and coocurrence, and a novel automated labeling method where we read Sparknotes (insert reference), an online reference with character lists and descriptions for literature, and match their data to ours. 
+Our approach to creating these extractors is to use binary classifiers that act on broad sets of automatically-found character candidates and pairs of major characters, to detect salient characters and relationships respectively. We develop a set of global novel-wide features, such as candidate count and coocurrence, and a novel automated labeling method where we read Sparknotes \cite{sparknotes}, an online reference with character lists and descriptions for literature, and match their data to ours. 
 
 % NOTE: Might want to reword previous paragraph to summarize contributions
 % NOTE: Might want to add brief paper sectioning overview
 
 \section{Related Work}
-% GENERAL OVERVIEW, VERY BRIEF
 
 \subsection{Named Entity Recognition}
 
@@ -80,7 +82,7 @@ Our approach to creating these extractors is to use binary classifiers that act 
 
     As such, we can look to previous work on NER problems to influence our design. A large portion of NER systems
     attempt to label special entities in short, stand-alone documents based on local features for token
-    sequences, such as capitalization, prefixes and suffixes (insert references here). These types of word-level
+    sequences, such as capitalization, prefixes and suffixes \cite{nadeau2007survey}. These types of word-level
     features are important in our case as well, but given the basic hypothesis that the salience of characters 
     is dependent on how they appear throughout the book, we can imagine that they would not prove particularly 
     effective. \\
@@ -88,7 +90,7 @@ Our approach to creating these extractors is to use binary classifiers that act 
     On the other hand, NER systems which target longer types or sets of documents or attempt to focus on
     salient entities also exist, and use additional features to significantly boost performance. 
     Previous work in this vein includes systems which target extraction of important figures 
-    from news articles (insert reference) and identification of proper nouns in Chinese text (insert reference).
+    from news articles \cite{zhang2004focused} and identification of proper nouns in Chinese text \cite{chen1996identification}.
     The systems described utilize features such as candidate entity frequency and presence of other
     entities in vicinity to help capture the comparative importance of desirable entities. Given that in 
     character extraction we aim to identify \emph{salient} characters, these works significantly influence
@@ -99,9 +101,9 @@ Our approach to creating these extractors is to use binary classifiers that act 
     Previous character-based attribute extraction work has focused on social network extraction.
     Social network extraction consists of tasks similar to the relationship labeling task we focus on, but which 
     focus on a representation influenced only by dialogue in novels. The tasks in social network
-    extraction tend to be considerably more well-defined than those we explore - in (insert reference),
+    extraction tend to be considerably more well-defined than those we explore - in \cite{elson2010extracting},
     the authors identify the amount of dialogue between characters to represent the network, and in
-    (insert reference) the authors identify other determinstic features for dialogue such as
+    \cite{agarwal2012social} the authors identify other determinstic features for dialogue such as
     point-of-view in narration. While the language processing can be difficult to determine these
     features, they are fairly clear to human annotators. \\
 
@@ -112,7 +114,7 @@ Our approach to creating these extractors is to use binary classifiers that act 
     We note that ideally, the tasks we wish to address would be satisfied by tools that adapt to
     different users' perspectives, possibly taking into account personal annotations. In this work,
     we attempt to overcome this problem by using a source which has aggregated many perspectives,
-    Sparknotes (insert reference), but it is worth noting that given the novel language isn't
+    Sparknotes \cite{sparknotes}, but it is worth noting that given the novel language isn't
     enough to fully define \emph{salience} for humans, there is extra complexity in the language
     processing task. \\
 
@@ -123,25 +125,67 @@ Our approach to creating these extractors is to use binary classifiers that act 
     in future work.
 
 \section{Methodology}
-\begin{figure}[H]
-    \centering
-    %\includegraphics[width=7in]{pipeline.png}
-    \caption{The training and extraction pipelines for both our character extractor and relationship identifier.
-        Note that in relationship identification, the training data consists of pairs of candidates labeled as
-    characters given Sparknotes.}
-\end{figure}
 
 Our approach is to treat both character extraction and relationship identification as binary classification problems. 
 We thus have two main stages for our system: a training stage and an execution stage. 
 In the training stage, we collect data, extract features, apply labels, and then train classifiers; 
 in the execution stage we run our extractors on raw test novels, extracting unlabeled data with features 
-and running the classifiers on it. Pipelines for both of these stages are shown in the figure above. 
+and running the classifiers on it. Pipelines for both of these stages are shown in the figure below. 
 In the following sections, we discuss the components of both pipelines in further detail.\\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7in]{pipe.png}
+    \caption{The training (left) and execution (right) pipelines for both our character extractor and relationship identifier.
+        Note that in relationship identification, the training data consists of pairs of candidates labeled as
+    characters given Sparknotes.}
+\end{figure}
+
+    \subsection{Disambiguation}
+        While not described as a major component in the pipeline, disambiguation is a significant problem 
+        at many stages of our work:
+        \begin{enumerate}
+            \setlength\itemsep{0em}
+            \item \emph{Feature extraction:} Disambiguation is used to assign coreference features, letting candidates account for features of coreferences 
+            \item \emph{Labeling:} Disambiguation is necessary to match character names to candidate names 
+            \item \emph{Evaluation:} Disambiguation resolves multiple instances of same-character output from classifiers
+        \end{enumerate}
+        
+        For this reason we describe how we deal with it separately before going into the pipeline blocks. \\
+
+        We use rule-based disambiguation to resolve multiple different mentions of the same character.  
+        The reasoning behind using a rule-based approach rather than a learning approach is
+        twofold: we felt that our candidate disambiguation tasks were simple enough that a rule-based approach 
+        could account for variation well, and we did not have training data for our candidate
+        disambiguation tasks. The latter meant we would either need labeling time which was unavailable, or
+        to use a pre-existing model which was not fitted to our data. \\
+
+        The disambiguation rules can be split into three broad categories:
+        \begin{itemize}
+            \item \emph{Partial reference} - resolves mentions of characters by partial mentions of their full
+            name, e.g. ``Huck" referring to ``Huck Finn".  This is accomplished by checking containment or partial
+            containment of a name within another.
+
+            \item \emph{Nickname resolution} - resolves mentions of characters by nickname, e.g. ``Huck" as
+            ``Huckleberry".  This is accomplished by a combination of fuzzy string matching, prefix similarity, and
+            partial containment.
+
+            \item \emph{Title resolution} - resolves mentions of characters named by title to their full name, e.g.
+            ``Mr. Finn" to ``Huckleberry Finn".  For this, we used a large name-gender database extracted from
+            Stanford's CoreNLP library to decide which names various gender dependent titles could map to, and then
+            look for partial containment in the remaining strings.
+        \end{itemize}
+
+        We view candidate names as nodes in a graph, and disambiguated a candidate name to another as directed edges
+        in the graph.  To enforce transitivity of disambiguation (i.e. if $A$ maps to $B$ and $B$ maps to $C$, then $A$
+        maps to $C$), we then insert additional edges from each node to all reachable other nodes.  This is implemented
+        as a sequence of depth-first searches from each node to determine connectivity and reachability.
+
     \subsection{Candidate Extraction}
+
         Our classifiers, rather than run on all token sequences in text, are both trained and executed on
         broad sets of multi-token character \emph{candidates} obtained from the raw text automatically. 
-        As in certain multi-token NER systems (J Da Silva), this strategy is employed because we do not
+        As in certain multi-token NER systems \cite{da2004cluster}, this strategy is employed because we do not
         know a priori the number of tokens for characters and want to avoid training on large numbers
         of clearly negative examples. In addition, it is also because the complexity of our feature extraction 
         depends on the number of candidates through co-occurrence counting. \\
@@ -149,24 +193,18 @@ In the following sections, we discuss the components of both pipelines in furthe
         The method for candidate extraction is very tied to our understanding of character names: we assume
         that character names accord to the following rules:
         \begin{enumerate}
+            \setlength\itemsep{0em}
             \item A name is a noun phrases with at most one level of nesting and ending in a capitalized noun. OR
-            \item A name is a noun phrase consisting of a determiner and a hyponyms ``person" in WordNet (reference). 
+            \item A name is a noun phrase consisting of a determiner and a hyponyms ``person" in WordNet \cite{miller1995wordnet}. 
         \end{enumerate}
-        A diagram describing these rules and examples is shown below for clarity.
-
-        \begin{figure}[H]
-            \centering
-            %\includegraphics{}
-            \caption{A depiction of the rules for candidate extraction.}
-        \end{figure}
 
         We extract all token sequences satisfying these rules as candidates.
         While many character names are captured just by taking consecutive capitalized tokens, the rules
-        are more flexible to account for character names such as \emph{the Count of Monte Cristo} and 
-        \emph{the helmsman}, characters in the eponymously-named book and \emph{Heart of Darkness} respectively.
+        are more flexible to account for character names such as ``the Count of Monte Cristo" and 
+        ``the helmsman", characters in the eponymously-named book and \emph{Heart of Darkness} respectively.
         In the first we have parts of speech other than nouns, while in the second there is no capitalization,
         just the recognition that the word refers to a person. There may be characters names which break
-        this rule, but we did not observe any.\\
+        these rule, but we did not observe any.\\
 
         This rule-based approach also faces potential issues in that unmeaningful token sequences such as
         ``the woman" in a book with many women may get passed and affect cooccurrence features; however,
@@ -180,7 +218,7 @@ In the following sections, we discuss the components of both pipelines in furthe
         We extract four main types of features for both candidates and pairs: tag features,
         coreference features, frequency features, and coocurrence features. The first three are common
         for NER systems, and are included due to the tasks' similarity to NER noted previously. The last
-        feature type, also seen in \emph{Related Entity Finding} tasks (insert references), is to account
+        feature type, also seen in \emph{Related Entity Finding} tasks \cite{bron2009related,yang2009experiments}, is to account
         for the idea that characters are considered salient due to their relationships with other
         entities in the novel, and that cooccurrence of characters in some section indicates interaction. \\
 
@@ -194,7 +232,7 @@ In the following sections, we discuss the components of both pipelines in furthe
         \subsubsection{Tag Features}
         
         What we call \emph{tag} features refer to features dependent on capitalization of tokens in
-        candidates, and whether Stanford's CoreNLP NER tagger (insert reference) labeled tokens as 
+        candidates, and whether Stanford's CoreNLP NER tagger \cite{finkel2005incorporating} labeled tokens as 
         named entities or not. We noted that while current NER systems such as Stanford's were
         not very good at understanding when titles or modifiers were parts of names, they frequently
         recognized given names of characters, like ``Sally". Since character names often 
@@ -261,91 +299,60 @@ In the following sections, we discuss the components of both pipelines in furthe
         with measuring a candidate's true importance it should have features recognizing the 
         frequencies of coreferences. \\
 
-        To ensure this, we developed a rule-based disambiguation scheme that accounts for titles,
-        nicknames by means of fuzzy matching, and partial reference. The disambiguator takes
-        candidate sets and maps each to other candidates which are coreferences. Each candidate then has
-        features accounting for the presence of shorter and longer coreferences, as well as
-        the total frequencies for those coreferences respectively. While the disambiguation
-        scheme is certainly not perfect, we observed it to work well, and relied on the classification
-        methods to deal with the noise in it.
-
-    \subsection{Disambiguation}
-        Our rule-based disambiguation is meant to resolve multiple different mentions of the same character
-        to a single one.  The reasoning behind using a rule-based approach rather than a learning approach is
-        twofold: we felt that all of the different ways to refer to a single character could be fairly well
-        enumerated, and since no pre-existing model existed for the disambiguation task we required, we wanted
-        to minize the amount of false positive matches and other confounding variables that would inevitably
-        arise from training our own model.
-
-        The disambiguation rules can be split into three broad categories:
-        \begin{itemize}
-            \item \emph{Partial reference} - resolves mentions of characters by partial mentions of their full
-            name, e.g. ``Huck" referring to ``Huck Finn".  This is accomplished by checking containment or partial
-            containment of a name within another.
-
-            \item \emph{Nickname resolution} - resolves mentions of characters by nickname, e.g. ``Huck" as
-            ``Huckleberry".  This is accomplished by a combination of fuzzy string matching, prefix similarity, and
-            partial containment.
-
-            \item \emph{Title resolution} - resolves mentions of characters named by title to their full name, e.g.
-            ``Mr. Finn" to ``Huckleberry Finn".  For this, we used a large name-gender database extracted from
-            Stanford's CoreNLP library to decide which names various gender dependent titles could map to, and then
-            look for partial containment in the remaining strings.
-        \end{itemize}
-
-        We view candidate names as nodes in a graph, and disambiguated a candidate name to another as directed edges
-        in the graph.  To enforce transitivity of disambiguation (i.e. if $A$ maps to $B$ and $B$ maps to $C$, then $A$
-        maps to $C$), we then insert additional edges from each node to all reachable other nodes.  This is implemented
-        as a sequence of depth-first searches from each node to determine connectivity and reachability.
-
-        As discussed above, our disambiguation model is used during feature extraction to determine coreference
-        features.  At a high level, this essentially accounts for different mentions of the same character within the
-        raw text of the book.
-
-        However, we also need to account for discrepancies between the book's mentions of a character and Sparknotes'
-        mentions of the same character.  Often times, the official Sparknotes name for a character may be the character's
-        full, formal name, or otherwise have annotated parenthetical information, whereas the character may never be
-        referred to that way in the book.  Thus, we also use our disambiguation model to resolve mentions between candidate
-        names in the book and candidate names on Sparknotes.  This is used during the labeling and evaluation processes,
-        to label potential candidates as characters in the input to the model, and to evaluate the number of correctly
-        labeled characters in the output of the model.
-
+        We use our rule-based disambiguation to then compute these features. For each candidate we
+        find the candidates that are disambiguated to, and candidates that disambiguate to it
+        (the difference between Tom Sawyer $\to$ Sawyer and Sawyer $\to$ Tom Sawyer), then sum
+        the different frequency features for candidates from those two types of coreference.
 
     \subsection{Data Collection}
+
         The goal of the data collection phase is to compile a collection of raw texts and Sparknotes
         character annotations for as many books as possible.  To this end, data collection is divided into
-        two phases: first, gathering a list of books with character descriptions available on Sparknotes,
-        and second, crossreferencing this list with Project Gutenberg to find those books with their text
-        available online and in the public domain.
+        multiple phases: 
+        \begin{enumerate}
+                \setlength\itemsep{0em}
+                \item Gather a list of books with character descriptions available on Sparknotes
+                \item Crossreference the list with Project Gutenberg to optain books with public, online text
+                \item Extract candidates from the obtained raw texts
+                \item Label the candidates for each novel by using the Sparknotes character descriptions
+        \end{enumerate}
 
-        Project Gutenberg is a digital library of over 50,000 literary works; however, only a very small
-        subset of these works are also found on Sparknotes.  The intersection of these two sets consists
-        mostly of older ``classical" literature, such as \emph{Don Quixote} or \emph{Great Expectations}, 
-        whose copyrights don't exist or have expired.  This is important in understanding the types of texts
-        we train our models on.
+        For the first, we scrape the index on Sparknotes, then use the index to find links for each
+        book in Sparknotes and scrape their character lists, title and author. For the second, we
+        search for title and author in the Project Gutenberg index, downloading the raw texts for
+        matches. In practice, there are a number of inconsistencies between Gutenberg's index and
+        Sparknotes', such as differences in accents or spelling, as well as non-English same-title
+        duplicates. We manually dealt with such entries, and then filtered out plays and poems
+        by crossreferencing with Wikipedia to get $102$ novels. \\
 
-        To extract character descriptions from Sparknotes, we crawl their website alphabetically and extract
-        the ``Character List" pages.  From these pages, we can also extract title and author information.  The
-        title and author information is then searched in the Project Gutenberg index.  This index is a text
-        file mapping Project Gutenberg entries by title and author to a unique id number.  The id number is used
-        to find and download the raw text from the main Project Gutenberg website or a certified mirror.  We
-        used the \texttt{gutenberg} PyPI to assist in fetching the texts from a mirror site.
+        Candidate extraction, the third step, is performed in the manner described in \textbf{Section 3.1}. 
+        To label the candidates we use our rule-based disambiguation to find candidates corresponding
+        to the character names in the Sparknotes descriptions. Rather than attempt to match characters
+        uniquely as would be ideal, we label \emph{all} possible matching candidates as
+        characters. While this can introduce false positives, such as with family names being labeled
+        as characters, we found this significantly improved performance. The classifiers were less strict
+        about using particular character references, which were apparently not consistent in feature
+        space across different books in Sparknotes (some lists used short names, while some used formal,
+        without apparent reason). We attempt to mitigate false positives by performing a disambiguation
+        after output. \\ 
 
-        The index is well formatted, but there are still a large number of inconsistencies, in the form of
-        misspellings or alternate spellings, as well as duplicate entries and entries in languages besides
-        English.  As a result, we have a large number of error checks in place to account for misspellings and
-        to ensure that the raw texts we retrieve are all in English.
-
-        The final filtering we perform is to eliminate plays and poems from the Gutenberg results.  Since the
-        language type and formatting is so different for these mediums, it may skew our learning models and
-        extracted features.  To do this, we cross reference the text names with Google search results for the
-        title and author to determine whether the text is a book.
+        For relationship labeling, Sparknotes does not provide a list of relations, and we instead
+        infer it from character descriptions. The strategy is simple - we look for appearances
+        of a character name within other characters' descriptions, and label them as related if
+        they appear. While character names can appear in different forms, we found that we could
+        perform disambiguation for this stage accurately by just choosing the first-appearing 
+        character in the list which our rule-based disambiguation matched. We checked the performance
+        of this labeling strategy on a small set of $40$ books we tagged manually from reading 
+        character lists ourselves, and achieved roughly $95\%$ precision and $80\%$ recall. Though not
+        accurate, and suffering, as we note later, from not being descriptive of many relationships
+        we personally found important in novels we knew, we proceeded to use this data and 
+        see what results could be obtained.
 
     \subsection{Classification}
 
         We employed two classification methods: SVM and random forests. These
         two methods have been shown to have been shown to perform well for a variety of
-        classification problems, are particularly useful to avoid overfitting (insert references),
+        classification problems, are particularly useful to avoid overfitting \cite{hearst1998support,breiman2001random},
         and were accessible through Python's \texttt{scikit-learn}.
         We expected that $100$ novels was not enough to represent the novel space very comletely,
         making overfitting avoidance more important. \\
@@ -355,7 +362,12 @@ In the following sections, we discuss the components of both pipelines in furthe
         data weighting for correction. As it was not clear what factor would be ideal to 
         reweight the positive examples, we treated it as a hyperparameter. For the character
         extractor, we found that weights between $2-4$ gave similar and best performance,
-        while with the relationship identifier $10$ worked best.
+        while with the relationship identifier $10$ worked best. \\
+
+        Lastly, we emphasize that while the character extractor is trained on all candidates,
+        since our relationship identifier is meant to identify relationships between salient
+        characters, we train it only on pairs of characters which were labeled as positive
+        data for character extraction.
 
 \section{Experiments}
 
@@ -467,6 +479,7 @@ In the following sections, we discuss the components of both pipelines in furthe
     learning with neural networks, and structured prediction are all directions we would like
     to explore.
 
-
+\bibliographystyle{abbrvnat}
+\bibliography{report}
 
 \end{document}
