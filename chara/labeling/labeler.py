@@ -1,6 +1,6 @@
 from subprocess import check_call, check_output
 import os, re, unicodedata, string, subprocess, operator
-from resolve.disambiguation import *
+from chara.resolve.disambiguation import *
 from optparse import OptionParser
 import networkx as nx
 from networkx.algorithms import bipartite

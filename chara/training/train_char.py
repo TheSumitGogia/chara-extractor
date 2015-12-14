@@ -1,6 +1,6 @@
-from resolve.disambiguation import find_unique_characters
+from chara.resolve.disambiguation import find_unique_characters
 from evaluation import evaluate_candidates
-from labeling.labeler import get_sparknote_characters_from_file
+from chara.labeling.labeler import get_sparknote_characters_from_file
 from sklearn import svm
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier, ExtraTreesClassifier
@@ -15,6 +15,7 @@ FEATURES_DIR = 'features'
 LABELS_DIR = 'labels'
 CHAR_FEATURES_EXTENSION = '_char_features_readable.txt'
 CHAR_LABELS_EXTENSION = '_non_unique_characters.txt'
+CHAR_FEATURE_FILTER = ''
 
 DEFAULT_FILTER = [
   #'count'
@@ -39,6 +40,10 @@ def evaluate_char(clf, book, scaler = None):
         cands_pred = cands[y_pred==1]
         cands_pred_unique = find_unique_characters(cands_pred)
         unresolved, duplicate, invalid= evaluate_candidates(characters, cands_pred_unique)
+
+        unresolve_rate = len(unresolved)*1.0/len(characters)
+        duplicate_rate = len(duplicate)*1.0/len(cands_pred_unique) if len(cands_pred_unique) != 0 else 0
+        invalid_rate = len(invalid)*1.0/len(cands_pred_unique) if len(cands_pred_unique) != 0 else 0
         if verbose:
             print "True"
             print characters
@@ -50,10 +55,6 @@ def evaluate_char(clf, book, scaler = None):
             print duplicate
             print "Invalid"
             print invalid
-
-        unresolve_rate = len(unresolved)*1.0/len(characters)
-        duplicate_rate = len(duplicate)*1.0/len(cands_pred_unique) if len(cands_pred_unique) != 0 else 0
-        invalid_rate = len(invalid)*1.0/len(cands_pred_unique) if len(cands_pred_unique) != 0 else 0
         print "Unresolve: %f, duplicate %f, invalid: %f" % (unresolve_rate, duplicate_rate, invalid_rate)
 
         return [unresolve_rate, duplicate_rate, invalid_rate, precision_rate, recall_rate]
@@ -119,7 +120,7 @@ def train_and_save(train_books, train, clf_name='clfparams', scale=True):
     trainfile.write('\n'.join(train_books))
     trainfile.close()
 
-def train_from_file_and_save(train_dir='clfdata', train, clf_name='char_clf', scale=True):
+def train_from_file_and_save(train, train_dir='clfdata', clf_fname='char_clf', scale=True):
     train_bfile = open(train_dir + '/books.txt', 'r')
     train_books = train_bfile.readlines()
     train_books = [book.strip() for book in train_books]
@@ -189,6 +190,10 @@ def train_grad_boost(X, y):
     clf = GradientBoostingClassifier(n_estimators=n_estimators)
     clf.fit(X,y)
     return clf
+
+def set_filters(filters):
+    global CHAR_FEATURE_FILTER
+    CHAR_FEATURE_FILTER = '|'.join('^%s$' % f for f in eval(filters))
 
 if __name__ == '__main__':
     parser = OptionParser()

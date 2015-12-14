@@ -7,7 +7,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier, ExtraTreesClassifier
 from sklearn.feature_extraction import DictVectorizer
-from labeling.labeler import get_sparknote_characters_from_file
+import chara.labeling
+from chara.labeling.labeler import get_sparknote_characters_from_file
 
 def generate_train_test(pct_train, seed, dir):
     if seed == None:

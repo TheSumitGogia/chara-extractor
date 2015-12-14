@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 from django.utils.encoding import smart_str, smart_unicode
 from subprocess import call
 from optparse import OptionParser
-from resolve.disambiguation import *
+from chara.resolve.disambiguation import *
 
 class Paragraph:
     def __init__(self, characters, index):

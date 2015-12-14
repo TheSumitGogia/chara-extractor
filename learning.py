@@ -11,17 +11,20 @@ def handle_getdata_command(args):
     seed = args.seed
     featdir = args.featdir
     labeldir = args.labeldir
+    filt = args.filter
     outdir = args.outdir
     if tp == 'char':
         train_char.FEATURES_DIR = featdir + '/characters'
         train_char.LABELS_DIR = labeldir
         train_books, test_books = train_common.generate_train_test(split, seed, featdir + '/characters')
+        train_char.set_filters(filt)
         train_char.get_and_save_data(train_books, outdir)
 
     elif tp == 'rel':
         train_pair.FEATURES_DIR = featdir + '/relations'
         train_pair.LABELS_DIR = labeldir
         train_books, test_books = train_common.generate_train_test(split, seed, featdir + '/relations')
+        train_pair.set_filters(filt)
         train_pair.get_and_save_data(train_books, outdir)
 
 def handle_train_command(args):
@@ -30,7 +33,6 @@ def handle_train_command(args):
     bias = args.bias
     degree = args.degree
     kernel = args.kernel
-    filt = args.filter
     outdir = args.outdir
     datadir = args.datadir
 
@@ -39,15 +41,13 @@ def handle_train_command(args):
         train_char.class_weight = {1:float(bias), 0:1}
         train_char.kernel = kernel
         train_char.degree = degree
-        train_char.filters = eval(filt)
-        train_char.train_from_file_and_save(datadir, train_method, outdir)
+        train_char.train_from_file_and_save(train_method, datadir, outdir)
     elif tp == 'rel':
         train_method = vars(train_pair)['train_%s' % model]
         train_pair.class_weight = {1:float(bias), 0:1}
         train_pair.kernel = kernel
         train_pair.degree = degree
-        train_pair.filters = eval(filt)
-        train_pair.train_from_file_and_save(datadir, train_method, outdir)
+        train_pair.train_from_file_and_save(train_method, datadir, outdir)
 
 if __name__ == '__main__':
 
@@ -69,8 +69,10 @@ if __name__ == '__main__':
     getdata_parser = subparsers.add_parser('getdata', help='get formatted train/test data for sklearn classifiers')
     getdata_parser.add_argument('-t', '--type', default='char', choices=['char', 'rel'], help='whether data is for characters or relations')
     getdata_parser.add_argument('-f', '--featdir', default='data/features', help='directory with character and relation features')
-    getdata_parser.add_argument('-s', '--split', default=0.7, help='ratio of training data for data split')
-    getdata.parser.add_argument('--seed', default=None, help='seed for random split')
+    getdata_parser.add_argument('-l', '--labeldir', default='data/labels', help='directory with character and relation labels')
+    getdata_parser.add_argument('-s', '--split', default=0.7, type=float, help='ratio of training data for data split')
+    getdata_parser.add_argument('-x', '--filter', default=[], help='feature filter, regex string list')
+    getdata_parser.add_argument('--seed', default=None, help='seed for random split')
     getdata_parser.add_argument('-o', '--outdir', default='data/training/clfdata', help='directory to output split data files to')
 
     # train command argument parsing
@@ -81,15 +83,14 @@ if __name__ == '__main__':
     train_parser.add_argument('--degree', default=2)
     train_parser.add_argument('-d', '--datadir', default='data/training/clfdata', help='directory with training data')
     train_parser.add_argument('-k', '--kernel', default='rbf')
-    train_parser.add_argument('-x', '--filter', default=[], help='feature filter, regex string list')
     train_parser.add_argument('-o', '--outdir', default='data/classifiers/clf', help='output directory for classifier parameters')
 
     args = parser.parse_args()
     '''
     if args.command == 'translate':
         handle_translate_command(args)
-    elif args.command == 'datasplit':
-        handle_datasplit_command(args)
     '''
+    if args.command == 'getdata':
+        handle_getdata_command(args)
     if args.command == 'train':
         handle_train_command(args)

@@ -1,5 +1,5 @@
-from labeling import *
-from resolve.disambiguation import *
+from chara.labeling import *
+from chara.resolve.disambiguation import *
 import networkx as nx
 import matplotlib.pyplot as plt
 

@@ -1,5 +1,5 @@
-from resolve.disambiguation import find_unique_characters
-from labeling.labeler import get_sparknote_characters_from_file
+from chara.resolve.disambiguation import find_unique_characters
+from chara.labeling.labeler import get_sparknote_characters_from_file
 from matplotlib import pyplot as plt
 from optparse import OptionParser
 import numpy as np
@@ -10,6 +10,7 @@ FEATURES_DIR = 'features'
 LABELS_DIR = 'labels'
 PAIR_FEATURES_EXTENSION = '_pair_features_readable.txt'
 PAIR_LABELS_EXTENSION = '_non_unique_relations.txt'
+PAIR_FEATURE_FILTER = ''
 
 DEFAULT_FILTER = [
   #'cooc.*'
@@ -92,7 +93,7 @@ def train_and_save(train_books, train, clf_fname, scale=True):
     trainfile.write('\n'.join(train_books))
     trainfile.close()
 
-def train_from_file_and_save(train_dir='clfdata', train, clf_name='rel_clf', scale=True):
+def train_from_file_and_save(train, train_dir='clfdata', clf_name='rel_clf', scale=True):
     train_bfile = open(train_dir + '/books.txt', 'r')
     train_books = train_bfile.readlines()
     train_books = [book.strip() for book in train_books]
@@ -161,6 +162,10 @@ def train_grad_boost(X, y):
     clf = GradientBoostingClassifier(n_estimators=n_estimators)
     clf.fit(X,y)
     return clf
+
+def set_filters(filters):
+    global PAIR_FEATURE_FILTER
+    PAIR_FEATURE_FILTER = '|'.join('^%s$' % f for f in filters)
 
 if __name__ == '__main__':
     parser = OptionParser()
