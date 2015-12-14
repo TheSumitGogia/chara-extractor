@@ -13,7 +13,7 @@ from chara.labeling.labeler import get_sparknote_characters_from_file
 def generate_train_test(pct_train, seed, dir):
     if seed == None:
         seed = int(time.time())
-    print "seed " + seed
+    #print "seed ", seed
     random.seed(seed)
     books = set(map(lambda f: f.split('_')[0], \
                     filter(lambda f: not f.endswith('.swp'),
@@ -23,7 +23,7 @@ def generate_train_test(pct_train, seed, dir):
     return train_set, test_set
 
 def read_features(book, dir, extension, feature_filter):
-    print book
+    #print book
     file = dir + '/' + book + extension
 
     with open(file) as f:

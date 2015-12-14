@@ -1,4 +1,4 @@
-from chara.labeling import *
+from chara.labeling.labeler import *
 from chara.resolve.disambiguation import *
 import networkx as nx
 import matplotlib.pyplot as plt

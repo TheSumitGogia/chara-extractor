@@ -71,18 +71,18 @@ if __name__ == '__main__':
     getdata_parser.add_argument('-f', '--featdir', default='data/features', help='directory with character and relation features')
     getdata_parser.add_argument('-l', '--labeldir', default='data/labels', help='directory with character and relation labels')
     getdata_parser.add_argument('-s', '--split', default=0.7, type=float, help='ratio of training data for data split')
-    getdata_parser.add_argument('-x', '--filter', default=[], help='feature filter, regex string list')
+    getdata_parser.add_argument('-x', '--filter', default='[]', help='feature filter, regex string list')
     getdata_parser.add_argument('--seed', default=None, help='seed for random split')
     getdata_parser.add_argument('-o', '--outdir', default='data/training/clfdata', help='directory to output split data files to')
 
     # train command argument parsing
     train_parser = subparsers.add_parser('train', help='train binary classifier on features and labels')
     train_parser.add_argument('-t', '--type', default='char', choices=['char', 'rel'], help='whether to train character or relation classifier')
-    train_parser.add_argument('-m', '--model', default='svm')
-    train_parser.add_argument('-b', '--bias', default=2)
-    train_parser.add_argument('--degree', default=2)
+    train_parser.add_argument('-m', '--model', default='svm', help='classification model')
+    train_parser.add_argument('-b', '--bias', default=2, type=int, help='positive class weight')
+    train_parser.add_argument('--degree', default=2, help='degree of polynomial kernel if used')
     train_parser.add_argument('-d', '--datadir', default='data/training/clfdata', help='directory with training data')
-    train_parser.add_argument('-k', '--kernel', default='rbf')
+    train_parser.add_argument('-k', '--kernel', default='rbf', help='kernel for kernel-based models')
     train_parser.add_argument('-o', '--outdir', default='data/classifiers/clf', help='output directory for classifier parameters')
 
     args = parser.parse_args()

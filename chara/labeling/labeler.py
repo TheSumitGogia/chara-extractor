@@ -139,7 +139,7 @@ def get_char_features_from_file(book, temp, feature_directory):
         features = eval(lines[0])
     return features.keys()
 
-def get_sparknote_characters_from_file(book, sndir='sparknotes/extracted'):
+def get_sparknote_characters_from_file(book, sndir='data/sparknotes/extracted'):
     try:
         with open(sndir + '/%s_characters.txt' % book) as f:
             line = f.readline()

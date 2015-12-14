@@ -115,7 +115,7 @@ def train_and_save(train_books, train, clf_name='clfparams', scale=True):
     if not os.path.exists(clf_fname):
         os.makedirs(clf_fname)
     joblib.dump(clf, clf_fname + '/' + 'classifier.pkl')
-    joblib.dump(clf, clf_fname + '/' + 'scaler.pkl')
+    joblib.dump(scaler, clf_fname + '/' + 'scaler.pkl')
     trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
     trainfile.write('\n'.join(train_books))
     trainfile.close()
@@ -134,31 +134,31 @@ def train_from_file_and_save(train, train_dir='clfdata', clf_fname='char_clf', s
     if not os.path.exists(clf_fname):
         os.makedirs(clf_fname)
     joblib.dump(clf, clf_fname + '/' + 'classifier.pkl')
-    joblib.dump(clf, clf_fname + '/' + 'scaler.pkl')
+    joblib.dump(scaler, clf_fname + '/' + 'scaler.pkl')
     trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
     trainfile.write('\n'.join(train_books))
 
-def evaluate_clf_from_file(clf_dirname, books=None):
-    if not books:
-        books = set(map(lambda f: f.split('_')[0], \
-                        filter(lambda f: not f.endswith('.swp'),
-                                os.listdir(FEATURES_DIR))))
-        train_bkfile = open(clf_dirname + '/train_books.txt', 'r')
-        train_books = train_bkfile.readlines()
-        train_books = set([train_books.strip()])
+def evaluate_clf_from_file(clf_dirname, testbooks=None):
+    books = set(map(lambda f: f.split('_')[0], \
+                    filter(lambda f: not f.endswith('.swp'),
+                            os.listdir(FEATURES_DIR))))
+    train_bkfile = open(clf_dirname + '/train_books.txt', 'r')
+    train_books = train_bkfile.readlines()
+    train_books = set([book.strip() for book in train_books])
+    if not testbooks:
         test_books = books.difference(train_books)
     else:
-        test_books = books
+        test_books = set(testbooks)
 
     clf = joblib.load(clf_dirname + '/classifier.pkl')
     scaler = joblib.load(clf_dirname + '/scaler.pkl')
 
-    train_perf = evaluate_books(clf, train_books, scaler, evaluate_char)
+    if not testbooks:
+        train_perf = evaluate_books(clf, train_books, scaler, evaluate_char)
+        print 'Train Non-unique Precision:', train_perf[3], 'Non-unique Recall:', train_perf[4]
+        print "Train Unresolve: %f, duplicate %f, invalid: %f" % (train_perf[0], train_perf[1], train_perf[2])
     test_perf = evaluate_books(clf, test_books, scaler, evaluate_char)
-
-    print 'Train Non-unique Precision:', train_perf[3], 'Non-unique Recall:', train_perf[4]
     print 'Test Non-unique Precision:', test_perf[3], 'Recall:', test_perf[4]
-    print "Train Unresolve: %f, duplicate %f, invalid: %f" % (train_perf[0], train_perf[1], train_perf[2])
     print "Test Overall Unresolve: %f, duplicate %f, invalid: %f" % (test_perf[0], test_perf[1], test_perf[2])
 
 # traning methods for different training models

@@ -88,7 +88,7 @@ def train_and_save(train_books, train, clf_fname, scale=True):
     if not os.path.exists(clf_fname):
         os.makedirs(clf_fname)
     joblib.dump(clf, clf_fname + '/' + 'classifier.pkl')
-    joblib.dump(clf, clf_fname + '/' + 'scaler.pkl')
+    joblib.dump(scaler, clf_fname + '/' + 'scaler.pkl')
     trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
     trainfile.write('\n'.join(train_books))
     trainfile.close()
@@ -107,7 +107,7 @@ def train_from_file_and_save(train, train_dir='clfdata', clf_name='rel_clf', sca
     if not os.path.exists(clf_fname):
         os.makedirs(clf_fname)
     joblib.dump(clf, clf_fname + '/' + 'classifier.pkl')
-    joblib.dump(clf, clf_fname + '/' + 'scaler.pkl')
+    joblib.dump(scaler, clf_fname + '/' + 'scaler.pkl')
     trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
     trainfile.write('\n'.join(train_books))
 
@@ -117,7 +117,7 @@ def evaluate_clf_from_file(clf_dirname, featdir):
                             os.listdir(featdir))))
     train_bkfile = open(clf_dirname + '/train_books.txt', 'r')
     train_books = train_bkfile.readlines()
-    train_books = set([train_books.strip()])
+    train_books = set([book.strip() for book in train_books])
     test_books = books.difference(train_books)
 
     clf = joblib.load(clf_dirname + '/classifier.pkl')
@@ -165,7 +165,7 @@ def train_grad_boost(X, y):
 
 def set_filters(filters):
     global PAIR_FEATURE_FILTER
-    PAIR_FEATURE_FILTER = '|'.join('^%s$' % f for f in filters)
+    PAIR_FEATURE_FILTER = '|'.join('^%s$' % f for f in eval(filters))
 
 if __name__ == '__main__':
     parser = OptionParser()
