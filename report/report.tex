@@ -269,7 +269,77 @@ In the following sections, we discuss the components of both pipelines in furthe
         scheme is certainly not perfect, we observed it to work well, and relied on the classification
         methods to deal with the noise in it.
 
+    \subsection{Disambiguation}
+        Our rule-based disambiguation is meant to resolve multiple different mentions of the same character
+        to a single one.  The reasoning behind using a rule-based approach rather than a learning approach is
+        twofold: we felt that all of the different ways to refer to a single character could be fairly well
+        enumerated, and since no pre-existing model existed for the disambiguation task we required, we wanted
+        to minize the amount of false positive matches and other confounding variables that would inevitably
+        arise from training our own model.
+
+        The disambiguation rules can be split into three broad categories:
+        \begin{itemize}
+            \item \emph{Partial reference} - resolves mentions of characters by partial mentions of their full
+            name, e.g. ``Huck" referring to ``Huck Finn".  This is accomplished by checking containment or partial
+            containment of a name within another.
+
+            \item \emph{Nickname resolution} - resolves mentions of characters by nickname, e.g. ``Huck" as
+            ``Huckleberry".  This is accomplished by a combination of fuzzy string matching, prefix similarity, and
+            partial containment.
+
+            \item \emph{Title resolution} - resolves mentions of characters named by title to their full name, e.g.
+            ``Mr. Finn" to ``Huckleberry Finn".  For this, we used a large name-gender database extracted from
+            Stanford's CoreNLP library to decide which names various gender dependent titles could map to, and then
+            look for partial containment in the remaining strings.
+        \end{itemize}
+
+        We view candidate names as nodes in a graph, and disambiguated a candidate name to another as directed edges
+        in the graph.  To enforce transitivity of disambiguation (i.e. if $A$ maps to $B$ and $B$ maps to $C$, then $A$
+        maps to $C$), we then insert additional edges from each node to all reachable other nodes.  This is implemented
+        as a sequence of depth-first searches from each node to determine connectivity and reachability.
+
+        As discussed above, our disambiguation model is used during feature extraction to determine coreference
+        features.  At a high level, this essentially accounts for different mentions of the same character within the
+        raw text of the book.
+
+        However, we also need to account for discrepancies between the book's mentions of a character and Sparknotes'
+        mentions of the same character.  Often times, the official Sparknotes name for a character may be the character's
+        full, formal name, or otherwise have annotated parenthetical information, whereas the character may never be
+        referred to that way in the book.  Thus, we also use our disambiguation model to resolve mentions between candidate
+        names in the book and candidate names on Sparknotes.  This is used during the labeling and evaluation processes,
+        to label potential candidates as characters in the input to the model, and to evaluate the number of correctly
+        labeled characters in the output of the model.
+
+
     \subsection{Data Collection}
+        The goal of the data collection phase is to compile a collection of raw texts and Sparknotes
+        character annotations for as many books as possible.  To this end, data collection is divided into
+        two phases: first, gathering a list of books with character descriptions available on Sparknotes,
+        and second, crossreferencing this list with Project Gutenberg to find those books with their text
+        available online and in the public domain.
+
+        Project Gutenberg is a digital library of over 50,000 literary works; however, only a very small
+        subset of these works are also found on Sparknotes.  The intersection of these two sets consists
+        mostly of older ``classical" literature, such as \emph{Don Quixote} or \emph{Great Expectations}, 
+        whose copyrights don't exist or have expired.  This is important in understanding the types of texts
+        we train our models on.
+
+        To extract character descriptions from Sparknotes, we crawl their website alphabetically and extract
+        the ``Character List" pages.  From these pages, we can also extract title and author information.  The
+        title and author information is then searched in the Project Gutenberg index.  This index is a text
+        file mapping Project Gutenberg entries by title and author to a unique id number.  The id number is used
+        to find and download the raw text from the main Project Gutenberg website or a certified mirror.  We
+        used the \texttt{gutenberg} PyPI to assist in fetching the texts from a mirror site.
+
+        The index is well formatted, but there are still a large number of inconsistencies, in the form of
+        misspellings or alternate spellings, as well as duplicate entries and entries in languages besides
+        English.  As a result, we have a large number of error checks in place to account for misspellings and
+        to ensure that the raw texts we retrieve are all in English.
+
+        The final filtering we perform is to eliminate plays and poems from the Gutenberg results.  Since the
+        language type and formatting is so different for these mediums, it may skew our learning models and
+        extracted features.  To do this, we cross reference the text names with Google search results for the
+        title and author to determine whether the text is a book.
 
     \subsection{Classification}
 
