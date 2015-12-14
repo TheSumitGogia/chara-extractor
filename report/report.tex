@@ -35,7 +35,7 @@
 
 \begin{abstract}
 
-We present a method for extracting salient characters and recognizing salient character relationships from literature. As opposed to previous work which extracts \emph{social} networks by examining dialogue \emph{given} characters, our trained system finds characters and relationships directly from raw novel text. Our approach utilizes a novel supervised learning approach where we retrieve labels from a simple, digestible online source (Sparknotes) to train classifiers that identify characters as salient or pairs of characters as related. Initial results show that even basic classification methods produce good performance for salient character extraction, while relationship detection warrants significant improvement. 
+We present a method for extracting salient characters and recognizing salient character relationships from literature. As opposed to previous work which extracts \emph{social} networks by examining dialogue \emph{given} characters, our trained system finds characters and relationships directly from raw novel text. We take a novel supervised learning approach where we retrieve labels from a simple, digestible online source (Sparknotes) to train classifiers that identify characters as salient or pairs of characters as related. Initial results show that even basic classification methods produce good performance for salient character extraction, while relationship detection warrants significant improvement. 
 
 \end{abstract}
 
@@ -73,7 +73,7 @@ Our approach to creating these extractors is to use binary classifiers that act 
 
 \subsection{Named Entity Recognition}
 
-    Our first problem of character extraction can is closely related to NER problems. The goal in NER tasks
+    Our first problem of character extraction is closely related to NER problems. The goal in NER tasks
     is to label text token sequences as special entities with respect to the rest of the text. Similarly, in 
     character extraction the goal is to recognize identifiable unique references to major characters, which
     we take to fall in the class of consecutive token sequences. \\
@@ -169,9 +169,9 @@ In the following sections, we discuss the components of both pipelines in furthe
         this rule, but we did not observe any.\\
 
         This rule-based approach also faces potential issues in that unmeaningful token sequences such as
-        ``the woman" in a book with many women may get passed and affect co-occurrence features; however,
-        we observe that co-occurrence with even these ``non-characters" is often important, and also
-        include weighted co-occurrence features to help account for this issue. Though we do not
+        ``the woman" in a book with many women may get passed and affect cooccurrence features; however,
+        we observe that cooccurrence with even these ``non-characters" is often important, and also
+        include weighted cooccurrence features to help account for this issue. Though we do not
         report numerical results, we observe that not including these candidates does not affect 
         end performance.
 
@@ -187,11 +187,13 @@ In the following sections, we discuss the components of both pipelines in furthe
         There are actually a large number of features included for each feature type, arising from a number
         of normalization schemes we use to account for differences between novels. We do not expect
         all of these to be particularly helpful, and instead count on our learning methods ruling out
-        noisy or uncorrelated features. Details for features of each feature type are described below.
+        noisy or uncorrelated features. The main subclasses of features for each feature type 
+        are described below; we avoid detailing each particular feature for space, and because
+        those not described are very similar to at least one of the subclasses described.
 
         \subsubsection{Tag Features}
         
-        What we call \emph{tag} features refer to just features dependent on capitalization of tokens in
+        What we call \emph{tag} features refer to features dependent on capitalization of tokens in
         candidates, and whether Stanford's CoreNLP NER tagger (insert reference) labeled tokens as 
         named entities or not. We noted that while current NER systems such as Stanford's were
         not very good at understanding when titles or modifiers were parts of names, they frequently
@@ -209,11 +211,11 @@ In the following sections, we discuss the components of both pipelines in furthe
 
         Frequency features are indications of how often a candidate appears in the given novel. We include 
         these since we expect salient characters and relationships to be tied to how often they occur. 
-        The simplest feature of this type is just the raw frequency of how many times a candidate
+        The simplest feature of this type is the raw frequency of how many times a candidate
         appears in the novel. However, we include many variations on this feature to account for
         differences in book lengths and differences in general candidate reference frequency across books.
-        These include frequencies for different section types (sentence, paragraph, and chapter), as well
-        as normalization across the number of sections and total number of section mentiones for candidates.
+        These include frequencies for candidates across different section types (sentence, paragraph, and chapter), as well
+        as normalization across the number of sections and total number of section mentions for candidates.
         Explicitly, for section type $s$, we have:
         
         \[\mbox{count}_s(\mbox{candidate}) = \mbox{(\# of sections candidate appears in)}\]
@@ -294,9 +296,11 @@ In the following sections, we discuss the components of both pipelines in furthe
     and recall (UR) as well, where output characters are first disambiguated, and then matched to
     the pure Sparknotes characters. \\
     
-    The qualitative metrics included visual verification of characters and relationships found 
-    by the classifiers for test novels. For all our classifiers mentioned in this section, we 
-    used a training data ratio of $0.7$. 
+    The qualitative metrics included visual verification of characters found 
+    by the classifiers for test novels. We avoid showing qualitative metrics for our 
+    relationship identifier due to the clearly poor performance we observed - visually
+    printing relationships found did not appear to give us any information on the poor performance. 
+    For all our classifiers mentioned in this section, we used a training data ratio of $0.7$. 
 
     \subsection{Character Extraction}
         
@@ -326,9 +330,22 @@ In the following sections, we discuss the components of both pipelines in furthe
         features do not stop at least one of the true character references passing the classifier. \\
 
         The overall performance of our approach, while promising however, does not appear high enough to warrant
-        adoption for literary purposes, with precision and recall both roughly $65\%$. It would appear
-        that the features chosen are not expressive enough for this task, or that the derived features
-        from our kernels are not expressive enough.  
+        adoption for literary purposes, with precision and recall both roughly $65\%$. It seems 
+        that the features chosen are still not expressive enough for this task, or that the derived features
+        from our kernels are not expressive enough. \\
+
+        However, we recognize another source of error from looking at the characters output by our
+        character extractors:
+    
+        %% TODO: Insert character classifier output
+
+        The characters output by our classifier do appear to be considerably important to their
+        respective novels, it is just that Sparknotes does not label them in their character lists.
+        It is difficult to say if this is just because truly aggregating sources shows these
+        characters are not significant, or if the aggregation that Sparknotes has is not properly
+        representative, as some books have what we see as very obvious characters left
+        out of Sparknotes' salient character list. This is the issue we noted in our data
+        collection when comparing the automatically collected data with manual tags. 
 
     \subsection{Relationship Identification}
 
@@ -340,8 +357,46 @@ In the following sections, we discuss the components of both pipelines in furthe
         are recognized as salient for each book; relationships are not like this. \\
 
         The two versions of our method are again differentiated in feature sets: for Version 1 we only used
-        pairs' normalized coocurrence for each section type, while for Version 2 we use all features 
+        pairs' normalized coocurrence for each section type, while for Version 2 we use the concatenated
+        individual candidate features as well. Unfortunately, while we were able to train the random
+        forest classifier for the data, given the large number of training samples (on the order of hundreds
+        of thousands), we were not able to train the SVM, which we saw to give better results
+        in the character extraction. Results for our baseline and the random forest with our two
+        features sets are shown in table below.
+
+        %% TODO: INSERT RESULTS TABLE
+
+        It would seem clear from the results that coocurrence is not a defining enough feature type to
+        identify salient relationships. Our baseline achieves very low precision and recall, and while
+        our trained classifiers perform slightly better, they also have poor performance. One possibility
+        is that we need to add entirely different feature types, or take significantly different
+        approaches. \\
+
+        On the other hand, we also note that for the same data issues with the character extractor,
+        the relationship identifier has problems as well. In fact, when we compare our own personal
+        knowledge of novels with the relationships obtained from Sparknotes, it is frequent that
+        Sparknotes does not identify a large number of relationships which seem clearly salient in
+        just the character descriptions. For example, in the \emph{Lord of the Rings} novels,
+        relationships between Frodo and nearly half of the Fellowship are unlisted, when they all
+        spend the entirety of the novel traveling together for a common purpose. Since we find that
+        this issue is significantly more egregious for relationships than characters, we expect
+        that it is important to explaining the poor classifier performance.
 
 \section{Conclusion}
+
+    In this paper we have motivated the problems of salient character extraction and relationship
+    identification from raw novel text, and described a supervised classification-based approach to
+    solving them. The features we use are very similar in spirit to those in NER systems,
+    and our labeling is made feasible due to automated scraping from a source with simply-parseable
+    data. We find that the approach gives promising performance for character extraction,
+    even with possible issues in labeled data, capturing importance particularly with frequency
+    features; however, the performance for relationship identification is poor, indicating
+    significant issues with labeling via Sparknotes or lack of expressiveness in the features
+    described. The results indicate many directions for future work: improvement in labeling
+    by aggregating different resources such as Wikipedia, better feature sets via design or by
+    learning with neural networks, and structured prediction are all directions we would like
+    to explore.
+
+
 
 \end{document}
