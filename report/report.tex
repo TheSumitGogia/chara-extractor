@@ -38,7 +38,7 @@
 
 \begin{abstract}
 
-We present a method for extracting salient characters and recognizing salient character relationships from literature. As opposed to previous work which extracts \emph{social} networks by examining dialogue \emph{given} characters, our trained system finds characters and relationships directly from raw novel text. We take a novel supervised learning approach where we retrieve labels from a simple, digestible online source (Sparknotes) to train classifiers that identify characters as salient or pairs of characters as related. Initial results show that even basic classification methods produce good performance for salient character extraction, while relationship detection warrants significant improvement. 
+    We present a method for extracting salient characters and recognizing salient character relationships from literature. As opposed to previous work which extracts \emph{social} networks by examining dialogue \emph{given} characters, our trained system finds characters and relationships directly from raw novel text. We take a novel supervised learning approach where we retrieve labels from a simple, digestible online source (Sparknotes) to train classifiers that identify characters as salient or pairs of characters as related. Initial results show that even basic classification methods produce good performance for salient character extraction, while relationship detection warrants significant improvement\footnote{All code for this project can be found at \url{https://github.mit.edu/summit/chara-extractor}}. 
 
 \end{abstract}
 
@@ -300,7 +300,7 @@ In the following sections, we discuss the components of both pipelines in furthe
 
         We use our rule-based disambiguation to then compute these features. For each candidate we
         find the candidates that are disambiguated to, and candidates that disambiguate to it
-        (the difference between Tom Sawyer $\to$ Sawyer and Sawyer $\to$ Tom Sawyer), then sum
+        (the difference between ``Tom Sawyer" $\to$ ``Sawyer" and ``Sawyer" $\to$ ``Tom Sawyer"), then sum
         the different frequency features for candidates from those two types of coreference.
 
     \subsection{Data Collection}
@@ -311,7 +311,7 @@ In the following sections, we discuss the components of both pipelines in furthe
         \begin{enumerate}
                 \setlength\itemsep{0em}
                 \item Gather a list of books with character descriptions available on Sparknotes
-                \item Crossreference the list with Project Gutenberg to optain books with public, online text
+                \item Crossreference the list with Project Gutenberg \cite{gutenberg} to optain books with public, online text
                 \item Extract candidates from the obtained raw texts
                 \item Label the candidates for each novel by using the Sparknotes character descriptions
         \end{enumerate}
@@ -353,7 +353,7 @@ In the following sections, we discuss the components of both pipelines in furthe
         two methods have been shown to have been shown to perform well for a variety of
         classification problems, are particularly useful to avoid overfitting \cite{hearst1998support,breiman2001random},
         and were accessible through Python's \texttt{scikit-learn}.
-        We expected that $100$ novels was not enough to represent the novel space very comletely,
+        We expected that $100$ novels was not enough to represent the novel space very completely,
         making overfitting avoidance more important. \\
 
         We also note that our datasets, both for characters and relationships, are imbalanced.
@@ -399,7 +399,25 @@ In the following sections, we discuss the components of both pipelines in furthe
         extraction task. A table describing the results of all $3$ methods is shown below. 
 
         %% TODO: INSERT RESULTS TABLE
-
+        \begin{table}[H]
+        \begin{center}
+            \begin{tabular}{l|c|c|c|c}
+                \textbf{Method} & \textbf{Precision} & \textbf{Recall} & \textbf{Unique Prec.} & \textbf{Unique Recall} \\
+                \hline
+                Baseline & 0 & 0 & 0 & 0 \\
+                \hline
+                Version 1 (SVM, RBF) & 0 & 0 & 0 & 0 \\
+                \hline
+                Version 1 (RF) & 0 & 0 & 0 & 0 \\
+                \hline
+                Version 2 (SVM, RBF) & 0.664 & 0.681 & 0.684 & 0.593 \\
+                \hline
+                Version 2 (RF) & 0.756 & 0.490 & 0.745 & 0.511  
+                
+            \end{tabular}
+        \end{center}
+        \caption{Test precision and recall for our character extractor.}
+        \end{table}
         We notice first that both variations of our method significantly outperform the baseline, regardless
         of the classification method used. This indicates that the classification approach is useful,
         since the various features can be used for discrimination, and the high dimensionality of the feature
@@ -416,12 +434,18 @@ In the following sections, we discuss the components of both pipelines in furthe
         from our kernels are not expressive enough. \\
 
         However, we recognize another source of error from looking at the characters output by our
-        character extractors:
+        character extractors. Here we show \emph{Crime and Punishment} output for example:
     
         %% TODO: Insert character classifier output
+        \begin{itemize}
+            \item[\emph{True:}]
+                Katerina Ivanovna, Sonechka, Lebezyatnikov, Zossimov, Alexander Zamyotov, Dmitri Razumikhin, Lizaveta, Seymon Marmeladov, Ilya Petrovich, Luzhin, Arkady Svidrigailov, Polya, Mikolka, Nastenka, Alyona Ivanovna, Raskolnikov, Porfiry Petrovich, Pulcheria
+            \item[\emph{Predicted:}]
+                Zossimov, Lizaveta, Raskolnikov, Svidrigailov, Nastasya, Razumikhin, Nikolay, Lebeziatnikov, Sonia, \textbf{Dounia}, Zametov, Luzhin, \textbf{Amalia Ivanovna}, Sonechka, Porfiry Petrovich, Katerina Ivanovna, Pulcheria, \textbf{Marfa Petrovna}, Ilya Petrovich 
+        \end{itemize}
 
         The characters output by our classifier do appear to be considerably important to their
-        respective novels, it is just that Sparknotes does not label them in their character lists.
+        respective novels, it is just that Sparknotes does not label them in their character lists (or has alternate spellings we miss).
         It is difficult to say if this is just because truly aggregating sources shows these
         characters are not significant, or if the aggregation that Sparknotes has is not properly
         representative, as some books have what we see as very obvious characters left
@@ -446,11 +470,33 @@ In the following sections, we discuss the components of both pipelines in furthe
         features sets are shown in table below.
 
         %% TODO: INSERT RESULTS TABLE
+        \begin{table}[H]
+        \begin{center}
+            \begin{tabular}{l|c|c}
+                \textbf{Method} & \textbf{Precision} & \textbf{Recall} \\ 
+                \hline
+                Baseline & 0 & 0 \\
+                \hline
+                Version 1 (RF) & 0 & 0 \\
+                \hline
+                Version 1 (SVM, RBF) & 0.188 & 0.994 \\
+                \hline
+                Version 2 (RF) & 0 & 0 \\ 
+                \hline
+                Version 2 (SVM, RBF) & NA & NA 
+                
+            \end{tabular}
+            \caption{Precision/Recall for the relationship identifier. Note that results for the SVM with all features is unreported due to unfinished training.}
+        \end{center}
+        \end{table}
 
-        It would seem clear from the results that coocurrence is not a defining enough feature type to
+        Our recall is particularly high in cases because of the high bias towards positive examples.
+        We noted that if we reduced this high bias, recall dramatically dropped and precision did not improve. 
+        We attempt to explain our issues in the following paragraphs.
+
+        It would seem from the results that coocurrence is not a defining enough feature type to
         identify salient relationships. Our baseline achieves very low precision and recall, and while
-        our trained classifiers perform slightly better, they also have poor performance. One possibility
-        is that we need to add entirely different feature types, or take significantly different
+        our trained classifiers perform better, they also have poor performance. We may need to add entirely different feature types, or take significantly different
         approaches. \\
 
         On the other hand, we also note that for the same data issues with the character extractor,
@@ -461,7 +507,7 @@ In the following sections, we discuss the components of both pipelines in furthe
         relationships between Frodo and nearly half of the Fellowship are unlisted, when they all
         spend the entirety of the novel traveling together for a common purpose. Since we find that
         this issue is significantly more egregious for relationships than characters, we expect
-        that it is important to explaining the poor classifier performance.
+        that it is important to explaining the poor classifier performance, and also the particular precision/recall trade-off we see.
 
 \section{Conclusion}
 
