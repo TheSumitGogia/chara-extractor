@@ -40,7 +40,7 @@ running:
 3. To reproduce our results, and likely for your own organization as well, you will want to download
    our full data folder from MIT Dropbox:
 
-    <https://www.dropbox.com/s/af02rfka01sbtdu/chara_extractor_data.tar.gz?dl=0> 
+    <https://www.dropbox.com/s/pixv8rdcolo8pe3/data.zip?dl=0>
 
    and unzip it at the level of the main scripts (`evaluate`, `collect`,...). 
    While our scripts provide decent high-level functionality
