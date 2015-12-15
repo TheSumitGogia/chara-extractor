@@ -110,3 +110,4 @@ def evaluate_books(clf, books, scaler, evaluate):
     perfs = np.array(perfs)
     mean = np.mean(perfs, axis=0)
     return mean
+

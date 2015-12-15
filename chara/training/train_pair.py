@@ -1,5 +1,10 @@
 from chara.resolve.disambiguation import find_unique_characters
+from evaluation import evaluate_candidates
 from chara.labeling.labeler import get_sparknote_characters_from_file
+from sklearn import svm
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier, ExtraTreesClassifier
+from sklearn.externals import joblib
 from matplotlib import pyplot as plt
 from optparse import OptionParser
 import numpy as np
@@ -20,7 +25,7 @@ DEFAULT_FILTER = [
 
 def evaluate_pair(clf, book, scaler = None):
     print book
-    X, y, cands = get_pair_data([book])
+    X, y, cands = get_data([book], FEATURES_DIR, PAIR_FEATURES_EXTENSION, LABELS_DIR, PAIR_LABELS_EXTENSION, PAIR_FEATURE_FILTER)
     if scaler != None:
         X = scaler.transform(X)
 
@@ -93,7 +98,7 @@ def train_and_save(train_books, train, clf_fname, scale=True):
     trainfile.write('\n'.join(train_books))
     trainfile.close()
 
-def train_from_file_and_save(train, train_dir='clfdata', clf_name='rel_clf', scale=True):
+def train_from_file_and_save(train, train_dir='clfdata', clf_fname='rel_clf', scale=True):
     train_bfile = open(train_dir + '/books.txt', 'r')
     train_books = train_bfile.readlines()
     train_books = [book.strip() for book in train_books]
@@ -111,27 +116,27 @@ def train_from_file_and_save(train, train_dir='clfdata', clf_name='rel_clf', sca
     trainfile = open(clf_fname + '/' + 'train_books.txt', 'w')
     trainfile.write('\n'.join(train_books))
 
-def evaluate_clf_from_file(clf_dirname, featdir):
+def evaluate_clf_from_file(clf_dirname, testbooks=None):
     books = set(map(lambda f: f.split('_')[0], \
                     filter(lambda f: not f.endswith('.swp'),
-                            os.listdir(featdir))))
+                            os.listdir(FEATURES_DIR))))
     train_bkfile = open(clf_dirname + '/train_books.txt', 'r')
     train_books = train_bkfile.readlines()
     train_books = set([book.strip() for book in train_books])
-    test_books = books.difference(train_books)
+    if not testbooks:
+        test_books = books.difference(train_books)
+    else:
+        test_books = set(testbooks)
 
     clf = joblib.load(clf_dirname + '/classifier.pkl')
     scaler = joblib.load(clf_dirname + '/scaler.pkl')
 
-    train_perf = evaluate_books(clf, train_books, scaler, evaluate_pair)
+    if not testbooks:
+        train_perf = evaluate_books(clf, train_books, scaler, evaluate_pair)
+        print 'Train Non-unique Precision:', train_perf[0], 'Non-unique Recall:', train_perf[1]
+    
     test_perf = evaluate_books(clf, test_books, scaler, evaluate_pair)
-
-    print 'Train Non-unique Precision:', train_perf[0], 'Non-unique Recall:', train_perf[1]
     print 'Test Non-unique Precision:', test_perf[0], 'Recall:', test_perf[1]
-    '''
-    print "Train Unresolve: %f, duplicate %f, invalid: %f" % (train_perf[0], train_perf[1], train_perf[2])
-    print "Test Overall Unresolve: %f, duplicate %f, invalid: %f" % (test_perf[0], test_perf[1], test_perf[2])
-    '''
 
 # traning methods for different training models
 def train_svm(X, y):

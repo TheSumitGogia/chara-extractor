@@ -161,6 +161,20 @@ def evaluate_clf_from_file(clf_dirname, testbooks=None):
     print 'Test Non-unique Precision:', test_perf[3], 'Recall:', test_perf[4]
     print "Test Overall Unresolve: %f, duplicate %f, invalid: %f" % (test_perf[0], test_perf[1], test_perf[2])
 
+def evaluate_baseline(test_books=None):
+    books = set(map(lambda f: f.split('_')[0], \
+                    filter(lambda f: not f.endswith('.swp'),
+                            os.listdir(FEATURES_DIR))))
+    if not testbooks:
+        test_books = books
+    else:
+        test_books = set(testbooks)
+
+    test_perf = evaluate_books_baseline(test_books)
+    print 'Test Non-unique Precision:', test_perf[3], 'Recall:', test_perf[4]
+    print "Test Overall Unresolve: %f, duplicate %f, invalid: %f" % (test_perf[0], test_perf[1], test_perf[2])
+
+
 # traning methods for different training models
 def train_svm(X, y):
     clf = svm.SVC(kernel=kernel, degree=degree, class_weight=class_weight)
