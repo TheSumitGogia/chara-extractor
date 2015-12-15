@@ -404,11 +404,11 @@ In the following sections, we discuss the components of both pipelines in furthe
             \begin{tabular}{l|c|c|c|c}
                 \textbf{Method} & \textbf{Precision} & \textbf{Recall} & \textbf{Unique Prec.} & \textbf{Unique Recall} \\
                 \hline
-                Baseline & 0 & 0 & 0 & 0 \\
+                Baseline & 0.347 & 0.486 & 0.351 & 0.508 \\
                 \hline
-                Version 1 (SVM, RBF) & 0 & 0 & 0 & 0 \\
+                Version 1 (SVM, RBF) & 0.642 & 0.544  & 0.638 & 0.572 \\
                 \hline
-                Version 1 (RF) & 0 & 0 & 0 & 0 \\
+                Version 1 (RF) & 0.619 & 0.441 & 0.615 & 0.497 \\
                 \hline
                 Version 2 (SVM, RBF) & 0.664 & 0.681 & 0.684 & 0.593 \\
                 \hline
@@ -454,20 +454,19 @@ In the following sections, we discuss the components of both pipelines in furthe
 
     \subsection{Relationship Identification}
 
-        For relationship identification we also implemented one simple baseline and two versions of our method.
+        For relationship identification we also attempted to implement one simple baseline and two versions of our method.
         The baseline was analagous - instead we used pairs of characters whose coocurrence in paragraphs crossed 
         a manually-tuned threshold ($0.1$, normalized by number of paragraphs). Notably though, it does not
         limit the number of relationships identified, unlike the character extractor. This accords with a
         phenomenon we saw on Sparknotes: no matter how many characters there are, roughly the same number
         are recognized as salient for each book; relationships are not like this. \\
 
-        The two versions of our method are again differentiated in feature sets: for Version 1 we only used
-        pairs' normalized coocurrence for each section type, while for Version 2 we use the concatenated
-        individual candidate features as well. Unfortunately, while we were able to train the random
-        forest classifier for the data, given the large number of training samples (on the order of hundreds
-        of thousands), we were not able to train the SVM, which we saw to give better results
-        in the character extraction. Results for our baseline and the random forest with our two
-        features sets are shown in table below.
+        The two versions of our method are again differentiated in feature sets: for Version 1 we only use
+        pairs' normalized coocurrence for paragraphs, while for Version 2 we use the concatenated
+        individual candidate features as well. Unfortunately, given the large number of training 
+        samples (on the order of hundreds of thousands), we were not able to train the SVM, 
+        which we saw to give better results in the character extraction. 
+        Results for our baseline and the first feature set are shown in table below.
 
         %% TODO: INSERT RESULTS TABLE
         \begin{table}[H]
@@ -475,23 +474,19 @@ In the following sections, we discuss the components of both pipelines in furthe
             \begin{tabular}{l|c|c}
                 \textbf{Method} & \textbf{Precision} & \textbf{Recall} \\ 
                 \hline
-                Baseline & 0 & 0 \\
+                Baseline & 0.303 & 0.198 \\
                 \hline
-                Version 1 (RF) & 0 & 0 \\
+                Version 1 (RF) & 0.144 & 0.392 \\
                 \hline
                 Version 1 (SVM, RBF) & 0.188 & 0.994 \\
-                \hline
-                Version 2 (RF) & 0 & 0 \\ 
-                \hline
-                Version 2 (SVM, RBF) & NA & NA 
-                
             \end{tabular}
-            \caption{Precision/Recall for the relationship identifier. Note that results for the SVM with all features is unreported due to unfinished training.}
+            \caption{Precision/Recall for the relationship identifier. Note that results for the models with all features is unreported due to unfinished training.}
         \end{center}
         \end{table}
 
         Our recall is particularly high in cases because of the high bias towards positive examples.
-        We noted that if we reduced this high bias, recall dramatically dropped and precision did not improve. 
+        We noted that if we reduced this high bias, recall and precision both moved to slightly
+        above the baseline. The trained result shown gave a much better F-score. 
         We attempt to explain our issues in the following paragraphs.
 
         It would seem from the results that coocurrence is not a defining enough feature type to
