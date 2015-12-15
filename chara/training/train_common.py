@@ -91,7 +91,7 @@ def get_data(books, features_dir, features_ext, labels_dir, labels_ext, feature_
         Xs.append(X)
         ys.append(y)
         cands.extend(labeled_cands)
-    return np.vstack(Xs), np.hstack(ys), np.array(cands)
+    return np.vstack(Xs), np.hstack(ys), np.array(cands), features
 
 def precision(y_pred, y_true):
     if sum(y_pred) == 0:
@@ -101,10 +101,10 @@ def precision(y_pred, y_true):
 def recall(y_pred, y_true):
     return float(sum(y_pred & y_true)) / sum(y_true)
 
-def evaluate_books(clf, books, scaler, evaluate):
+def evaluate_books(clf, books, scaler, evaluate, baseline=False):
     perfs = []
     for book in books:
-        perf = evaluate(clf, book, scaler)
+        perf = evaluate(clf, book, scaler, baseline)
         if perf is not None:
             perfs.append(perf)
     perfs = np.array(perfs)
