@@ -24,13 +24,28 @@ DEFAULT_FILTER = [
   #'coref_shorter_count_norm_char'
 ]
 
-def evaluate_char(clf, book, scaler = None):
+def evaluate_char(clf, book, scaler = None, baseline = False):
     print book
-    X, y, cands = get_data([book], FEATURES_DIR, CHAR_FEATURES_EXTENSION, LABELS_DIR, CHAR_LABELS_EXTENSION, CHAR_FEATURE_FILTER)
+    X, y, cands, features = get_data([book], FEATURES_DIR, CHAR_FEATURES_EXTENSION, LABELS_DIR, CHAR_LABELS_EXTENSION, CHAR_FEATURE_FILTER)
     if scaler != None:
         X = scaler.transform(X)
-
-    y_pred = clf.predict(X)
+    if baseline:
+        counts = X[:,features.index('count')]
+        lengths = X[:,features.index('length')]
+        one_grams_counts = counts
+        one_grams_counts[lengths != 1] = 0
+        top_one_grams = (-one_grams_counts).argsort()[:20]
+        bi_grams_counts = counts
+        bi_grams_counts[lengths != 2] = 0
+        top_bi_grams = (-bi_grams_counts).argsort()[:10]
+        tri_grams_counts = counts
+        bi_grams_counts[lengths != 3] = 0
+        top_tri_grams = (-tri_grams_counts).argsort()[:5]
+        
+        select = list(top_one_grams) + list(top_bi_grams) + list(top_tri_grams)
+        y_pred = np.array([1 if i in select else 0 for i in range(len(counts))])
+    else:
+        y_pred = clf.predict(X)
     precision_rate = precision(y_pred, y)
     recall_rate = recall(y_pred, y)
     print 'Non unqiue Precision:', precision(y_pred, y), 'Non unique Recall:', recall(y_pred, y)
@@ -66,8 +81,8 @@ def get_char_data(books, print_features=False):
 
 # `train` is a function that takes in training data and output clf
 def train_and_test(train_books, test_books, train, scale=True):
-    X_train, y_train, cands_train = get_char_data(train_books, True)
-    X_test, y_test, cands_test = get_char_data(test_books)
+    X_train, y_train, cands_train, features = get_char_data(train_books, True)
+    X_test, y_test, cands_test, features = get_char_data(test_books)
 
     scaler = None
     if scale:
@@ -94,7 +109,7 @@ def train_and_test(train_books, test_books, train, scale=True):
     return clf, scaler
 
 def get_and_save_data(books, outdir='clfdata'):
-    X, y, cands = get_char_data(books, True)
+    X, y, cands, features = get_char_data(books, True)
     if not os.path.exists(outdir):
         os.makedirs(outdir)
     np.save(outdir + '/char_features.npy', X)
@@ -105,7 +120,7 @@ def get_and_save_data(books, outdir='clfdata'):
 
 # `train` is a function that takes in training data and output clf
 def train_and_save(train_books, train, clf_name='clfparams', scale=True):
-    X_train, cands_train = get_char_data(train_books, True)
+    X_train, cands_train, features = get_char_data(train_books, True)
 
     scaler = None
     if scale:
@@ -166,15 +181,14 @@ def evaluate_baseline(test_books=None):
     books = set(map(lambda f: f.split('_')[0], \
                     filter(lambda f: not f.endswith('.swp'),
                             os.listdir(FEATURES_DIR))))
-    if not testbooks:
+    if not test_books:
         test_books = books
     else:
         test_books = set(testbooks)
 
-    test_perf = evaluate_books_baseline(test_books)
+    test_perf = evaluate_books(None, test_books, None, evaluate_char, True)
     print 'Test Non-unique Precision:', test_perf[3], 'Recall:', test_perf[4]
     print "Test Overall Unresolve: %f, duplicate %f, invalid: %f" % (test_perf[0], test_perf[1], test_perf[2])
-
 
 # traning methods for different training models
 def train_svm(X, y):

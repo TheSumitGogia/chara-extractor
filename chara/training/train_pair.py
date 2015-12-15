@@ -24,13 +24,18 @@ DEFAULT_FILTER = [
   #'coref_shorter_count_norm_char'
 ]
 
-def evaluate_pair(clf, book, scaler = None):
+def evaluate_pair(clf, book, scaler = None, baseline=False):
     print book
-    X, y, cands = get_data([book], FEATURES_DIR, PAIR_FEATURES_EXTENSION, LABELS_DIR, PAIR_LABELS_EXTENSION, PAIR_FEATURE_FILTER)
+    X, y, cands, features  = get_data([book], FEATURES_DIR, PAIR_FEATURES_EXTENSION, LABELS_DIR, PAIR_LABELS_EXTENSION, PAIR_FEATURE_FILTER)
     if scaler != None:
         X = scaler.transform(X)
-
-    y_pred = clf.predict(X)
+    
+    if baseline:
+        cooc = X[:,features.index('cooc_pg')]
+        top_cooc = (-cooc).argsort()[:len(y)/10+1]
+        y_pred = np.array([1 if i in top_cooc else 0 for i in range(len(cooc))])
+    else:
+        y_pred = clf.predict(X)
     precision_rate = precision(y_pred, y)
     recall_rate = recall(y_pred, y)
     print 'Non unqiue Precision:', precision_rate, 'Non unique Recall:', recall_rate
@@ -40,8 +45,8 @@ def get_pair_data(books, print_features=False):
     return get_data(books, FEATURES_DIR, PAIR_FEATURES_EXTENSION, LABELS_DIR, PAIR_LABELS_EXTENSION, PAIR_FEATURE_FILTER, print_features)
 
 def train_and_test(train_books, test_books, train, scale=True):
-    X_train, y_train, cands_train = get_pair_data(train_books, True)
-    X_test, y_test, cands_test = get_pair_data(test_books)
+    X_train, y_train, cands_train, features = get_pair_data(train_books, True)
+    X_test, y_test, cands_test, features = get_pair_data(test_books)
 
     scaler = None
     if scale:
@@ -72,7 +77,7 @@ def train_and_test(train_books, test_books, train, scale=True):
     return clf, scaler, X_train, y_train, X_test, y_test
 
 def get_and_save_data(books, outdir='clfdata'):
-    X, y, cands = get_pair_data(books, True)
+    X, y, cands, features = get_pair_data(books, True)
     if not os.path.exists(outdir):
         os.makedirs(outdir)
     np.save(outdir + '/rel_features.npy', X)
@@ -83,7 +88,7 @@ def get_and_save_data(books, outdir='clfdata'):
 
 # `train` is a function that takes in training data and output clf
 def train_and_save(train_books, train, clf_fname, scale=True):
-    X_train, cands_train = get_pair_data(train_books, True)
+    X_train, y_train, cands_train, features = get_pair_data(train_books, True)
 
     scaler = None
     if scale:
@@ -137,6 +142,18 @@ def evaluate_clf_from_file(clf_dirname, testbooks=None):
         print 'Train Non-unique Precision:', train_perf[0], 'Non-unique Recall:', train_perf[1]
 
     test_perf = evaluate_books(clf, test_books, scaler, evaluate_pair)
+    print 'Test Non-unique Precision:', test_perf[0], 'Recall:', test_perf[1]
+
+def evaluate_baseline(test_books=None):
+    books = set(map(lambda f: f.split('_')[0], \
+                    filter(lambda f: not f.endswith('.swp'),
+                            os.listdir(FEATURES_DIR))))
+    if not test_books:
+        test_books = books
+    else:
+        test_books = set(testbooks)
+
+    test_perf = evaluate_books(None, test_books, None, evaluate_pair, True)
     print 'Test Non-unique Precision:', test_perf[0], 'Recall:', test_perf[1]
 
 # traning methods for different training models

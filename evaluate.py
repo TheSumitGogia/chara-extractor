@@ -18,6 +18,7 @@ def handle_quant_command(args):
         train_char.verbose = False
         train_char.set_filters(filt)
         if baseline:
+            train_char.set_filters("['length', 'count']")
             train_char.evaluate_baseline()
         else:
             train_char.evaluate_clf_from_file(clfdir)
@@ -27,6 +28,7 @@ def handle_quant_command(args):
         train_pair.verbose = False
         train_pair.set_filters(filt)
         if baseline:
+            train_pair.set_filters("['cooc_pg']")
             train_pair.evaluate_baseline()
         else:
             train_pair.evaluate_clf_from_file(clfdir)
@@ -44,6 +46,7 @@ def handle_qual_command(args):
         train_char.verbose = True
         train_char.set_filters(filt)
         if baseline:
+            train_char.set_filters("['length', 'count']")
             train_char.evaluate_baseline()
         else:
             train_char.evaluate_clf_from_file(clfdir, books)
@@ -53,6 +56,7 @@ def handle_qual_command(args):
         train_pair.verbose = True
         train_pair.set_filters(filt)
         if baseline:
+            train_pair.set_filters("['cooc']")
             train_pair.evaluate_baseline()
         else:
             train_pair.evaluate_clf_from_file(clfdir, books)
