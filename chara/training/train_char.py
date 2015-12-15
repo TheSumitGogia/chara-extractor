@@ -16,6 +16,7 @@ LABELS_DIR = 'labels'
 CHAR_FEATURES_EXTENSION = '_char_features_readable.txt'
 CHAR_LABELS_EXTENSION = '_non_unique_characters.txt'
 CHAR_FEATURE_FILTER = ''
+n_estimators = None
 
 DEFAULT_FILTER = [
   #'count'
@@ -183,7 +184,11 @@ def train_svm(X, y):
 
 # random forest
 def train_rf(X, y):
-    clf = RandomForestClassifier(n_estimators=n_estimators, max_depth = max_depth, class_weight=class_weight)
+    clf = None
+    if not n_estimators:
+        clf = RandomForestClassifier(class_weight=class_weight)
+    else:
+        clf = RandomForestClassifier(n_estimators=n_estimators, max_depth = max_depth, class_weight=class_weight)
     clf.fit(X,y)
     return clf
 
