@@ -16,6 +16,7 @@ LABELS_DIR = 'labels'
 PAIR_FEATURES_EXTENSION = '_pair_features_readable.txt'
 PAIR_LABELS_EXTENSION = '_non_unique_relations.txt'
 PAIR_FEATURE_FILTER = ''
+n_estimators = None
 
 DEFAULT_FILTER = [
   #'cooc.*'
@@ -134,7 +135,7 @@ def evaluate_clf_from_file(clf_dirname, testbooks=None):
     if not testbooks:
         train_perf = evaluate_books(clf, train_books, scaler, evaluate_pair)
         print 'Train Non-unique Precision:', train_perf[0], 'Non-unique Recall:', train_perf[1]
-    
+
     test_perf = evaluate_books(clf, test_books, scaler, evaluate_pair)
     print 'Test Non-unique Precision:', test_perf[0], 'Recall:', test_perf[1]
 
@@ -146,7 +147,11 @@ def train_svm(X, y):
 
 # random forest
 def train_rf(X, y):
-    clf = RandomForestClassifier(n_estimators=n_estimators, max_depth = max_depth, class_weight=class_weight)
+    clf = None
+    if not n_estimators:
+        clf = RandomForestClassifier(class_weight=class_weight)
+    else:
+        clf = RandomForestClassifier(n_estimators=n_estimators, max_depth = max_depth, class_weight=class_weight)
     clf.fit(X,y)
     return clf
 
