@@ -29,7 +29,7 @@ def evaluate_pair(clf, book, scaler = None, baseline=False):
     X, y, cands, features  = get_data([book], FEATURES_DIR, PAIR_FEATURES_EXTENSION, LABELS_DIR, PAIR_LABELS_EXTENSION, PAIR_FEATURE_FILTER)
     if scaler != None:
         X = scaler.transform(X)
-    
+
     if baseline:
         cooc = X[:,features.index('cooc_pg')]
         top_cooc = (-cooc).argsort()[:len(y)/10+1]
@@ -151,7 +151,7 @@ def evaluate_baseline(test_books=None):
     if not test_books:
         test_books = books
     else:
-        test_books = set(testbooks)
+        test_books = set(test_books)
 
     test_perf = evaluate_books(None, test_books, None, evaluate_pair, True)
     print 'Test Non-unique Precision:', test_perf[0], 'Recall:', test_perf[1]

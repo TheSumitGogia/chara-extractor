@@ -41,7 +41,7 @@ def evaluate_char(clf, book, scaler = None, baseline = False):
         tri_grams_counts = counts
         bi_grams_counts[lengths != 3] = 0
         top_tri_grams = (-tri_grams_counts).argsort()[:5]
-        
+
         select = list(top_one_grams) + list(top_bi_grams) + list(top_tri_grams)
         y_pred = np.array([1 if i in select else 0 for i in range(len(counts))])
     else:
@@ -184,7 +184,7 @@ def evaluate_baseline(test_books=None):
     if not test_books:
         test_books = books
     else:
-        test_books = set(testbooks)
+        test_books = set(test_books)
 
     test_perf = evaluate_books(None, test_books, None, evaluate_char, True)
     print 'Test Non-unique Precision:', test_perf[3], 'Recall:', test_perf[4]

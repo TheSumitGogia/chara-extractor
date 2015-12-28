@@ -39,6 +39,8 @@ def handle_qual_command(args):
     featdir = args.featdir
     labeldir = args.labeldir
     books = args.books
+    baseline = args.baseline
+    filt = args.filter
 
     if tp == 'char':
         train_char.FEATURES_DIR = featdir + '/characters'
@@ -47,7 +49,7 @@ def handle_qual_command(args):
         train_char.set_filters(filt)
         if baseline:
             train_char.set_filters("['length', 'count']")
-            train_char.evaluate_baseline()
+            train_char.evaluate_baseline(books)
         else:
             train_char.evaluate_clf_from_file(clfdir, books)
     if tp == 'rel':
@@ -57,7 +59,7 @@ def handle_qual_command(args):
         train_pair.set_filters(filt)
         if baseline:
             train_pair.set_filters("['cooc']")
-            train_pair.evaluate_baseline()
+            train_pair.evaluate_baseline(books)
         else:
             train_pair.evaluate_clf_from_file(clfdir, books)
 

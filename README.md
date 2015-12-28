@@ -67,7 +67,7 @@ below (run from the top directory) will get precision/recall for our best classi
 on characters and relationships:
 
     python evaluate.py quant -t char -c data/classifiers/charclf
-    python evaluate.py quant -t rel -c data/classifiers/pairclf
+    python evaluate.py quant -t rel -c data/classifiers/pairclf -x '["cooc.*norm.*pg"]'
 
 The following command will qualitatively test sample books _Crime and Punishment_ and _Secret Garden_,
 outputting the characters found by the classifier and those listed in Sparknotes; the characters
