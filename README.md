@@ -13,7 +13,7 @@ can still train character extractors using our tools, as well as relatively inac
 It is particularly easy to access and test the character extractors and relationship identifiers trained by us
 and discussed in our paper, allowing for verification of the results presented there. 
 
-    <https://www.dropbox.com/s/clpo582rjcw8tv4/report.tar.gz?dl=0>
+    [https://www.dropbox.com/s/clpo582rjcw8tv4/report.tar.gz?dl=0]
 
 It should be noted
 that there are a large number of details in implementation that are not highlighted in the paper - these
